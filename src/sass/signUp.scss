@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+$maincolor_first: #00a6a6;
+$maincolor_second: #efca08;
+$yellow_light: #efc80875;
+$aqua_light: #00b4b4;
+$maincolor_third: #fff;
+$color_error: #ef7008;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $maincolor_first;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: $maincolor_third;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 400px;
+    max-width: 100%;
+    &_header {
+        text-align: center;
+        background-color: #efc80827;
+        border-bottom: 1px solid #efc8082a;
+        padding: 20px 40px;
+        &_headline {
+            margin: 0;
+        }
+    }
+    &__form {
+        padding: 30px 40px;
+        &_control {
+            margin-bottom: 25px;
+            position: relative;
+            &.success i.fa-check-circle {
+                color: $maincolor_first;
+                visibility: visible;
+            }
+            &.error i.fa-exclamation-circle {
+                color: $color_error;
+                visibility: visible;
+            }
+            &.success input {
+                border-color: $maincolor_first;
+            }
+            &.error input {
+                border-color: $color_error;
+            }
+            &.error small {
+                color: $color_error;
+                visibility: visible;
+            }
+            & label {
+                font-weight: bold;
+                display: inline-block;
+                margin-bottom: 10px;
+            }
+            & input {
+                border: 2px solid $yellow_light;
+                border-radius: 4px;
+                display: block;
+                width: 100%;
+                padding: 10px;
+                font-size: 14px;
+                font-family: inherit;
+            }
+            & i {
+                position: absolute;
+                top: 40px;
+                right: 10px;
+                visibility: hidden;
+            }
+            & small {
+                visibility: hidden;
+                position: absolute;
+            }
+        }
+        &_button {
+            background-color: $maincolor_third;
+            border: 2px solid $maincolor_first;
+            color: $maincolor_first;
+            display: block;
+            font-size: 16px;
+            font-family: inherit;
+            width: 100%;
+            padding: 10px;
+            &:hover {
+                background-color: $maincolor_first;
+                color: $maincolor_third;
+                cursor: pointer;
+            }
+            &:focus {
+                outline: none;
+                background-color: $aqua_light;
+                border: 2px solid $aqua_light;
+                color: $maincolor_third;
+                cursor: pointer;
+            }
+            &:active {
+                outline: none;
+            }
+        }
+    }
+}
