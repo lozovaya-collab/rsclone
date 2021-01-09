@@ -1,3 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+  box-sizing: border-box;
+}
 
+body {
+  background-color: #00a6a6;
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 400px;
+  max-width: 100%;
+}
+.container_header {
+  text-align: center;
+  background-color: #efc80827;
+  border-bottom: 1px solid #efc8082a;
+  padding: 20px 40px;
+}
+.container_header_headline {
+  margin: 0;
+}
+.container__form {
+  padding: 30px 40px;
+}
+.container__form_control {
+  margin-bottom: 25px;
+  position: relative;
+}
+.container__form_control.success i.fa-check-circle {
+  color: #00a6a6;
+  visibility: visible;
+}
+.container__form_control.error i.fa-exclamation-circle {
+  color: #ef7008;
+  visibility: visible;
+}
+.container__form_control.success input {
+  border-color: #00a6a6;
+}
+.container__form_control.error input {
+  border-color: #ef7008;
+}
+.container__form_control.error small {
+  color: #ef7008;
+  visibility: visible;
+}
+.container__form_control label {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.container__form_control input {
+  border: 2px solid #efc80875;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.container__form_control i {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  visibility: hidden;
+}
+.container__form_control small {
+  visibility: hidden;
+  position: absolute;
+}
+.container__form_button {
+  background-color: #fff;
+  border: 2px solid #00a6a6;
+  color: #00a6a6;
+  display: block;
+  font-size: 16px;
+  font-family: inherit;
+  width: 100%;
+  padding: 10px;
+}
+.container__form_button:hover {
+  background-color: #00a6a6;
+  color: #fff;
+  cursor: pointer;
+}
+.container__form_button:focus {
+  outline: none;
+  background-color: #00b4b4;
+  border: 2px solid #00b4b4;
+  color: #fff;
+  cursor: pointer;
+}
+.container__form_button:active {
+  outline: none;
+}
 
 /*# sourceMappingURL=style.css.map */
