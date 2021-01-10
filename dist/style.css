@@ -1,9 +1,18 @@
-@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Poppins&display=swap);
 * {
   box-sizing: border-box; }
 
+h2,
+label {
+  font-family: Georgia, Times, Times New Roman, serif; }
+
+small,
+span,
+input {
+  font-family: 'Poppins', sans-serif; }
+
 body {
-  background-color: #00a6a6;
+  background-color: #efca08;
   display: flex;
   font-family: 'Montserrat', sans-serif;
   align-items: center;
@@ -11,12 +20,41 @@ body {
   min-height: 100vh;
   margin: 0; }
 
+.infoUser {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
+
+.adress {
+  margin-left: 21px;
+  display: flex;
+  flex-direction: row; }
+
+.fa-location-arrow {
+  color: #00a6a6; }
+
+.fa-location-arrow:hover {
+  cursor: pointer;
+  color: #07cccc; }
+
+.location {
+  font-family: 'Poppins', sans-serif;
+  opacity: 0.7;
+  display: flex;
+  border: 2px solid #efc80875;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 35px;
+  right: 10px;
+  margin: 2px; }
+
 .container {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  width: 400px;
+  width: 550px;
   max-width: 100%; }
   .container_header {
     text-align: center;
@@ -51,10 +89,9 @@ body {
         border: 2px solid #efc80875;
         border-radius: 4px;
         display: block;
-        width: 100%;
+        width: 200px;
         padding: 10px;
-        font-size: 14px;
-        font-family: inherit; }
+        font-size: 14px; }
       .container__form_control i {
         position: absolute;
         top: 40px;
@@ -68,8 +105,8 @@ body {
       border: 2px solid #00a6a6;
       color: #00a6a6;
       display: block;
-      font-size: 16px;
-      font-family: inherit;
+      font-family: Georgia, Times, Times New Roman, serif;
+      font-size: 20px;
       width: 100%;
       padding: 10px; }
       .container__form_button:hover {
@@ -78,8 +115,8 @@ body {
         cursor: pointer; }
       .container__form_button:focus {
         outline: none;
-        background-color: #00b4b4;
-        border: 2px solid #00b4b4;
+        background-color: #07cccc;
+        border: 2px solid #07cccc;
         color: #fff;
         cursor: pointer; }
       .container__form_button:active {

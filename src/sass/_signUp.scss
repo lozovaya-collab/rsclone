@@ -1,16 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 $maincolor_first: #00a6a6;
 $maincolor_second: #efca08;
 $yellow_light: #efc80875;
-$aqua_light: #00b4b4;
+$aqua_light: #07cccc;
 $maincolor_third: #fff;
 $color_error: #ef7008;
 * {
     box-sizing: border-box;
 }
 
+h2,
+label {
+    font-family: Georgia, Times, Times New Roman, serif;
+}
+
+small,
+span,
+input {
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
-    background-color: $maincolor_first;
+    background-color: $maincolor_second;
     display: flex;
     font-family: 'Montserrat', sans-serif;
     align-items: center;
@@ -19,12 +30,46 @@ body {
     margin: 0;
 }
 
+.infoUser {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.adress {
+    margin-left: 21px;
+    display: flex;
+    flex-direction: row;
+}
+
+.fa-location-arrow {
+    color: $maincolor_first;
+}
+
+.fa-location-arrow:hover {
+    cursor: pointer;
+    color: $aqua_light;
+}
+
+.location {
+    font-family: 'Poppins', sans-serif;
+    opacity: 0.7;
+    display: flex;
+    border: 2px solid $yellow_light;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 35px;
+    right: 10px;
+    margin: 2px;
+}
+
 .container {
     background-color: $maincolor_third;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    width: 400px;
+    width: 650px;
     max-width: 100%;
     &_header {
         text-align: center;
@@ -38,7 +83,7 @@ body {
     &__form {
         padding: 30px 40px;
         &_control {
-            margin-bottom: 25px;
+            margin-bottom: 35px;
             position: relative;
             &.success i.fa-check-circle {
                 color: $maincolor_first;
@@ -67,10 +112,9 @@ body {
                 border: 2px solid $yellow_light;
                 border-radius: 4px;
                 display: block;
-                width: 100%;
+                width: 250px;
                 padding: 10px;
                 font-size: 14px;
-                font-family: inherit;
             }
             & i {
                 position: absolute;
@@ -88,8 +132,8 @@ body {
             border: 2px solid $maincolor_first;
             color: $maincolor_first;
             display: block;
-            font-size: 16px;
-            font-family: inherit;
+            font-family: Georgia, Times, Times New Roman, serif;
+            font-size: 20px;
             width: 100%;
             padding: 10px;
             &:hover {
