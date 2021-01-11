@@ -1,0 +1,40 @@
+    $maincolor_first: #00a6a6;
+    $maincolor_second: #efca08;
+    $maincolor_third: #fff;
+    .main {
+        & .container {
+            flex-direction: column;
+            margin: 0 auto;
+        }
+    }
+    
+    .main_section {
+        padding-top: 60px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        & h2 {
+            color: $maincolor_second;
+        }
+        & .searching {
+            margin-top: 30px;
+        }
+        & .cards_container {
+            margin-top: 40px;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+        }
+    }
+    
+    .best_offers {
+        & .cards_container {
+            flex-direction: row;
+            // overflow-x: scroll;
+            & .card_restaurant {
+                max-width: 450px;
+            }
+        }
+    }
