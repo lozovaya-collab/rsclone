@@ -44,10 +44,6 @@
     "browserslist": [
         "last 2 Chrome versions",
         "last 2 Firefox versions"
-<<<<<<< HEAD
-    ]
-}
-=======
     ],
     "babel": {
         "presets": [
@@ -57,4 +53,3 @@
         ]
     }
 }
->>>>>>> 8ec441cc145731d7213a915a9d1ff5d5f4f49a5a
