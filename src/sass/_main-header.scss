@@ -1,0 +1,45 @@
+$maincolor_first: #00a6a6;
+$maincolor_second: #efca08;
+$maincolor_third: #fff;
+.main_header {
+    background-image: url("https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_large_assets/1629eec0e96d/assets/img/home/hero_photos/3oz4uflrjm1Uftg_R689PA.jpg");
+    background-size: cover;
+    height: 50vw;
+    position: relative;
+}
+
+.main_logIn {
+    margin-top: 20px;
+    & .container {
+        position: relative;
+    }
+    & a {
+        margin-left: 25px;
+    }
+}
+
+.main_nav {
+    margin-top: 70px;
+    & ul {
+        display: flex;
+        li {
+            list-style-type: none;
+        }
+    }
+}
+
+.main_nav_link {
+    color: $maincolor_third;
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+.main_logo {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    & .logo {
+        font-size: 80px;
+    }
+}
