@@ -7,14 +7,14 @@ $maincolor_third: #fff;
     height: 100%;
 }
 
-.main_container {
+.main_wrapper {
     position: relative;
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.restaurants_container {
+.restaurants_wrapper {
     margin: 2px;
     padding: 50px 0;
     width: 100%;
@@ -51,7 +51,7 @@ $maincolor_third: #fff;
     }
 }
 
-.cards_container {
+.cards_wrapper {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
@@ -61,10 +61,11 @@ $maincolor_third: #fff;
 .card {
     border-radius: 5px;
     padding: 15px;
-    border: 1px solid beige;
+    border: 1px solid rgb(201, 201, 181);
     min-width: 290px;
     height: 250px;
     overflow: hidden;
+    margin: 7px;
     &:hover {
         cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
@@ -88,6 +89,7 @@ $maincolor_third: #fff;
     height: auto;
     border-radius: 5px;
     float: left;
+    margin-bottom: 10px;
 }
 
 .title_card:hover {
@@ -116,7 +118,7 @@ $maincolor_third: #fff;
         padding-right: 16px;
     }
     & .fa-check {
-        color: $maincolor_second;
+        color: $maincolor_first;
         padding-right: 5px;
     }
 }
@@ -125,7 +127,7 @@ $maincolor_third: #fff;
     margin-top: 10px;
 }
 
-.map-container {
+.map-wrapper {
     background-color: $maincolor_first;
     margin: 2px;
     display: flex;

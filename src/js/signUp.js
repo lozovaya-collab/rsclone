@@ -11,12 +11,18 @@ const city = document.querySelector('.city')
 
 
 const locationButton = document.querySelector('.locationButton')
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    checkInputs()
-})
 
-locationButton.addEventListener('click', yourLocation)
+
+if (form !== null) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        checkInputs()
+    })
+}
+
+if (locationButton !== null) {
+    locationButton.addEventListener('click', yourLocation)
+}
 
 function checkInputs() {
     const usernameValue = username.value.trim()
@@ -97,7 +103,7 @@ function checkInputs() {
 
 }
 
-function setErrorFor(input, message) {
+export function setErrorFor(input, message) {
     const formControl = input.parentElement
     const small = formControl.querySelector('small')
 
@@ -105,21 +111,21 @@ function setErrorFor(input, message) {
     formControl.className = 'container__form_control error'
 }
 
-function setSuccessFor(input) {
+export function setSuccessFor(input) {
     const formControl = input.parentElement
     formControl.className = 'container__form_control success'
 }
 
 
 
-function isEmail(email) {
+export function isEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
 }
 
 async function yourLocation() {
     const resu = await fetch(`http://ip-api.com/json`);
     const data = await resu.json();
-    alert('We are check your location')
+    alert('We are checking your location')
     const location = document.querySelectorAll('.location')
     location[0].innerHTML = data.country
     location[1].innerHTML = data.city

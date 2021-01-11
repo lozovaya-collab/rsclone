@@ -1,4 +1,5 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.js":
@@ -7,11 +8,105 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
-/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_signUp__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
 
+
+
+/***/ }),
+
+/***/ "./src/js/modal.js":
+/*!*************************!*\
+  !*** ./src/js/modal.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
+
+const formLogIn = document.getElementById('popup');
+const emailLogIn = document.getElementById('emailLogIn');
+const passwordLogIn = document.getElementById('passwordLogIn');
+popup.innerHTML = `<div class="popup__body">
+<div class="popup__content">
+    <a href="" class="popup__close"></a>
+    <div class="popup__title container_header">
+        <h2 class="container_header_headline">Log In</h2>
+        <i class="far fa-times-circle btnClose"></i>
+    </div>
+    <div class="popup__form">
+        <div class="container__form_control">
+            <label>Email</label>
+            <input type="email" placeholder="test@test.com" id="emailLogIn"></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label>Password</label>
+            <input type="password" placeholder="password" id="passwordLogIn"></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+        <button class="container__form_button logIn">Log in</button>
+    </div>
+
+</div>
+</div>`;
+const btn = document.querySelector('.btnRest');
+const btnMain = document.querySelector('.mainBtn');
+const btnLogIn = document.querySelector('.logIn');
+const btnClose = document.querySelector('.btnClose');
+
+if (btnLogIn !== null) {
+  btnLogIn.addEventListener('click', e => {
+    console.log('log in');
+    e.preventDefault();
+    checkData();
+  });
+}
+
+if (btnClose !== null) {
+  btnClose.addEventListener('click', e => {
+    formLogIn.style.display = 'none';
+  });
+}
+
+if (btnMain !== null) {
+  btnMain.addEventListener('click', e => {
+    formLogIn.style.display = 'flex';
+    formLogIn.style.top = '0';
+  });
+}
+
+if (btn !== null) {
+  btn.addEventListener('click', e => {
+    formLogIn.style.display = 'flex';
+  });
+}
+
+function checkData() {
+  const emailValue = emailLogIn.value;
+  const passwordValue = passwordLogIn.value;
+
+  if (emailValue === '') {
+    _signUp__WEBPACK_IMPORTED_MODULE_0__.setErrorFor(emailLogIn, 'Email cannot be blank');
+  } else if (!_signUp__WEBPACK_IMPORTED_MODULE_0__.isEmail(emailValue)) {
+    _signUp__WEBPACK_IMPORTED_MODULE_0__.setErrorFor(emailLogIn, 'Email is not valid');
+  } else {
+    _signUp__WEBPACK_IMPORTED_MODULE_0__.setSuccessFor(emailLogIn);
+  }
+
+  if (passwordValue === '') {
+    _signUp__WEBPACK_IMPORTED_MODULE_0__.setErrorFor(passwordLogIn, 'Password cannot be blank');
+  } else if (passwordValue.length < 6) {
+    _signUp__WEBPACK_IMPORTED_MODULE_0__.setErrorFor(passwordLogIn, 'Password is too short! Minimum - 6 characters');
+  } else {
+    _signUp__WEBPACK_IMPORTED_MODULE_0__.setSuccessFor(passwordLogIn);
+  }
+}
 
 /***/ }),
 
@@ -19,8 +114,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./src/js/signUp.js ***!
   \**************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "setErrorFor": () => /* binding */ setErrorFor,
+/* harmony export */   "setSuccessFor": () => /* binding */ setSuccessFor,
+/* harmony export */   "isEmail": () => /* binding */ isEmail
+/* harmony export */ });
 const form = document.getElementById('form');
 const username = document.getElementById('username');
 const email = document.getElementById('email');
@@ -32,11 +133,17 @@ const birthday = document.getElementById('birthday');
 const country = document.querySelector('.country');
 const city = document.querySelector('.city');
 const locationButton = document.querySelector('.locationButton');
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  checkInputs();
-});
-locationButton.addEventListener('click', yourLocation);
+
+if (form !== null) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    checkInputs();
+  });
+}
+
+if (locationButton !== null) {
+  locationButton.addEventListener('click', yourLocation);
+}
 
 function checkInputs() {
   const usernameValue = username.value.trim();
@@ -122,12 +229,10 @@ function setErrorFor(input, message) {
   small.innerText = message;
   formControl.className = 'container__form_control error';
 }
-
 function setSuccessFor(input) {
   const formControl = input.parentElement;
   formControl.className = 'container__form_control success';
 }
-
 function isEmail(email) {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
@@ -135,7 +240,7 @@ function isEmail(email) {
 async function yourLocation() {
   const resu = await fetch(`http://ip-api.com/json`);
   const data = await resu.json();
-  alert('We are check your location');
+  alert('We are checking your location');
   const location = document.querySelectorAll('.location');
   location[0].innerHTML = data.country;
   location[1].innerHTML = data.city;
@@ -149,7 +254,6 @@ async function yourLocation() {
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -182,18 +286,6 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => module['default'] :
-/******/ 				() => module;
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports

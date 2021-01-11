@@ -13,7 +13,7 @@ $maincolor_third: #fff;
     align-items: flex-end;
     // position: relative;
     z-index: 2;
-    .container {
+    .wrapper {
         align-items: center;
         width: 100%;
     }
@@ -31,7 +31,7 @@ $maincolor_third: #fff;
     color: #FFFFFF;
 }
 
-.header-container {
+.header-wrapper {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -118,7 +118,7 @@ $maincolor_third: #fff;
     }
 }
 
-.button_container {
+.button_wrapper {
     position: absolute;
     right: 15px;
     top: 10px;

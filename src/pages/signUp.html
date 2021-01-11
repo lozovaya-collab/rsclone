@@ -6,85 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../sass/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <title>Yelp</title>
+    <title>Yelp Clone</title>
 </head>
 
-<body>
-    <div class="box">
-        <div class="container">
-            <div class="container_header">
-                <h2 class="container_header_headline">Sign Up</h2>
-            </div>
-            <form id="form" class="container__form">
-                <div class="infoUser">
-                    <div>
-                        <div class="container__form_control">
-                            <label>First Name</label>
-                            <input type="text" placeholder="First name" id="name"></input>
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error message</small>
-                        </div>
-                        <div class="container__form_control">
-                            <label>Last Name</label>
-                            <input type="text" placeholder="Last Name" id="surname"></input>
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error message</small>
-                        </div>
-                        <div class="container__form_control">
-                            <label>Birthday</label>
-                            <input type="date" id="birthday"></input>
-                            <small>Error message</small>
-                        </div>
-                        <div class="container__form_control">
-                            <label>Your location</label>
-                            <br>
-                            <i class="fas fa-location-arrow locationButton" style="visibility: visible; left: 0px;"></i>
-                            <div class="adress">
-                                <div class="location country">Country</div>
-                                <div class="location city">City</div>
-                            </div>
-                            <small id='location_error'>Error message</small>
-                        </div>
+<body class="body">
+    <div class="container">
+        <div class="container_header">
+            <h2 class="container_header_headline">Sign Up</h2>
+        </div>
+        <form id="form" class="container__form">
+            <div class="infoUser">
+                <div>
+                    <div class="container__form_control">
+                        <label>First Name</label>
+                        <input type="text" placeholder="First name" id="name"></input>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
                     </div>
-                    <div>
-                        <div class="container__form_control">
-                            <label>Username</label>
-                            <input type="text" placeholder="florinpop17" id="username"></input>
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error message</small>
-                        </div>
-                        <div class="container__form_control">
-                            <label>Email</label>
-                            <input type="email" placeholder="test@test.com" id="email"></input>
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error message</small>
-                        </div>
-                        <div class="container__form_control">
-                            <label>Password</label>
-                            <input type="password" placeholder="password" id="password"></input>
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error message</small>
-                        </div>
-                        <div class="container__form_control">
-                            <label>Password check</label>
-                            <input type="password" placeholder="password two" id="password2"></input>
-                            <i class="fas fa-check-circle"></i>
-                            <i class="fas fa-exclamation-circle"></i>
-                            <small>Error message</small>
-                        </div>
+                    <div class="container__form_control">
+                        <label>Last Name</label>
+                        <input type="text" placeholder="Last Name" id="surname"></input>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
                     </div>
-
+                    <div class="container__form_control">
+                        <label>Birthday</label>
+                        <input type="date" id="birthday"></input>
+                        <small>Error message</small>
+                    </div>
+                    <div class="container__form_control">
+                        <label>Your location</label>
+                        <br>
+                        <i class="fas fa-location-arrow locationButton" style="visibility: visible; left: 0px;"></i>
+                        <div class="adress">
+                            <div class="location country">Country</div>
+                            <div class="location city">City</div>
+                        </div>
+                        <small id='location_error'>Error message</small>
+                    </div>
+                </div>
+                <div>
+                    <div class="container__form_control">
+                        <label>Username</label>
+                        <input type="text" placeholder="florinpop17" id="username"></input>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <div class="container__form_control">
+                        <label>Email</label>
+                        <input type="email" placeholder="test@test.com" id="email"></input>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <div class="container__form_control">
+                        <label>Password</label>
+                        <input type="password" placeholder="password" id="password"></input>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <div class="container__form_control">
+                        <label>Password check</label>
+                        <input type="password" placeholder="password two" id="password2"></input>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
                 </div>
 
+            </div>
 
-                <button class="container__form_button">Submit</button>
-            </form>
-        </div>
+
+            <button class="container__form_button">Submit</button>
+        </form>
     </div>
     <script src="../../dist/script.js"></script>
 </body>
