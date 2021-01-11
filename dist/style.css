@@ -144,7 +144,8 @@
   display: flex; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #444343; }
 
 h1 {
   font-size: 24px;
@@ -266,10 +267,11 @@ h2 {
 .card {
   border-radius: 5px;
   padding: 15px;
-  border: 1px solid beige;
+  border: 1px solid #c9c9b5;
   min-width: 290px;
   height: 250px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin: 7px; }
   .card:hover {
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; }
@@ -288,7 +290,8 @@ h2 {
   min-width: 80px;
   height: auto;
   border-radius: 5px;
-  float: left; }
+  float: left;
+  margin-bottom: 10px; }
 
 .title_card:hover {
   text-decoration: underline; }
@@ -310,7 +313,7 @@ h2 {
   .service_restaurant span {
     padding-right: 16px; }
   .service_restaurant .fa-check {
-    color: #efca08;
+    color: #00a6a6;
     padding-right: 5px; }
 
 .review_restaurant {
@@ -407,13 +410,19 @@ h2 {
   flex-direction: column;
   margin: 0 auto; }
 
+.section_best_offers {
+  width: 100%;
+  background-color: rgba(248, 247, 247, 0.562); }
+
 .main_section {
-  padding-top: 60px;
+  padding: 60px 0 80px;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  width: 100%; }
   .main_section h2 {
     color: #efca08; }
   .main_section .searching {
@@ -421,13 +430,32 @@ h2 {
   .main_section .cards_container {
     margin-top: 40px;
     justify-content: center;
-    align-items: center;
-    height: 300px; }
+    align-items: center; }
 
 .best_offers .cards_container {
-  flex-direction: row; }
+  flex-direction: row;
+  flex-wrap: wrap; }
   .best_offers .cards_container .card_restaurant {
     max-width: 450px; }
+
+.city_restaurants .cards_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  max-height: 1000px;
+  overflow-y: scroll; }
+  .city_restaurants .cards_container .card_restaurant {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 350px;
+    height: 400px;
+    overflow-y: scroll; }
+
+.section_recent_activity {
+  width: 100%;
+  background-color: rgba(248, 247, 247, 0.562); }
 
 
 /*# sourceMappingURL=style.css.map*/
