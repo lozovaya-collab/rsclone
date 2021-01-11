@@ -1,3 +1,127 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins&display=swap);
+* {
+  box-sizing: border-box; }
+
+h2,
+label {
+  font-family: Georgia, Times, Times New Roman, serif; }
+
+small,
+span,
+input {
+  font-family: 'Poppins', sans-serif; }
+
+.body {
+  background-color: #efca08;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0; }
+
+.infoUser {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; }
+
+.adress {
+  margin-left: 21px;
+  display: flex;
+  flex-direction: row; }
+
+.fa-location-arrow {
+  color: #00a6a6; }
+
+.fa-location-arrow:hover {
+  cursor: pointer;
+  color: #07cccc; }
+
+.location {
+  font-family: 'Poppins', sans-serif;
+  opacity: 0.7;
+  display: flex;
+  border: 2px solid #efc80875;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 35px;
+  right: 10px;
+  margin: 2px; }
+
+.container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 650px;
+  max-width: 100%; }
+  .container_header {
+    text-align: center;
+    background-color: #efc80827;
+    border-bottom: 1px solid #efc8082a;
+    padding: 20px 40px; }
+    .container_header_headline {
+      margin: 0; }
+  .container__form {
+    padding: 30px 40px; }
+    .container__form_control {
+      margin-bottom: 35px;
+      position: relative; }
+      .container__form_control.success i.fa-check-circle {
+        color: #00a6a6;
+        visibility: visible; }
+      .container__form_control.error i.fa-exclamation-circle {
+        color: #ef7008;
+        visibility: visible; }
+      .container__form_control.success input {
+        border-color: #00a6a6; }
+      .container__form_control.error input {
+        border-color: #ef7008; }
+      .container__form_control.error small {
+        color: #ef7008;
+        visibility: visible; }
+      .container__form_control label {
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 10px; }
+      .container__form_control input {
+        border: 2px solid #efc80875;
+        border-radius: 4px;
+        display: block;
+        width: 250px;
+        padding: 10px;
+        font-size: 14px; }
+      .container__form_control i {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        visibility: hidden; }
+      .container__form_control small {
+        visibility: hidden;
+        position: absolute; }
+    .container__form_button {
+      background-color: #fff;
+      border: 2px solid #00a6a6;
+      color: #00a6a6;
+      display: block;
+      font-family: Georgia, Times, Times New Roman, serif;
+      font-size: 20px;
+      width: 100%;
+      padding: 10px; }
+      .container__form_button:hover {
+        background-color: #00a6a6;
+        color: #fff;
+        cursor: pointer; }
+      .container__form_button:focus {
+        outline: none;
+        background-color: #07cccc;
+        border: 2px solid #07cccc;
+        color: #fff;
+        cursor: pointer; }
+      .container__form_button:active {
+        outline: none; }
+
 .header {
   position: fixed;
   top: 0;
@@ -8,7 +132,7 @@
   display: flex;
   align-items: flex-end;
   z-index: 2; }
-  .header .container {
+  .header .wrapper {
     align-items: center;
     width: 100%; }
 
@@ -22,7 +146,7 @@
 .fa-yelp {
   color: #FFFFFF; }
 
-.header-container {
+.header-wrapper {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -97,7 +221,7 @@
   .navigation_link:hover {
     text-decoration: underline; }
 
-.button_container {
+.button_wrapper {
   position: absolute;
   right: 15px;
   top: 10px; }
@@ -137,7 +261,7 @@
   box-sizing: border-box;
   outline: none; }
 
-.container {
+.wrapper {
   width: 100%;
   padding: 0 15px;
   margin: 0 auto;
@@ -171,7 +295,7 @@ h2 {
 @media all and (max-width: 1020px) {
   .header {
     height: 150px; }
-  .header-container {
+  .header-wrapper {
     flex-direction: column;
     justify-content: space-evenly; }
   .searching {
@@ -221,13 +345,13 @@ h2 {
   height: 100vw;
   height: 100%; }
 
-.main_container {
+.main_wrapper {
   position: relative;
   display: flex;
   justify-content: space-between;
   width: 100%; }
 
-.restaurants_container {
+.restaurants_wrapper {
   margin: 2px;
   padding: 50px 0;
   width: 100%;
@@ -258,7 +382,7 @@ h2 {
     color: #fff;
     background-color: #00a6a6; }
 
-.cards_container {
+.cards_wrapper {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
@@ -319,7 +443,7 @@ h2 {
 .review_restaurant {
   margin-top: 10px; }
 
-.map-container {
+.map-wrapper {
   background-color: #00a6a6;
   margin: 2px;
   display: flex;
@@ -344,16 +468,16 @@ h2 {
   height: 100px;
   border-top: 1px solid beige; }
 
-.footer-container {
+.footer-wrapper {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   flex-wrap: wrap; }
-  .footer-container .logo {
+  .footer-wrapper .logo {
     margin-left: 5px; }
-  .footer-container span {
+  .footer-wrapper span {
     font-size: 16px;
     margin-left: 10px; }
 
@@ -381,7 +505,7 @@ h2 {
 
 .main_logIn {
   margin-top: 20px; }
-  .main_logIn .container {
+  .main_logIn .wrapper {
     position: relative; }
   .main_logIn a {
     margin-left: 25px; }
@@ -406,7 +530,7 @@ h2 {
   .main_logo .logo {
     font-size: 80px; }
 
-.main .container {
+.main .wrapper {
   flex-direction: column;
   margin: 0 auto; }
 
@@ -427,25 +551,25 @@ h2 {
     color: #efca08; }
   .main_section .searching {
     margin-top: 30px; }
-  .main_section .cards_container {
+  .main_section .cards_wrapper {
     margin-top: 40px;
     justify-content: center;
     align-items: center; }
 
-.best_offers .cards_container {
+.best_offers .cards_wrapper {
   flex-direction: row;
   flex-wrap: wrap; }
-  .best_offers .cards_container .card_restaurant {
+  .best_offers .cards_wrapper .card_restaurant {
     max-width: 450px; }
 
-.city_restaurants .cards_container {
+.city_restaurants .cards_wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
   max-height: 1000px;
   overflow-y: scroll; }
-  .city_restaurants .cards_container .card_restaurant {
+  .city_restaurants .cards_wrapper .card_restaurant {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;

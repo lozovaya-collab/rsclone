@@ -7,14 +7,14 @@ $maincolor_third: #fff;
     height: 100%;
 }
 
-.main_container {
+.main_wrapper {
     position: relative;
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.restaurants_container {
+.restaurants_wrapper {
     margin: 2px;
     padding: 50px 0;
     width: 100%;
@@ -51,7 +51,7 @@ $maincolor_third: #fff;
     }
 }
 
-.cards_container {
+.cards_wrapper {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
@@ -127,7 +127,7 @@ $maincolor_third: #fff;
     margin-top: 10px;
 }
 
-.map-container {
+.map-wrapper {
     background-color: $maincolor_first;
     margin: 2px;
     display: flex;
