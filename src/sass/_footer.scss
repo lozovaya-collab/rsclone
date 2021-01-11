@@ -1,0 +1,43 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    border-top: 1px solid beige;
+}
+
+.footer-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    & .logo {
+        margin-left: 5px;
+    }
+    & span {
+        font-size: 16px;
+        margin-left: 10px;
+    }
+}
+
+.footer-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    & a {
+        font-size: 20px;
+        color: rgb(32, 32, 32);
+        margin: 1px 10px;
+    }
+    & a:hover {
+        cursor: pointer;
+    }
+}
+
+.rsLogo {
+    width: 60px;
+    margin-top: 10px;
+}

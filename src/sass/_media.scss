@@ -1,0 +1,71 @@
+@media all and (max-width: 1020px) {
+    .header {
+        height: 150px;
+    }
+    .header-container {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .searching {
+        margin: 15px 0;
+    }
+    .main_restaurants {
+        padding-top: 150px !important;
+    }
+}
+
+@media all and (max-width: 891px) {
+    .main_logIn {
+        margin-top: 10px !important;
+    }
+    .main_nav_link {
+        margin-left: 15px;
+        font-size: 20px;
+    }
+    .main_nav {
+        margin-top: 80px !important;
+    }
+    .main_logoYelp {
+        font-size: 60px !important;
+    }
+}
+
+@media all and (max-width: 760px) {
+    .header {
+        height: 200px;
+    }
+    .main_restaurants {
+        padding-top: 200px !important;
+    }
+}
+
+@media all and (max-width: 670px) {
+    .main_logoYelp {
+        font-size: 50px !important;
+    }
+}
+
+@media all and (max-width: 562px) {
+    .main_nav {
+        position: absolute;
+        bottom: 15px;
+    }
+    .main_nav_link {
+        font-size: 16px !important;
+        margin-left: 5px !important;
+    }
+    .main_logoYelp {
+        font-size: 30px !important;
+    }
+}
+
+@media all and (max-width: 415px) {
+    .input_searching {
+        font-size: 16px;
+    }
+    .main_logoYelp {
+        font-size: 20px !important;
+    }
+}
+
+@media all and (max-width: 320px) {}
