@@ -2,7 +2,8 @@ $maincolor_first: #00a6a6;
 $maincolor_second: #efca08;
 $maincolor_third: #fff;
 .main_header {
-    background-image: url("https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_large_assets/1629eec0e96d/assets/img/home/hero_photos/3oz4uflrjm1Uftg_R689PA.jpg");
+    background-image: url("https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_large_assets/469f5b12df16/assets/img/home/hero_photos/ubaw1eG3Pf4qCmKx-pkC4g.jpg");
+    // background-image: url("https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_large_assets/1629eec0e96d/assets/img/home/hero_photos/3oz4uflrjm1Uftg_R689PA.jpg");
     background-size: cover;
     height: 50vw;
     position: relative;
@@ -10,7 +11,7 @@ $maincolor_third: #fff;
 
 .main_logIn {
     margin-top: 20px;
-    & .container {
+    & .wrapper {
         position: relative;
     }
     & a {
@@ -24,6 +25,7 @@ $maincolor_third: #fff;
         display: flex;
         li {
             list-style-type: none;
+            text-shadow: 2px 2px 4px #000000;
         }
     }
 }
@@ -39,7 +41,14 @@ $maincolor_third: #fff;
     position: absolute;
     top: 50%;
     left: 50%;
-    & .logo {
+    & .main_logoYelp {
         font-size: 80px;
+        font-weight: 600;
+        // text-shadow: none;
+        text-shadow: 2px 2px 4px #000000;
+        & .fa-yelp {
+            color: $maincolor_second;
+            text-shadow: 2px 2px 4px #000000;
+        }
     }
 }

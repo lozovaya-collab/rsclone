@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @import url(https://fonts.googleapis.com/css2?family=Poppins&display=swap);
 * {
   box-sizing: border-box; }
@@ -12,7 +11,7 @@ span,
 input {
   font-family: 'Poppins', sans-serif; }
 
-body {
+.body {
   background-color: #efca08;
   display: flex;
   font-family: 'Montserrat', sans-serif;
@@ -122,7 +121,7 @@ body {
         cursor: pointer; }
       .container__form_button:active {
         outline: none; }
-=======
+
 .header {
   position: fixed;
   top: 0;
@@ -133,7 +132,7 @@ body {
   display: flex;
   align-items: flex-end;
   z-index: 2; }
-  .header .container {
+  .header .wrapper {
     align-items: center;
     width: 100%; }
 
@@ -147,7 +146,7 @@ body {
 .fa-yelp {
   color: #FFFFFF; }
 
-.header-container {
+.header-wrapper {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -222,7 +221,7 @@ body {
   .navigation_link:hover {
     text-decoration: underline; }
 
-.button_container {
+.button_wrapper {
   position: absolute;
   right: 15px;
   top: 10px; }
@@ -262,14 +261,15 @@ body {
   box-sizing: border-box;
   outline: none; }
 
-.container {
+.wrapper {
   width: 100%;
   padding: 0 15px;
   margin: 0 auto;
   display: flex; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #444343; }
 
 h1 {
   font-size: 24px;
@@ -295,11 +295,13 @@ h2 {
 @media all and (max-width: 1020px) {
   .header {
     height: 150px; }
-  .header-container {
+  .header-wrapper {
     flex-direction: column;
     justify-content: space-evenly; }
   .searching {
     margin: 15px 0; }
+  .main_logoYelp {
+    font-size: 70px !important; }
   .main_restaurants {
     padding-top: 150px !important; } }
 
@@ -312,7 +314,7 @@ h2 {
   .main_nav {
     margin-top: 80px !important; }
   .main_logoYelp {
-    font-size: 60px !important; } }
+    font-size: 50px !important; } }
 
 @media all and (max-width: 760px) {
   .header {
@@ -322,7 +324,7 @@ h2 {
 
 @media all and (max-width: 670px) {
   .main_logoYelp {
-    font-size: 50px !important; } }
+    font-size: 40px !important; } }
 
 @media all and (max-width: 562px) {
   .main_nav {
@@ -340,18 +342,24 @@ h2 {
   .main_logoYelp {
     font-size: 20px !important; } }
 
+@media all and (max-width: 354px) {
+  .wrapper {
+    padding: 0 10px; }
+  .card {
+    margin: 4px !important; } }
+
 .main_restaurants {
   padding-top: 100px;
   height: 100vw;
   height: 100%; }
 
-.main_container {
+.main_wrapper {
   position: relative;
   display: flex;
   justify-content: space-between;
   width: 100%; }
 
-.restaurants_container {
+.restaurants_wrapper {
   margin: 2px;
   padding: 50px 0;
   width: 100%;
@@ -382,7 +390,7 @@ h2 {
     color: #fff;
     background-color: #00a6a6; }
 
-.cards_container {
+.cards_wrapper {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
@@ -391,10 +399,11 @@ h2 {
 .card {
   border-radius: 5px;
   padding: 15px;
-  border: 1px solid beige;
+  border: 1px solid #c9c9b5;
   min-width: 290px;
   height: 250px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin: 7px; }
   .card:hover {
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; }
@@ -413,7 +422,8 @@ h2 {
   min-width: 80px;
   height: auto;
   border-radius: 5px;
-  float: left; }
+  float: left;
+  margin-bottom: 10px; }
 
 .title_card:hover {
   text-decoration: underline; }
@@ -435,13 +445,13 @@ h2 {
   .service_restaurant span {
     padding-right: 16px; }
   .service_restaurant .fa-check {
-    color: #efca08;
+    color: #00a6a6;
     padding-right: 5px; }
 
 .review_restaurant {
   margin-top: 10px; }
 
-.map-container {
+.map-wrapper {
   background-color: #00a6a6;
   margin: 2px;
   display: flex;
@@ -466,16 +476,16 @@ h2 {
   height: 100px;
   border-top: 1px solid beige; }
 
-.footer-container {
+.footer-wrapper {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   flex-wrap: wrap; }
-  .footer-container .logo {
+  .footer-wrapper .logo {
     margin-left: 5px; }
-  .footer-container span {
+  .footer-wrapper span {
     font-size: 16px;
     margin-left: 10px; }
 
@@ -496,14 +506,14 @@ h2 {
   margin-top: 10px; }
 
 .main_header {
-  background-image: url("https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_large_assets/1629eec0e96d/assets/img/home/hero_photos/3oz4uflrjm1Uftg_R689PA.jpg");
+  background-image: url("https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_large_assets/469f5b12df16/assets/img/home/hero_photos/ubaw1eG3Pf4qCmKx-pkC4g.jpg");
   background-size: cover;
   height: 50vw;
   position: relative; }
 
 .main_logIn {
   margin-top: 20px; }
-  .main_logIn .container {
+  .main_logIn .wrapper {
     position: relative; }
   .main_logIn a {
     margin-left: 25px; }
@@ -513,7 +523,8 @@ h2 {
   .main_nav ul {
     display: flex; }
     .main_nav ul li {
-      list-style-type: none; }
+      list-style-type: none;
+      text-shadow: 2px 2px 4px #000000; }
 
 .main_nav_link {
   color: #fff;
@@ -525,35 +536,80 @@ h2 {
   position: absolute;
   top: 50%;
   left: 50%; }
-  .main_logo .logo {
-    font-size: 80px; }
+  .main_logo .main_logoYelp {
+    font-size: 80px;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px #000000; }
+    .main_logo .main_logoYelp .fa-yelp {
+      color: #efca08;
+      text-shadow: 2px 2px 4px #000000; }
 
-.main .container {
+.main .wrapper {
   flex-direction: column;
   margin: 0 auto; }
 
+.section_best_offers {
+  width: 100%;
+  background-color: rgba(248, 247, 247, 0.562); }
+
 .main_section {
-  padding-top: 60px;
+  padding: 60px 0 80px;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  width: 100%; }
+  .main_section .section_title {
+    font-size: 30px; }
   .main_section h2 {
     color: #efca08; }
   .main_section .searching {
     margin-top: 30px; }
-  .main_section .cards_container {
+  .main_section .cards_wrapper {
     margin-top: 40px;
     justify-content: center;
-    align-items: center;
-    height: 300px; }
+    align-items: center; }
 
-.best_offers .cards_container {
-  flex-direction: row; }
-  .best_offers .cards_container .card_restaurant {
+.best_offers .cards_wrapper {
+  flex-direction: row;
+  flex-wrap: wrap; }
+  .best_offers .cards_wrapper .card_restaurant {
     max-width: 450px; }
->>>>>>> 8ec441cc145731d7213a915a9d1ff5d5f4f49a5a
+
+.city_restaurants .cards_wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  max-height: 1000px;
+  overflow-y: scroll; }
+  .city_restaurants .cards_wrapper .card_restaurant {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 350px;
+    height: 400px;
+    overflow-y: scroll; }
+
+.section_recent_activity {
+  width: 100%;
+  background-color: rgba(248, 247, 247, 0.562); }
+
+.box_possibility {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  max-width: 600px; }
+  .box_possibility .fas,
+  .box_possibility .far {
+    color: #00a6a6; }
+  .box_possibility .possibility {
+    margin: 15px 10px;
+    font-size: 20px; }
 
 
 /*# sourceMappingURL=style.css.map*/
