@@ -9,6 +9,9 @@
     .searching {
         margin: 15px 0;
     }
+    .main_logoYelp {
+        font-size: 70px !important;
+    }
     .main_restaurants {
         padding-top: 150px !important;
     }
@@ -26,7 +29,7 @@
         margin-top: 80px !important;
     }
     .main_logoYelp {
-        font-size: 60px !important;
+        font-size: 50px !important;
     }
 }
 
@@ -41,7 +44,7 @@
 
 @media all and (max-width: 670px) {
     .main_logoYelp {
-        font-size: 50px !important;
+        font-size: 40px !important;
     }
 }
 
@@ -68,4 +71,11 @@
     }
 }
 
-@media all and (max-width: 320px) {}
+@media all and (max-width: 354px) {
+    .wrapper {
+        padding: 0 10px;
+    }
+    .card {
+        margin: 4px !important;
+    }
+}

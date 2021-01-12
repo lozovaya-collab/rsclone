@@ -11,7 +11,58 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
 /* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_signUp__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _js_autocomplitAPI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/autocomplitAPI */ "./src/js/autocomplitAPI.js");
+/* harmony import */ var _js_autocomplitAPI__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_autocomplitAPI__WEBPACK_IMPORTED_MODULE_1__);
 
+
+window.addEventListener('DOMContentLoaded', () => {
+  const a = [];
+  fetch("https://yelpapiserg-osipchukv1.p.rapidapi.com/searchEvent", {
+    "method": "POST",
+    "headers": {
+      "content-type": "application/x-www-form-urlencoded",
+      "x-rapidapi-key": "0a5e8ea8famsh2a13ee1d64f6f30p11306ajsn125f10dd8276",
+      "x-rapidapi-host": "YelpAPIserg-osipchukV1.p.rapidapi.com"
+    },
+    "body": {
+      "accessToken": "<REQUIRED>",
+      "location": "San Francisco"
+    }
+  }).then(response => {
+    console.log(response);
+  }).catch(err => {
+    console.error(err);
+  });
+  console.log(a);
+});
+
+/***/ }),
+
+/***/ "./src/js/autocomplitAPI.js":
+/*!**********************************!*\
+  !*** ./src/js/autocomplitAPI.js ***!
+  \**********************************/
+/***/ (() => {
+
+const a = [];
+fetch("https://yelpapiserg-osipchukv1.p.rapidapi.com/getAutocomplete", {
+  "method": "POST",
+  "headers": {
+    "content-type": "application/x-www-form-urlencoded",
+    "x-rapidapi-key": "0a5e8ea8famsh2a13ee1d64f6f30p11306ajsn125f10dd8276",
+    "x-rapidapi-host": "YelpAPIserg-osipchukV1.p.rapidapi.com"
+  },
+  "body": {
+    "accessToken": "<REQUIRED>",
+    "text": "<REQUIRED>"
+  }
+}).then(response => {
+  a.push(response);
+  console.log(response);
+}).catch(err => {
+  console.error(err);
+});
+console.log(a);
 
 /***/ }),
 

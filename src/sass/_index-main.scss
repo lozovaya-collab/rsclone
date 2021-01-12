@@ -22,6 +22,9 @@
         align-items: center;
         justify-content: center;
         width: 100%;
+        & .section_title {
+            font-size: 30px;
+        }
         & h2 {
             color: $maincolor_second;
         }
@@ -32,13 +35,10 @@
             margin-top: 40px;
             justify-content: center;
             align-items: center;
-            // height: 300px;
         }
     }
     
     .best_offers {
-        // width: 100%;
-        // background-color: rgba(248, 247, 247, 0.562);
         & .cards_wrapper {
             flex-direction: row;
             flex-wrap: wrap;
@@ -71,4 +71,21 @@
     .section_recent_activity {
         width: 100%;
         background-color: rgba(248, 247, 247, 0.562);
+    }
+    
+    .box_possibility {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        max-width: 600px;
+        & .fas,
+        .far {
+            color: $maincolor_first;
+        }
+        & .possibility {
+            margin: 15px 10px;
+            font-size: 20px;
+        }
     }
