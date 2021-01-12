@@ -1,10 +1,9 @@
-import './js/signUp';
+import './js/modal'
+import './js/signUp'
 import './js/autocomplitAPI'
 
 
 window.addEventListener('DOMContentLoaded', () => {
-
-
 
 
     const a = []
