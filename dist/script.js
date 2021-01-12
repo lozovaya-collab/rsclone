@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.js":
@@ -8,11 +7,63 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
-/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
+/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
+/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
+/* harmony import */ var _js_autocomplitAPI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/autocomplitAPI */ "./src/js/autocomplitAPI.js");
+/* harmony import */ var _js_autocomplitAPI__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_autocomplitAPI__WEBPACK_IMPORTED_MODULE_2__);
 
 
+
+window.addEventListener('DOMContentLoaded', () => {
+  const a = [];
+  fetch("https://yelpapiserg-osipchukv1.p.rapidapi.com/searchEvent", {
+    "method": "POST",
+    "headers": {
+      "content-type": "application/x-www-form-urlencoded",
+      "x-rapidapi-key": "0a5e8ea8famsh2a13ee1d64f6f30p11306ajsn125f10dd8276",
+      "x-rapidapi-host": "YelpAPIserg-osipchukV1.p.rapidapi.com"
+    },
+    "body": {
+      "accessToken": "<REQUIRED>",
+      "location": "San Francisco"
+    }
+  }).then(response => {
+    console.log(response);
+  }).catch(err => {
+    console.error(err);
+  });
+  console.log(a);
+});
+
+/***/ }),
+
+/***/ "./src/js/autocomplitAPI.js":
+/*!**********************************!*\
+  !*** ./src/js/autocomplitAPI.js ***!
+  \**********************************/
+/***/ (() => {
+
+const a = [];
+fetch("https://yelpapiserg-osipchukv1.p.rapidapi.com/getAutocomplete", {
+  "method": "POST",
+  "headers": {
+    "content-type": "application/x-www-form-urlencoded",
+    "x-rapidapi-key": "0a5e8ea8famsh2a13ee1d64f6f30p11306ajsn125f10dd8276",
+    "x-rapidapi-host": "YelpAPIserg-osipchukV1.p.rapidapi.com"
+  },
+  "body": {
+    "accessToken": "<REQUIRED>",
+    "text": "<REQUIRED>"
+  }
+}).then(response => {
+  a.push(response);
+  console.log(response);
+}).catch(err => {
+  console.error(err);
+});
+console.log(a);
 
 /***/ }),
 
@@ -22,6 +73,7 @@ __webpack_require__.r(__webpack_exports__);
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
 
@@ -116,6 +168,7 @@ function checkData() {
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "setErrorFor": () => /* binding */ setErrorFor,
@@ -254,6 +307,7 @@ async function yourLocation() {
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -286,6 +340,18 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => module['default'] :
+/******/ 				() => module;
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
