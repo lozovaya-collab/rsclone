@@ -3,7 +3,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, options) => {
     const isDevelopment = options.mode === 'development';
@@ -55,6 +55,22 @@ module.exports = (env, options) => {
             }),
             new MiniCssExtractPlugin({
                 filename: 'style.css'
+            }),
+            new CopyWebpackPlugin({
+                patterns: [
+                    /*from: './src/assets/icon',
+                        to: './src/assets/icon'
+                    },*/
+                    /*{
+                        from: './src/js/data',
+                        to: './data'
+                    },*/
+                    {
+                        from: './src/pages',
+                        to: './pages'
+                    },
+                ]
+
             }),
         ]
 

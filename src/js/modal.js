@@ -1,10 +1,7 @@
 import * as check from "./signUp";
-
 const formLogIn = document.getElementById('popup')
-const emailLogIn = document.getElementById('emailLogIn')
-const passwordLogIn = document.getElementById('passwordLogIn')
-
-popup.innerHTML = `<div class="popup__body">
+if (formLogIn !== null) {
+    formLogIn.innerHTML = `<div class="popup__body">
 <div class="popup__content">
     <a href="" class="popup__close"></a>
     <div class="popup__title container_header">
@@ -31,6 +28,11 @@ popup.innerHTML = `<div class="popup__body">
 
 </div>
 </div>`
+}
+const emailLogIn = document.getElementById('emailLogIn')
+const passwordLogIn = document.getElementById('passwordLogIn')
+
+
 
 const btn = document.querySelector('.btnRest')
 const btnMain = document.querySelector('.mainBtn')
@@ -64,13 +66,14 @@ if (btn !== null) {
 }
 
 function checkData() {
-
-    const emailValue = emailLogIn.value
+    console.log(emailLogIn.value)
+    const emailValue1 = emailLogIn.value
     const passwordValue = passwordLogIn.value
 
-    if (emailValue === '') {
+
+    if (emailValue1 === '') {
         check.setErrorFor(emailLogIn, 'Email cannot be blank')
-    } else if (!check.isEmail(emailValue)) {
+    } else if (!check.isEmail(emailValue1)) {
         check.setErrorFor(emailLogIn, 'Email is not valid')
     } else {
         check.setSuccessFor(emailLogIn)

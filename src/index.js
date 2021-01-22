@@ -2,10 +2,7 @@ import './js/modal'
 import './js/signUp'
 import './js/autocomplitAPI'
 
-
 window.addEventListener('DOMContentLoaded', () => {
-
-
     const a = []
     fetch("https://yelpapiserg-osipchukv1.p.rapidapi.com/searchEvent", {
             "method": "POST",

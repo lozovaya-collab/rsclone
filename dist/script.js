@@ -78,9 +78,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
 
 const formLogIn = document.getElementById('popup');
-const emailLogIn = document.getElementById('emailLogIn');
-const passwordLogIn = document.getElementById('passwordLogIn');
-popup.innerHTML = `<div class="popup__body">
+
+if (formLogIn !== null) {
+  formLogIn.innerHTML = `<div class="popup__body">
 <div class="popup__content">
     <a href="" class="popup__close"></a>
     <div class="popup__title container_header">
@@ -107,6 +107,10 @@ popup.innerHTML = `<div class="popup__body">
 
 </div>
 </div>`;
+}
+
+const emailLogIn = document.getElementById('emailLogIn');
+const passwordLogIn = document.getElementById('passwordLogIn');
 const btn = document.querySelector('.btnRest');
 const btnMain = document.querySelector('.mainBtn');
 const btnLogIn = document.querySelector('.logIn');
@@ -140,12 +144,13 @@ if (btn !== null) {
 }
 
 function checkData() {
-  const emailValue = emailLogIn.value;
+  console.log(emailLogIn.value);
+  const emailValue1 = emailLogIn.value;
   const passwordValue = passwordLogIn.value;
 
-  if (emailValue === '') {
+  if (emailValue1 === '') {
     _signUp__WEBPACK_IMPORTED_MODULE_0__.setErrorFor(emailLogIn, 'Email cannot be blank');
-  } else if (!_signUp__WEBPACK_IMPORTED_MODULE_0__.isEmail(emailValue)) {
+  } else if (!_signUp__WEBPACK_IMPORTED_MODULE_0__.isEmail(emailValue1)) {
     _signUp__WEBPACK_IMPORTED_MODULE_0__.setErrorFor(emailLogIn, 'Email is not valid');
   } else {
     _signUp__WEBPACK_IMPORTED_MODULE_0__.setSuccessFor(emailLogIn);
