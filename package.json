@@ -8,8 +8,7 @@
         "lint:fix": "eslint ./src --fix",
         "style": "sass --watch src/sass/style.scss src/sass/style.css",
         "dev": "webpack --mode development --watch",
-        "prod": "webpack --mode production",
-        "start": "node ./src/index.js"
+        "prod": "webpack --mode production"
     },
     "repository": {
         "type": "git",
