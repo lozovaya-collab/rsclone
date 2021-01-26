@@ -11,7 +11,6 @@ $maincolor_third: #fff;
     background-color: $maincolor_third;
     display: flex;
     align-items: flex-end;
-    // position: relative;
     z-index: 2;
     .wrapper {
         align-items: center;
@@ -60,21 +59,33 @@ $maincolor_third: #fff;
     padding-left: 3px;
     outline: none;
     font-size: 18px;
+    cursor: pointer;
+    & option:hover {
+        cursor: pointer;
+        background-color: $maincolor_first;
+    }
 }
 
 .link_header {
-    position: relative;
+    display: flex;
+    max-width: 365px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.box_type_restaurant {
+    display: none;
+    position: absolute;
+    top: 45px;
+    transition: all 3s;
 }
 
 .type_restaurant {
-    display: block;
     border-top: 4px solid $maincolor_second;
-    position: absolute;
     display: flex;
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
-    top: 45px;
     background-color: rgb(250, 249, 249);
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
     border-radius: 5px;
@@ -82,22 +93,32 @@ $maincolor_third: #fff;
     height: 150px;
     padding: 5px;
     z-index: 1;
-    transition: .3s;
-    & a {
+    transition: 1s;
+    .titleRestaurant {
         font-size: 20px;
         color: rgb(102, 101, 101);
         padding: 10px;
         font-weight: 600;
     }
-    & a:hover {
+    .titleRestaurant:hover {
+        cursor: pointer;
+        background-color: rgb(180, 178, 178);
+        border-radius: 5px;
+        color: rgb(56, 55, 55);
+    }
+    .titleRestaurant_active {
         background-color: rgb(180, 178, 178);
         border-radius: 5px;
         color: rgb(56, 55, 55);
     }
 }
 
+.box_type_active {
+    display: block;
+}
+
 .searching_restaurant {
-    border-right: 3px solid beige;
+    border-right: 3px solid $maincolor_second;
 }
 
 .fa-search {
@@ -113,7 +134,9 @@ $maincolor_third: #fff;
     color: rgb(102, 101, 101);
     font-weight: 600;
     padding: 5px;
+    position: relative;
     &:hover {
+        cursor: pointer;
         text-decoration: underline;
     }
 }

@@ -4,6 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="./dist/src/assets/icon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./dist/src/assets/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./dist/src/assets/icon/favicon-16x16.png">
+    <link rel="manifest" href="./dist/src/assets/icon/site.webmanifest">
+
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,7 +18,8 @@
 
     <link rel="stylesheet" href="./dist/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <title>Document</title>
+
+    <title>YelpClone</title>
 
 
 
@@ -22,20 +29,25 @@
     <header class="main_header">
         <div class="wrapper ">
 
-            <div class="main_logIn button_wrapper wow animate__backInRight">
+            <div class="main_logIn button_wrapper wow animate__animated  animate__backInRight">
                 <button class="button_header log-in mainBtn"> Log In </button>
-                <a href="./pages/signUp.html"><button class="button_header sign-up"> Sign Up </button></a>
+                <a href="/dist/pages/signUp.html"><button class="button_header sign-up"> Sign Up </button></a>
 
             </div>
             <nav class="main_nav">
                 <ul>
                     <li><a class="main_nav_link navigation_link restaurant_view" href="./pages/restaurants.html"><i class="fas fa-utensils"></i> Restaurants </a></li>
+
+
+
                     <li><a class="main_nav_link navigation_link review" href="#">Wright a Review</a></li>
 
                 </ul>
             </nav>
             <div class="main_logo">
-                <a class="logo main_logoYelp" href="index.html"> YelpClone <i class="fab fa-yelp"></i></a>
+
+
+                <a class="logo main_logoYelp wow animate__animated animate__fadeInUp" href="index.html"> YelpClone <i class="fab fa-yelp"></i></a>
             </div>
 
         </div>
@@ -45,45 +57,42 @@
         <section class="section_best_offers">
             <div class="wrapper">
                 <div class="main_section best_offers">
-                    <h2 class="section_title wow animate__zoomIn">Best Restaurants</h2>
-                    <div class="cards_wrapper wow animate__lightSpeedInRight">
+
+                    <h2 class="section_title wow animate__animated animate__fadeInLeft">Best Restaurants</h2>
+                    <div class="cards_wrapper cards_wrapper_main wow animate__animated animate__fadeInUp">
                         <a href="./dist/pages/restaurants.html">
-                            <div class="card card_restaurant">
-                                <div class="food">
-                                    <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
-                                </div>
-                                <div class="about_restaurant">
-                                    <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
-                                    </div>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="./src/pages/restaurants.html">
                             <div class="card card_restaurant">
                                 <div class="food">
                                     <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
                                 </div>
                                 <div class="about_restaurant">
                                     <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <div>
-                                            <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
+                                    <div class="rating_restaurant">
+                                        <div class="rating">
+                                            <div class="rating__body">
+                                                <div class="rating__active"></div>
+                                                <div class="rating__items">
+                                                    <input type="radio" class="rating__item" value="1" name="rating">
+                                                    <input type="radio" class="rating__item" value="2" name="rating">
+                                                    <input type="radio" class="rating__item" value="3" name="rating">
+                                                    <input type="radio" class="rating__item" value="4" name="rating">
+                                                    <input type="radio" class="rating__item" value="5" name="rating">
+                                                </div>
+                                            </div>
+                                            <div class="rating__value">4</div>
                                         </div>
-
+                                        <span class="reviewsRestaurants">337 Reviews</span>
                                     </div>
+                                    <span class="priceRestaurant">$$$</span>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901 </div>
                                 </div>
+
                             </div>
                         </a>
                         <a href="./src/pages/restaurants.html">
@@ -93,18 +102,37 @@
                                 </div>
                                 <div class="about_restaurant">
                                     <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
-                                    </div>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$$$</span>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
                                 </div>
+
                             </div>
                         </a>
+                        <a href="./src/pages/restaurants.html">
+                            <div class="card card_restaurant">
+                                <div class="food">
+                                    <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
+                                </div>
+                                <div class="about_restaurant">
+                                    <h2 class="title_card">Hotbird</h2>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$$$</span>
 
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
+                                </div>
+
+                            </div>
+                        </a>
 
                     </div>
                 </div>
@@ -115,12 +143,25 @@
         <section>
             <div class="wrapper">
                 <div class="main_section city_restaurants">
-                    <h2 class="section_title">YelpClone in Your City</h2>
+                    <h2 class="section_title wow animate__animated animate__zoomIn">YelpClone in Your City</h2>
                     <div class="searching">
-                        <input class="input_searching searching_city" type="text" placeholder="City">
+                        <!-- <input class="input_searching searching_city" type="text" placeholder="City"> -->
+                        <select name="city" id="" class="input_searching searching_city">                            
+                            <option value="0" selected>Cities of Canada</option>
+                            <option value="1">Ottawa</option>
+                            <option value="2">Montreal</option>
+                            <option value="3">Toronto</option>
+                            <option value="4">Calgary</option>
+                            <option value="5">Edmonton</option>
+                            <option value="6">Mississauga</option>
+                            <option value="7">Winnipeg</option>
+                            <option value="8">Vancouver</option>
+                            <option value="9">Quebec</option>
+                            <option value="10">Brampton</option>                            
+                        </select>
                         <i class="fas fa-search"></i>
                     </div>
-                    <div class="cards_wrapper">
+                    <div class="cards_wrapper cards_wrapper_city wow  animate__animated animate__fadeInUp">
                         <a href="./src/pages/restaurants.html">
                             <div class="card card_restaurant">
                                 <div class="food">
@@ -128,15 +169,16 @@
                                 </div>
                                 <div class="about_restaurant">
                                     <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
-                                    </div>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$$$</span>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
                                 </div>
+
                             </div>
                         </a>
 
@@ -147,15 +189,16 @@
                                 </div>
                                 <div class="about_restaurant">
                                     <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
-                                    </div>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$$$</span>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
                                 </div>
+
                             </div>
                         </a>
                         <a href="./src/pages/restaurants.html">
@@ -165,15 +208,16 @@
                                 </div>
                                 <div class="about_restaurant">
                                     <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
-                                    </div>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$$$</span>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
                                 </div>
+
                             </div>
                         </a>
                         <a href="./src/pages/restaurants.html">
@@ -183,15 +227,16 @@
                                 </div>
                                 <div class="about_restaurant">
                                     <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
-                                    </div>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$$$</span>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
                                 </div>
+
                             </div>
                         </a>
                         <a href="./src/pages/restaurants.html">
@@ -201,15 +246,16 @@
                                 </div>
                                 <div class="about_restaurant">
                                     <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
-                                    </div>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$$$</span>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
                                 </div>
+
                             </div>
                         </a>
                         <a href="./src/pages/restaurants.html">
@@ -219,15 +265,16 @@
                                 </div>
                                 <div class="about_restaurant">
                                     <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
-                                    </div>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$$$</span>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
                                 </div>
+
                             </div>
                         </a>
                         <a href="./src/pages/restaurants.html">
@@ -237,51 +284,16 @@
                                 </div>
                                 <div class="about_restaurant">
                                     <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
-                                    </div>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$$$</span>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="./src/pages/restaurants.html">
-                            <div class="card card_restaurant">
-                                <div class="food">
-                                    <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
-                                </div>
-                                <div class="about_restaurant">
-                                    <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
                                     <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
+                                        <span>Seafood</span><span>Vietnamese</span>
                                     </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
+                                </div>
 
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="./src/pages/restaurants.html">
-                            <div class="card card_restaurant">
-                                <div class="food">
-                                    <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
-                                </div>
-                                <div class="about_restaurant">
-                                    <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                    <p class="menu_restaurant">Sandwiches, Chicken Shop, Burger</p>
-                                    <div class="service_restaurant">
-                                        <span><i class="fas fa-check"></i>Delivery</span><span><i class="fas fa-check"></i>Takeout</span>
-                                    </div>
-
-                                    <p class="review_restaurant">“I have been on the hunt for a solid chicken sandwich ever since I moved to SF, but I have been consistently disappointed. When three different people recommended Hotbird to me and even went as far as to compare it
-                                        to Howlin Ray's, I knew I needed to try it. I ordered online on a weekday, and my…” more</p>
-                                </div>
                             </div>
                         </a>
                     </div>
@@ -291,15 +303,14 @@
 
         </section>
 
-        <section class="section_recent_activity">
+        <section class="section_recent_activity ">
             <div class="wrapper">
-                <div class="main_section recent_activity">
+                <div class="main_section recent_activity wow animate__animated animate__fadeInBottomRight">
                     <h2 class="section_title">What can you do on our website</h2>
                     <div class="box_possibility">
-                        <div class="possibility"><i class="fas fa-utensils"></i> Reserve a table</div>
-                        <div class="possibility"><i class="fas fa-mug-hot"></i> Make a takeout order</div>
-                        <div class="possibility"><i class="fas fa-truck"></i> Order home delivery</div>
+                        <div class="possibility"><i class="fas fa-utensils"></i> Find the address of your favorite restaurant</div>
                         <div class="possibility"><i class="far fa-edit"></i> Write a review</div>
+                        <div class="possibility"><i class="fas fa-check-circle"></i> Choose a restaurant to taste</div>
                         <div class="possibility"><i class="fas fa-hand-pointer"></i> Choose a restaurant in your city</div>
 
                     </div>
@@ -311,7 +322,7 @@
         <div id="popup" class="popup">
 
         </div>
-
+        <a href="#" id="toTop"><i class="fas fa-angle-double-up"></i></a>
     </main>
     <footer class="footer">
         <div class="wrapper">

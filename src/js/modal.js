@@ -46,6 +46,11 @@ if (btnLogIn !== null) {
         checkData()
     })
 }
+// if (formLogIn) {
+//     document.querySelector('body').style.overflow = 'hidden'
+// } else {
+//     document.querySelector('body').style.overflow = 'visible'
+// }
 
 if (btnClose !== null) {
     btnClose.addEventListener('click', (e) => {

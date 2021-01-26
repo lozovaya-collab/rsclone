@@ -38,14 +38,15 @@
         }
     }
     
+    .best_offers .card_restaurant {
+        max-width: 320px;
+        justify-content: center;
+    }
+    
     .best_offers {
         & .cards_wrapper {
             flex-direction: row;
             flex-wrap: wrap;
-            // overflow-x: scroll;
-            & .card_restaurant {
-                max-width: 450px;
-            }
         }
     }
     
@@ -58,12 +59,12 @@
             max-height: 1000px;
             overflow-y: scroll;
             & .card_restaurant {
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                max-width: 350px;
-                height: 400px;
-                overflow-y: scroll;
+                // flex-direction: column;
+                // justify-content: flex-start;
+                // align-items: center;
+                // max-width: 350px;
+                // height: 400px;
+                // overflow-y: scroll;
             }
         }
     }
@@ -77,7 +78,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
+        flex-direction: column;
         margin-top: 30px;
         max-width: 600px;
         & .fas,

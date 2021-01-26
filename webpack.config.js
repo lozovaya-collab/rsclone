@@ -56,19 +56,20 @@ module.exports = (env, options) => {
                 filename: 'style.css'
             }),
             new CopyWebpackPlugin({
-                patterns: [
-                    /*{
-                                            from: './src/assets/icon',
-                                            to: './src/assets/icon'
-                                        },*/
+
+                patterns: [{
+                        from: './src/assets/icon',
+                        to: './src/assets/icon'
+                    },
                     {
                         from: './src/assets/images',
-                        to: './assets/images'
+                        to: './src/assets/images'
                     },
-                    /*{
+                    {
                         from: './src/js/data',
                         to: './data'
-                    },*/
+                    },
+
                     {
                         from: './src/pages',
                         to: './pages'
