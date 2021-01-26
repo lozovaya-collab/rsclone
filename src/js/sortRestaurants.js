@@ -5,8 +5,11 @@ export const getTitleRestaurants = () => {
     if (linkRestaurants !== null) {
         linkRestaurants.addEventListener('mouseover', () => {
             boxTypeRestaurant.classList.add('box_type_active');
-            boxTypeRestaurant.addEventListener('mouseleave', () => {
+
+            boxTypeRestaurant.addEventListener('mouseout', (e) => {
+                e.stopPropagation()
                 boxTypeRestaurant.classList.remove('box_type_active');
+
             })
         })
     }

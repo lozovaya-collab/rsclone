@@ -44,21 +44,35 @@
             <div class="header-wrapper">
                 <a class="logo" href="./../../index.html"> YelpClone <i class="fab fa-yelp"></i></a>
                 <div class="searching">
-                    <input class="input_searching searching_restaurant" type="text" placeholder="Restaurant">
-                    <input class="input_searching searching_city" type="text" placeholder="City">
+                    <input type="text" id="input-select" class="input_searching searching_restaurant" placeholder="Restaurant" autocomplete="off">
+                    <!-- <input class="input_searching searching_city" type="text" placeholder="City"> -->
+                    <select name="city" id="" class="input_searching searching_city">                            
+                        <option value="0" selected class="selectid-allCities" >Cities of Canada</option>
+                        <option value="1">Ottawa</option>
+                        <option value="2">Montreal</option>
+                        <option value="3">Toronto</option>
+                        <option value="4">Calgary</option>
+                        <option value="5">Edmonton</option>
+                        <option value="6">Mississauga</option>
+                        <option value="7">Winnipeg</option>
+                        <option value="8">Vancouver</option>
+                        <option value="9">Quebec</option>
+                        <option value="10">Hamilton</option>                            
+                    </select>
                     <i class="fas fa-search"></i>
                 </div>
                 <div class="link_header">
-                    <div class="navigation_link restaurant_view"><i class="fas fa-utensils"></i> Restaurants <i class="fas fa-chevron-down"></i></div>
                     <a class="navigation_link review" href="#">Wright a Review</a>
-                    <div class="box_type_restaurant ">
-                        <div class="type_restaurant ">
-                            <div class="titleRestaurant"><i class="fas fa-fish"></i> Seafood</div>
-                            <div class="titleRestaurant"><i class="fas fa-cheese"></i> Gastropubs</div>
-                            <div class="titleRestaurant"><i class="fas fa-pizza-slice"></i> Italian</div>
-                            <div class="titleRestaurant"><i class="fas fa-seedling"></i> Vegetarian</div>
-                            <div class="titleRestaurant"><i class="fas fa-pepper-hot"></i> Mexican</div>
-                            <div class="titleRestaurant"><i class="fas fa-coffee"></i> Japanese</div>
+                    <div class="navigation_link restaurant_view"><i class="fas fa-utensils"></i> Restaurants <i class="fas fa-chevron-down"></i>
+                        <div class="box_type_restaurant ">
+                            <div class="type_restaurant ">
+                                <div class="titleRestaurant"><i class="fas fa-fish"></i> Seafood</div>
+                                <div class="titleRestaurant"><i class="fas fa-cheese"></i> Gastropubs</div>
+                                <div class="titleRestaurant"><i class="fas fa-pizza-slice"></i> Italian</div>
+                                <div class="titleRestaurant"><i class="fas fa-hamburger"></i> Burgers</div>
+                                <div class="titleRestaurant"><i class="fas fa-pepper-hot"></i> Mexican</div>
+                                <div class="titleRestaurant"><i class="fas fa-coffee"></i> Japanese</div>
+                            </div>
                         </div>
                     </div>
 
@@ -85,7 +99,7 @@
                         <div class="filter_box takeout">$$$</div>
                         <div class="filter_box takeout">$$$$</div>
                     </div>
-                    <div class="cards_wrapper ">
+                    <div class="cards_wrapper cards_wrapper_restaurants ">
                         <a href="#">
                             <div class="card card_restaurant">
                                 <div class="food">

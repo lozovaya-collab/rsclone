@@ -11,7 +11,6 @@ $maincolor_third: #fff;
     background-color: $maincolor_third;
     display: flex;
     align-items: flex-end;
-    // position: relative;
     z-index: 2;
     .wrapper {
         align-items: center;
@@ -69,7 +68,9 @@ $maincolor_third: #fff;
 
 .link_header {
     display: flex;
-    position: relative;
+    max-width: 365px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .box_type_restaurant {
@@ -117,7 +118,7 @@ $maincolor_third: #fff;
 }
 
 .searching_restaurant {
-    border-right: 3px solid beige;
+    border-right: 3px solid $maincolor_second;
 }
 
 .fa-search {
@@ -133,6 +134,7 @@ $maincolor_third: #fff;
     color: rgb(102, 101, 101);
     font-weight: 600;
     padding: 5px;
+    position: relative;
     &:hover {
         cursor: pointer;
         text-decoration: underline;

@@ -53,7 +53,7 @@
             <div class="wrapper">
                 <div class="main_section best_offers">
                     <h2 class="section_title wow animate__animated animate__fadeInLeft">Best Restaurants</h2>
-                    <div class="cards_wrapper wow animate__animated animate__fadeInUp">
+                    <div class="cards_wrapper cards_wrapper_main wow animate__animated animate__fadeInUp">
 
                         <a href="./src/pages/restaurants.html">
                             <div class="card card_restaurant">
@@ -62,14 +62,29 @@
                                 </div>
                                 <div class="about_restaurant">
                                     <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <div class="rating_restaurant">
+                                        <div class="rating">
+                                            <div class="rating__body">
+                                                <div class="rating__active"></div>
+                                                <div class="rating__items">
+                                                    <input type="radio" class="rating__item" value="1" name="rating">
+                                                    <input type="radio" class="rating__item" value="2" name="rating">
+                                                    <input type="radio" class="rating__item" value="3" name="rating">
+                                                    <input type="radio" class="rating__item" value="4" name="rating">
+                                                    <input type="radio" class="rating__item" value="5" name="rating">
+                                                </div>
+                                            </div>
+                                            <div class="rating__value">4</div>
+                                        </div>
+                                        <span class="reviewsRestaurants">337 Reviews</span>
+                                    </div>
                                     <span class="priceRestaurant">$$$</span>
 
                                     <div class="service_restaurant">
                                         <span>Seafood</span><span>Vietnamese</span>
                                     </div>
                                     <div class="phon_restaurant">+13615728538</div>
-                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901 </div>
                                 </div>
 
                             </div>
@@ -126,7 +141,7 @@
                     <div class="searching">
                         <!-- <input class="input_searching searching_city" type="text" placeholder="City"> -->
                         <select name="city" id="" class="input_searching searching_city">                            
-                            <option value="0" hidden disabled selected>City</option>
+                            <option value="0" selected>Cities of Canada</option>
                             <option value="1">Ottawa</option>
                             <option value="2">Montreal</option>
                             <option value="3">Toronto</option>
@@ -140,7 +155,7 @@
                         </select>
                         <i class="fas fa-search"></i>
                     </div>
-                    <div class="cards_wrapper wow  animate__animated animate__fadeInUp">
+                    <div class="cards_wrapper cards_wrapper_city wow  animate__animated animate__fadeInUp">
                         <a href="./src/pages/restaurants.html">
                             <div class="card card_restaurant">
                                 <div class="food">
@@ -287,7 +302,7 @@
                 <div class="main_section recent_activity wow animate__animated animate__fadeInBottomRight">
                     <h2 class="section_title">What can you do on our website</h2>
                     <div class="box_possibility">
-                        <div class="possibility"><i class="fas fa-utensils"></i> Reserve a table</div>
+                        <div class="possibility"><i class="fas fa-utensils"></i> Find the address of your favorite restaurant</div>
                         <div class="possibility"><i class="far fa-edit"></i> Write a review</div>
                         <div class="possibility"><i class="fas fa-check-circle"></i> Choose a restaurant to taste</div>
                         <div class="possibility"><i class="fas fa-hand-pointer"></i> Choose a restaurant in your city</div>

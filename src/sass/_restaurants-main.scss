@@ -69,7 +69,6 @@ $maincolor_third: #fff;
     padding: 15px;
     border: 1px solid rgb(201, 201, 181);
     min-width: 290px;
-    // height: 250px;
     overflow: hidden;
     margin: 7px;
     &:hover {
@@ -80,25 +79,19 @@ $maincolor_third: #fff;
 
 .card_restaurant {
     display: flex;
-    // margin-right: 120px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.food {
-    // width: 100%;
-    // max-width: 200px;
-}
+.food {}
 
 .image_food {
     width: 100%;
-    max-width: 250px;
-    // min-width: 80px;
-    height: auto;
+    max-width: 260px;
+    height: 250px;
     border-radius: 5px;
-    // float: left;
-    margin-bottom: 10px;
+    margin: 0 15px 15px 0;
 }
 
 .title_card:hover {
@@ -106,13 +99,19 @@ $maincolor_third: #fff;
 }
 
 .about_restaurant {
-    padding-left: 30px;
-    min-width: 250px;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 250px;
+    .title_card {
+        text-align: center;
+    }
 }
 
 .rating_restaurant {
     font-size: 18px;
-    margin-top: 15px;
     color: $maincolor_second;
 }
 
@@ -121,20 +120,16 @@ $maincolor_third: #fff;
     font-style: italic;
 }
 
-.reviewsRestaurants {
-    margin-left: 10px;
-}
+.reviewsRestaurants {}
 
 .priceRestaurant {
     display: block;
-    margin-top: 15px;
     font-weight: 600;
 }
 
 .service_restaurant {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
     & span {
         color: #fff;
         background-color: $maincolor_first;
@@ -152,7 +147,6 @@ $maincolor_third: #fff;
 
 .address_restaurant {
     display: block;
-    margin-top: 20px;
 }
 
 .map-wrapper {
