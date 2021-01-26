@@ -14,6 +14,9 @@ export const addFilterPriceClickHandler = () => {
                 removeSelectedFilter();
                 selectClickedFilter(clickedFilter);
                 if (clickedFilter.innerText === 'All') {
+                    // let selectionCity = this.options[this.selectedIndex];
+                    // selectionCity = 0
+                    location.reload()
                     input.value = '';
                     showAllFilters()
                 } else {

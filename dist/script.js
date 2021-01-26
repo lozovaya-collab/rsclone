@@ -419,6 +419,9 @@ const addFilterPriceClickHandler = () => {
         selectClickedFilter(clickedFilter);
 
         if (clickedFilter.innerText === 'All') {
+          // let selectionCity = this.options[this.selectedIndex];
+          // selectionCity = 0
+          location.reload();
           input.value = '';
           showAllFilters();
         } else {
@@ -792,13 +795,12 @@ function scrollTo(to, duration = 700) {
 document.addEventListener('DOMContentLoaded', function () {
   let btn = document.querySelector('#toTop');
   window.addEventListener('scroll', function () {
-    // Если прокрутили дальше 599px, показываем кнопку
     if (pageYOffset > 100) {
-      btn.classList.add('show'); // Иначе прячем
+      btn.classList.add('show');
     } else {
       btn.classList.remove('show');
     }
-  }); // При клике прокручиываем на самый верх
+  });
 
   btn.onclick = function (click) {
     click.preventDefault();

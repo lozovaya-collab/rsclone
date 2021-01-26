@@ -172,25 +172,24 @@ $maincolor_third: #fff;
 }
 
 //scrollUp
-.fa-arrow-circle-up {
+.fa-angle-double-up {
     font-size: 30px;
 }
 
 #toTop {
     position: fixed;
-    // display: inline-block;
     display: flex;
     justify-content: center;
     align-items: center;
-    bottom: 30px;
-    right: -40px;
+    bottom: 40px;
+    right: -20px;
     width: 40px;
     height: 40px;
     z-index: 1000;
     cursor: pointer;
     text-align: center;
     color: $maincolor_second;
-    border-radius: 4px;
+    border-radius: 50px;
     background: $maincolor_first;
     box-shadow: 0 0 0 3px rgba(0, 0, 0, .2);
     opacity: 0;
