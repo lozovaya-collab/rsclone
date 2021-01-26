@@ -16,7 +16,8 @@
 
 
 
-<link href="style.css" rel="stylesheet"></head>
+    <link href="style.css" rel="stylesheet">
+</head>
 
 <body>
     <header class="main_header">
@@ -24,18 +25,18 @@
 
             <div class="main_logIn button_wrapper wow animate__backInRight">
                 <button class="button_header log-in mainBtn"> Log In </button>
-                <a href="/sign-up"><button class="button_header sign-up"> Sign Up </button></a>
+                <a href="./pages/signUp.html"><button class="button_header sign-up"> Sign Up </button></a>
 
             </div>
             <nav class="main_nav">
                 <ul>
-                    <li><a class="main_nav_link navigation_link restaurant_view" href="/restaurants"><i class="fas fa-utensils"></i> Restaurants </a></li>
+                    <li><a class="main_nav_link navigation_link restaurant_view" href="./pages/restaurants.html"><i class="fas fa-utensils"></i> Restaurants </a></li>
                     <li><a class="main_nav_link navigation_link review" href="#">Wright a Review</a></li>
 
                 </ul>
             </nav>
             <div class="main_logo">
-                <a class="logo main_logoYelp" href="./../../index.html"> YelpClone <i class="fab fa-yelp"></i></a>
+                <a class="logo main_logoYelp" href="index.html"> YelpClone <i class="fab fa-yelp"></i></a>
             </div>
 
         </div>
@@ -330,7 +331,14 @@
         </div>
 
     </footer>
+    <script src="/__/firebase/8.2.4/firebase-app.js"></script>
 
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="/__/firebase/8.2.4/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="/__/firebase/8.2.4/firebase-auth.js"></script>
+    <script src="/__/firebase/8.2.4/firebase-firestore.js"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
@@ -339,6 +347,7 @@
         new WOW().init()
     </script>
     <script src="./dist/script.js"></script>
-<script src="script.js"></script></body>
+    <script src="script.js"></script>
+</body>
 
 </html>

@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+
 module.exports = (env, options) => {
     const isDevelopment = options.mode === 'development';
     const isProduction = options.mode === 'production';
@@ -40,13 +41,11 @@ module.exports = (env, options) => {
                         loader: 'file-loader',
 
                     }]
-                },
+                }
 
 
             ]
         },
-
-
 
         plugins: [
             new CleanWebpackPlugin(),

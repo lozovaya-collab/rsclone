@@ -1,4 +1,4 @@
-import * as check from "./signUp";
+import { setErrorFor, setSuccessFor, isEmail } from "./signUp";
 const formLogIn = document.getElementById('popup')
 if (formLogIn !== null) {
     formLogIn.innerHTML = `<div class="popup__body">
@@ -65,28 +65,33 @@ if (btn !== null) {
     })
 }
 
-function checkData() {
+export function checkData() {
     console.log(emailLogIn.value)
     const emailValue1 = emailLogIn.value
-    const passwordValue = passwordLogIn.value
-
+    const passwordValue1 = passwordLogIn.value
+    let isCorrect = true
 
     if (emailValue1 === '') {
-        check.setErrorFor(emailLogIn, 'Email cannot be blank')
-    } else if (!check.isEmail(emailValue1)) {
-        check.setErrorFor(emailLogIn, 'Email is not valid')
+        setErrorFor(emailLogIn, 'Email cannot be blank')
+        isCorrect = false
+    } else if (!isEmail(emailValue1)) {
+        setErrorFor(emailLogIn, 'Email is not valid')
+        isCorrect = false
     } else {
-        check.setSuccessFor(emailLogIn)
+        setSuccessFor(emailLogIn)
+
     }
 
-    if (passwordValue === '') {
-        check.setErrorFor(passwordLogIn, 'Password cannot be blank')
-    } else if (passwordValue.length < 6) {
-        check.setErrorFor(passwordLogIn, 'Password is too short! Minimum - 6 characters')
+    if (passwordValue1 === '') {
+        setErrorFor(passwordLogIn, 'Password cannot be blank')
+        isCorrect = false
+    } else if (passwordValue1.length < 6) {
+        setErrorFor(passwordLogIn, 'Password is too short! Minimum - 6 characters')
+        isCorrect = false
     } else {
-        check.setSuccessFor(passwordLogIn)
+        setSuccessFor(passwordLogIn)
     }
 
 
-
+    return isCorrect
 }
