@@ -41,13 +41,11 @@ module.exports = (env, options) => {
                         loader: 'file-loader',
 
                     }]
-                },
+                }
 
 
             ]
         },
-
-
 
         plugins: [
             new CleanWebpackPlugin(),
@@ -58,6 +56,7 @@ module.exports = (env, options) => {
                 filename: 'style.css'
             }),
             new CopyWebpackPlugin({
+
                 patterns: [{
                         from: './src/assets/icon',
                         to: './src/assets/icon'
@@ -70,12 +69,11 @@ module.exports = (env, options) => {
                         from: './src/js/data',
                         to: './data'
                     },
+
                     {
                         from: './src/pages',
                         to: './pages'
                     },
-
-
                 ]
 
             }),

@@ -1,5 +1,7 @@
 import './js/modal'
 import './js/signUp'
+import './js/dbFirebase'
+import './js/logIn'
 import { Autocomplete } from './js/Autocomplete'
 import './js/map'
 import './js/apiData'
@@ -10,7 +12,7 @@ import { CardsRestaurants } from './js/CardsRestaurants'
 import { arrayNameRestaurants, restaurantsData } from './js/apiData'
 import { getRating } from './js/starsRating'
 
-
+console.log(localStorage.getItem('Auth'));
 
 window.addEventListener('DOMContentLoaded', () => {
 

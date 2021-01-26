@@ -1,10 +1,7 @@
-import * as check from "./signUp";
-
+import { setErrorFor, setSuccessFor, isEmail } from "./signUp";
 const formLogIn = document.getElementById('popup')
-const emailLogIn = document.getElementById('emailLogIn')
-const passwordLogIn = document.getElementById('passwordLogIn')
-
-popup.innerHTML = `<div class="popup__body">
+if (formLogIn !== null) {
+    formLogIn.innerHTML = `<div class="popup__body">
 <div class="popup__content">
     <a href="" class="popup__close"></a>
     <div class="popup__title container_header">
@@ -31,6 +28,11 @@ popup.innerHTML = `<div class="popup__body">
 
 </div>
 </div>`
+}
+const emailLogIn = document.getElementById('emailLogIn')
+const passwordLogIn = document.getElementById('passwordLogIn')
+
+
 
 const btn = document.querySelector('.btnRest')
 const btnMain = document.querySelector('.mainBtn')
@@ -68,27 +70,33 @@ if (btn !== null) {
     })
 }
 
-function checkData() {
+export function checkData() {
+    console.log(emailLogIn.value)
+    const emailValue1 = emailLogIn.value
+    const passwordValue1 = passwordLogIn.value
+    let isCorrect = true
 
-    const emailValue = emailLogIn.value
-    const passwordValue = passwordLogIn.value
-
-    if (emailValue === '') {
-        check.setErrorFor(emailLogIn, 'Email cannot be blank')
-    } else if (!check.isEmail(emailValue)) {
-        check.setErrorFor(emailLogIn, 'Email is not valid')
+    if (emailValue1 === '') {
+        setErrorFor(emailLogIn, 'Email cannot be blank')
+        isCorrect = false
+    } else if (!isEmail(emailValue1)) {
+        setErrorFor(emailLogIn, 'Email is not valid')
+        isCorrect = false
     } else {
-        check.setSuccessFor(emailLogIn)
+        setSuccessFor(emailLogIn)
+
     }
 
-    if (passwordValue === '') {
-        check.setErrorFor(passwordLogIn, 'Password cannot be blank')
-    } else if (passwordValue.length < 6) {
-        check.setErrorFor(passwordLogIn, 'Password is too short! Minimum - 6 characters')
+    if (passwordValue1 === '') {
+        setErrorFor(passwordLogIn, 'Password cannot be blank')
+        isCorrect = false
+    } else if (passwordValue1.length < 6) {
+        setErrorFor(passwordLogIn, 'Password is too short! Minimum - 6 characters')
+        isCorrect = false
     } else {
-        check.setSuccessFor(passwordLogIn)
+        setSuccessFor(passwordLogIn)
     }
 
 
-
+    return isCorrect
 }

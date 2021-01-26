@@ -4,6 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../style.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
     <link rel="apple-touch-icon" sizes="180x180" href="./../../dist/src/assets/icon/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./../../dist/src/assets/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./../../dist/src/assets/icon/favicon-16x16.png">
@@ -24,21 +33,21 @@
                 <div class="infoUser">
                     <div>
                         <div class="container__form_control">
-                            <label>First Name</label>
-                            <input type="text" placeholder="First name" id="name"></input>
+                            <label for="name">First Name</label>
+                            <input type="text" placeholder="First name" id="name" value=""></input>
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error message</small>
                         </div>
                         <div class="container__form_control">
-                            <label>Last Name</label>
-                            <input type="text" placeholder="Last Name" id="surname"></input>
+                            <label for="surname">Last Name</label>
+                            <input type="text" placeholder="Last Name" id="surname" value=""></input>
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error message</small>
                         </div>
                         <div class="container__form_control">
-                            <label>Birthday</label>
+                            <label for="birthday">Birthday</label>
                             <input type="date" id="birthday"></input>
                             <small>Error message</small>
                         </div>
@@ -55,29 +64,29 @@
                     </div>
                     <div>
                         <div class="container__form_control">
-                            <label>Username</label>
-                            <input type="text" placeholder="florinpop17" id="username"></input>
+                            <label for="username">Username</label>
+                            <input type="text" placeholder="florinpop17" id="username" value=""></input>
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error message</small>
                         </div>
                         <div class="container__form_control">
-                            <label>Email</label>
-                            <input type="email" placeholder="test@test.com" id="email"></input>
+                            <label for="email">Email</label>
+                            <input type="email" placeholder="test@test.com" id="email" value=""></input>
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error message</small>
                         </div>
                         <div class="container__form_control">
-                            <label>Password</label>
-                            <input type="password" placeholder="password" id="password"></input>
+                            <label for="password">Password</label>
+                            <input type="password" placeholder="password" id="password" value=""></input>
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error message</small>
                         </div>
                         <div class="container__form_control">
                             <label>Password check</label>
-                            <input type="password" placeholder="password two" id="password2"></input>
+                            <input type="password" placeholder="password two" id="password2" value=""></input>
                             <i class="fas fa-check-circle"></i>
                             <i class="fas fa-exclamation-circle"></i>
                             <small>Error message</small>
@@ -87,7 +96,7 @@
                 </div>
 
 
-                <button class="container__form_button">Submit</button>
+                <button type="submit" class="container__form_button">Submit</button>
             </form>
         </div>
     </div>
@@ -109,7 +118,8 @@
         </div>
 
     </footer>
-    <script src="../../dist/script.js"></script>
+
+    <script src="../script.js"></script>
 </body>
 
 </html>

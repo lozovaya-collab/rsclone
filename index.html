@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="./dist/style.css">
+    <link rel="stylesheet" href="./dist/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <title>YelpClone</title>
@@ -31,18 +31,23 @@
 
             <div class="main_logIn button_wrapper wow animate__animated  animate__backInRight">
                 <button class="button_header log-in mainBtn"> Log In </button>
-                <a href="#"><button class="button_header sign-up"> Sign Up </button></a>
+                <a href="/dist/pages/signUp.html"><button class="button_header sign-up"> Sign Up </button></a>
 
             </div>
             <nav class="main_nav">
                 <ul>
-                    <li><a class="main_nav_link navigation_link " href="./src/pages/restaurants.html"><i class="fas fa-utensils"></i> Restaurants </a></li>
+                    <li><a class="main_nav_link navigation_link restaurant_view" href="./pages/restaurants.html"><i class="fas fa-utensils"></i> Restaurants </a></li>
+
+
+
                     <li><a class="main_nav_link navigation_link review" href="#">Wright a Review</a></li>
 
                 </ul>
             </nav>
             <div class="main_logo">
-                <a class="logo main_logoYelp wow animate__animated animate__fadeInUp" href="./../../index.html"> YelpClone <i class="fab fa-yelp"></i></a>
+
+
+                <a class="logo main_logoYelp wow animate__animated animate__fadeInUp" href="index.html"> YelpClone <i class="fab fa-yelp"></i></a>
             </div>
 
         </div>
@@ -52,10 +57,11 @@
         <section class="section_best_offers">
             <div class="wrapper">
                 <div class="main_section best_offers">
+
                     <h2 class="section_title wow animate__animated animate__fadeInLeft">Best Restaurants</h2>
                     <div class="cards_wrapper cards_wrapper_main wow animate__animated animate__fadeInUp">
+                        <a href="./dist/pages/restaurants.html">
 
-                        <a href="./src/pages/restaurants.html">
                             <div class="card card_restaurant">
                                 <div class="food">
                                     <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
@@ -335,7 +341,14 @@
         </div>
 
     </footer>
+    <script src="/__/firebase/8.2.4/firebase-app.js"></script>
 
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="/__/firebase/8.2.4/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="/__/firebase/8.2.4/firebase-auth.js"></script>
+    <script src="/__/firebase/8.2.4/firebase-firestore.js"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
