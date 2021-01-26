@@ -510,6 +510,38 @@ h2 {
   max-width: 400px;
   width: 100%; }
 
+.fa-arrow-circle-up {
+  font-size: 30px; }
+
+#toTop {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 30px;
+  right: -40px;
+  width: 40px;
+  height: 40px;
+  z-index: 1000;
+  cursor: pointer;
+  text-align: center;
+  color: #efca08;
+  border-radius: 4px;
+  background: #00a6a6;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease-in-out; }
+
+#toTop:hover {
+  color: #00a6a6;
+  background: #efca08; }
+
+#toTop.show {
+  opacity: 1;
+  visibility: visible;
+  right: calc(2%); }
+
 .footer {
   display: flex;
   align-items: center;

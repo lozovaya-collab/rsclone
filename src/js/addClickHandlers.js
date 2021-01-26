@@ -55,7 +55,7 @@ const filterBySelectedValue = (selectedValue) => {
                     value.classList.remove('hidden');
                 }
             })
-            //filter restaurants
+            //filter type restaurants
         value.querySelectorAll('.service_restaurant > span').forEach(item => {
 
             if (item.innerText === selectedValue) {
@@ -67,11 +67,10 @@ const filterBySelectedValue = (selectedValue) => {
 
 }
 
-//filter restaurants
+//filter type restaurants
 export const addFilterRestaurantsClickHandler = () => {
     let typeRestaurant = document.querySelector('.type_restaurant');
     if (typeRestaurant !== null) {
-
 
         typeRestaurant.addEventListener('click', (e) => {
             removeSelectedFilter();
@@ -83,7 +82,6 @@ export const addFilterRestaurantsClickHandler = () => {
                 removeSelectedFilterRestaurant();
                 selectClickedRestaurant(clickedFilterRestaurants);
                 filterBySelectedValue(choiceRestaurant);
-
             }
         })
     }
@@ -101,7 +99,7 @@ export const removeSelectedFilterRestaurant = () => {
     })
 };
 
-//filter 3 best restaurants
+//filter 3 best restaurants 
 
 export function getBestRestaurants() {
     let cardsRestaurants = document.querySelectorAll('.cards_wrapper_main>a')
@@ -116,9 +114,79 @@ export function getBestRestaurants() {
         if (rating === '5' && count !== 4) {
 
             cardsRestaurants[i].classList.remove('hidden');
-            console.log(rating)
             count++
-
         }
     }
+}
+
+
+// show type restaurants
+export const showTypeRestaurants = () => {
+    const linkRestaurants = document.querySelector('.restaurant_view');
+    const boxTypeRestaurant = document.querySelector('.box_type_restaurant');
+
+    if (linkRestaurants !== null) {
+        linkRestaurants.addEventListener('mouseover', () => {
+            boxTypeRestaurant.classList.add('box_type_active');
+
+            boxTypeRestaurant.addEventListener('mouseout', (e) => {
+                e.stopPropagation()
+                boxTypeRestaurant.classList.remove('box_type_active');
+
+            })
+        })
+    }
+
+}
+
+
+// sort restaurants by cities
+
+export const sortRestaurantsByCities = () => {
+    let selectionCity = document.querySelector('.searching_city ')
+        // let op = document.querySelector('.searching_city ').options
+        // let s = document.querySelector('.searching_city').selectedIndex
+
+    // let selection = document.querySelectorAll('.searching_city > option ')
+
+
+    let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a')
+    let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a')
+    let citiesCards = document.querySelectorAll('.address_restaurant')
+
+
+    selectionCity.addEventListener('change', changeValueSelect)
+
+    function changeValueSelect() {
+        let selectionCity = this.options[this.selectedIndex].text
+        console.log(selectionCity)
+
+        for (let i = 0; i < cardsRestaurantsMain.length; i += 1) {
+
+            if (selectionCity === 'Cities of Canada') {
+                cardsRestaurantsMain[i].classList.remove('hidden');
+            } else if (citiesCards[i].innerText.includes(selectionCity)) {
+                cardsRestaurantsMain[i].classList.remove('hidden');
+            } else {
+                cardsRestaurantsMain[i].classList.add('hidden');
+            }
+        }
+
+        for (let i = 0; i < cardsRestaurantsPage.length; i += 1) {
+
+            if (selectionCity === 'Cities of Canada') {
+                document.querySelector('.all_position').classList.add('filter_active')
+                cardsRestaurantsPage[i].classList.remove('hidden');
+            } else if (citiesCards[i].innerText.includes(selectionCity)) {
+                removeSelectedFilter();
+                removeSelectedFilterRestaurant();
+                cardsRestaurantsPage[i].classList.remove('hidden');
+            } else {
+                removeSelectedFilter();
+                removeSelectedFilterRestaurant();
+                cardsRestaurantsPage[i].classList.add('hidden');
+            }
+        }
+    }
+
 }

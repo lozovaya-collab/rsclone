@@ -3,9 +3,9 @@ import './js/signUp'
 import { Autocomplete } from './js/Autocomplete'
 import './js/map'
 import './js/apiData'
-import './js/sortRestaurants'
+import './js/scrollUp'
 import './js/setBackground'
-import { addFilterPriceClickHandler, addFilterRestaurantsClickHandler, getBestRestaurants } from './js/addClickHandlers'
+import { addFilterPriceClickHandler, addFilterRestaurantsClickHandler, getBestRestaurants, showTypeRestaurants, sortRestaurantsByCities } from './js/addClickHandlers'
 import { CardsRestaurants } from './js/CardsRestaurants'
 import { arrayNameRestaurants, restaurantsData } from './js/apiData'
 import { getRating } from './js/starsRating'
@@ -22,12 +22,18 @@ window.addEventListener('DOMContentLoaded', () => {
     //click sorting 
     addFilterPriceClickHandler();
     addFilterRestaurantsClickHandler();
+    sortRestaurantsByCities()
+    showTypeRestaurants();
+    //autocomplete
+    Autocomplete('#input-select', arrayNameRestaurants);
+
 
     getRating();
     getBestRestaurants()
 
-    //autocomplete
-    Autocomplete('#input-select', arrayNameRestaurants);
+
+
+
 
 });
 
@@ -75,19 +81,14 @@ const getCardsWrapperMain = () => {
     if (cardsContainer) {
         cardsContainer.innerHTML = '';
         return cardsContainer;
-
     }
-
 }
 
 const generateCards = (restaurantsData) => {
     let cardsRestaurants = [];
-
     restaurantsData.forEach(card => {
         cardsRestaurants.push(new CardsRestaurants(card))
-
     });
     // console.log(cardsRestaurants)
-
     return cardsRestaurants;
 }
