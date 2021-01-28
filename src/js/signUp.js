@@ -20,9 +20,6 @@ if (form !== null) {
     })
 }
 
-if (locationButton !== null) {
-    locationButton.addEventListener('click', yourLocation)
-}
 
 export function checkInputs() {
     if (username !== null) {
@@ -134,13 +131,4 @@ export function setSuccessFor(input) {
 
 export function isEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
-}
-
-async function yourLocation() {
-    const resu = await fetch(`http://ip-api.com/json`);
-    const data = await resu.json();
-    alert('We are checking your location')
-    const location = document.querySelectorAll('.location')
-    location[0].innerHTML = data.country
-    location[1].innerHTML = data.city
 }

@@ -50797,21 +50797,24 @@ var esm = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
-/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
-/* harmony import */ var _js_dbFirebase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/dbFirebase */ "./src/js/dbFirebase.js");
-/* harmony import */ var _js_logIn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/logIn */ "./src/js/logIn.js");
-/* harmony import */ var _js_Autocomplete__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/Autocomplete */ "./src/js/Autocomplete.js");
-/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/map */ "./src/js/map.js");
-/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_js_map__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _js_apiData__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/apiData */ "./src/js/apiData.js");
-/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/scrollUp */ "./src/js/scrollUp.js");
-/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_js_scrollUp__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/setBackground */ "./src/js/setBackground.js");
-/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_js_setBackground__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/addClickHandlers */ "./src/js/addClickHandlers.js");
-/* harmony import */ var _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./js/CardsRestaurants */ "./src/js/CardsRestaurants.js");
-/* harmony import */ var _js_starsRating__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./js/starsRating */ "./src/js/starsRating.js");
+/* harmony import */ var _js_checkUser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/checkUser */ "./src/js/checkUser.js");
+/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
+/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
+/* harmony import */ var _js_dbFirebase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/dbFirebase */ "./src/js/dbFirebase.js");
+/* harmony import */ var _js_logIn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/logIn */ "./src/js/logIn.js");
+/* harmony import */ var _js_logOut__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/logOut */ "./src/js/logOut.js");
+/* harmony import */ var _js_Autocomplete__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/Autocomplete */ "./src/js/Autocomplete.js");
+/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/map */ "./src/js/map.js");
+/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_js_map__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _js_apiData__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/apiData */ "./src/js/apiData.js");
+/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/scrollUp */ "./src/js/scrollUp.js");
+/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_js_scrollUp__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./js/setBackground */ "./src/js/setBackground.js");
+/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_js_setBackground__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _js_profileSettings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./js/profileSettings */ "./src/js/profileSettings.js");
+/* harmony import */ var _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./js/addClickHandlers */ "./src/js/addClickHandlers.js");
+/* harmony import */ var _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./js/CardsRestaurants */ "./src/js/CardsRestaurants.js");
+/* harmony import */ var _js_starsRating__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./js/starsRating */ "./src/js/starsRating.js");
 
 
 
@@ -50825,29 +50828,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-console.log(localStorage.getItem('Auth'));
+
+
+
 window.addEventListener('DOMContentLoaded', () => {
   // render Cards of Restaurants
-  if (_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData) {
+  if (_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData) {
     renderCardsRestaurants();
   } //click sorting 
 
 
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_9__.addFilterPriceClickHandler)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_9__.addFilterRestaurantsClickHandler)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_9__.sortRestaurantsByCities)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_9__.showTypeRestaurants)(); //autocomplete
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_12__.addFilterPriceClickHandler)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_12__.addFilterRestaurantsClickHandler)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_12__.sortRestaurantsByCities)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_12__.showTypeRestaurants)(); //autocomplete
 
-  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_4__.Autocomplete)('#input-select', _js_apiData__WEBPACK_IMPORTED_MODULE_6__.arrayNameRestaurants);
-  (0,_js_starsRating__WEBPACK_IMPORTED_MODULE_11__.getRating)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_9__.getBestRestaurants)();
+  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_6__.Autocomplete)('#input-select', _js_apiData__WEBPACK_IMPORTED_MODULE_8__.arrayNameRestaurants);
+  (0,_js_starsRating__WEBPACK_IMPORTED_MODULE_14__.getRating)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_12__.getBestRestaurants)();
 });
 
 const renderCardsRestaurants = () => {
   let cardsWrapperRestaurants = getCardsWrapperRestaurant();
 
   if (cardsWrapperRestaurants) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData).forEach(card => {
       cardsWrapperRestaurants.append(card.generateCardsRestaurants());
     });
   }
@@ -50855,7 +50860,7 @@ const renderCardsRestaurants = () => {
   let cardsWrapperMainCity = getCardsWrapperMainCity();
 
   if (cardsWrapperMainCity) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData).forEach(card => {
       cardsWrapperMainCity.append(card.generateCardsRestaurants());
     });
   }
@@ -50863,7 +50868,7 @@ const renderCardsRestaurants = () => {
   let cardsWrapperMain = getCardsWrapperMain();
 
   if (cardsWrapperMain) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData).forEach(card => {
       cardsWrapperMain.append(card.generateCardsRestaurants());
     });
   }
@@ -50899,7 +50904,7 @@ const getCardsWrapperMain = () => {
 const generateCards = restaurantsData => {
   let cardsRestaurants = [];
   restaurantsData.forEach(card => {
-    cardsRestaurants.push(new _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_10__.CardsRestaurants(card));
+    cardsRestaurants.push(new _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_13__.CardsRestaurants(card));
   }); // console.log(cardsRestaurants)
 
   return cardsRestaurants;
@@ -51439,6 +51444,44 @@ getListRestaurants(); //  console.log(arrayRestaurants)
 
 /***/ }),
 
+/***/ "./src/js/checkUser.js":
+/*!*****************************!*\
+  !*** ./src/js/checkUser.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkUserIsAuth": () => /* binding */ checkUserIsAuth
+/* harmony export */ });
+const {
+  isAuth
+} = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
+
+let checkAuth = localStorage.getItem('Auth');
+const checkUserIsAuth = isAuth => {
+  if (isAuth === 'true') {
+    console.log('what');
+    const butSignUp = document.querySelector('.sign-up');
+    butSignUp.innerHTML = 'Profile';
+    const hrefBtn = document.querySelector('.sign-up-href');
+
+    if (hrefBtn !== null) {
+      hrefBtn.href = "/dist/pages/profile.html";
+    }
+
+    const butLogIn = document.querySelector('.log-in');
+    butLogIn.innerHTML = 'Log Out';
+    butLogIn.classList.remove('mainBtn');
+    butLogIn.className += ' log-out';
+  }
+};
+console.log(checkAuth);
+checkUserIsAuth(checkAuth);
+
+/***/ }),
+
 /***/ "./src/js/dbFirebase.js":
 /*!******************************!*\
   !*** ./src/js/dbFirebase.js ***!
@@ -51450,7 +51493,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "firebaseConfig": () => /* binding */ firebaseConfig,
 /* harmony export */   "firebaseApp": () => /* binding */ firebaseApp,
-/* harmony export */   "db": () => /* binding */ db
+/* harmony export */   "db": () => /* binding */ db,
+/* harmony export */   "isAuth": () => /* binding */ isAuth
 /* harmony export */ });
 /* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.esm.js");
@@ -51478,9 +51522,9 @@ if (localStorage.getItem('Auth') === null) {
 
 const makeid = () => {
   let text = "";
-  let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let possible = "1234";
 
-  for (let i = 0; i < 5; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
+  for (let i = 0; i < 1; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
 
   return text;
 };
@@ -51497,20 +51541,23 @@ const createUser = () => {
     const password = document.getElementById('password').value;
     const firstName = document.getElementById('name').value;
     const lastName = document.getElementById('surname').value;
-    const birthday = document.getElementById('birthday').value; //const country = document.querySelector('.country').value
-    //const city = document.querySelector('.city').value
-
+    const birthday = document.getElementById('birthday').value;
+    const country = 'Canada';
+    const city = 'Otawa';
+    let rand = makeid();
+    const url = `../../dist/src/assets/images/user${rand}.png`;
     userID = makeid();
     userID = userID + username;
     db.collection("users").add({
+      UrlOfImage: url,
       Firstname: firstName,
       LastName: lastName,
       Birthday: birthday,
       Username: username,
       "E-mail": email,
-      Password: password //Country: country,
-      //City: city
-
+      Password: password,
+      Country: country,
+      City: city
     }).then(function (docRef) {
       console.log("Document written with ID: ", docRef.id);
       window.location.href = '../../dist/index.html';
@@ -51522,7 +51569,9 @@ const createUser = () => {
   }
 };
 
-submit.addEventListener('click', createUser);
+if (submit !== null) {
+  submit.addEventListener('click', createUser);
+}
 
 /***/ }),
 
@@ -51534,41 +51583,138 @@ submit.addEventListener('click', createUser);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "myUser": () => /* binding */ myUser
+/* harmony export */ });
 /* harmony import */ var _dbFirebase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
 /* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal */ "./src/js/modal.js");
+/* harmony import */ var _checkUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./checkUser */ "./src/js/checkUser.js");
 
 
 
-console.log('aaa');
+
 let isUser = false;
+let myUser = {};
 const logInButton = document.querySelector('.logIn');
-logInButton.addEventListener('click', () => {
-  let isOkay = (0,_modal__WEBPACK_IMPORTED_MODULE_2__.checkData)();
 
-  if (isOkay) {
-    const emailLogIn = document.getElementById('emailLogIn').value;
-    const passwordLogIn = String(document.getElementById('passwordLogIn').value);
-    _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("E-mail", "==", emailLogIn).where("Password", "==", passwordLogIn).get().then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        isUser = true;
-        console.log('user is exist');
+if (logInButton !== null) {
+  logInButton.addEventListener('click', e => {
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaa');
+    e.preventDefault();
+    let isOkay = (0,_modal__WEBPACK_IMPORTED_MODULE_2__.checkData)();
+
+    if (isOkay) {
+      const emailLogIn = document.getElementById('emailLogIn').value;
+      const passwordLogIn = String(document.getElementById('passwordLogIn').value);
+      _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("E-mail", "==", emailLogIn).where("Password", "==", passwordLogIn).get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+
+          if (localStorage.getItem('user') === null) {
+            myUser = doc.data();
+            localStorage.setItem('user', JSON.stringify(myUser));
+          } else {
+            myUser = doc.data();
+            localStorage.setItem('user', JSON.stringify(myUser));
+          }
+
+          isUser = true;
+          localStorage.setItem('Auth', true);
+          (0,_checkUser__WEBPACK_IMPORTED_MODULE_3__.checkUserIsAuth)(localStorage.getItem('Auth'));
+        });
+
+        if (!isUser) {
+          (0,_signUp__WEBPACK_IMPORTED_MODULE_1__.setErrorFor)(document.getElementById('emailLogIn'), 'This user does not exist');
+          (0,_signUp__WEBPACK_IMPORTED_MODULE_1__.setErrorFor)(document.getElementById('passwordLogIn'), 'Check data');
+          return isUser;
+        }
+
+        document.getElementById('popup').style.display = 'none';
+      }).catch(function (error) {
+        console.log("Error getting documents: ", error);
       });
+    }
+  });
+}
 
-      if (!isUser) {
-        (0,_signUp__WEBPACK_IMPORTED_MODULE_1__.setErrorFor)(document.getElementById('emailLogIn'), 'This user does not exist');
-        (0,_signUp__WEBPACK_IMPORTED_MODULE_1__.setErrorFor)(document.getElementById('passwordLogIn'), 'Check data');
-        return isUser;
-      }
+/***/ }),
 
-      document.getElementById('popup').style.display = 'none';
-    }).catch(function (error) {
-      console.log("Error getting documents: ", error);
-    });
+/***/ "./src/js/logOut.js":
+/*!**************************!*\
+  !*** ./src/js/logOut.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "logOutUser": () => /* binding */ logOutUser
+/* harmony export */ });
+let checkAuth = localStorage.getItem('Auth');
+const buttonLogOut = document.querySelector('.log-out');
+const popLogIn = document.getElementById('popup');
+console.log(buttonLogOut);
+const logOutUser = value => {
+  if (value === 'true') {
+    value = false;
+    console.log(location.href);
+    localStorage.setItem('Auth', value);
+    console.log(localStorage.getItem('Auth'));
+    const butSignUp = document.querySelector('.sign-up');
+    butSignUp.innerHTML = 'Sign Up';
+    const hrefBtn = document.querySelector('.sign-up-href');
+
+    if (hrefBtn !== null) {
+      hrefBtn.href = "/pages/signUp.html";
+    }
+
+    const butLogIn = document.querySelector('.log-in');
+    butLogIn.innerHTML = 'Log In';
+    butLogIn.classList.remove('log-out');
+    butLogIn.className += ' mainBtn';
   }
-});
+};
+
+if (buttonLogOut !== null) {
+  buttonLogOut.addEventListener('click', () => {
+    console.log(buttonLogOut);
+
+    if (buttonLogOut.innerHTML === 'Log Out') {
+      logOutUser(checkAuth);
+      window.location.href = '../../dist/index.html';
+    } else {
+      popLogIn.innerHTML = `<div class="popup__body">
+            <div class="popup__content">
+                <a href="" class="popup__close"></a>
+                <div class="popup__title container_header">
+                    <h2 class="container_header_headline">Log In</h2>
+                    <i class="far fa-times-circle btnClose"></i>
+                </div>
+                <div class="popup__form">
+                    <div class="container__form_control">
+                        <label>Email</label>
+                        <input type="email" placeholder="test@test.com" id="emailLogIn"></input>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <div class="container__form_control">
+                        <label>Password</label>
+                        <input type="password" placeholder="password" id="passwordLogIn"></input>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <button class="container__form_button logIn">Log in</button>
+                </div>
+            
+            </div>
+            </div>`;
+    }
+  });
+}
 
 /***/ }),
 
@@ -51594,8 +51740,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "checkData": () => /* binding */ checkData
 /* harmony export */ });
 /* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
+/* harmony import */ var _logOut__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logOut */ "./src/js/logOut.js");
+
 
 const formLogIn = document.getElementById('popup');
+const btnMain = document.querySelector('.mainBtn');
 
 if (formLogIn !== null) {
   formLogIn.innerHTML = `<div class="popup__body">
@@ -51630,44 +51779,45 @@ if (formLogIn !== null) {
 const emailLogIn = document.getElementById('emailLogIn');
 const passwordLogIn = document.getElementById('passwordLogIn');
 const btn = document.querySelector('.btnRest');
-const btnMain = document.querySelector('.mainBtn');
 const btnLogIn = document.querySelector('.logIn');
 const btnClose = document.querySelector('.btnClose');
-
-if (btnLogIn !== null) {
-  btnLogIn.addEventListener('click', e => {
-    console.log('log in');
-    e.preventDefault();
-    checkData();
-  });
-} // if (formLogIn) {
-//     document.querySelector('body').style.overflow = 'hidden'
-// } else {
-//     document.querySelector('body').style.overflow = 'visible'
-// }
-
 
 if (btnClose !== null) {
   btnClose.addEventListener('click', e => {
     formLogIn.style.display = 'none';
   });
+} else {
+  console.log(btnClose);
 }
 
-if (btnMain !== null) {
-  btnMain.addEventListener('click', e => {
-    formLogIn.style.display = 'flex';
-    formLogIn.style.top = '0';
+if (document.querySelector('.mainBtn') !== null) {
+  document.querySelector('.mainBtn').addEventListener('click', e => {
+    console.log(btnMain.innerHTML);
+
+    if (btnMain.innerHTML === 'Log In') {
+      formLogIn.style.display = 'flex';
+      formLogIn.style.top = '0';
+    } else {
+      (0,_logOut__WEBPACK_IMPORTED_MODULE_1__.logOutUser)(localStorage.getItem('Auth'));
+      window.location.href = '../../dist/index.html';
+    }
   });
+} else {
+  console.log(document.querySelector('.mainBtn'));
 }
 
 if (btn !== null) {
   btn.addEventListener('click', e => {
-    formLogIn.style.display = 'flex';
+    if (btn.innerHTML === 'Log In') {
+      formLogIn.style.display = 'flex';
+    } else {
+      (0,_logOut__WEBPACK_IMPORTED_MODULE_1__.logOutUser)(localStorage.getItem('Auth'));
+      window.location.href = '../../dist/index.html';
+    }
   });
 }
 
 function checkData() {
-  console.log(emailLogIn.value);
   const emailValue1 = emailLogIn.value;
   const passwordValue1 = passwordLogIn.value;
   let isCorrect = true;
@@ -51694,6 +51844,73 @@ function checkData() {
 
   return isCorrect;
 }
+
+/***/ }),
+
+/***/ "./src/js/profileSettings.js":
+/*!***********************************!*\
+  !*** ./src/js/profileSettings.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _logIn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logIn */ "./src/js/logIn.js");
+
+console.log('My user:', JSON.parse(localStorage.getItem('user')));
+let obj = JSON.parse(localStorage.getItem('user'));
+const nameUser = document.querySelector('.first_name');
+const surnameUser = document.querySelector('.last_name');
+const dateUser = document.querySelector('.date');
+const usernameUser = document.querySelector('.profile__body_card_of_user__avatar_username');
+const avatar = document.querySelector('.avatar');
+const locationCanada = document.querySelector('.locationCanada');
+
+if (nameUser !== null) {
+  nameUser.innerHTML = obj.Firstname;
+  surnameUser.innerHTML = obj.LastName;
+  dateUser.innerHTML = obj.Birthday;
+  usernameUser.innerHTML = obj.Username;
+  avatar.src = obj.UrlOfImage;
+  locationCanada.innerHTML = `${obj.Country}, ${obj.City}`;
+}
+
+const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
+
+const changeColor = () => {
+  const info = document.querySelector('.profile__body_card_of_user__information_user_prop');
+  const optionChageData = document.querySelector('.profile__body_settings__options__change_data');
+  const optionStatistics = document.querySelector('.profile__body_settings__options__statistics');
+  const optionStatisticsHeadline = document.querySelector('.profile__body_settings__options__statistics_headline');
+  info.style.color = "#efca08";
+  optionChageData.style.background = "#efca08";
+  optionChageData.style.borderColor = "#efca08";
+  optionStatistics.style.borderColor = "#efca08";
+  optionStatisticsHeadline.style.color = "#efca08";
+  let url = obj.UrlOfImage.split('');
+  let index = url.indexOf('u') + 4;
+
+  if (Number(url[index]) === 1) {
+    url[index] = '4';
+  }
+
+  if (Number(url[index]) === 4) {
+    url[index] = '1';
+  }
+
+  if (Number(url[index]) === 2) {
+    url[index] = '3';
+  }
+
+  if (Number(url[index]) === 3) {
+    url[index] = '2';
+  }
+
+  console.log(url);
+  avatar.src = url.join('');
+};
+
+changeColorOfProfile.addEventListener('click', changeColor);
 
 /***/ }),
 
@@ -51830,10 +52047,6 @@ if (form !== null) {
   });
 }
 
-if (locationButton !== null) {
-  locationButton.addEventListener('click', yourLocation);
-}
-
 function checkInputs() {
   if (username !== null) {
     const usernameValue = username.value.trim();
@@ -51940,15 +52153,6 @@ function setSuccessFor(input) {
 }
 function isEmail(email) {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-}
-
-async function yourLocation() {
-  const resu = await fetch(`http://ip-api.com/json`);
-  const data = await resu.json();
-  alert('We are checking your location');
-  const location = document.querySelectorAll('.location');
-  location[0].innerHTML = data.country;
-  location[1].innerHTML = data.city;
 }
 
 /***/ }),

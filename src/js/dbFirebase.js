@@ -9,9 +9,11 @@ export var firebaseConfig = {
     appId: "1:59314028578:web:3d47d4a44d783727444a7b",
     measurementId: "G-YK6VGZSB8J"
 };
+
+
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
 export var db = firebaseApp.firestore();
-let isAuth
+export let isAuth
 
 if (localStorage.getItem('Auth') === null) {
     isAuth = false
@@ -22,9 +24,9 @@ if (localStorage.getItem('Auth') === null) {
 
 const makeid = () => {
     let text = "";
-    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let possible = "1234";
 
-    for (let i = 0; i < 5; i++)
+    for (let i = 0; i < 1; i++)
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
@@ -40,19 +42,22 @@ const createUser = () => {
         const firstName = document.getElementById('name').value
         const lastName = document.getElementById('surname').value
         const birthday = document.getElementById('birthday').value
-            //const country = document.querySelector('.country').value
-            //const city = document.querySelector('.city').value
+        const country = 'Canada'
+        const city = 'Otawa'
+        let rand = makeid()
+        const url = `../../dist/src/assets/images/user${rand}.png`
         userID = makeid()
         userID = userID + username
         db.collection("users").add({
+                UrlOfImage: url,
                 Firstname: firstName,
                 LastName: lastName,
                 Birthday: birthday,
                 Username: username,
                 "E-mail": email,
                 Password: password,
-                //Country: country,
-                //City: city
+                Country: country,
+                City: city
             })
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
@@ -69,4 +74,6 @@ const createUser = () => {
 
 
 }
-submit.addEventListener('click', createUser)
+if (submit !== null) {
+    submit.addEventListener('click', createUser)
+}
