@@ -397,8 +397,8 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 300px;
-  margin: 50px 0 0 10px;
+  max-width: 357px;
+  margin: 50px 0 0 0;
   color: #444343; }
 
 .filter_box {
@@ -789,16 +789,207 @@ h2 {
 
 .header__restaurant {
   position: relative;
-  width: 100%;
-  height: 130px; }
+  width: 100%; }
 
 .header_wrapper__restaurant {
   justify-content: center; }
   .header_wrapper__restaurant .logo {
     font-size: 45px; }
 
-.main__restaurant {
-  height: 100vh; }
+.main__restaurant .restaurant_page {
+  background-image: url("https://s3-media3.fl.yelpcdn.com/bphoto/dCTXgFPs44AR4EG4y6xDXA/o.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 60vh; }
+
+.restaurant_page .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 50px 0;
+  width: 100%; }
+  .restaurant_page .wrapper h1 {
+    font-size: 40px;
+    color: #efca08;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000000; }
+
+.about__restaurant {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 50px; }
+
+.about_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  font-size: 20px; }
+  .about_container .rating {
+    margin-top: 20px;
+    font-size: 40px;
+    text-shadow: 2px 2px 4px #000000;
+    padding: 10px; }
+    .about_container .rating .rating__value {
+      text-shadow: 2px 2px 4px #000000; }
+  .about_container .reviewsRestaurants {
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px #000000;
+    color: #fff; }
+
+.content__rastaurant .wrapper {
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px; }
+
+.content_container {
+  border-top: 1px solid #efca08;
+  border-bottom: 1px solid #efca08;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  height: 320px;
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column; }
+  .content_container .fas {
+    font-size: 20px;
+    color: #00a6a6; }
+  .content_container .content_container__title {
+    border-bottom: 1px solid #efca08;
+    width: 100%;
+    display: flex;
+    padding-bottom: 15px;
+    padding-bottom: 15px; }
+    .content_container .content_container__title .priceRestaurant {
+      margin-left: 15px;
+      font-size: 25px; }
+    .content_container .content_container__title h2 {
+      cursor: default;
+      text-decoration: none;
+      font-size: 35px; }
+  .content_container .service_restaurant {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #efca08;
+    width: 100%;
+    padding-bottom: 15px;
+    padding-bottom: 15px; }
+    .content_container .service_restaurant span {
+      background: none;
+      color: #efca08; }
+  .content_container .phon_restaurant {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #efca08;
+    width: 100%;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    margin-top: 0; }
+    .content_container .phon_restaurant span {
+      letter-spacing: 2px; }
+      .content_container .phon_restaurant span a:hover {
+        color: #00a6a6;
+        text-decoration: underline; }
+  .content_container .address_restaurant {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #efca08;
+    width: 100%;
+    padding-bottom: 15px;
+    padding-top: 15px; }
+  .content_container .yelp__link {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 15px;
+    padding-top: 15px; }
+
+.address_restaurant span {
+  margin-right: 15px; }
+
+.yelp__link a:first-child {
+  margin-right: 15px;
+  font-style: italic; }
+
+.yelp__link a:first-child:hover {
+  color: #00a6a6;
+  text-decoration: underline; }
+
+.yelp__link .fa-external-link-alt:hover {
+  color: #efca08;
+  text-shadow: 0.1em 0.1em 0.2em black; }
+
+.fa-phone-square-alt:hover {
+  color: #efca08;
+  text-shadow: 0.1em 0.1em 0.2em black; }
+
+.button__review {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  transition: all .5s;
+  margin: 60px 0 0;
+  width: 180px;
+  height: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #efca08;
+  text-align: center;
+  max-width: 100%;
+  background-color: #00a6a6; }
+  .button__review .fa-star {
+    font-size: 18px;
+    margin-right: 5px; }
+  .button__review:hover {
+    background-color: #efca08;
+    color: #00a6a6;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px; }
+
+.container__reviews {
+  padding: 60px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .container__reviews h3 {
+    font-weight: 600;
+    font-size: 30px;
+    text-align: center; }
+  .container__reviews .content_reviews {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between; }
+    .container__reviews .content_reviews img {
+      width: 68px;
+      height: 68px;
+      border-radius: 5px;
+      margin-right: 20px; }
+
+.content_reviews .about_reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+  .content_reviews .about_reviews h6 {
+    font-size: 20px;
+    font-weight: 600; }
+  .content_reviews .about_reviews .rating {
+    margin-top: 15px; }
+  .content_reviews .about_reviews .name_visitor {
+    margin-top: 15px;
+    font-weight: 600; }
+  .content_reviews .about_reviews .review_visitor {
+    margin-top: 15px; }
 
 .autocomplete-wrap {
   position: relative;

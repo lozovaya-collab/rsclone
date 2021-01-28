@@ -1,4 +1,5 @@
 import { removeSelectedFilter, removeSelectedFilterRestaurant } from './addClickHandlers'
+
 export const Autocomplete = (selector, data) => {
 
     let inputs = document.querySelectorAll(selector);

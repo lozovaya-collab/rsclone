@@ -1,3 +1,5 @@
+import { arrayNameRestaurantsCity } from './apiData'
+
 //filter price
 let input = document.querySelector('#input-select')
 
@@ -13,7 +15,7 @@ export const addFilterPriceClickHandler = () => {
                 let clickedFilter = e.target;
                 removeSelectedFilter();
                 selectClickedFilter(clickedFilter);
-                if (clickedFilter.innerText === 'All') {
+                if (clickedFilter.innerText === 'Reset all filters') {
                     // let selectionCity = this.options[this.selectedIndex];
                     // selectionCity = 0
                     location.reload()
@@ -145,35 +147,49 @@ export const showTypeRestaurants = () => {
 
 // sort restaurants by cities
 
+export let arrayData = []
 export const sortRestaurantsByCities = () => {
     let selectionCity = document.querySelector('.searching_city ')
-        // let op = document.querySelector('.searching_city ').options
-        // let s = document.querySelector('.searching_city').selectedIndex
-
-    // let selection = document.querySelectorAll('.searching_city > option ')
-
-
     let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a')
     let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a')
     let citiesCards = document.querySelectorAll('.address_restaurant')
 
+    arrayNameRestaurantsCity.forEach(element => {
+        arrayData.push(element)
+    })
 
     selectionCity.addEventListener('change', changeValueSelect)
 
     function changeValueSelect() {
         let selectionCity = this.options[this.selectedIndex].text
         console.log(selectionCity)
-
+        let count = 1;
         for (let i = 0; i < cardsRestaurantsMain.length; i += 1) {
+            if (selectionCity === 'Cities of Canada' && count !== 9) {
+                cardsRestaurantsMain[i].classList.remove('hidden');
 
-            if (selectionCity === 'Cities of Canada') {
+                count++;
+            } else if (citiesCards[i].innerText.includes(selectionCity) && count !== 9) {
                 cardsRestaurantsMain[i].classList.remove('hidden');
-            } else if (citiesCards[i].innerText.includes(selectionCity)) {
-                cardsRestaurantsMain[i].classList.remove('hidden');
+                selectionCity;
+                count++
             } else {
                 cardsRestaurantsMain[i].classList.add('hidden');
+
+            }
+
+        }
+        let city = document.querySelector('.restaurant_inCity')
+        if (city) {
+            if (selectionCity === 'Cities of Canada') {
+                city.innerHTML = ''
+            } else if (selectionCity) {
+                city.innerHTML = selectionCity;
             }
         }
+
+
+
 
         for (let i = 0; i < cardsRestaurantsPage.length; i += 1) {
 
@@ -190,6 +206,35 @@ export const sortRestaurantsByCities = () => {
                 cardsRestaurantsPage[i].classList.add('hidden');
             }
         }
+
+
+
+
+        for (let j = 0; j < arrayNameRestaurantsCity.length; j += 1) {
+
+            if (arrayNameRestaurantsCity[j].city === 'Cities of Canada') {
+
+                arrayData = []
+                arrayData.push(arrayNameRestaurantsCity[j])
+                    // console.log(arrayNameRestaurantsCity[j])
+                    // console.log(arrayData[j])
+
+            } else if (selectionCity === arrayNameRestaurantsCity[j].city) {
+                // console.log(arrayNameRestaurantsCity[j])
+                arrayData = []
+
+                console.log(arrayData)
+                arrayData.push(arrayNameRestaurantsCity[j])
+
+                // console.log(arrayData)
+
+            }
+            // console.log(arrayNameRestaurantsCity[j])
+            // console.log(arrayData[j])
+        }
+
+        console.log(arrayData)
     }
 
+    // console.log(arrayData)
 }

@@ -7,15 +7,21 @@ import './js/map'
 import './js/apiData'
 import './js/scrollUp'
 import './js/setBackground'
-import { addFilterPriceClickHandler, addFilterRestaurantsClickHandler, getBestRestaurants, showTypeRestaurants, sortRestaurantsByCities } from './js/addClickHandlers'
+import {
+    addFilterPriceClickHandler,
+    addFilterRestaurantsClickHandler,
+    getBestRestaurants,
+    showTypeRestaurants,
+    sortRestaurantsByCities,
+    arrayData
+} from './js/addClickHandlers'
 import { CardsRestaurants } from './js/CardsRestaurants'
-import { arrayNameRestaurants, restaurantsData } from './js/apiData'
+import { arrayNameRestaurantsCity, restaurantsData } from './js/apiData'
 import { getRating } from './js/starsRating'
 
 console.log(localStorage.getItem('Auth'));
 
 window.addEventListener('DOMContentLoaded', () => {
-
     // render Cards of Restaurants
     if (restaurantsData) {
         renderCardsRestaurants()
@@ -26,7 +32,12 @@ window.addEventListener('DOMContentLoaded', () => {
     addFilterRestaurantsClickHandler();
     sortRestaurantsByCities()
     showTypeRestaurants();
+
     //autocomplete
+    let arrayNameRestaurants = []
+    arrayNameRestaurantsCity.forEach(nameRestaurant => {
+        arrayNameRestaurants.push(nameRestaurant.name)
+    })
     Autocomplete('#input-select', arrayNameRestaurants);
 
 
@@ -49,10 +60,11 @@ const renderCardsRestaurants = () => {
 
 
     let cardsWrapperMainCity = getCardsWrapperMainCity()
-    if (cardsWrapperMainCity) {
+    let count = 1;
+    if (cardsWrapperMainCity && count !== 9) {
         generateCards(restaurantsData).forEach(card => {
+            count++
             cardsWrapperMainCity.append(card.generateCardsRestaurants())
-
         })
     }
     let cardsWrapperMain = getCardsWrapperMain()
