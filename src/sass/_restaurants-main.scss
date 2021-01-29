@@ -30,8 +30,8 @@ $maincolor_third: #fff;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 300px;
-    margin: 50px 0 0 10px;
+    max-width: 357px;
+    margin: 50px 0 0 0;
     color: rgb(68, 67, 67);
 }
 
@@ -84,7 +84,10 @@ $maincolor_third: #fff;
     flex-wrap: wrap;
 }
 
-.food {}
+.cards_wrapper_restaurants {
+    // max-height: 1703px;
+    overflow: hidden;
+}
 
 .image_food {
     width: 100%;
@@ -119,8 +122,6 @@ $maincolor_third: #fff;
     margin-top: 15px;
     font-style: italic;
 }
-
-.reviewsRestaurants {}
 
 .priceRestaurant {
     display: block;

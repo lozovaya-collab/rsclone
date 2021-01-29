@@ -8,10 +8,8 @@ let isUser = false
 export let myUser = {}
 export let myUserId = ''
 const logInButton = document.querySelector('.logIn')
-
-if (logInButton !== null) {
+if (logInButton) {
     logInButton.addEventListener('click', (e) => {
-        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaa');
         e.preventDefault()
         let isOkay = checkData()
         if (isOkay) {
@@ -45,7 +43,5 @@ if (logInButton !== null) {
                     console.log("Error getting documents: ", error);
                 });
         }
-
-
     })
 }

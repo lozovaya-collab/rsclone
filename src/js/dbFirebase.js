@@ -76,6 +76,7 @@ const createUser = () => {
 
 
 }
-if (submit !== null) {
+
+if (submit) {
     submit.addEventListener('click', createUser)
 }

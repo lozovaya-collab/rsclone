@@ -1,4 +1,5 @@
 import { removeSelectedFilter, removeSelectedFilterRestaurant } from './addClickHandlers'
+
 export const Autocomplete = (selector, data) => {
 
     let inputs = document.querySelectorAll(selector);
@@ -173,6 +174,13 @@ export const Autocomplete = (selector, data) => {
             focusedItem = -1;
         });
     })
-
-
+    let select = document.querySelector('.searching_city ')
+    if (select) {
+        select.addEventListener('click', () => {
+            let inputSelect = document.querySelector('#input-select')
+            if (inputSelect) {
+                inputSelect.value = ''
+            }
+        })
+    }
 }
