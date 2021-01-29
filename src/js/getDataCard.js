@@ -4,17 +4,14 @@ import { RestaurantPage } from './RestaurantPage'
 let card = [];
 export const getDataCard = () => {
     let cards = document.querySelectorAll('.cards_wrapper > [data-id]')
-        // console.log(cards)
 
     for (let i = 0; i < cards.length; i += 1) {
-        // card = []
+
         cards[i].addEventListener('click', () => {
             card = []
             let dataIdCard = cards[i].getAttribute('data-id')
-                // console.log(dataIdCard)
 
             if (dataIdCard === restaurantsData[i].id) {
-                // console.log(restaurantsData[i].id)
                 card.push({
                     id: restaurantsData[i].id,
                     name: restaurantsData[i].name,
@@ -35,20 +32,15 @@ export const getDataCard = () => {
             } else {
                 card = []
             }
-            console.log(card)
             localStorage.setItem("card", JSON.stringify(card));
         })
     }
-    // console.log('tttt', card)
 }
 
-
-
-
 let data = JSON.parse(localStorage.getItem("card"));
+
 export const renderPageRestaurant = () => {
     let pageRestaurant = getWrapperPageRestaurant();
-    // console.log('ttttttttttttttt', pageRestaurant)
     if (pageRestaurant) {
         generatePage(data).forEach(el => {
             pageRestaurant.append(el.generateRestaurantsPage())
@@ -57,7 +49,6 @@ export const renderPageRestaurant = () => {
 }
 
 const getWrapperPageRestaurant = () => {
-
     const restaurantContainer = document.querySelector('.main__restaurant_page')
     if (restaurantContainer) {
         restaurantContainer.innerHTML = ''
@@ -66,11 +57,9 @@ const getWrapperPageRestaurant = () => {
 }
 
 const generatePage = (data) => {
-
     let array = []
     data.forEach(element => {
         array.push(new RestaurantPage(element))
     });
-    // console.log('ppppppppppp', array)
     return array
 }

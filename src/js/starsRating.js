@@ -2,7 +2,6 @@ export function getRating() {
 
     const ratingAll = document.querySelectorAll('.rating')
 
-
     function initRatings() {
         let ratingActive;
         let ratingValue;
@@ -10,7 +9,6 @@ export function getRating() {
             const rating = ratingAll[i];
             initRatings(rating);
         }
-
 
         function initRatings(rating) {
             initRatingVars(rating);
@@ -21,7 +19,6 @@ export function getRating() {
             ratingActive = rating.querySelector('.rating__active');
             ratingValue = rating.querySelector('.rating__value')
         }
-
 
         function setRatingActiveWidth(i = ratingValue.innerHTML) {
             const ratingActiveWidth = i / 0.05;

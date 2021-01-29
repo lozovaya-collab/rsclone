@@ -1,5 +1,6 @@
 import { arrayNameRestaurantsCity } from './apiData'
 // import { arrayNameRestaurants } from './../index'
+import { Autocomplete } from './Autocomplete'
 
 //filter price
 let input = document.querySelector('#input-select')
@@ -146,40 +147,35 @@ export const showTypeRestaurants = () => {
 
 export let arrayData = []
 export let arrayNameRestaurants = []
-    // arrayNameRestaurantsCity.forEach(element => {
-    //         arrayData.push(element)
-    //     })
-    // arrayData.forEach(nameRestaurant => {
-    //     arrayNameRestaurants.push(nameRestaurant.name)
-    // })
+localStorage.setItem("arrayNameRestaurants", JSON.stringify(arrayNameRestaurants));
 export const sortRestaurantsByCities = () => {
     let selectionCity = document.querySelector('.searching_city ')
     let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a')
     let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a')
     let citiesCards = document.querySelectorAll('.address_restaurant')
 
-    // console.log('kkkkkkkkkkkkkkkkkkkkk', arrayNameRestaurants)
-    // arrayData = []
-    // arrayNameRestaurants = []
-    // arrayNameRestaurantsCity.forEach(element => {
-    //         arrayData.push(element)
-    //     })
-    // console.log('ooooooooooooooo', arrayData)
-    // arrayData.forEach(nameRestaurant => {
-    //     arrayNameRestaurants.push(nameRestaurant.name)
-    // })
-    // console.log('ooooooooooooooo', arrayNameRestaurants)
-
+    arrayNameRestaurantsCity.forEach(element => {
+        arrayData.push(element)
+    })
+    arrayData.forEach(nameRestaurant => {
+        arrayNameRestaurants.push(nameRestaurant.name)
+    })
+    localStorage.setItem("arrayNameRestaurants", JSON.stringify(arrayNameRestaurants));
     if (selectionCity) {
         selectionCity.addEventListener('change', changeValueSelect)
+        selectionCity.addEventListener('click', () => {
+            arrayData = []
+            arrayNameRestaurants = []
+
+        })
+
     }
 
     function changeValueSelect() {
-
-
         let selectionCity = this.options[this.selectedIndex].text
             // console.log(selectionCity)
-            // console.log('xxxxxxxxxxxxxxx', arrayNameRestaurants)
+
+        console.log(arrayNameRestaurants)
 
         let count = 1;
         for (let i = 0; i < cardsRestaurantsMain.length; i += 1) {
@@ -187,10 +183,10 @@ export const sortRestaurantsByCities = () => {
                 cardsRestaurantsMain[i].classList.remove('hidden');
 
                 count++;
-            } else if (citiesCards[i].innerText.includes(selectionCity) && count !== 9) {
+            } else if (citiesCards[i].innerText.includes(selectionCity)) {
                 cardsRestaurantsMain[i].classList.remove('hidden');
                 selectionCity;
-                count++
+
             } else {
                 cardsRestaurantsMain[i].classList.add('hidden');
             }
@@ -214,7 +210,7 @@ export const sortRestaurantsByCities = () => {
                 removeSelectedFilter();
                 removeSelectedFilterRestaurant();
                 cardsRestaurantsPage[i].classList.remove('hidden');
-
+                count++
             } else {
                 removeSelectedFilter();
                 removeSelectedFilterRestaurant();
@@ -222,28 +218,27 @@ export const sortRestaurantsByCities = () => {
             }
         }
 
-        arrayData = []
-        arrayNameRestaurants = []
+
         for (let j = 0; j < arrayNameRestaurantsCity.length; j += 1) {
 
-            if (arrayNameRestaurantsCity[j].city === 'Cities of Canada' || document.querySelector('#input-select').value === '') {
+            if (selectionCity === 'Cities of Canada') {
                 arrayData.push(arrayNameRestaurantsCity[j])
 
             } else if (selectionCity === arrayNameRestaurantsCity[j].city) {
+
                 arrayData.push(arrayNameRestaurantsCity[j])
-
             }
-
         }
 
-        // arrayData.forEach(nameRestaurant => {
-        //     arrayNameRestaurants.push(nameRestaurant.name)
-        // })
+        arrayData.forEach(nameRestaurant => {
+            arrayNameRestaurants.push(nameRestaurant.name)
+        })
 
-        // console.log(arrayData)
-        // console.log(arrayNameRestaurants)
+        console.log('sssssssssssssss', arrayNameRestaurants)
+        console.log('aaaaaaaaaaaaaaa', arrayData)
+
+
     }
 
-    // console.log(arrayData)
-    // console.log(arrayNameRestaurants)
+
 }
