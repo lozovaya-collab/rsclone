@@ -29,19 +29,22 @@ function scrollTo(to, duration = 700) {
 
 document.addEventListener('DOMContentLoaded', function() {
     let btn = document.querySelector('#toTop');
-    window.addEventListener('scroll', function() {
+    if (btn) {
+        window.addEventListener('scroll', function() {
 
-        if (pageYOffset > 100) {
-            btn.classList.add('show');
+            if (pageYOffset > 100) {
+                btn.classList.add('show');
 
-        } else {
-            btn.classList.remove('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        });
+
+
+        btn.onclick = function(click) {
+            click.preventDefault();
+            scrollTo(0, 400);
         }
-    });
-
-
-    btn.onclick = function(click) {
-        click.preventDefault();
-        scrollTo(0, 400);
     }
+
 });

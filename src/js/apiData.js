@@ -47,8 +47,8 @@
          arrayNameRestaurantsCity.push({
                  name: arrayRestaurants[j].name,
                  city: arrayRestaurants[j].location.city,
-                 //  coordinatesLatitude: arrayRestaurants[j].coordinates.latitude,
-                 //  coordinatesLongitude: arrayRestaurants[j].coordinates.longitude,
+                 coordinatesLatitude: arrayRestaurants[j].coordinates.latitude,
+                 coordinatesLongitude: arrayRestaurants[j].coordinates.longitude,
              })
              //  console.log(arrayNameRestaurants[j].name)
      }

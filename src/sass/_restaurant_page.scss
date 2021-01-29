@@ -8,8 +8,15 @@ $maincolor_third: #fff;
 
 .header_wrapper__restaurant {
     justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
     .logo {
         font-size: 45px;
+    }
+    & .navigation_link {
+        color: #444343;
+        font-size: 25px;
+        margin: 20px 0 10px 25px;
     }
 }
 

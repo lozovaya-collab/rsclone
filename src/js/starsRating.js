@@ -1,6 +1,5 @@
 export function getRating() {
 
-
     const ratingAll = document.querySelectorAll('.rating')
 
 

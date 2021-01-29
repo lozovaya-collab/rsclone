@@ -7,19 +7,23 @@ import './js/map'
 import './js/apiData'
 import './js/scrollUp'
 import './js/setBackground'
+
 import {
     addFilterPriceClickHandler,
     addFilterRestaurantsClickHandler,
     getBestRestaurants,
     showTypeRestaurants,
     sortRestaurantsByCities,
-    arrayData
+    arrayData,
+    arrayNameRestaurants
 } from './js/addClickHandlers'
 import { CardsRestaurants } from './js/CardsRestaurants'
-import { arrayNameRestaurantsCity, restaurantsData } from './js/apiData'
+import { restaurantsData } from './js/apiData'
 import { getRating } from './js/starsRating'
 
+
 console.log(localStorage.getItem('Auth'));
+// export let arrayNameRestaurants = []
 
 window.addEventListener('DOMContentLoaded', () => {
     // render Cards of Restaurants
@@ -34,37 +38,30 @@ window.addEventListener('DOMContentLoaded', () => {
     showTypeRestaurants();
 
     //autocomplete
-    let arrayNameRestaurants = []
-    arrayNameRestaurantsCity.forEach(nameRestaurant => {
-        arrayNameRestaurants.push(nameRestaurant.name)
-    })
+
+
     Autocomplete('#input-select', arrayNameRestaurants);
-
-
     getRating();
     getBestRestaurants()
-
-
-
-
 
 });
 
 const renderCardsRestaurants = () => {
-    let cardsWrapperRestaurants = getCardsWrapperRestaurant()
+    let cardsWrapperRestaurants = getCardsWrapperRestaurant();
+    let count = 1;
     if (cardsWrapperRestaurants) {
         generateCards(restaurantsData).forEach(card => {
             cardsWrapperRestaurants.append(card.generateCardsRestaurants())
         })
     }
 
-
     let cardsWrapperMainCity = getCardsWrapperMainCity()
-    let count = 1;
-    if (cardsWrapperMainCity && count !== 9) {
+    if (cardsWrapperMainCity) {
         generateCards(restaurantsData).forEach(card => {
-            count++
+            // if (count !== 9) {
             cardsWrapperMainCity.append(card.generateCardsRestaurants())
+                // count++
+                // }
         })
     }
     let cardsWrapperMain = getCardsWrapperMain()
@@ -73,8 +70,6 @@ const renderCardsRestaurants = () => {
             cardsWrapperMain.append(card.generateCardsRestaurants())
         })
     }
-
-
 }
 const getCardsWrapperRestaurant = () => {
     const cardsContainer = document.querySelector('.cards_wrapper_restaurants');

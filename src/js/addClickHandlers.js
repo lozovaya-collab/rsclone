@@ -1,4 +1,5 @@
 import { arrayNameRestaurantsCity } from './apiData'
+// import { arrayNameRestaurants } from './../index'
 
 //filter price
 let input = document.querySelector('#input-select')
@@ -69,14 +70,12 @@ const filterBySelectedValue = (selectedValue) => {
         })
 
     })
-
 }
 
 //filter type restaurants
 export const addFilterRestaurantsClickHandler = () => {
     let typeRestaurant = document.querySelector('.type_restaurant');
     if (typeRestaurant !== null) {
-
         typeRestaurant.addEventListener('click', (e) => {
             removeSelectedFilter();
             input.value = '';
@@ -91,11 +90,9 @@ export const addFilterRestaurantsClickHandler = () => {
         })
     }
 }
-
 const selectClickedRestaurant = (clickedRestaurant) => {
     clickedRestaurant.classList.add('titleRestaurant_active')
 }
-
 export const removeSelectedFilterRestaurant = () => {
     let filterBoxRestaurants = document.querySelectorAll('.titleRestaurant');
 
@@ -124,7 +121,6 @@ export function getBestRestaurants() {
     }
 }
 
-
 // show type restaurants
 export const showTypeRestaurants = () => {
     const linkRestaurants = document.querySelector('.restaurant_view');
@@ -132,37 +128,62 @@ export const showTypeRestaurants = () => {
 
     if (linkRestaurants !== null) {
         linkRestaurants.addEventListener('mouseover', () => {
-            boxTypeRestaurant.classList.add('box_type_active');
+            if (boxTypeRestaurant) {
+                boxTypeRestaurant.classList.add('box_type_active');
 
-            boxTypeRestaurant.addEventListener('mouseout', (e) => {
-                e.stopPropagation()
-                boxTypeRestaurant.classList.remove('box_type_active');
+                boxTypeRestaurant.addEventListener('mouseout', (e) => {
+                    e.stopPropagation()
+                    boxTypeRestaurant.classList.remove('box_type_active');
 
-            })
+                })
+            }
+
         })
     }
-
 }
-
 
 // sort restaurants by cities
 
 export let arrayData = []
+export let arrayNameRestaurants = []
+    // arrayNameRestaurantsCity.forEach(element => {
+    //     arrayData.push(element)
+    // })
+    // arrayData.forEach(nameRestaurant => {
+    //     arrayNameRestaurants.push(nameRestaurant.name)
+    // })
 export const sortRestaurantsByCities = () => {
     let selectionCity = document.querySelector('.searching_city ')
     let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a')
     let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a')
     let citiesCards = document.querySelectorAll('.address_restaurant')
 
+    // console.log('kkkkkkkkkkkkkkkkkkkkk', arrayNameRestaurants)
+    arrayData = []
+    arrayNameRestaurants = []
     arrayNameRestaurantsCity.forEach(element => {
-        arrayData.push(element)
-    })
+            arrayData.push(element)
+        })
+        // console.log('ooooooooooooooo', arrayData)
+    arrayData.forEach(nameRestaurant => {
+            arrayNameRestaurants.push(nameRestaurant.name)
+        })
+        // console.log('ooooooooooooooo', arrayNameRestaurants)
 
-    selectionCity.addEventListener('change', changeValueSelect)
+    if (selectionCity) {
+        selectionCity.addEventListener('change', changeValueSelect)
+    }
+
+
 
     function changeValueSelect() {
+        arrayData = []
+        arrayNameRestaurants = []
+
         let selectionCity = this.options[this.selectedIndex].text
-        console.log(selectionCity)
+            // console.log(selectionCity)
+            // console.log('xxxxxxxxxxxxxxx', arrayNameRestaurants)
+
         let count = 1;
         for (let i = 0; i < cardsRestaurantsMain.length; i += 1) {
             if (selectionCity === 'Cities of Canada' && count !== 9) {
@@ -175,9 +196,7 @@ export const sortRestaurantsByCities = () => {
                 count++
             } else {
                 cardsRestaurantsMain[i].classList.add('hidden');
-
             }
-
         }
         let city = document.querySelector('.restaurant_inCity')
         if (city) {
@@ -188,18 +207,17 @@ export const sortRestaurantsByCities = () => {
             }
         }
 
-
-
-
         for (let i = 0; i < cardsRestaurantsPage.length; i += 1) {
 
-            if (selectionCity === 'Cities of Canada') {
+            if (selectionCity === 'Cities of Canada' && count !== 16) {
                 document.querySelector('.all_position').classList.add('filter_active')
                 cardsRestaurantsPage[i].classList.remove('hidden');
+                count++
             } else if (citiesCards[i].innerText.includes(selectionCity)) {
                 removeSelectedFilter();
                 removeSelectedFilterRestaurant();
                 cardsRestaurantsPage[i].classList.remove('hidden');
+                count++
             } else {
                 removeSelectedFilter();
                 removeSelectedFilterRestaurant();
@@ -207,34 +225,26 @@ export const sortRestaurantsByCities = () => {
             }
         }
 
-
-
-
         for (let j = 0; j < arrayNameRestaurantsCity.length; j += 1) {
 
-            if (arrayNameRestaurantsCity[j].city === 'Cities of Canada') {
-
-                arrayData = []
+            if (arrayNameRestaurantsCity[j].city === 'Cities of Canada' || document.querySelector('#input-select').value === '') {
                 arrayData.push(arrayNameRestaurantsCity[j])
-                    // console.log(arrayNameRestaurantsCity[j])
-                    // console.log(arrayData[j])
 
             } else if (selectionCity === arrayNameRestaurantsCity[j].city) {
-                // console.log(arrayNameRestaurantsCity[j])
-                arrayData = []
-
-                console.log(arrayData)
                 arrayData.push(arrayNameRestaurantsCity[j])
 
-                // console.log(arrayData)
-
             }
-            // console.log(arrayNameRestaurantsCity[j])
-            // console.log(arrayData[j])
+
         }
 
-        console.log(arrayData)
+        arrayData.forEach(nameRestaurant => {
+            arrayNameRestaurants.push(nameRestaurant.name)
+        })
+
+        // console.log(arrayData)
+        // console.log(arrayNameRestaurants)
     }
 
     // console.log(arrayData)
+    // console.log(arrayNameRestaurants)
 }

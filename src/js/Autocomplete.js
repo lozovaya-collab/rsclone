@@ -174,6 +174,14 @@ export const Autocomplete = (selector, data) => {
             focusedItem = -1;
         });
     })
+    let select = document.querySelector('.searching_city ')
+    if (select) {
+        select.addEventListener('click', () => {
+
+            document.querySelector('#input-select').value = ''
+
+        })
+    }
 
 
 }

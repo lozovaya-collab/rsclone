@@ -50825,7 +50825,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-console.log(localStorage.getItem('Auth'));
+console.log(localStorage.getItem('Auth')); // export let arrayNameRestaurants = []
+
 window.addEventListener('DOMContentLoaded', () => {
   // render Cards of Restaurants
   if (_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData) {
@@ -50838,17 +50839,14 @@ window.addEventListener('DOMContentLoaded', () => {
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_9__.sortRestaurantsByCities)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_9__.showTypeRestaurants)(); //autocomplete
 
-  let arrayNameRestaurants = [];
-  _js_apiData__WEBPACK_IMPORTED_MODULE_6__.arrayNameRestaurantsCity.forEach(nameRestaurant => {
-    arrayNameRestaurants.push(nameRestaurant.name);
-  });
-  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_4__.Autocomplete)('#input-select', arrayNameRestaurants);
+  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_4__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_9__.arrayNameRestaurants);
   (0,_js_starsRating__WEBPACK_IMPORTED_MODULE_11__.getRating)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_9__.getBestRestaurants)();
 });
 
 const renderCardsRestaurants = () => {
   let cardsWrapperRestaurants = getCardsWrapperRestaurant();
+  let count = 1;
 
   if (cardsWrapperRestaurants) {
     generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData).forEach(card => {
@@ -50857,12 +50855,12 @@ const renderCardsRestaurants = () => {
   }
 
   let cardsWrapperMainCity = getCardsWrapperMainCity();
-  let count = 1;
 
-  if (cardsWrapperMainCity && count !== 9) {
+  if (cardsWrapperMainCity) {
     generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData).forEach(card => {
-      count++;
-      cardsWrapperMainCity.append(card.generateCardsRestaurants());
+      // if (count !== 9) {
+      cardsWrapperMainCity.append(card.generateCardsRestaurants()); // count++
+      // }
     });
   }
 
@@ -51072,6 +51070,13 @@ const Autocomplete = (selector, data) => {
       focusedItem = -1;
     });
   });
+  let select = document.querySelector('.searching_city ');
+
+  if (select) {
+    select.addEventListener('click', () => {
+      document.querySelector('#input-select').value = '';
+    });
+  }
 };
 
 /***/ }),
@@ -51203,10 +51208,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getBestRestaurants": () => /* binding */ getBestRestaurants,
 /* harmony export */   "showTypeRestaurants": () => /* binding */ showTypeRestaurants,
 /* harmony export */   "arrayData": () => /* binding */ arrayData,
+/* harmony export */   "arrayNameRestaurants": () => /* binding */ arrayNameRestaurants,
 /* harmony export */   "sortRestaurantsByCities": () => /* binding */ sortRestaurantsByCities
 /* harmony export */ });
 /* harmony import */ var _apiData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./apiData */ "./src/js/apiData.js");
- //filter price
+ // import { arrayNameRestaurants } from './../index'
+//filter price
 
 let input = document.querySelector('#input-select');
 const addFilterPriceClickHandler = () => {
@@ -51325,29 +51332,51 @@ const showTypeRestaurants = () => {
 
   if (linkRestaurants !== null) {
     linkRestaurants.addEventListener('mouseover', () => {
-      boxTypeRestaurant.classList.add('box_type_active');
-      boxTypeRestaurant.addEventListener('mouseout', e => {
-        e.stopPropagation();
-        boxTypeRestaurant.classList.remove('box_type_active');
-      });
+      if (boxTypeRestaurant) {
+        boxTypeRestaurant.classList.add('box_type_active');
+        boxTypeRestaurant.addEventListener('mouseout', e => {
+          e.stopPropagation();
+          boxTypeRestaurant.classList.remove('box_type_active');
+        });
+      }
     });
   }
 }; // sort restaurants by cities
 
 let arrayData = [];
+let arrayNameRestaurants = []; // arrayNameRestaurantsCity.forEach(element => {
+//     arrayData.push(element)
+// })
+// arrayData.forEach(nameRestaurant => {
+//     arrayNameRestaurants.push(nameRestaurant.name)
+// })
+
 const sortRestaurantsByCities = () => {
   let selectionCity = document.querySelector('.searching_city ');
   let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a');
   let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a');
-  let citiesCards = document.querySelectorAll('.address_restaurant');
+  let citiesCards = document.querySelectorAll('.address_restaurant'); // console.log('kkkkkkkkkkkkkkkkkkkkk', arrayNameRestaurants)
+
+  arrayData = [];
+  arrayNameRestaurants = [];
   _apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity.forEach(element => {
     arrayData.push(element);
-  });
-  selectionCity.addEventListener('change', changeValueSelect);
+  }); // console.log('ooooooooooooooo', arrayData)
+
+  arrayData.forEach(nameRestaurant => {
+    arrayNameRestaurants.push(nameRestaurant.name);
+  }); // console.log('ooooooooooooooo', arrayNameRestaurants)
+
+  if (selectionCity) {
+    selectionCity.addEventListener('change', changeValueSelect);
+  }
 
   function changeValueSelect() {
-    let selectionCity = this.options[this.selectedIndex].text;
-    console.log(selectionCity);
+    arrayData = [];
+    arrayNameRestaurants = [];
+    let selectionCity = this.options[this.selectedIndex].text; // console.log(selectionCity)
+    // console.log('xxxxxxxxxxxxxxx', arrayNameRestaurants)
+
     let count = 1;
 
     for (let i = 0; i < cardsRestaurantsMain.length; i += 1) {
@@ -51374,13 +51403,15 @@ const sortRestaurantsByCities = () => {
     }
 
     for (let i = 0; i < cardsRestaurantsPage.length; i += 1) {
-      if (selectionCity === 'Cities of Canada') {
+      if (selectionCity === 'Cities of Canada' && count !== 16) {
         document.querySelector('.all_position').classList.add('filter_active');
         cardsRestaurantsPage[i].classList.remove('hidden');
+        count++;
       } else if (citiesCards[i].innerText.includes(selectionCity)) {
         removeSelectedFilter();
         removeSelectedFilterRestaurant();
         cardsRestaurantsPage[i].classList.remove('hidden');
+        count++;
       } else {
         removeSelectedFilter();
         removeSelectedFilterRestaurant();
@@ -51389,22 +51420,19 @@ const sortRestaurantsByCities = () => {
     }
 
     for (let j = 0; j < _apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity.length; j += 1) {
-      if (_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j].city === 'Cities of Canada') {
-        arrayData = [];
-        arrayData.push(_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j]); // console.log(arrayNameRestaurantsCity[j])
-        // console.log(arrayData[j])
+      if (_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j].city === 'Cities of Canada' || document.querySelector('#input-select').value === '') {
+        arrayData.push(_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j]);
       } else if (selectionCity === _apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j].city) {
-        // console.log(arrayNameRestaurantsCity[j])
-        arrayData = [];
-        console.log(arrayData);
-        arrayData.push(_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j]); // console.log(arrayData)
-      } // console.log(arrayNameRestaurantsCity[j])
-      // console.log(arrayData[j])
-
+        arrayData.push(_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j]);
+      }
     }
 
-    console.log(arrayData);
+    arrayData.forEach(nameRestaurant => {
+      arrayNameRestaurants.push(nameRestaurant.name);
+    }); // console.log(arrayData)
+    // console.log(arrayNameRestaurants)
   } // console.log(arrayData)
+  // console.log(arrayNameRestaurants)
 
 };
 
@@ -51467,9 +51495,9 @@ const getListRestaurants = () => {
     //  )
     arrayNameRestaurantsCity.push({
       name: arrayRestaurants[j].name,
-      city: arrayRestaurants[j].location.city //  coordinatesLatitude: arrayRestaurants[j].coordinates.latitude,
-      //  coordinatesLongitude: arrayRestaurants[j].coordinates.longitude,
-
+      city: arrayRestaurants[j].location.city,
+      coordinatesLatitude: arrayRestaurants[j].coordinates.latitude,
+      coordinatesLongitude: arrayRestaurants[j].coordinates.longitude
     }); //  console.log(arrayNameRestaurants[j].name)
   }
 };
@@ -51561,7 +51589,9 @@ const createUser = () => {
   }
 };
 
-submit.addEventListener('click', createUser);
+if (submit) {
+  submit.addEventListener('click', createUser);
+}
 
 /***/ }),
 
@@ -51582,32 +51612,35 @@ __webpack_require__.r(__webpack_exports__);
 console.log('aaa');
 let isUser = false;
 const logInButton = document.querySelector('.logIn');
-logInButton.addEventListener('click', () => {
-  let isOkay = (0,_modal__WEBPACK_IMPORTED_MODULE_2__.checkData)();
 
-  if (isOkay) {
-    const emailLogIn = document.getElementById('emailLogIn').value;
-    const passwordLogIn = String(document.getElementById('passwordLogIn').value);
-    _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("E-mail", "==", emailLogIn).where("Password", "==", passwordLogIn).get().then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        isUser = true;
-        console.log('user is exist');
+if (logInButton) {
+  logInButton.addEventListener('click', () => {
+    let isOkay = (0,_modal__WEBPACK_IMPORTED_MODULE_2__.checkData)();
+
+    if (isOkay) {
+      const emailLogIn = document.getElementById('emailLogIn').value;
+      const passwordLogIn = String(document.getElementById('passwordLogIn').value);
+      _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("E-mail", "==", emailLogIn).where("Password", "==", passwordLogIn).get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+          isUser = true;
+          console.log('user is exist');
+        });
+
+        if (!isUser) {
+          (0,_signUp__WEBPACK_IMPORTED_MODULE_1__.setErrorFor)(document.getElementById('emailLogIn'), 'This user does not exist');
+          (0,_signUp__WEBPACK_IMPORTED_MODULE_1__.setErrorFor)(document.getElementById('passwordLogIn'), 'Check data');
+          return isUser;
+        }
+
+        document.getElementById('popup').style.display = 'none';
+      }).catch(function (error) {
+        console.log("Error getting documents: ", error);
       });
-
-      if (!isUser) {
-        (0,_signUp__WEBPACK_IMPORTED_MODULE_1__.setErrorFor)(document.getElementById('emailLogIn'), 'This user does not exist');
-        (0,_signUp__WEBPACK_IMPORTED_MODULE_1__.setErrorFor)(document.getElementById('passwordLogIn'), 'Check data');
-        return isUser;
-      }
-
-      document.getElementById('popup').style.display = 'none';
-    }).catch(function (error) {
-      console.log("Error getting documents: ", error);
-    });
-  }
-});
+    }
+  });
+}
 
 /***/ }),
 
@@ -51617,7 +51650,17 @@ logInButton.addEventListener('click', () => {
   \***********************/
 /***/ (() => {
 
-
+// let mapOptions = {
+//     center: [0, 0],
+//     zoom: 2
+// }
+// // Creating a map object
+// let map1 = new L.map('map', mapOptions);
+// console.log(map1);
+// // Creating a Layer object
+// let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+// // Adding layer to the map
+// map1.addLayer(layer);
 
 /***/ }),
 
@@ -51774,18 +51817,21 @@ function scrollTo(to, duration = 700) {
 
 document.addEventListener('DOMContentLoaded', function () {
   let btn = document.querySelector('#toTop');
-  window.addEventListener('scroll', function () {
-    if (pageYOffset > 100) {
-      btn.classList.add('show');
-    } else {
-      btn.classList.remove('show');
-    }
-  });
 
-  btn.onclick = function (click) {
-    click.preventDefault();
-    scrollTo(0, 400);
-  };
+  if (btn) {
+    window.addEventListener('scroll', function () {
+      if (pageYOffset > 100) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    });
+
+    btn.onclick = function (click) {
+      click.preventDefault();
+      scrollTo(0, 400);
+    };
+  }
 });
 
 /***/ }),
