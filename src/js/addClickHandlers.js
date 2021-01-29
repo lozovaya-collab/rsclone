@@ -147,8 +147,8 @@ export const showTypeRestaurants = () => {
 export let arrayData = []
 export let arrayNameRestaurants = []
     // arrayNameRestaurantsCity.forEach(element => {
-    //     arrayData.push(element)
-    // })
+    //         arrayData.push(element)
+    //     })
     // arrayData.forEach(nameRestaurant => {
     //     arrayNameRestaurants.push(nameRestaurant.name)
     // })
@@ -159,26 +159,23 @@ export const sortRestaurantsByCities = () => {
     let citiesCards = document.querySelectorAll('.address_restaurant')
 
     // console.log('kkkkkkkkkkkkkkkkkkkkk', arrayNameRestaurants)
-    arrayData = []
-    arrayNameRestaurants = []
-    arrayNameRestaurantsCity.forEach(element => {
-            arrayData.push(element)
-        })
-        // console.log('ooooooooooooooo', arrayData)
-    arrayData.forEach(nameRestaurant => {
-            arrayNameRestaurants.push(nameRestaurant.name)
-        })
-        // console.log('ooooooooooooooo', arrayNameRestaurants)
+    // arrayData = []
+    // arrayNameRestaurants = []
+    // arrayNameRestaurantsCity.forEach(element => {
+    //         arrayData.push(element)
+    //     })
+    // console.log('ooooooooooooooo', arrayData)
+    // arrayData.forEach(nameRestaurant => {
+    //     arrayNameRestaurants.push(nameRestaurant.name)
+    // })
+    // console.log('ooooooooooooooo', arrayNameRestaurants)
 
     if (selectionCity) {
         selectionCity.addEventListener('change', changeValueSelect)
     }
 
-
-
     function changeValueSelect() {
-        arrayData = []
-        arrayNameRestaurants = []
+
 
         let selectionCity = this.options[this.selectedIndex].text
             // console.log(selectionCity)
@@ -209,15 +206,15 @@ export const sortRestaurantsByCities = () => {
 
         for (let i = 0; i < cardsRestaurantsPage.length; i += 1) {
 
-            if (selectionCity === 'Cities of Canada' && count !== 16) {
+            if (selectionCity === 'Cities of Canada') {
                 document.querySelector('.all_position').classList.add('filter_active')
                 cardsRestaurantsPage[i].classList.remove('hidden');
-                count++
+
             } else if (citiesCards[i].innerText.includes(selectionCity)) {
                 removeSelectedFilter();
                 removeSelectedFilterRestaurant();
                 cardsRestaurantsPage[i].classList.remove('hidden');
-                count++
+
             } else {
                 removeSelectedFilter();
                 removeSelectedFilterRestaurant();
@@ -225,6 +222,8 @@ export const sortRestaurantsByCities = () => {
             }
         }
 
+        arrayData = []
+        arrayNameRestaurants = []
         for (let j = 0; j < arrayNameRestaurantsCity.length; j += 1) {
 
             if (arrayNameRestaurantsCity[j].city === 'Cities of Canada' || document.querySelector('#input-select').value === '') {
@@ -237,9 +236,9 @@ export const sortRestaurantsByCities = () => {
 
         }
 
-        arrayData.forEach(nameRestaurant => {
-            arrayNameRestaurants.push(nameRestaurant.name)
-        })
+        // arrayData.forEach(nameRestaurant => {
+        //     arrayNameRestaurants.push(nameRestaurant.name)
+        // })
 
         // console.log(arrayData)
         // console.log(arrayNameRestaurants)

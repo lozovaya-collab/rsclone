@@ -84,6 +84,11 @@ $maincolor_third: #fff;
     flex-wrap: wrap;
 }
 
+.cards_wrapper_restaurants {
+    // max-height: 1703px;
+    overflow: hidden;
+}
+
 .image_food {
     width: 100%;
     max-width: 260px;

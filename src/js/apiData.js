@@ -23,6 +23,7 @@
          restaurantsData.push({
              id: arrayRestaurants[i].id,
              name: arrayRestaurants[i].name,
+             url: arrayRestaurants[i].url,
              categories: arrayRestaurants[i].categories,
              image_url: arrayRestaurants[i].image_url,
              rating: arrayRestaurants[i].rating,
@@ -45,10 +46,10 @@
          //      restaurantsData[j].name,
          //  )
          arrayNameRestaurantsCity.push({
-                 name: arrayRestaurants[j].name,
-                 city: arrayRestaurants[j].location.city,
-                 coordinatesLatitude: arrayRestaurants[j].coordinates.latitude,
-                 coordinatesLongitude: arrayRestaurants[j].coordinates.longitude,
+                 name: restaurantsData[j].name,
+                 city: restaurantsData[j].city,
+                 coordinatesLatitude: restaurantsData[j].coordinatesLatitude,
+                 coordinatesLongitude: restaurantsData[j].coordinatesLongitude,
              })
              //  console.log(arrayNameRestaurants[j].name)
      }

@@ -35,9 +35,13 @@
             margin-top: 40px;
             justify-content: center;
             align-items: center;
-            height: 1040px;
-            overflow: hidden;
         }
+    }
+    
+    .cards_wrapper_city {
+        max-height: 1696px;
+        // max-height: 2817px;
+        overflow: hidden;
     }
     
     .best_offers .card_restaurant {

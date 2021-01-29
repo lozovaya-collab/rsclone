@@ -7,6 +7,9 @@ import './js/map'
 import './js/apiData'
 import './js/scrollUp'
 import './js/setBackground'
+import { getDataCard, renderPageRestaurant } from './js/getDataCard'
+import './js/getDataCard'
+
 
 import {
     addFilterPriceClickHandler,
@@ -17,6 +20,7 @@ import {
     arrayData,
     arrayNameRestaurants
 } from './js/addClickHandlers'
+
 import { CardsRestaurants } from './js/CardsRestaurants'
 import { restaurantsData } from './js/apiData'
 import { getRating } from './js/starsRating'
@@ -38,11 +42,15 @@ window.addEventListener('DOMContentLoaded', () => {
     showTypeRestaurants();
 
     //autocomplete
-
-
     Autocomplete('#input-select', arrayNameRestaurants);
     getRating();
     getBestRestaurants()
+
+    getDataCard()
+    if (document.querySelector('.main__restaurant_page')) {
+        renderPageRestaurant()
+    }
+
 
 });
 
@@ -58,10 +66,7 @@ const renderCardsRestaurants = () => {
     let cardsWrapperMainCity = getCardsWrapperMainCity()
     if (cardsWrapperMainCity) {
         generateCards(restaurantsData).forEach(card => {
-            // if (count !== 9) {
             cardsWrapperMainCity.append(card.generateCardsRestaurants())
-                // count++
-                // }
         })
     }
     let cardsWrapperMain = getCardsWrapperMain()
