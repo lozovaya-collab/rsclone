@@ -6,8 +6,8 @@ export const password2 = document.getElementById('password2')
 export const firstName = document.getElementById('name')
 export const lastName = document.getElementById('surname')
 export const birthday = document.getElementById('birthday')
-export const country = document.querySelector('.country')
-export const city = document.querySelector('.city')
+    //export const country = document.querySelector('.country')
+    //export const city = document.querySelector('.city')
 
 
 const locationButton = document.querySelector('.locationButton')
@@ -30,8 +30,8 @@ export function checkInputs() {
         const firstNameValue = firstName.value.trim()
         const lastNameValue = lastName.value.trim()
         const birthdayValue = birthday.value
-        const countryValue = country.innerHTML
-        const cityValue = city.innerHTML
+            //const countryValue = country.innerHTML
+            //const cityValue = city.innerHTML
         let isOk = true
         if (firstNameValue === '') {
             setErrorFor(firstName, 'First name cannot be blank')
@@ -64,7 +64,7 @@ export function checkInputs() {
             setSuccessFor(username)
         }
 
-        if (countryValue === 'Country' && cityValue === 'City') {
+        /*if (countryValue === 'Country' && cityValue === 'City') {
             const small = document.getElementById('location_error')
             const inputLoc = document.querySelectorAll('.location')
             inputLoc[0].style.border = '2px solid #ef7008'
@@ -79,7 +79,7 @@ export function checkInputs() {
             inputLoc[0].style.border = '2px solid #00a6a6'
             inputLoc[1].style.border = '2px solid #00a6a6'
             small.style.visibility = 'hidden'
-        }
+        }*/
 
         if (emailValue === '') {
             setErrorFor(email, 'Email cannot be blank')

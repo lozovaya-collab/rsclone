@@ -941,6 +941,28 @@ h2 {
         margin-top: 20px;
         margin-left: 50px;
         height: 75%; }
+        .profile__body_settings__body__change_password_button {
+          margin-top: 20px;
+          background-color: #fff;
+          border: 2px solid #00a6a6;
+          color: #00a6a6;
+          display: block;
+          font-family: Georgia, Times, Times New Roman, serif;
+          font-size: 20px;
+          width: 250px;
+          padding: 10px; }
+          .profile__body_settings__body__change_password_button:hover {
+            background-color: #00a6a6;
+            color: #fff;
+            cursor: pointer; }
+          .profile__body_settings__body__change_password_button:focus {
+            outline: none;
+            background-color: #07cccc;
+            border: 2px solid #07cccc;
+            color: #fff;
+            cursor: pointer; }
+          .profile__body_settings__body__change_password_button:active {
+            outline: none; }
         .profile__body_settings__body div {
           font-family: Georgia;
           font-style: normal;
@@ -950,6 +972,10 @@ h2 {
           cursor: pointer; }
           .profile__body_settings__body div:hover {
             color: #c2c2c2; }
+
+.password__change {
+  font-size: 20px;
+  font-weight: normal; }
 
 
 /*# sourceMappingURL=style.css.map*/

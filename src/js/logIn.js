@@ -6,6 +6,7 @@ import { checkUserIsAuth } from "./checkUser"
 let isUser = false
 
 export let myUser = {}
+export let myUserId = ''
 const logInButton = document.querySelector('.logIn')
 
 if (logInButton !== null) {
@@ -28,7 +29,7 @@ if (logInButton !== null) {
                             localStorage.setItem('user', JSON.stringify(myUser));
                         } else {
                             myUser = doc.data()
-
+                            myUserId = doc.id
                             localStorage.setItem('user', JSON.stringify(myUser));
                         }
                         isUser = true

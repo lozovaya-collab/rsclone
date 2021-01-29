@@ -51545,8 +51545,14 @@ const createUser = () => {
     const country = 'Canada';
     const city = 'Otawa';
     let rand = makeid();
+    let color = 'blue';
     const url = `../../dist/src/assets/images/user${rand}.png`;
     userID = makeid();
+
+    if (rand < '3') {
+      color = 'yellow';
+    }
+
     userID = userID + username;
     db.collection("users").add({
       UrlOfImage: url,
@@ -51557,7 +51563,8 @@ const createUser = () => {
       "E-mail": email,
       Password: password,
       Country: country,
-      City: city
+      City: city,
+      colorOfProfile: color
     }).then(function (docRef) {
       console.log("Document written with ID: ", docRef.id);
       window.location.href = '../../dist/index.html';
@@ -51584,7 +51591,8 @@ if (submit !== null) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "myUser": () => /* binding */ myUser
+/* harmony export */   "myUser": () => /* binding */ myUser,
+/* harmony export */   "myUserId": () => /* binding */ myUserId
 /* harmony export */ });
 /* harmony import */ var _dbFirebase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
 /* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
@@ -51596,6 +51604,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let isUser = false;
 let myUser = {};
+let myUserId = '';
 const logInButton = document.querySelector('.logIn');
 
 if (logInButton !== null) {
@@ -51617,6 +51626,7 @@ if (logInButton !== null) {
             localStorage.setItem('user', JSON.stringify(myUser));
           } else {
             myUser = doc.data();
+            myUserId = doc.id;
             localStorage.setItem('user', JSON.stringify(myUser));
           }
 
@@ -51856,6 +51866,10 @@ function checkData() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _logIn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logIn */ "./src/js/logIn.js");
+/* harmony import */ var _dbFirebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
+/* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
+
+
 
 console.log('My user:', JSON.parse(localStorage.getItem('user')));
 let obj = JSON.parse(localStorage.getItem('user'));
@@ -51865,6 +51879,7 @@ const dateUser = document.querySelector('.date');
 const usernameUser = document.querySelector('.profile__body_card_of_user__avatar_username');
 const avatar = document.querySelector('.avatar');
 const locationCanada = document.querySelector('.locationCanada');
+const colorOfProfile = obj.ColorOfProfile;
 
 if (nameUser !== null) {
   nameUser.innerHTML = obj.Firstname;
@@ -51875,42 +51890,146 @@ if (nameUser !== null) {
   locationCanada.innerHTML = `${obj.Country}, ${obj.City}`;
 }
 
+const settings = document.querySelector('.profile__body_settings__body');
 const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
+const changePassword = document.querySelector('.profile__body_settings__body__change_password');
 
 const changeColor = () => {
   const info = document.querySelector('.profile__body_card_of_user__information_user_prop');
   const optionChageData = document.querySelector('.profile__body_settings__options__change_data');
   const optionStatistics = document.querySelector('.profile__body_settings__options__statistics');
   const optionStatisticsHeadline = document.querySelector('.profile__body_settings__options__statistics_headline');
-  info.style.color = "#efca08";
-  optionChageData.style.background = "#efca08";
-  optionChageData.style.borderColor = "#efca08";
-  optionStatistics.style.borderColor = "#efca08";
-  optionStatisticsHeadline.style.color = "#efca08";
-  let url = obj.UrlOfImage.split('');
-  let index = url.indexOf('u') + 4;
+  console.log(obj);
 
-  if (Number(url[index]) === 1) {
-    url[index] = '4';
+  if (colorOfProfile === 'blue') {
+    info.style.color = "#efca08";
+    optionChageData.style.background = "#efca08";
+    optionChageData.style.borderColor = "#efca08";
+    optionStatistics.style.borderColor = "#efca08";
+    optionStatisticsHeadline.style.color = "#efca08";
+    let url = obj.UrlOfImage.split('');
+    let index = url.indexOf('u') + 4;
+
+    if (Number(url[index]) === 1) {
+      url[index] = '4';
+    }
+
+    if (Number(url[index]) === 4) {
+      url[index] = '1';
+    }
+    /*if (Number(url[index]) === 2) {
+        url[index] = '3'
+    }
+    if (Number(url[index]) === 3) {
+        url[index] = '2'
+    }
+    console.log(url);*/
+
+
+    avatar.src = url.join('');
+  }
+};
+
+const changePasswordUser = () => {
+  const oldPassword = document.getElementById('passwordOld');
+  const newPassword = document.getElementById('passwordNew');
+  const newPasswordRepeat = document.getElementById('passwordNew2');
+
+  if ('123456lanister' === oldPassword.value) {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setSuccessFor)(oldPassword);
+  } else if (obj.Password !== oldPassword.value && oldPassword.value !== '') {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(oldPassword, 'Wrong password');
+  } else {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(oldPassword, 'Password cannot be blank');
   }
 
-  if (Number(url[index]) === 4) {
-    url[index] = '1';
+  if (newPassword.value === '') {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(newPassword, 'Password cannot be blank');
+  } else if (newPassword.value.length < 6) {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(newPassword, 'Password is too short!');
+  } else {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setSuccessFor)(newPassword);
   }
 
-  if (Number(url[index]) === 2) {
-    url[index] = '3';
-  }
+  if (newPasswordRepeat.value === '') {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(newPasswordRepeat, 'Password cannot be blank');
+  } else if (newPassword.value !== newPasswordRepeat.value) {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(newPasswordRepeat, 'Passwords don\'t match');
+  } else {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setSuccessFor)(newPasswordRepeat);
+    console.log(oldPassword.value);
 
-  if (Number(url[index]) === 3) {
-    url[index] = '2';
+    if (obj.Password === oldPassword.value) {
+      let userNewPassword = _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").doc('VDbcyBHL9f7FVfa4WDIM');
+      obj.Password = newPasswordRepeat.value;
+      localStorage.setItem('user', JSON.stringify(obj));
+      return userNewPassword.update({
+        Password: newPasswordRepeat.value
+      }).then(function () {
+        location.reload();
+      }).catch(function (error) {
+        console.error("Error updating document: ", error);
+      });
+    }
   }
+};
 
-  console.log(url);
-  avatar.src = url.join('');
+const changePasswordLayouts = () => {
+  settings.innerHTML = `
+<div class="container__form_control">
+    <label class="password__change">Old password</label>
+    <input type="password" placeholder="old password" id="passwordOld" value=""></input>
+    <i class="fas fa-check-circle"></i>
+    <i class="fas fa-exclamation-circle"></i>
+    <small>Error message</small>
+</div>
+<div class="container__form_control">
+    <label class="password__change">New password</label>
+    <input type="password" placeholder="password" id="passwordNew" value=""></input>
+    <i class="fas fa-check-circle"></i>
+    <i class="fas fa-exclamation-circle"></i>
+    <small>Error message</small>
+</div>
+<div class="container__form_control">
+    <label class="password__change">New password check</label>
+    <input type="password" placeholder="password repeat" id="passwordNew2" value=""></input>
+    <i class="fas fa-check-circle"></i>
+    <i class="fas fa-exclamation-circle"></i>
+    <small>Error message</small>
+</div>
+<button type="submit" class="profile__body_settings__body__change_password_button">Submit</button>`;
+  settings.style.alignItems = 'center';
+  settings.style.marginTop = '0px';
+  document.querySelectorAll('.container__form_control')[0].style.marginBottom = '-15px';
+  document.querySelectorAll('.container__form_control')[1].style.marginBottom = '-15px';
+  document.querySelectorAll('.container__form_control')[2].style.marginBottom = '-15px';
+  document.querySelectorAll('.container__form_control label')[0].style.marginBottom = '0px';
+  document.querySelectorAll('.container__form_control label')[1].style.marginBottom = '0px';
+  document.querySelectorAll('.container__form_control label')[2].style.marginBottom = '0px';
+  document.querySelectorAll('.container__form_control small')[0].style.fontSize = '15px';
+  document.querySelectorAll('.container__form_control small')[1].style.fontSize = '15px';
+  document.querySelectorAll('.container__form_control small')[2].style.fontSize = '15px';
+  document.querySelectorAll('.container__form_control small')[0].style.marginTop = '-15px';
+  document.querySelectorAll('.container__form_control small')[1].style.marginTop = '-15px';
+  document.querySelectorAll('.container__form_control small')[2].style.marginTop = '-15px';
+  document.querySelectorAll('.fa-exclamation-circle')[0].style.top = '63px';
+  document.querySelectorAll('.fa-exclamation-circle')[1].style.top = '63px';
+  document.querySelectorAll('.fa-exclamation-circle')[2].style.top = '63px';
+  document.querySelectorAll('.fa-exclamation-circle')[0].style.fontSize = '23px';
+  document.querySelectorAll('.fa-exclamation-circle')[1].style.fontSize = '23px';
+  document.querySelectorAll('.fa-exclamation-circle')[2].style.fontSize = '23px';
+  document.querySelectorAll('.fa-check-circle')[0].style.top = '63px';
+  document.querySelectorAll('.fa-check-circle')[1].style.top = '63px';
+  document.querySelectorAll('.fa-check-circle')[2].style.top = '63px';
+  document.querySelectorAll('.fa-check-circle')[0].style.fontSize = '23px';
+  document.querySelectorAll('.fa-check-circle')[1].style.fontSize = '23px';
+  document.querySelectorAll('.fa-check-circle')[2].style.fontSize = '23px';
+  const changePasswordButton = document.querySelector('.profile__body_settings__body__change_password_button');
+  changePasswordButton.addEventListener('click', changePasswordUser);
 };
 
 changeColorOfProfile.addEventListener('click', changeColor);
+changePassword.addEventListener('click', changePasswordLayouts);
 
 /***/ }),
 
@@ -52021,8 +52140,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "firstName": () => /* binding */ firstName,
 /* harmony export */   "lastName": () => /* binding */ lastName,
 /* harmony export */   "birthday": () => /* binding */ birthday,
-/* harmony export */   "country": () => /* binding */ country,
-/* harmony export */   "city": () => /* binding */ city,
 /* harmony export */   "checkInputs": () => /* binding */ checkInputs,
 /* harmony export */   "setErrorFor": () => /* binding */ setErrorFor,
 /* harmony export */   "setSuccessFor": () => /* binding */ setSuccessFor,
@@ -52035,9 +52152,9 @@ const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const firstName = document.getElementById('name');
 const lastName = document.getElementById('surname');
-const birthday = document.getElementById('birthday');
-const country = document.querySelector('.country');
-const city = document.querySelector('.city');
+const birthday = document.getElementById('birthday'); //export const country = document.querySelector('.country')
+//export const city = document.querySelector('.city')
+
 const locationButton = document.querySelector('.locationButton');
 
 if (form !== null) {
@@ -52055,9 +52172,9 @@ function checkInputs() {
     const password2Value = password2.value.trim();
     const firstNameValue = firstName.value.trim();
     const lastNameValue = lastName.value.trim();
-    const birthdayValue = birthday.value;
-    const countryValue = country.innerHTML;
-    const cityValue = city.innerHTML;
+    const birthdayValue = birthday.value; //const countryValue = country.innerHTML
+    //const cityValue = city.innerHTML
+
     let isOk = true;
 
     if (firstNameValue === '') {
@@ -52090,23 +52207,23 @@ function checkInputs() {
     } else {
       setSuccessFor(username);
     }
-
-    if (countryValue === 'Country' && cityValue === 'City') {
-      const small = document.getElementById('location_error');
-      const inputLoc = document.querySelectorAll('.location');
-      inputLoc[0].style.border = '2px solid #ef7008';
-      inputLoc[1].style.border = '2px solid #ef7008';
-      small.style.visibility = 'visible';
-      small.style.color = '#ef7008';
-      small.innerText = 'Please, share your location';
-      isOk = false;
+    /*if (countryValue === 'Country' && cityValue === 'City') {
+        const small = document.getElementById('location_error')
+        const inputLoc = document.querySelectorAll('.location')
+        inputLoc[0].style.border = '2px solid #ef7008'
+        inputLoc[1].style.border = '2px solid #ef7008'
+        small.style.visibility = 'visible'
+        small.style.color = '#ef7008'
+        small.innerText = 'Please, share your location'
+        isOk = false
     } else {
-      const small = document.getElementById('location_error');
-      const inputLoc = document.querySelectorAll('.location');
-      inputLoc[0].style.border = '2px solid #00a6a6';
-      inputLoc[1].style.border = '2px solid #00a6a6';
-      small.style.visibility = 'hidden';
-    }
+        const small = document.getElementById('location_error')
+        const inputLoc = document.querySelectorAll('.location')
+        inputLoc[0].style.border = '2px solid #00a6a6'
+        inputLoc[1].style.border = '2px solid #00a6a6'
+        small.style.visibility = 'hidden'
+    }*/
+
 
     if (emailValue === '') {
       setErrorFor(email, 'Email cannot be blank');

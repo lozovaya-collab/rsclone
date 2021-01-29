@@ -45,8 +45,12 @@ const createUser = () => {
         const country = 'Canada'
         const city = 'Otawa'
         let rand = makeid()
+        let color = 'blue'
         const url = `../../dist/src/assets/images/user${rand}.png`
         userID = makeid()
+        if (rand < '3') {
+            color = 'yellow'
+        }
         userID = userID + username
         db.collection("users").add({
                 UrlOfImage: url,
@@ -57,7 +61,8 @@ const createUser = () => {
                 "E-mail": email,
                 Password: password,
                 Country: country,
-                City: city
+                City: city,
+                colorOfProfile: color
             })
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);

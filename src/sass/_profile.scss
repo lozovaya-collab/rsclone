@@ -117,6 +117,32 @@
                 margin-top: 20px;
                 margin-left: 50px;
                 height: 75%;
+                &__change_password_button {
+                    margin-top: 20px;
+                    background-color: $maincolor_third;
+                    border: 2px solid $maincolor_first;
+                    color: $maincolor_first;
+                    display: block;
+                    font-family: Georgia, Times, Times New Roman, serif;
+                    font-size: 20px;
+                    width: 250px;
+                    padding: 10px;
+                    &:hover {
+                        background-color: $maincolor_first;
+                        color: $maincolor_third;
+                        cursor: pointer;
+                    }
+                    &:focus {
+                        outline: none;
+                        background-color: $aqua_light;
+                        border: 2px solid $aqua_light;
+                        color: $maincolor_third;
+                        cursor: pointer;
+                    }
+                    &:active {
+                        outline: none;
+                    }
+                }
                 & div {
                     font-family: Georgia;
                     font-style: normal;
@@ -131,4 +157,9 @@
             }
         }
     }
+}
+
+.password__change {
+    font-size: 20px;
+    font-weight: normal;
 }
