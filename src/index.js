@@ -7,52 +7,61 @@ import './js/map'
 import './js/apiData'
 import './js/scrollUp'
 import './js/setBackground'
-import { addFilterPriceClickHandler, addFilterRestaurantsClickHandler, getBestRestaurants, showTypeRestaurants, sortRestaurantsByCities } from './js/addClickHandlers'
+import { getDataCard, renderPageRestaurant } from './js/getDataCard'
+import './js/getDataCard'
+import {
+    addFilterPriceClickHandler,
+    addFilterRestaurantsClickHandler,
+    getBestRestaurants,
+    showTypeRestaurants,
+    sortRestaurantsByCities,
+    arrayNameRestaurants
+} from './js/addClickHandlers'
 import { CardsRestaurants } from './js/CardsRestaurants'
-import { arrayNameRestaurants, restaurantsData } from './js/apiData'
+import { restaurantsData } from './js/apiData'
 import { getRating } from './js/starsRating'
 
+
 console.log(localStorage.getItem('Auth'));
+// export let arrayNameRestaurants = []
 
-window.addEventListener('DOMContentLoaded', () => {
 
+window.onload = function() {
     // render Cards of Restaurants
     if (restaurantsData) {
         renderCardsRestaurants()
     }
+    //autocomplete
+    Autocomplete('#input-select', arrayNameRestaurants);
 
     //click sorting 
     addFilterPriceClickHandler();
     addFilterRestaurantsClickHandler();
     sortRestaurantsByCities()
     showTypeRestaurants();
-    //autocomplete
-    Autocomplete('#input-select', arrayNameRestaurants);
 
-
-    getRating();
     getBestRestaurants()
 
+    getDataCard()
+    if (document.querySelector('.main__restaurant_page')) {
+        renderPageRestaurant()
+    }
 
-
-
-
-});
+    getRating();
+};
 
 const renderCardsRestaurants = () => {
-    let cardsWrapperRestaurants = getCardsWrapperRestaurant()
+    let cardsWrapperRestaurants = getCardsWrapperRestaurant();
     if (cardsWrapperRestaurants) {
         generateCards(restaurantsData).forEach(card => {
             cardsWrapperRestaurants.append(card.generateCardsRestaurants())
         })
     }
 
-
     let cardsWrapperMainCity = getCardsWrapperMainCity()
     if (cardsWrapperMainCity) {
         generateCards(restaurantsData).forEach(card => {
             cardsWrapperMainCity.append(card.generateCardsRestaurants())
-
         })
     }
     let cardsWrapperMain = getCardsWrapperMain()
@@ -61,8 +70,6 @@ const renderCardsRestaurants = () => {
             cardsWrapperMain.append(card.generateCardsRestaurants())
         })
     }
-
-
 }
 const getCardsWrapperRestaurant = () => {
     const cardsContainer = document.querySelector('.cards_wrapper_restaurants');
@@ -91,6 +98,5 @@ const generateCards = (restaurantsData) => {
     restaurantsData.forEach(card => {
         cardsRestaurants.push(new CardsRestaurants(card))
     });
-    // console.log(cardsRestaurants)
     return cardsRestaurants;
 }

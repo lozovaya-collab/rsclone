@@ -15,14 +15,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="../style.css">
-    <title>YelpClone</title>
-=======
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <title>YelpClone</title>
 
     <link rel="stylesheet" href="./../../dist/style.css">
->>>>>>> 85311cb4d09976389c38dbc76617723db997e6dd
+
 </head>
 
 <body>
@@ -35,10 +33,10 @@
                 <a href="./signUp.html"><button class="button_header sign-up"> Sign Up </button></a>
             </div>
             <div class="header-wrapper">
-                <a class="logo" href="../index.html"> YelpClone <i class="fab fa-yelp"></i></a>
+                <a class="logo" href="./../../index.html"> YelpClone <i class="fab fa-yelp"></i></a>
                 <div class="searching">
                     <input type="text" id="input-select" class="input_searching searching_restaurant" placeholder="Restaurant" autocomplete="off">
-                    <!-- <input class="input_searching searching_city" type="text" placeholder="City"> -->
+
                     <select name="city" id="" class="input_searching searching_city">                            
                         <option value="Cities of Canada"  class="selection-allCities" >Cities of Canada</option>
                         <option value="Ottawa">Ottawa</option>
@@ -49,7 +47,7 @@
                         <option value="Mississauga">Mississauga</option>
                         <option value="Winnipeg">Winnipeg</option>
                         <option value="Vancouver">Vancouver</option>
-                        <option value="Quebec">Quebec</option>
+                        <option value="Quebec">Quebec City</option>
                         <option value="Hamilton">Brampton</option>                            
                     </select>
                     <i class="fas fa-search"></i>
@@ -80,13 +78,13 @@
             <div class="main_wrapper">
 
                 <section class="restaurants_wrapper">
-                    <h1 class="title">The Best 10 Restaurants </h1>
+                    <h1 class="title">The Best <span class="restaurant_inCity"></span> Restaurants </h1>
                     <div class="delivery_method">
                         <div class="delivery"></div>
                         <div class="takeout"></div>
                     </div>
                     <div class="filter">
-                        <div class="filter_box all_position filter_active">All</div>
+                        <div class="filter_box all_position filter_active">Reset all filters</div>
                         <div class="filter_box delivery">$</div>
                         <div class="filter_box takeout">$$</div>
                         <div class="filter_box takeout">$$$</div>
@@ -111,60 +109,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="#">
-                            <div class="card card_restaurant">
-                                <div class="food">
-                                    <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
-                                </div>
-                                <div class="about_restaurant">
-                                    <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
-                                    <span class="priceRestaurant">$$</span>
 
-                                    <div class="service_restaurant">
-                                        <span>Mexican</span><span>Vietnamese</span>
-                                    </div>
-                                    <div class="phon_restaurant">+13615728538</div>
-                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="card card_restaurant">
-                                <div class="food">
-                                    <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
-                                </div>
-                                <div class="about_restaurant">
-                                    <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
-                                    <span class="priceRestaurant">$$$</span>
-
-                                    <div class="service_restaurant">
-                                        <span>Gastropubs</span><span>Italian</span>
-                                    </div>
-                                    <div class="phon_restaurant">+13615728538</div>
-                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="card card_restaurant">
-                                <div class="food">
-                                    <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
-                                </div>
-                                <div class="about_restaurant">
-                                    <h2 class="title_card">Hotbird</h2>
-                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
-                                    <span class="priceRestaurant">$$$$</span>
-
-                                    <div class="service_restaurant">
-                                        <span>Seafood</span><span>Japanese</span>
-                                    </div>
-                                    <div class="phon_restaurant">+13615728538</div>
-                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
-                                </div>
-                            </div>
-                        </a>
                     </div>
                 </section>
                 <section class="map-wrapper">
@@ -198,14 +143,13 @@
         </div>
 
     </footer>
-<<<<<<< HEAD
-    <script src="../script.js"></script>
-=======
+    <script src="../script.js">
+    </script>
+
 
     <script src="./../../dist/script.js"></script>
 
 
->>>>>>> 85311cb4d09976389c38dbc76617723db997e6dd
 </body>
 
 </html>
