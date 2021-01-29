@@ -8,6 +8,7 @@ export const logOutUser = (value) => {
         value = false
         console.log(location.href);
         localStorage.setItem('Auth', value)
+        localStorage.setItem('user', '')
         console.log(localStorage.getItem(('Auth')));
 
         const butSignUp = document.querySelector('.sign-up')

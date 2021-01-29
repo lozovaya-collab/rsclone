@@ -23,13 +23,10 @@ if (localStorage.getItem('Auth') === null) {
 }
 
 const makeid = () => {
-    let text = "";
-    let possible = "1234";
-
-    for (let i = 0; i < 1; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
+    let min = 1
+    let max = 4
+    let rand = min + Math.random() * (max + 1 - min);
+    return Math.floor(rand);
 }
 const submit = document.querySelector('.container__form_button')
 let userID

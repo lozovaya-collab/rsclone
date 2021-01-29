@@ -21,17 +21,15 @@ if (logInButton !== null) {
                 .get()
                 .then(function(querySnapshot) {
                     querySnapshot.forEach(function(doc) {
-                        // doc.data() is never undefined for query doc snapshots
                         console.log(doc.id, " => ", doc.data());
 
-                        if (localStorage.getItem('user') === null) {
-                            myUser = doc.data()
-                            localStorage.setItem('user', JSON.stringify(myUser));
-                        } else {
-                            myUser = doc.data()
-                            myUserId = doc.id
-                            localStorage.setItem('user', JSON.stringify(myUser));
+                        myUser = myUser = {
+                            ID: doc.id,
+                            Username: doc.data().Username,
+                            City: doc.data().City
                         }
+                        localStorage.setItem('user', JSON.stringify(myUser));
+
                         isUser = true
                         localStorage.setItem('Auth', true);
                         checkUserIsAuth(localStorage.getItem('Auth'))

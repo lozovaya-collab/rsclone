@@ -70,20 +70,6 @@
                     justify-content: center;
                     width: 328px;
                     height: 81px;
-                    border: 1px solid $maincolor_first;
-                    background-color: $maincolor_first;
-                    opacity: 0.5;
-                    cursor: pointer;
-                    &:hover {
-                        opacity: 0.4;
-                    }
-                    & h2 {
-                        color: $maincolor_third;
-                        font-size: 30px;
-                        line-height: 34px;
-                        font-style: normal;
-                        font-weight: normal;
-                    }
                 }
                 &__statistics {
                     box-sizing: border-box;
@@ -92,22 +78,6 @@
                     justify-content: center;
                     width: 328px;
                     height: 81px;
-                    border: 1px solid $maincolor_first;
-                    cursor: pointer;
-                    &:hover {
-                        background-color: $maincolor_first;
-                        opacity: 0.5;
-                        & h2 {
-                            color: $maincolor_third;
-                        }
-                    }
-                    & h2 {
-                        color: $maincolor_first;
-                        font-size: 30px;
-                        line-height: 34px;
-                        font-style: normal;
-                        font-weight: normal;
-                    }
                 }
             }
             &__body {
@@ -162,4 +132,80 @@
 .password__change {
     font-size: 20px;
     font-weight: normal;
+}
+
+.blue__mood {
+    border: 1px solid $maincolor_first;
+    background-color: $maincolor_first;
+    opacity: 0.5;
+    cursor: pointer;
+    &:hover {
+        opacity: 0.4;
+    }
+    & h2 {
+        color: $maincolor_third;
+        font-size: 30px;
+        line-height: 34px;
+        font-style: normal;
+        font-weight: normal;
+    }
+    &_prop {
+        color: $maincolor_first;
+    }
+    &_disabled {
+        border: 1px solid $maincolor_first;
+        cursor: pointer;
+        &:hover {
+            background-color: $maincolor_first;
+            opacity: 0.5;
+            & h2 {
+                color: $maincolor_third;
+            }
+        }
+        & h2 {
+            color: $maincolor_first;
+            font-size: 30px;
+            line-height: 34px;
+            font-style: normal;
+            font-weight: normal;
+        }
+    }
+}
+
+.yellow__mood {
+    border: 1px solid $maincolor_second;
+    background-color: $maincolor_second;
+    opacity: 0.5;
+    cursor: pointer;
+    &:hover {
+        opacity: 0.4;
+    }
+    & h2 {
+        color: $maincolor_third;
+        font-size: 30px;
+        line-height: 34px;
+        font-style: normal;
+        font-weight: normal;
+    }
+    &_prop {
+        color: $maincolor_second;
+    }
+    &_disabled {
+        border: 1px solid $maincolor_second;
+        cursor: pointer;
+        &:hover {
+            background-color: $maincolor_second;
+            opacity: 0.5;
+            & h2 {
+                color: $maincolor_third;
+            }
+        }
+        & h2 {
+            color: $maincolor_second;
+            font-size: 30px;
+            line-height: 34px;
+            font-style: normal;
+            font-weight: normal;
+        }
+    }
 }

@@ -51521,12 +51521,10 @@ if (localStorage.getItem('Auth') === null) {
 }
 
 const makeid = () => {
-  let text = "";
-  let possible = "1234";
-
-  for (let i = 0; i < 1; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  return text;
+  let min = 1;
+  let max = 4;
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
 };
 
 const submit = document.querySelector('.container__form_button');
@@ -51618,18 +51616,13 @@ if (logInButton !== null) {
       const passwordLogIn = String(document.getElementById('passwordLogIn').value);
       _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("E-mail", "==", emailLogIn).where("Password", "==", passwordLogIn).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-          // doc.data() is never undefined for query doc snapshots
           console.log(doc.id, " => ", doc.data());
-
-          if (localStorage.getItem('user') === null) {
-            myUser = doc.data();
-            localStorage.setItem('user', JSON.stringify(myUser));
-          } else {
-            myUser = doc.data();
-            myUserId = doc.id;
-            localStorage.setItem('user', JSON.stringify(myUser));
-          }
-
+          myUser = myUser = {
+            ID: doc.id,
+            Username: doc.data().Username,
+            City: doc.data().City
+          };
+          localStorage.setItem('user', JSON.stringify(myUser));
           isUser = true;
           localStorage.setItem('Auth', true);
           (0,_checkUser__WEBPACK_IMPORTED_MODULE_3__.checkUserIsAuth)(localStorage.getItem('Auth'));
@@ -51671,6 +51664,7 @@ const logOutUser = value => {
     value = false;
     console.log(location.href);
     localStorage.setItem('Auth', value);
+    localStorage.setItem('user', '');
     console.log(localStorage.getItem('Auth'));
     const butSignUp = document.querySelector('.sign-up');
     butSignUp.innerHTML = 'Sign Up';
@@ -51871,43 +51865,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-console.log('My user:', JSON.parse(localStorage.getItem('user')));
-let obj = JSON.parse(localStorage.getItem('user'));
+let objLocal = JSON.parse(localStorage.getItem('user'));
+let userInfo = {};
 const nameUser = document.querySelector('.first_name');
 const surnameUser = document.querySelector('.last_name');
 const dateUser = document.querySelector('.date');
 const usernameUser = document.querySelector('.profile__body_card_of_user__avatar_username');
 const avatar = document.querySelector('.avatar');
 const locationCanada = document.querySelector('.locationCanada');
-const colorOfProfile = obj.ColorOfProfile;
-
-if (nameUser !== null) {
-  nameUser.innerHTML = obj.Firstname;
-  surnameUser.innerHTML = obj.LastName;
-  dateUser.innerHTML = obj.Birthday;
-  usernameUser.innerHTML = obj.Username;
-  avatar.src = obj.UrlOfImage;
-  locationCanada.innerHTML = `${obj.Country}, ${obj.City}`;
-}
-
 const settings = document.querySelector('.profile__body_settings__body');
 const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
 const changePassword = document.querySelector('.profile__body_settings__body__change_password');
+let colorOfProfile;
+
+const setYellowMood = () => {
+  if (colorOfProfile === 'yellow') {
+    const profile_change_data = document.querySelector('.profile__body_settings__options__change_data');
+    const profile_statistics = document.querySelector('.profile__body_settings__options__statistics');
+    const profile_prop = document.querySelector('.profile__body_card_of_user__information_user_prop');
+    console.log(profile_change_data);
+    profile_change_data.classList.remove('blue_mood');
+    profile_statistics.classList.remove('blue_mood_disabled');
+    profile_prop.classList.remove('blue_mood_prop');
+    profile_change_data.className += ' yellow__mood';
+    profile_statistics.className += ' yellow__mood_disabled';
+    profile_prop.className += ' yellow__mood_prop';
+  }
+};
 
 const changeColor = () => {
-  const info = document.querySelector('.profile__body_card_of_user__information_user_prop');
-  const optionChageData = document.querySelector('.profile__body_settings__options__change_data');
-  const optionStatistics = document.querySelector('.profile__body_settings__options__statistics');
-  const optionStatisticsHeadline = document.querySelector('.profile__body_settings__options__statistics_headline');
-  console.log(obj);
-
   if (colorOfProfile === 'blue') {
-    info.style.color = "#efca08";
-    optionChageData.style.background = "#efca08";
-    optionChageData.style.borderColor = "#efca08";
-    optionStatistics.style.borderColor = "#efca08";
-    optionStatisticsHeadline.style.color = "#efca08";
-    let url = obj.UrlOfImage.split('');
+    //setYellowMood()
+    let url = userInfo.UrlOfImage.split('');
     let index = url.indexOf('u') + 4;
 
     if (Number(url[index]) === 1) {
@@ -51927,6 +51916,15 @@ const changeColor = () => {
 
 
     avatar.src = url.join('');
+    let userNewColor = _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").doc(objLocal.ID);
+    return userNewColor.update({
+      ColorOfProfile: 'yellow',
+      UrlOfImage: avatar.src
+    }).then(function () {
+      location.reload();
+    }).catch(function (error) {
+      console.error("Error updating document: ", error);
+    });
   }
 };
 
@@ -51935,12 +51933,12 @@ const changePasswordUser = () => {
   const newPassword = document.getElementById('passwordNew');
   const newPasswordRepeat = document.getElementById('passwordNew2');
 
-  if ('123456lanister' === oldPassword.value) {
+  if (userInfo.Password === oldPassword.value) {
     (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setSuccessFor)(oldPassword);
-  } else if (obj.Password !== oldPassword.value && oldPassword.value !== '') {
-    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(oldPassword, 'Wrong password');
-  } else {
+  } else if (oldPassword.value !== '') {
     (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(oldPassword, 'Password cannot be blank');
+  } else if (userInfo.Password !== oldPassword.value && oldPassword.value !== '') {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(oldPassword, 'Wrong password');
   }
 
   if (newPassword.value === '') {
@@ -51959,10 +51957,9 @@ const changePasswordUser = () => {
     (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setSuccessFor)(newPasswordRepeat);
     console.log(oldPassword.value);
 
-    if (obj.Password === oldPassword.value) {
-      let userNewPassword = _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").doc('VDbcyBHL9f7FVfa4WDIM');
-      obj.Password = newPasswordRepeat.value;
-      localStorage.setItem('user', JSON.stringify(obj));
+    if (userInfo.Password === oldPassword.value) {
+      let userNewPassword = _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").doc(objLocal.ID);
+      userInfo.Password = newPasswordRepeat.value;
       return userNewPassword.update({
         Password: newPasswordRepeat.value
       }).then(function () {
@@ -52028,8 +52025,24 @@ const changePasswordLayouts = () => {
   changePasswordButton.addEventListener('click', changePasswordUser);
 };
 
-changeColorOfProfile.addEventListener('click', changeColor);
-changePassword.addEventListener('click', changePasswordLayouts);
+_dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
+  querySnapshot.forEach(function (doc) {
+    console.log(doc.id, " => ", doc.data());
+    userInfo = doc.data();
+    nameUser.innerHTML = userInfo.Firstname;
+    surnameUser.innerHTML = userInfo.LastName;
+    dateUser.innerHTML = userInfo.Birthday;
+    usernameUser.innerHTML = userInfo.Username;
+    avatar.src = userInfo.UrlOfImage;
+    locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`;
+    colorOfProfile = userInfo.ColorOfProfile;
+    changeColorOfProfile.addEventListener('click', changeColor);
+    changePassword.addEventListener('click', changePasswordLayouts);
+    setYellowMood();
+  });
+}).catch(function (error) {
+  console.log("Error getting documents: ", error);
+});
 
 /***/ }),
 

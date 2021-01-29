@@ -901,39 +901,14 @@ h2 {
           align-items: center;
           justify-content: center;
           width: 328px;
-          height: 81px;
-          border: 1px solid #00a6a6;
-          background-color: #00a6a6;
-          opacity: 0.5;
-          cursor: pointer; }
-          .profile__body_settings__options__change_data:hover {
-            opacity: 0.4; }
-          .profile__body_settings__options__change_data h2 {
-            color: #fff;
-            font-size: 30px;
-            line-height: 34px;
-            font-style: normal;
-            font-weight: normal; }
+          height: 81px; }
         .profile__body_settings__options__statistics {
           box-sizing: border-box;
           display: flex;
           align-items: center;
           justify-content: center;
           width: 328px;
-          height: 81px;
-          border: 1px solid #00a6a6;
-          cursor: pointer; }
-          .profile__body_settings__options__statistics:hover {
-            background-color: #00a6a6;
-            opacity: 0.5; }
-            .profile__body_settings__options__statistics:hover h2 {
-              color: #fff; }
-          .profile__body_settings__options__statistics h2 {
-            color: #00a6a6;
-            font-size: 30px;
-            line-height: 34px;
-            font-style: normal;
-            font-weight: normal; }
+          height: 81px; }
       .profile__body_settings__body {
         display: flex;
         justify-content: space-around;
@@ -976,6 +951,66 @@ h2 {
 .password__change {
   font-size: 20px;
   font-weight: normal; }
+
+.blue__mood {
+  border: 1px solid #00a6a6;
+  background-color: #00a6a6;
+  opacity: 0.5;
+  cursor: pointer; }
+  .blue__mood:hover {
+    opacity: 0.4; }
+  .blue__mood h2 {
+    color: #fff;
+    font-size: 30px;
+    line-height: 34px;
+    font-style: normal;
+    font-weight: normal; }
+  .blue__mood_prop {
+    color: #00a6a6; }
+  .blue__mood_disabled {
+    border: 1px solid #00a6a6;
+    cursor: pointer; }
+    .blue__mood_disabled:hover {
+      background-color: #00a6a6;
+      opacity: 0.5; }
+      .blue__mood_disabled:hover h2 {
+        color: #fff; }
+    .blue__mood_disabled h2 {
+      color: #00a6a6;
+      font-size: 30px;
+      line-height: 34px;
+      font-style: normal;
+      font-weight: normal; }
+
+.yellow__mood {
+  border: 1px solid #efca08;
+  background-color: #efca08;
+  opacity: 0.5;
+  cursor: pointer; }
+  .yellow__mood:hover {
+    opacity: 0.4; }
+  .yellow__mood h2 {
+    color: #fff;
+    font-size: 30px;
+    line-height: 34px;
+    font-style: normal;
+    font-weight: normal; }
+  .yellow__mood_prop {
+    color: #efca08; }
+  .yellow__mood_disabled {
+    border: 1px solid #efca08;
+    cursor: pointer; }
+    .yellow__mood_disabled:hover {
+      background-color: #efca08;
+      opacity: 0.5; }
+      .yellow__mood_disabled:hover h2 {
+        color: #fff; }
+    .yellow__mood_disabled h2 {
+      color: #efca08;
+      font-size: 30px;
+      line-height: 34px;
+      font-style: normal;
+      font-weight: normal; }
 
 
 /*# sourceMappingURL=style.css.map*/
