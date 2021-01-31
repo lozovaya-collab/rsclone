@@ -167,9 +167,10 @@ $maincolor_third: #fff;
 #map {
     position: fixed;
     top: 0;
+    right: 0;
     max-width: 400px;
     width: 100%;
-    // height: 100%;
+    height: 70vh;
 }
 
 //scrollUp
@@ -203,18 +204,6 @@ $maincolor_third: #fff;
     background: $maincolor_second;
 }
 
-// #toTop svg {
-//     position: relative;
-//     top: 12px;
-//     right: -1px;
-//     fill: #fff;
-//     transition: all .3s ease-in-out;
-// }
-// #toTop:hover svg {
-//     cursor: pointer;
-//     fill: #fff;
-//     transition: all .3s ease-in-out;
-// }
 #toTop.show {
     opacity: 1;
     visibility: visible;

@@ -50797,13 +50797,13 @@ var esm = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
-/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
-/* harmony import */ var _js_dbFirebase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/dbFirebase */ "./src/js/dbFirebase.js");
-/* harmony import */ var _js_logIn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/logIn */ "./src/js/logIn.js");
-/* harmony import */ var _js_Autocomplete__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/Autocomplete */ "./src/js/Autocomplete.js");
-/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/map */ "./src/js/map.js");
-/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_js_map__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/map */ "./src/js/map.js");
+/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_map__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
+/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
+/* harmony import */ var _js_dbFirebase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/dbFirebase */ "./src/js/dbFirebase.js");
+/* harmony import */ var _js_logIn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/logIn */ "./src/js/logIn.js");
+/* harmony import */ var _js_Autocomplete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/Autocomplete */ "./src/js/Autocomplete.js");
 /* harmony import */ var _js_apiData__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/apiData */ "./src/js/apiData.js");
 /* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/scrollUp */ "./src/js/scrollUp.js");
 /* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_js_scrollUp__WEBPACK_IMPORTED_MODULE_7__);
@@ -50837,7 +50837,7 @@ window.onload = function () {
   } //autocomplete
 
 
-  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_4__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__.arrayNameRestaurants); //click sorting 
+  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_5__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__.arrayNameRestaurants); //click sorting 
 
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__.addFilterPriceClickHandler)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__.addFilterRestaurantsClickHandler)();
@@ -51874,17 +51874,14 @@ if (logInButton) {
   \***********************/
 /***/ (() => {
 
-// let mapOptions = {
-//     center: [0, 0],
-//     zoom: 2
-// }
-// // Creating a map object
-// let map1 = new L.map('map', mapOptions);
-// console.log(map1);
-// // Creating a Layer object
-// let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-// // Adding layer to the map
-// map1.addLayer(layer);
+// var map = new L.map('map').setView([51.505, -0.09], 13);
+// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+//     maxZoom: 18,
+//     attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+//         '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+//         'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+//     id: 'mapbox.streets'
+// }).addTo(map);
 
 /***/ }),
 
