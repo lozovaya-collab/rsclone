@@ -51876,56 +51876,66 @@ const locationCanada = document.querySelector('.locationCanada');
 const settings = document.querySelector('.profile__body_settings__body');
 const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
 const changePassword = document.querySelector('.profile__body_settings__body__change_password');
+const changeInformation = document.querySelector('.profile__body_settings__body__change_information');
 let colorOfProfile;
 
-const setYellowMood = () => {
+const setColorMood = () => {
+  const profile_change_data = document.querySelector('.profile__body_settings__options__change_data');
+  const profile_statistics = document.querySelector('.profile__body_settings__options__statistics');
+  const profile_prop = document.querySelector('.profile__body_card_of_user__information_user_prop');
+
   if (colorOfProfile === 'yellow') {
-    const profile_change_data = document.querySelector('.profile__body_settings__options__change_data');
-    const profile_statistics = document.querySelector('.profile__body_settings__options__statistics');
-    const profile_prop = document.querySelector('.profile__body_card_of_user__information_user_prop');
-    console.log(profile_change_data);
-    profile_change_data.classList.remove('blue_mood');
-    profile_statistics.classList.remove('blue_mood_disabled');
-    profile_prop.classList.remove('blue_mood_prop');
-    profile_change_data.className += ' yellow__mood';
-    profile_statistics.className += ' yellow__mood_disabled';
-    profile_prop.className += ' yellow__mood_prop';
+    profile_change_data.className = 'profile__body_settings__options__change_data yellow__mood';
+    profile_statistics.className = 'profile__body_settings__options__statistics yellow__mood_disabled';
+    profile_prop.className = 'profile__body_card_of_user__information_user_prop yellow__mood_prop';
+  } else if (colorOfProfile === 'blue') {
+    profile_change_data.className = 'profile__body_settings__options__change_data blue__mood';
+    profile_statistics.className = 'profile__body_settings__options__statistics blue__mood_disabled';
+    profile_prop.className = 'profile__body_card_of_user__information_user_prop blue__mood_prop';
   }
 };
 
 const changeColor = () => {
+  let url = userInfo.UrlOfImage.split('');
+  let index = url.indexOf('u') + 4;
+  let rand;
+  console.log(url[index]);
+
   if (colorOfProfile === 'blue') {
-    //setYellowMood()
-    let url = userInfo.UrlOfImage.split('');
-    let index = url.indexOf('u') + 4;
-
-    if (Number(url[index]) === 1) {
-      url[index] = '4';
+    if (url[index] == 2) {
+      rand = '3';
     }
 
-    if (Number(url[index]) === 4) {
-      url[index] = '1';
+    if (url[index] == 4) {
+      rand = '1';
     }
-    /*if (Number(url[index]) === 2) {
-        url[index] = '3'
-    }
-    if (Number(url[index]) === 3) {
-        url[index] = '2'
-    }
-    console.log(url);*/
 
+    colorOfProfile = 'yellow';
+  } else if (colorOfProfile === 'yellow') {
+    if (url[index] == 1) {
+      console.log(url[index]);
+      rand = '4';
+    }
 
-    avatar.src = url.join('');
-    let userNewColor = _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").doc(objLocal.ID);
-    return userNewColor.update({
-      ColorOfProfile: 'yellow',
-      UrlOfImage: avatar.src
-    }).then(function () {
-      location.reload();
-    }).catch(function (error) {
-      console.error("Error updating document: ", error);
-    });
+    if (url[index] == 3) {
+      rand = '2';
+    }
+
+    colorOfProfile = 'blue';
   }
+
+  console.log(url.join(''));
+  avatar.src = `../../dist/src/assets/images/user${rand}.png`;
+  setColorMood();
+  let userNewColor = _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").doc(objLocal.ID);
+  return userNewColor.update({
+    ColorOfProfile: colorOfProfile,
+    UrlOfImage: avatar.src
+  }).then(function () {
+    location.reload();
+  }).catch(function (error) {
+    console.error("Error updating document: ", error);
+  });
 };
 
 const changePasswordUser = () => {
@@ -52025,6 +52035,55 @@ const changePasswordLayouts = () => {
   changePasswordButton.addEventListener('click', changePasswordUser);
 };
 
+const changeInfoUser = () => {
+  settings.innerHTML = `<div>
+        <div class="container__form_control">
+            <label for="name">First Name</label>
+            <input type="text" placeholder="First name" id="name" value=""></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label for="surname">Last Name</label>
+            <input type="text" placeholder="Last Name" id="surname" value=""></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+    </div>
+    <div>
+        <div class="container__form_control">
+            <label for="birthday">Birthday</label>
+            <input type="date" id="birthday"></input>
+            <small>Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label>Your location</label>
+            <br>
+            <i class="fas fa-location-arrow locationButton" style="visibility: visible; left: 0px;"></i>
+            <div class="adress">
+                <div class="location country">Canada</div>
+                <select name="city" id="" class="input_searching searching_city">                            
+                    <option value="Cities of Canada"  class="selection-allCities" >Cities of Canada</option>
+                    <option value="Ottawa">Ottawa</option>
+                    <option value="Montreal">Montreal</option>
+                    <option value="Toronto">Toronto</option>
+                    <option value="Calgary">Calgary</option>
+                    <option value="Edmonton">Edmonton</option>
+                    <option value="Mississauga">Mississauga</option>
+                    <option value="Winnipeg">Winnipeg</option>
+                    <option value="Vancouver">Vancouver</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="Hamilton">Brampton</option>                            
+                </select>
+            </div>
+            <small id='location_error'>Error message</small>
+        </div>
+</div>`;
+  settings.style.flexDirection = 'row';
+};
+
 _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
   querySnapshot.forEach(function (doc) {
     console.log(doc.id, " => ", doc.data());
@@ -52038,7 +52097,8 @@ _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").where("Username"
     colorOfProfile = userInfo.ColorOfProfile;
     changeColorOfProfile.addEventListener('click', changeColor);
     changePassword.addEventListener('click', changePasswordLayouts);
-    setYellowMood();
+    changeInformation.addEventListener('click', changeInfoUser);
+    setColorMood();
   });
 }).catch(function (error) {
   console.log("Error getting documents: ", error);
