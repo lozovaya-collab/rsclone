@@ -1,12 +1,15 @@
+import './js/checkUser'
 import './js/modal'
 import './js/signUp'
 import './js/dbFirebase'
 import './js/logIn'
+import './js/logOut'
 import { Autocomplete } from './js/Autocomplete'
 import './js/map'
 import './js/apiData'
 import './js/scrollUp'
 import './js/setBackground'
+import './js/profileSettings'
 import { getDataCard, renderPageRestaurant } from './js/getDataCard'
 import './js/getDataCard'
 import {
@@ -24,8 +27,6 @@ import { getRating } from './js/starsRating'
 
 console.log(localStorage.getItem('Auth'));
 // export let arrayNameRestaurants = []
-
-
 window.onload = function() {
     // render Cards of Restaurants
     if (restaurantsData) {
