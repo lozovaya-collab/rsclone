@@ -1128,6 +1128,12 @@ h2 {
         margin-top: 20px;
         margin-left: 50px;
         height: 75%; }
+        .profile__body_settings__body label {
+          font-size: 20px; }
+        .profile__body_settings__body div .location {
+          font-size: 19px; }
+        .profile__body_settings__body__change_password:hover, .profile__body_settings__body__change_information:hover, .profile__body_settings__body__change_color:hover {
+          color: #c2c2c2; }
         .profile__body_settings__body__change_password_button {
           margin-top: 20px;
           background-color: #fff;
@@ -1157,8 +1163,6 @@ h2 {
           font-size: 40px;
           line-height: 45px;
           cursor: pointer; }
-          .profile__body_settings__body div:hover {
-            color: #c2c2c2; }
 
 .password__change {
   font-size: 20px;

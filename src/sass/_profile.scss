@@ -87,6 +87,21 @@
                 margin-top: 20px;
                 margin-left: 50px;
                 height: 75%;
+                & label {
+                    font-size: 20px;
+                }
+                & div .location {
+                    font-size: 19px;
+                }
+                &__change {
+                    &_password,
+                    &_information,
+                    &_color {
+                        &:hover {
+                            color: rgb(194, 194, 194)
+                        }
+                    }
+                }
                 &__change_password_button {
                     margin-top: 20px;
                     background-color: $maincolor_third;
@@ -120,9 +135,6 @@
                     font-size: 40px;
                     line-height: 45px;
                     cursor: pointer;
-                    &:hover {
-                        color: rgb(194, 194, 194)
-                    }
                 }
             }
         }

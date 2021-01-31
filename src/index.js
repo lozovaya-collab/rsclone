@@ -9,6 +9,7 @@ import './js/map'
 import './js/apiData'
 import './js/scrollUp'
 import './js/setBackground'
+import './js/profileSettings'
 import { getDataCard, renderPageRestaurant } from './js/getDataCard'
 import './js/getDataCard'
 import {
