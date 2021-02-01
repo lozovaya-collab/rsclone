@@ -50867,6 +50867,8 @@ window.onload = function () {
       localStorage.setItem('fromPage', 'true');
     });
   }
+
+  cancelEventReviewCard();
 };
 
 const renderCardsRestaurants = () => {
@@ -50893,6 +50895,14 @@ const renderCardsRestaurants = () => {
       cardsWrapperMain.append(card.generateCardsRestaurants());
     });
   }
+
+  let cardsWrapperReview = getCardsWrapperReview();
+
+  if (cardsWrapperReview) {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData).forEach(card => {
+      cardsWrapperReview.append(card.generateCardsRestaurants());
+    });
+  }
 };
 
 const getCardsWrapperRestaurant = () => {
@@ -50913,8 +50923,17 @@ const getCardsWrapperMainCity = () => {
   }
 };
 
-const getCardsWrapperMain = () => {
+const getCardsWrapperReview = () => {
   const cardsContainer = document.querySelector('.cards_wrapper_main');
+
+  if (cardsContainer) {
+    cardsContainer.innerHTML = '';
+    return cardsContainer;
+  }
+};
+
+const getCardsWrapperMain = () => {
+  const cardsContainer = document.querySelector('.restaurants_wrapper_review');
 
   if (cardsContainer) {
     cardsContainer.innerHTML = '';
@@ -50928,6 +50947,19 @@ const generateCards = restaurantsData => {
     cardsRestaurants.push(new _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_15__.CardsRestaurants(card));
   });
   return cardsRestaurants;
+};
+
+const cancelEventReviewCard = () => {
+  const cardsContainer = document.querySelectorAll('.restaurants_wrapper_review>a');
+
+  if (cardsContainer) {
+    for (let i = 0; i < cardsContainer.length; i += 1) {
+      cardsContainer[i].addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    }
+  }
 };
 
 /***/ }),

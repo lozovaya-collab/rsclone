@@ -14,6 +14,7 @@ if (document.querySelector('#map')) {
         console.log('dddd');
         //let coordinates = [arrayNameRestaurants[i].coordinatesLatitude, arrayNameRestaurants[i].coordinatesLongitude]
 
+
         let iconOptions = {
             iconUrl: '../../dist/src/assets/icon/canada.png',
             iconSize: [50, 50]
@@ -34,5 +35,6 @@ if (document.querySelector('#map')) {
             .bindPopup(`${arrayNameRestaurants[i].name}, ${arrayNameRestaurants[i].locationAddress}`)
         console.log('ZZZZZZZZZZZZZZZ', marker)*/
     }
+
 
 }
