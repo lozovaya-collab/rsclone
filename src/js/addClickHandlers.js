@@ -147,12 +147,12 @@ export const showTypeRestaurants = () => {
 
 export let arrayData = []
 export let arrayNameRestaurants = []
-    // arrayNameRestaurantsCity.forEach(element => {
-    //     arrayData.push(element)
-    // })
-    // arrayData.forEach(nameRestaurant => {
-    //     arrayNameRestaurants.push(nameRestaurant.name)
-    // })
+arrayNameRestaurantsCity.forEach(element => {
+    arrayData.push(element)
+})
+arrayData.forEach(nameRestaurant => {
+    arrayNameRestaurants.push(nameRestaurant.name)
+})
 
 
 export const sortRestaurantsByCities = () => {

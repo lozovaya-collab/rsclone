@@ -10,12 +10,12 @@ if (document.querySelector('#map')) {
 
 
 
-    for (let i = 0; i < arrayNameRestaurants.length; i += 1) {
-        let coordinates = [arrayNameRestaurants[i].coordinatesLatitude, arrayNameRestaurants[i].coordinatesLongitude]
-        let marker = L.marker(coordinates, {})
-            .addTo(map)
-            .bindPopup(`${arrayNameRestaurants[i].name}, ${arrayNameRestaurants[i].locationAddress}`)
-        console.log('ZZZZZZZZZZZZZZZ', marker)
-    }
+    // for (let i = 0; i < arrayNameRestaurants.length; i += 1) {
+    //     let coordinates = [arrayNameRestaurants[i].coordinatesLatitude, arrayNameRestaurants[i].coordinatesLongitude]
+    //     let marker = L.marker(coordinates, {})
+    //         .addTo(map)
+    //         .bindPopup(`${arrayNameRestaurants[i].name}, ${arrayNameRestaurants[i].locationAddress}`)
+    //     console.log('ZZZZZZZZZZZZZZZ', marker)
+    // }
 
 }
