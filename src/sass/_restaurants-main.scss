@@ -20,10 +20,12 @@ $maincolor_third: #fff;
     width: 100%;
     display: flex;
     flex-direction: column;
+    z-index: 2;
 }
 
 .title {
     text-align: center;
+    color: $maincolor_second;
 }
 
 .filter {
@@ -41,6 +43,7 @@ $maincolor_third: #fff;
     padding: 5px 10px;
     margin: 2px;
     transition: .3s;
+    background-color: #fff;
     &.filter_active {
         background-color: $maincolor_first;
         color: $maincolor_third;
@@ -71,6 +74,7 @@ $maincolor_third: #fff;
     min-width: 290px;
     overflow: hidden;
     margin: 7px;
+    background-color: #fff;
     &:hover {
         cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
@@ -85,7 +89,6 @@ $maincolor_third: #fff;
 }
 
 .cards_wrapper_restaurants {
-    // max-height: 1703px;
     overflow: hidden;
 }
 
@@ -151,7 +154,6 @@ $maincolor_third: #fff;
 }
 
 .map-wrapper {
-    background-color: $maincolor_first;
     margin: 2px;
     display: flex;
     max-width: 600px;
@@ -161,16 +163,16 @@ $maincolor_third: #fff;
     right: 0;
     top: 0;
     position: relative;
-    // bottom: 0;
+    overflow: hidden;
 }
 
 #map {
-    position: fixed;
     top: 0;
     right: 0;
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
-    height: 70vh;
+    height: 100%;
+    position: fixed;
 }
 
 //scrollUp

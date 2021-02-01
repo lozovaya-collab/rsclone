@@ -1,10 +1,21 @@
-// var map = new L.map('map').setView([51.505, -0.09], 13);
+import { arrayNameRestaurants } from './addClickHandlers'
 
 
-// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-//     maxZoom: 18,
-//     attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-//         '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-//         'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//     id: 'mapbox.streets'
-// }).addTo(map);
+if (document.querySelector('#map')) {
+    let map = L.map('map', {}).setView([45.401795, -75.699583], 10);
+
+    let osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="copyright">Openstreetmap</a>'
+    }).addTo(map)
+
+
+
+    for (let i = 0; i < arrayNameRestaurants.length; i += 1) {
+        let coordinates = [arrayNameRestaurants[i].coordinatesLatitude, arrayNameRestaurants[i].coordinatesLongitude]
+        let marker = L.marker(coordinates, {})
+            .addTo(map)
+            .bindPopup(`${arrayNameRestaurants[i].name}, ${arrayNameRestaurants[i].locationAddress}`)
+        console.log('ZZZZZZZZZZZZZZZ', marker)
+    }
+
+}

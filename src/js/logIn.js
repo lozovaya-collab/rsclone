@@ -1,13 +1,16 @@
-import { db } from './dbFirebase'
+import { db, isAuth } from './dbFirebase'
 import { setErrorFor } from "./signUp"
-import { checkData } from "./modal";
-console.log('aaa');
+import { checkData } from "./modal"
+import { checkUserIsAuth } from "./checkUser"
+
 let isUser = false
 
+export let myUser = {}
+export let myUserId = ''
 const logInButton = document.querySelector('.logIn')
 if (logInButton) {
-    logInButton.addEventListener('click', () => {
-
+    logInButton.addEventListener('click', (e) => {
+        e.preventDefault()
         let isOkay = checkData()
         if (isOkay) {
             const emailLogIn = document.getElementById('emailLogIn').value
@@ -16,11 +19,18 @@ if (logInButton) {
                 .get()
                 .then(function(querySnapshot) {
                     querySnapshot.forEach(function(doc) {
-                        // doc.data() is never undefined for query doc snapshots
                         console.log(doc.id, " => ", doc.data());
-                        isUser = true
 
-                        console.log('user is exist');
+                        myUser = myUser = {
+                            ID: doc.id,
+                            Username: doc.data().Username,
+                            City: doc.data().City
+                        }
+                        localStorage.setItem('user', JSON.stringify(myUser));
+
+                        isUser = true
+                        localStorage.setItem('Auth', true);
+                        checkUserIsAuth(localStorage.getItem('Auth'))
                     });
                     if (!isUser) {
                         setErrorFor(document.getElementById('emailLogIn'), 'This user does not exist')
@@ -33,7 +43,5 @@ if (logInButton) {
                     console.log("Error getting documents: ", error);
                 });
         }
-
-
     })
 }

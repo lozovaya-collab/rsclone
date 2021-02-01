@@ -50797,22 +50797,27 @@ var esm = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/map */ "./src/js/map.js");
-/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_map__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
-/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
-/* harmony import */ var _js_dbFirebase__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/dbFirebase */ "./src/js/dbFirebase.js");
-/* harmony import */ var _js_logIn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/logIn */ "./src/js/logIn.js");
-/* harmony import */ var _js_Autocomplete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/Autocomplete */ "./src/js/Autocomplete.js");
-/* harmony import */ var _js_apiData__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/apiData */ "./src/js/apiData.js");
-/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/scrollUp */ "./src/js/scrollUp.js");
-/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_js_scrollUp__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/setBackground */ "./src/js/setBackground.js");
-/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_js_setBackground__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _js_getDataCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/getDataCard */ "./src/js/getDataCard.js");
-/* harmony import */ var _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./js/addClickHandlers */ "./src/js/addClickHandlers.js");
-/* harmony import */ var _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./js/CardsRestaurants */ "./src/js/CardsRestaurants.js");
-/* harmony import */ var _js_starsRating__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./js/starsRating */ "./src/js/starsRating.js");
+/* harmony import */ var _js_dbFirebase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/dbFirebase */ "./src/js/dbFirebase.js");
+/* harmony import */ var _js_checkUser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/checkUser */ "./src/js/checkUser.js");
+/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/map */ "./src/js/map.js");
+/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
+/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
+/* harmony import */ var _js_logIn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/logIn */ "./src/js/logIn.js");
+/* harmony import */ var _js_logOut__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/logOut */ "./src/js/logOut.js");
+/* harmony import */ var _js_Autocomplete__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/Autocomplete */ "./src/js/Autocomplete.js");
+/* harmony import */ var _js_apiData__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/apiData */ "./src/js/apiData.js");
+/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/scrollUp */ "./src/js/scrollUp.js");
+/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_js_scrollUp__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./js/setBackground */ "./src/js/setBackground.js");
+/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_js_setBackground__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _js_profileSettings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./js/profileSettings */ "./src/js/profileSettings.js");
+/* harmony import */ var _js_getDataCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./js/getDataCard */ "./src/js/getDataCard.js");
+/* harmony import */ var _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./js/addClickHandlers */ "./src/js/addClickHandlers.js");
+/* harmony import */ var _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./js/CardsRestaurants */ "./src/js/CardsRestaurants.js");
+/* harmony import */ var _js_starsRating__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./js/starsRating */ "./src/js/starsRating.js");
+
+
+
 
 
 
@@ -50832,32 +50837,32 @@ console.log(localStorage.getItem('Auth')); // export let arrayNameRestaurants = 
 
 window.onload = function () {
   // render Cards of Restaurants
-  if (_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData) {
+  if (_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData) {
     renderCardsRestaurants();
-  } //autocomplete
+  } //click sorting 
 
 
-  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_5__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__.arrayNameRestaurants); //click sorting 
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.addFilterPriceClickHandler)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.addFilterRestaurantsClickHandler)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.sortRestaurantsByCities)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.showTypeRestaurants)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.getBestRestaurants)(); //autocomplete
 
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__.addFilterPriceClickHandler)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__.addFilterRestaurantsClickHandler)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__.sortRestaurantsByCities)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__.showTypeRestaurants)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_10__.getBestRestaurants)();
-  (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_9__.getDataCard)();
+  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_7__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.arrayNameRestaurants);
+  (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_12__.getDataCard)();
 
   if (document.querySelector('.main__restaurant_page')) {
-    (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_9__.renderPageRestaurant)();
+    (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_12__.renderPageRestaurant)();
   }
 
-  (0,_js_starsRating__WEBPACK_IMPORTED_MODULE_12__.getRating)();
+  (0,_js_starsRating__WEBPACK_IMPORTED_MODULE_15__.getRating)();
 };
 
 const renderCardsRestaurants = () => {
   let cardsWrapperRestaurants = getCardsWrapperRestaurant();
 
   if (cardsWrapperRestaurants) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData).forEach(card => {
       cardsWrapperRestaurants.append(card.generateCardsRestaurants());
     });
   }
@@ -50865,7 +50870,7 @@ const renderCardsRestaurants = () => {
   let cardsWrapperMainCity = getCardsWrapperMainCity();
 
   if (cardsWrapperMainCity) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData).forEach(card => {
       cardsWrapperMainCity.append(card.generateCardsRestaurants());
     });
   }
@@ -50873,7 +50878,7 @@ const renderCardsRestaurants = () => {
   let cardsWrapperMain = getCardsWrapperMain();
 
   if (cardsWrapperMain) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_6__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData).forEach(card => {
       cardsWrapperMain.append(card.generateCardsRestaurants());
     });
   }
@@ -50909,7 +50914,7 @@ const getCardsWrapperMain = () => {
 const generateCards = restaurantsData => {
   let cardsRestaurants = [];
   restaurantsData.forEach(card => {
-    cardsRestaurants.push(new _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_11__.CardsRestaurants(card));
+    cardsRestaurants.push(new _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_14__.CardsRestaurants(card));
   });
   return cardsRestaurants;
 };
@@ -50986,7 +50991,9 @@ const Autocomplete = (selector, data) => {
 
       list.innerHTML = '';
       listItems = [];
+      console.log('SSSSSSSSSSSS', data);
       data.forEach((dataItem, index) => {
+        console.log('pppppppppppppppppppp');
         let search = ciSearch(value, dataItem);
 
         if (search === -1) {
@@ -51495,33 +51502,47 @@ const showTypeRestaurants = () => {
 }; // sort restaurants by cities
 
 let arrayData = [];
-let arrayNameRestaurants = [];
-localStorage.setItem("arrayNameRestaurants", JSON.stringify(arrayNameRestaurants));
+let arrayNameRestaurants = []; // arrayNameRestaurantsCity.forEach(element => {
+//     arrayData.push(element)
+// })
+// arrayData.forEach(nameRestaurant => {
+//     arrayNameRestaurants.push(nameRestaurant.name)
+// })
+
 const sortRestaurantsByCities = () => {
   let selectionCity = document.querySelector('.searching_city ');
   let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a');
   let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a');
   let citiesCards = document.querySelectorAll('.address_restaurant');
+
+  if (selectionCity) {
+    selectionCity.addEventListener('change', changeValueSelect);
+  } // if (selectionCity.clicked === true) {
+
+
+  (0,_Autocomplete__WEBPACK_IMPORTED_MODULE_1__.Autocomplete)('#input-select', arrayNameRestaurants); // } else {
+
   _apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity.forEach(element => {
     arrayData.push(element);
   });
   arrayData.forEach(nameRestaurant => {
     arrayNameRestaurants.push(nameRestaurant.name);
-  });
-  localStorage.setItem("arrayNameRestaurants", JSON.stringify(arrayNameRestaurants));
-
-  if (selectionCity) {
-    selectionCity.addEventListener('change', changeValueSelect);
-    selectionCity.addEventListener('click', () => {
-      arrayData = [];
-      arrayNameRestaurants = [];
-    });
-  }
+  }); // Autocomplete('#input-select', arrayNameRestaurants);
+  // arrayNameRestaurants = []
+  // arrayData = []
+  // }
+  // arrayNameRestaurants = []
+  // arrayData = []
 
   function changeValueSelect() {
-    let selectionCity = this.options[this.selectedIndex].text; // console.log(selectionCity)
+    let selectionCity = this.options[this.selectedIndex].text;
+    arrayData = [];
+    arrayNameRestaurants = []; // console.log('wwwwwwwwwwwwwwwww', arrayNameRestaurants.length)
+    // if (arrayNameRestaurants.length === 0) {
+    // Autocomplete('#input-select', arrayNameRestaurants);
+    //     console.log('wwwwwwwwwwwwwwwww', arrayNameRestaurants.length)
+    // }
 
-    console.log(arrayNameRestaurants);
     let count = 1;
 
     for (let i = 0; i < cardsRestaurantsMain.length; i += 1) {
@@ -51554,7 +51575,6 @@ const sortRestaurantsByCities = () => {
         removeSelectedFilter();
         removeSelectedFilterRestaurant();
         cardsRestaurantsPage[i].classList.remove('hidden');
-        count++;
       } else {
         removeSelectedFilter();
         removeSelectedFilterRestaurant();
@@ -51566,6 +51586,8 @@ const sortRestaurantsByCities = () => {
       if (selectionCity === 'Cities of Canada') {
         arrayData.push(_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j]);
       } else if (selectionCity === _apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j].city) {
+        console.log('OOOOOOOOOOOOOOO', _apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity.length);
+        console.log('CCCCCCCCCCC', selectionCity);
         arrayData.push(_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j]);
       }
     }
@@ -51649,6 +51671,44 @@ getListRestaurants();
 
 /***/ }),
 
+/***/ "./src/js/checkUser.js":
+/*!*****************************!*\
+  !*** ./src/js/checkUser.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkUserIsAuth": () => /* binding */ checkUserIsAuth
+/* harmony export */ });
+const {
+  isAuth
+} = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
+
+let checkAuth = localStorage.getItem('Auth');
+const checkUserIsAuth = isAuth => {
+  if (isAuth === 'true') {
+    console.log('what');
+    const butSignUp = document.querySelector('.sign-up');
+    butSignUp.innerHTML = 'Profile';
+    const hrefBtn = document.querySelector('.sign-up-href');
+
+    if (hrefBtn !== null) {
+      hrefBtn.href = "/dist/pages/profile.html";
+    }
+
+    const butLogIn = document.querySelector('.log-in');
+    butLogIn.innerHTML = 'Log Out';
+    butLogIn.classList.remove('mainBtn');
+    butLogIn.className += ' log-out';
+  }
+};
+console.log(checkAuth);
+checkUserIsAuth(checkAuth);
+
+/***/ }),
+
 /***/ "./src/js/dbFirebase.js":
 /*!******************************!*\
   !*** ./src/js/dbFirebase.js ***!
@@ -51660,7 +51720,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "firebaseConfig": () => /* binding */ firebaseConfig,
 /* harmony export */   "firebaseApp": () => /* binding */ firebaseApp,
-/* harmony export */   "db": () => /* binding */ db
+/* harmony export */   "db": () => /* binding */ db,
+/* harmony export */   "isAuth": () => /* binding */ isAuth
 /* harmony export */ });
 /* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
 /* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.esm.js");
@@ -51687,12 +51748,10 @@ if (localStorage.getItem('Auth') === null) {
 }
 
 const makeid = () => {
-  let text = "";
-  let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (let i = 0; i < 5; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  return text;
+  let min = 1;
+  let max = 4;
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
 };
 
 const submit = document.querySelector('.container__form_button');
@@ -51707,20 +51766,30 @@ const createUser = () => {
     const password = document.getElementById('password').value;
     const firstName = document.getElementById('name').value;
     const lastName = document.getElementById('surname').value;
-    const birthday = document.getElementById('birthday').value; //const country = document.querySelector('.country').value
-    //const city = document.querySelector('.city').value
-
+    const birthday = document.getElementById('birthday').value;
+    const country = 'Canada';
+    const city = 'Otawa';
+    let rand = makeid();
+    let color = 'blue';
+    const url = `../../dist/src/assets/images/user${rand}.png`;
     userID = makeid();
+
+    if (rand < '3') {
+      color = 'yellow';
+    }
+
     userID = userID + username;
     db.collection("users").add({
+      UrlOfImage: url,
       Firstname: firstName,
       LastName: lastName,
       Birthday: birthday,
       Username: username,
       "E-mail": email,
-      Password: password //Country: country,
-      //City: city
-
+      Password: password,
+      Country: country,
+      City: city,
+      colorOfProfile: color
     }).then(function (docRef) {
       console.log("Document written with ID: ", docRef.id);
       window.location.href = '../../dist/index.html';
@@ -51827,18 +51896,26 @@ const generatePage = data => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "myUser": () => /* binding */ myUser,
+/* harmony export */   "myUserId": () => /* binding */ myUserId
+/* harmony export */ });
 /* harmony import */ var _dbFirebase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
 /* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal */ "./src/js/modal.js");
+/* harmony import */ var _checkUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./checkUser */ "./src/js/checkUser.js");
 
 
 
-console.log('aaa');
+
 let isUser = false;
+let myUser = {};
+let myUserId = '';
 const logInButton = document.querySelector('.logIn');
 
 if (logInButton) {
-  logInButton.addEventListener('click', () => {
+  logInButton.addEventListener('click', e => {
+    e.preventDefault();
     let isOkay = (0,_modal__WEBPACK_IMPORTED_MODULE_2__.checkData)();
 
     if (isOkay) {
@@ -51846,10 +51923,16 @@ if (logInButton) {
       const passwordLogIn = String(document.getElementById('passwordLogIn').value);
       _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("E-mail", "==", emailLogIn).where("Password", "==", passwordLogIn).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-          // doc.data() is never undefined for query doc snapshots
           console.log(doc.id, " => ", doc.data());
+          myUser = myUser = {
+            ID: doc.id,
+            Username: doc.data().Username,
+            City: doc.data().City
+          };
+          localStorage.setItem('user', JSON.stringify(myUser));
           isUser = true;
-          console.log('user is exist');
+          localStorage.setItem('Auth', true);
+          (0,_checkUser__WEBPACK_IMPORTED_MODULE_3__.checkUserIsAuth)(localStorage.getItem('Auth'));
         });
 
         if (!isUser) {
@@ -51868,20 +51951,107 @@ if (logInButton) {
 
 /***/ }),
 
+/***/ "./src/js/logOut.js":
+/*!**************************!*\
+  !*** ./src/js/logOut.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "logOutUser": () => /* binding */ logOutUser
+/* harmony export */ });
+let checkAuth = localStorage.getItem('Auth');
+const buttonLogOut = document.querySelector('.log-out');
+const popLogIn = document.getElementById('popup');
+console.log(buttonLogOut);
+const logOutUser = value => {
+  if (value === 'true') {
+    value = false;
+    console.log(location.href);
+    localStorage.setItem('Auth', value);
+    localStorage.setItem('user', '');
+    console.log(localStorage.getItem('Auth'));
+    const butSignUp = document.querySelector('.sign-up');
+    butSignUp.innerHTML = 'Sign Up';
+    const hrefBtn = document.querySelector('.sign-up-href');
+
+    if (hrefBtn !== null) {
+      hrefBtn.href = "/pages/signUp.html";
+    }
+
+    const butLogIn = document.querySelector('.log-in');
+    butLogIn.innerHTML = 'Log In';
+    butLogIn.classList.remove('log-out');
+    butLogIn.className += ' mainBtn';
+  }
+};
+
+if (buttonLogOut !== null) {
+  buttonLogOut.addEventListener('click', () => {
+    console.log(buttonLogOut);
+
+    if (buttonLogOut.innerHTML === 'Log Out') {
+      logOutUser(checkAuth);
+      window.location.href = '../../dist/index.html';
+    } else {
+      popLogIn.innerHTML = `<div class="popup__body">
+            <div class="popup__content">
+                <a href="" class="popup__close"></a>
+                <div class="popup__title container_header">
+                    <h2 class="container_header_headline">Log In</h2>
+                    <i class="far fa-times-circle btnClose"></i>
+                </div>
+                <div class="popup__form">
+                    <div class="container__form_control">
+                        <label>Email</label>
+                        <input type="email" placeholder="test@test.com" id="emailLogIn"></input>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <div class="container__form_control">
+                        <label>Password</label>
+                        <input type="password" placeholder="password" id="passwordLogIn"></input>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small>Error message</small>
+                    </div>
+                    <button class="container__form_button logIn">Log in</button>
+                </div>
+            
+            </div>
+            </div>`;
+    }
+  });
+}
+
+/***/ }),
+
 /***/ "./src/js/map.js":
 /*!***********************!*\
   !*** ./src/js/map.js ***!
   \***********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-// var map = new L.map('map').setView([51.505, -0.09], 13);
-// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-//     maxZoom: 18,
-//     attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-//         '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-//         'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//     id: 'mapbox.streets'
-// }).addTo(map);
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addClickHandlers */ "./src/js/addClickHandlers.js");
+
+
+if (document.querySelector('#map')) {
+  let map = L.map('map', {}).setView([45.401795, -75.699583], 10);
+  let osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="copyright">Openstreetmap</a>'
+  }).addTo(map);
+
+  for (let i = 0; i < _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurants.length; i += 1) {
+    let coordinates = [_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurants[i].coordinatesLatitude, _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurants[i].coordinatesLongitude];
+    let marker = L.marker(coordinates, {}).addTo(map).bindPopup(`${_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurants[i].name}, ${_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurants[i].locationAddress}`);
+    console.log('ZZZZZZZZZZZZZZZ', marker);
+  }
+}
 
 /***/ }),
 
@@ -51897,8 +52067,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "checkData": () => /* binding */ checkData
 /* harmony export */ });
 /* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
+/* harmony import */ var _logOut__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logOut */ "./src/js/logOut.js");
+
 
 const formLogIn = document.getElementById('popup');
+const btnMain = document.querySelector('.mainBtn');
 
 if (formLogIn !== null) {
   formLogIn.innerHTML = `<div class="popup__body">
@@ -51933,44 +52106,45 @@ if (formLogIn !== null) {
 const emailLogIn = document.getElementById('emailLogIn');
 const passwordLogIn = document.getElementById('passwordLogIn');
 const btn = document.querySelector('.btnRest');
-const btnMain = document.querySelector('.mainBtn');
 const btnLogIn = document.querySelector('.logIn');
 const btnClose = document.querySelector('.btnClose');
-
-if (btnLogIn !== null) {
-  btnLogIn.addEventListener('click', e => {
-    console.log('log in');
-    e.preventDefault();
-    checkData();
-  });
-} // if (formLogIn) {
-//     document.querySelector('body').style.overflow = 'hidden'
-// } else {
-//     document.querySelector('body').style.overflow = 'visible'
-// }
-
 
 if (btnClose !== null) {
   btnClose.addEventListener('click', e => {
     formLogIn.style.display = 'none';
   });
+} else {
+  console.log(btnClose);
 }
 
-if (btnMain !== null) {
-  btnMain.addEventListener('click', e => {
-    formLogIn.style.display = 'flex';
-    formLogIn.style.top = '0';
+if (document.querySelector('.mainBtn') !== null) {
+  document.querySelector('.mainBtn').addEventListener('click', e => {
+    console.log(btnMain.innerHTML);
+
+    if (btnMain.innerHTML === 'Log In') {
+      formLogIn.style.display = 'flex';
+      formLogIn.style.top = '0';
+    } else {
+      (0,_logOut__WEBPACK_IMPORTED_MODULE_1__.logOutUser)(localStorage.getItem('Auth'));
+      window.location.href = '../../dist/index.html';
+    }
   });
+} else {
+  console.log(document.querySelector('.mainBtn'));
 }
 
 if (btn !== null) {
   btn.addEventListener('click', e => {
-    formLogIn.style.display = 'flex';
+    if (btn.innerHTML === 'Log In') {
+      formLogIn.style.display = 'flex';
+    } else {
+      (0,_logOut__WEBPACK_IMPORTED_MODULE_1__.logOutUser)(localStorage.getItem('Auth'));
+      window.location.href = '../../dist/index.html';
+    }
   });
 }
 
 function checkData() {
-  console.log(emailLogIn.value);
   const emailValue1 = emailLogIn.value;
   const passwordValue1 = passwordLogIn.value;
   let isCorrect = true;
@@ -51997,6 +52171,261 @@ function checkData() {
 
   return isCorrect;
 }
+
+/***/ }),
+
+/***/ "./src/js/profileSettings.js":
+/*!***********************************!*\
+  !*** ./src/js/profileSettings.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _logIn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logIn */ "./src/js/logIn.js");
+/* harmony import */ var _dbFirebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
+/* harmony import */ var _signUp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./signUp */ "./src/js/signUp.js");
+
+
+
+let objLocal = JSON.parse(localStorage.getItem('user'));
+let userInfo = {};
+const nameUser = document.querySelector('.first_name');
+const surnameUser = document.querySelector('.last_name');
+const dateUser = document.querySelector('.date');
+const usernameUser = document.querySelector('.profile__body_card_of_user__avatar_username');
+const avatar = document.querySelector('.avatar');
+const locationCanada = document.querySelector('.locationCanada');
+const settings = document.querySelector('.profile__body_settings__body');
+const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
+const changePassword = document.querySelector('.profile__body_settings__body__change_password');
+const changeInformation = document.querySelector('.profile__body_settings__body__change_information');
+let colorOfProfile;
+
+const setColorMood = () => {
+  const profile_change_data = document.querySelector('.profile__body_settings__options__change_data');
+  const profile_statistics = document.querySelector('.profile__body_settings__options__statistics');
+  const profile_prop = document.querySelector('.profile__body_card_of_user__information_user_prop');
+
+  if (colorOfProfile === 'yellow') {
+    profile_change_data.className = 'profile__body_settings__options__change_data yellow__mood';
+    profile_statistics.className = 'profile__body_settings__options__statistics yellow__mood_disabled';
+    profile_prop.className = 'profile__body_card_of_user__information_user_prop yellow__mood_prop';
+  } else if (colorOfProfile === 'blue') {
+    profile_change_data.className = 'profile__body_settings__options__change_data blue__mood';
+    profile_statistics.className = 'profile__body_settings__options__statistics blue__mood_disabled';
+    profile_prop.className = 'profile__body_card_of_user__information_user_prop blue__mood_prop';
+  }
+};
+
+const changeColor = () => {
+  let url = userInfo.UrlOfImage.split('');
+  let index = url.indexOf('u') + 4;
+  let rand;
+  console.log(url[index]);
+
+  if (colorOfProfile === 'blue') {
+    if (url[index] == 2) {
+      rand = '3';
+    }
+
+    if (url[index] == 4) {
+      rand = '1';
+    }
+
+    colorOfProfile = 'yellow';
+  } else if (colorOfProfile === 'yellow') {
+    if (url[index] == 1) {
+      console.log(url[index]);
+      rand = '4';
+    }
+
+    if (url[index] == 3) {
+      rand = '2';
+    }
+
+    colorOfProfile = 'blue';
+  }
+
+  console.log(url.join(''));
+  avatar.src = `../../dist/src/assets/images/user${rand}.png`;
+  setColorMood();
+  let userNewColor = _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").doc(objLocal.ID);
+  return userNewColor.update({
+    ColorOfProfile: colorOfProfile,
+    UrlOfImage: avatar.src
+  }).then(function () {
+    location.reload();
+  }).catch(function (error) {
+    console.error("Error updating document: ", error);
+  });
+};
+
+const changePasswordUser = () => {
+  const oldPassword = document.getElementById('passwordOld');
+  const newPassword = document.getElementById('passwordNew');
+  const newPasswordRepeat = document.getElementById('passwordNew2');
+
+  if (userInfo.Password === oldPassword.value) {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setSuccessFor)(oldPassword);
+  } else if (oldPassword.value !== '') {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(oldPassword, 'Password cannot be blank');
+  } else if (userInfo.Password !== oldPassword.value && oldPassword.value !== '') {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(oldPassword, 'Wrong password');
+  }
+
+  if (newPassword.value === '') {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(newPassword, 'Password cannot be blank');
+  } else if (newPassword.value.length < 6) {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(newPassword, 'Password is too short!');
+  } else {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setSuccessFor)(newPassword);
+  }
+
+  if (newPasswordRepeat.value === '') {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(newPasswordRepeat, 'Password cannot be blank');
+  } else if (newPassword.value !== newPasswordRepeat.value) {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setErrorFor)(newPasswordRepeat, 'Passwords don\'t match');
+  } else {
+    (0,_signUp__WEBPACK_IMPORTED_MODULE_2__.setSuccessFor)(newPasswordRepeat);
+    console.log(oldPassword.value);
+
+    if (userInfo.Password === oldPassword.value) {
+      let userNewPassword = _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").doc(objLocal.ID);
+      userInfo.Password = newPasswordRepeat.value;
+      return userNewPassword.update({
+        Password: newPasswordRepeat.value
+      }).then(function () {
+        location.reload();
+      }).catch(function (error) {
+        console.error("Error updating document: ", error);
+      });
+    }
+  }
+};
+
+const changePasswordLayouts = () => {
+  settings.innerHTML = `
+<div class="container__form_control">
+    <label class="password__change">Old password</label>
+    <input type="password" placeholder="old password" id="passwordOld" value=""></input>
+    <i class="fas fa-check-circle"></i>
+    <i class="fas fa-exclamation-circle"></i>
+    <small>Error message</small>
+</div>
+<div class="container__form_control">
+    <label class="password__change">New password</label>
+    <input type="password" placeholder="password" id="passwordNew" value=""></input>
+    <i class="fas fa-check-circle"></i>
+    <i class="fas fa-exclamation-circle"></i>
+    <small>Error message</small>
+</div>
+<div class="container__form_control">
+    <label class="password__change">New password check</label>
+    <input type="password" placeholder="password repeat" id="passwordNew2" value=""></input>
+    <i class="fas fa-check-circle"></i>
+    <i class="fas fa-exclamation-circle"></i>
+    <small>Error message</small>
+</div>
+<button type="submit" class="profile__body_settings__body__change_password_button">Submit</button>`;
+  settings.style.alignItems = 'center';
+  settings.style.marginTop = '0px';
+  document.querySelectorAll('.container__form_control')[0].style.marginBottom = '-15px';
+  document.querySelectorAll('.container__form_control')[1].style.marginBottom = '-15px';
+  document.querySelectorAll('.container__form_control')[2].style.marginBottom = '-15px';
+  document.querySelectorAll('.container__form_control label')[0].style.marginBottom = '0px';
+  document.querySelectorAll('.container__form_control label')[1].style.marginBottom = '0px';
+  document.querySelectorAll('.container__form_control label')[2].style.marginBottom = '0px';
+  document.querySelectorAll('.container__form_control small')[0].style.fontSize = '15px';
+  document.querySelectorAll('.container__form_control small')[1].style.fontSize = '15px';
+  document.querySelectorAll('.container__form_control small')[2].style.fontSize = '15px';
+  document.querySelectorAll('.container__form_control small')[0].style.marginTop = '-15px';
+  document.querySelectorAll('.container__form_control small')[1].style.marginTop = '-15px';
+  document.querySelectorAll('.container__form_control small')[2].style.marginTop = '-15px';
+  document.querySelectorAll('.fa-exclamation-circle')[0].style.top = '63px';
+  document.querySelectorAll('.fa-exclamation-circle')[1].style.top = '63px';
+  document.querySelectorAll('.fa-exclamation-circle')[2].style.top = '63px';
+  document.querySelectorAll('.fa-exclamation-circle')[0].style.fontSize = '23px';
+  document.querySelectorAll('.fa-exclamation-circle')[1].style.fontSize = '23px';
+  document.querySelectorAll('.fa-exclamation-circle')[2].style.fontSize = '23px';
+  document.querySelectorAll('.fa-check-circle')[0].style.top = '63px';
+  document.querySelectorAll('.fa-check-circle')[1].style.top = '63px';
+  document.querySelectorAll('.fa-check-circle')[2].style.top = '63px';
+  document.querySelectorAll('.fa-check-circle')[0].style.fontSize = '23px';
+  document.querySelectorAll('.fa-check-circle')[1].style.fontSize = '23px';
+  document.querySelectorAll('.fa-check-circle')[2].style.fontSize = '23px';
+  const changePasswordButton = document.querySelector('.profile__body_settings__body__change_password_button');
+  changePasswordButton.addEventListener('click', changePasswordUser);
+};
+
+const changeInfoUser = () => {
+  settings.innerHTML = `<div>
+        <div class="container__form_control">
+            <label for="name">First Name</label>
+            <input type="text" placeholder="First name" id="name" value=""></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label for="surname">Last Name</label>
+            <input type="text" placeholder="Last Name" id="surname" value=""></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+    </div>
+    <div>
+        <div class="container__form_control">
+            <label for="birthday">Birthday</label>
+            <input type="date" id="birthday"></input>
+            <small>Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label>Your location</label>
+            <br>
+            <i class="fas fa-location-arrow locationButton" style="visibility: visible; left: 0px;"></i>
+            <div class="adress">
+                <div class="location country">Canada</div>
+                <select name="city" id="" class="input_searching searching_city">                            
+                    <option value="Cities of Canada"  class="selection-allCities" >Cities of Canada</option>
+                    <option value="Ottawa">Ottawa</option>
+                    <option value="Montreal">Montreal</option>
+                    <option value="Toronto">Toronto</option>
+                    <option value="Calgary">Calgary</option>
+                    <option value="Edmonton">Edmonton</option>
+                    <option value="Mississauga">Mississauga</option>
+                    <option value="Winnipeg">Winnipeg</option>
+                    <option value="Vancouver">Vancouver</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="Hamilton">Brampton</option>                            
+                </select>
+            </div>
+            <small id='location_error'>Error message</small>
+        </div>
+</div>`;
+  settings.style.flexDirection = 'row';
+};
+
+_dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("users").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
+  querySnapshot.forEach(function (doc) {
+    console.log(doc.id, " => ", doc.data());
+    userInfo = doc.data();
+    nameUser.innerHTML = userInfo.Firstname;
+    surnameUser.innerHTML = userInfo.LastName;
+    dateUser.innerHTML = userInfo.Birthday;
+    usernameUser.innerHTML = userInfo.Username;
+    avatar.src = userInfo.UrlOfImage;
+    locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`;
+    colorOfProfile = userInfo.ColorOfProfile;
+    changeColorOfProfile.addEventListener('click', changeColor);
+    changePassword.addEventListener('click', changePasswordLayouts);
+    changeInformation.addEventListener('click', changeInfoUser);
+    setColorMood();
+  });
+}).catch(function (error) {
+  console.log("Error getting documents: ", error);
+});
 
 /***/ }),
 
@@ -52110,8 +52539,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "firstName": () => /* binding */ firstName,
 /* harmony export */   "lastName": () => /* binding */ lastName,
 /* harmony export */   "birthday": () => /* binding */ birthday,
-/* harmony export */   "country": () => /* binding */ country,
-/* harmony export */   "city": () => /* binding */ city,
 /* harmony export */   "checkInputs": () => /* binding */ checkInputs,
 /* harmony export */   "setErrorFor": () => /* binding */ setErrorFor,
 /* harmony export */   "setSuccessFor": () => /* binding */ setSuccessFor,
@@ -52124,9 +52551,9 @@ const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 const firstName = document.getElementById('name');
 const lastName = document.getElementById('surname');
-const birthday = document.getElementById('birthday');
-const country = document.querySelector('.country');
-const city = document.querySelector('.city');
+const birthday = document.getElementById('birthday'); //export const country = document.querySelector('.country')
+//export const city = document.querySelector('.city')
+
 const locationButton = document.querySelector('.locationButton');
 
 if (form !== null) {
@@ -52134,10 +52561,6 @@ if (form !== null) {
     e.preventDefault();
     checkInputs();
   });
-}
-
-if (locationButton !== null) {
-  locationButton.addEventListener('click', yourLocation);
 }
 
 function checkInputs() {
@@ -52148,9 +52571,9 @@ function checkInputs() {
     const password2Value = password2.value.trim();
     const firstNameValue = firstName.value.trim();
     const lastNameValue = lastName.value.trim();
-    const birthdayValue = birthday.value;
-    const countryValue = country.innerHTML;
-    const cityValue = city.innerHTML;
+    const birthdayValue = birthday.value; //const countryValue = country.innerHTML
+    //const cityValue = city.innerHTML
+
     let isOk = true;
 
     if (firstNameValue === '') {
@@ -52183,23 +52606,23 @@ function checkInputs() {
     } else {
       setSuccessFor(username);
     }
-
-    if (countryValue === 'Country' && cityValue === 'City') {
-      const small = document.getElementById('location_error');
-      const inputLoc = document.querySelectorAll('.location');
-      inputLoc[0].style.border = '2px solid #ef7008';
-      inputLoc[1].style.border = '2px solid #ef7008';
-      small.style.visibility = 'visible';
-      small.style.color = '#ef7008';
-      small.innerText = 'Please, share your location';
-      isOk = false;
+    /*if (countryValue === 'Country' && cityValue === 'City') {
+        const small = document.getElementById('location_error')
+        const inputLoc = document.querySelectorAll('.location')
+        inputLoc[0].style.border = '2px solid #ef7008'
+        inputLoc[1].style.border = '2px solid #ef7008'
+        small.style.visibility = 'visible'
+        small.style.color = '#ef7008'
+        small.innerText = 'Please, share your location'
+        isOk = false
     } else {
-      const small = document.getElementById('location_error');
-      const inputLoc = document.querySelectorAll('.location');
-      inputLoc[0].style.border = '2px solid #00a6a6';
-      inputLoc[1].style.border = '2px solid #00a6a6';
-      small.style.visibility = 'hidden';
-    }
+        const small = document.getElementById('location_error')
+        const inputLoc = document.querySelectorAll('.location')
+        inputLoc[0].style.border = '2px solid #00a6a6'
+        inputLoc[1].style.border = '2px solid #00a6a6'
+        small.style.visibility = 'hidden'
+    }*/
+
 
     if (emailValue === '') {
       setErrorFor(email, 'Email cannot be blank');
@@ -52246,15 +52669,6 @@ function setSuccessFor(input) {
 }
 function isEmail(email) {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-}
-
-async function yourLocation() {
-  const resu = await fetch(`http://ip-api.com/json`);
-  const data = await resu.json();
-  alert('We are checking your location');
-  const location = document.querySelectorAll('.location');
-  location[0].innerHTML = data.country;
-  location[1].innerHTML = data.city;
 }
 
 /***/ }),

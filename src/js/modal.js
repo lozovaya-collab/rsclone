@@ -1,5 +1,8 @@
 import { setErrorFor, setSuccessFor, isEmail } from "./signUp";
+import { logOutUser } from "./logOut";
 const formLogIn = document.getElementById('popup')
+const btnMain = document.querySelector('.mainBtn')
+
 if (formLogIn !== null) {
     formLogIn.innerHTML = `<div class="popup__body">
 <div class="popup__content">
@@ -31,47 +34,47 @@ if (formLogIn !== null) {
 }
 const emailLogIn = document.getElementById('emailLogIn')
 const passwordLogIn = document.getElementById('passwordLogIn')
-
-
-
 const btn = document.querySelector('.btnRest')
-const btnMain = document.querySelector('.mainBtn')
 const btnLogIn = document.querySelector('.logIn')
 const btnClose = document.querySelector('.btnClose')
 
-if (btnLogIn !== null) {
-    btnLogIn.addEventListener('click', (e) => {
-        console.log('log in');
-        e.preventDefault()
-        checkData()
-    })
-}
-// if (formLogIn) {
-//     document.querySelector('body').style.overflow = 'hidden'
-// } else {
-//     document.querySelector('body').style.overflow = 'visible'
-// }
 
 if (btnClose !== null) {
     btnClose.addEventListener('click', (e) => {
         formLogIn.style.display = 'none'
     })
+} else {
+    console.log(btnClose);
 }
 
-if (btnMain !== null) {
-    btnMain.addEventListener('click', (e) => {
-        formLogIn.style.display = 'flex'
-        formLogIn.style.top = '0'
+if (document.querySelector('.mainBtn') !== null) {
+    document.querySelector('.mainBtn').addEventListener('click', (e) => {
+        console.log(btnMain.innerHTML);
+        if (btnMain.innerHTML === 'Log In') {
+            formLogIn.style.display = 'flex'
+            formLogIn.style.top = '0'
+        } else {
+            logOutUser(localStorage.getItem(('Auth')))
+            window.location.href = '../../dist/index.html'
+        }
     })
+} else {
+    console.log(document.querySelector('.mainBtn'));
 }
+
 if (btn !== null) {
     btn.addEventListener('click', (e) => {
-        formLogIn.style.display = 'flex'
+        if (btn.innerHTML === 'Log In') {
+            formLogIn.style.display = 'flex'
+        } else {
+            logOutUser(localStorage.getItem(('Auth')))
+            window.location.href = '../../dist/index.html'
+        }
+
     })
 }
 
 export function checkData() {
-    console.log(emailLogIn.value)
     const emailValue1 = emailLogIn.value
     const passwordValue1 = passwordLogIn.value
     let isCorrect = true

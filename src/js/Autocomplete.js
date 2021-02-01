@@ -1,4 +1,4 @@
-import { removeSelectedFilter, removeSelectedFilterRestaurant } from './addClickHandlers'
+import { removeSelectedFilter, removeSelectedFilterRestaurant, arrayNameRestaurants, arrayData } from './addClickHandlers'
 
 export const Autocomplete = (selector, data) => {
 
@@ -54,6 +54,7 @@ export const Autocomplete = (selector, data) => {
         }
 
         input.addEventListener('input', (e) => {
+
             removeSelectedFilter()
             removeSelectedFilterRestaurant()
             let value = input.value;
@@ -66,9 +67,9 @@ export const Autocomplete = (selector, data) => {
 
             list.innerHTML = '';
             listItems = [];
-
+            console.log('SSSSSSSSSSSS', data)
             data.forEach((dataItem, index) => {
-
+                console.log('pppppppppppppppppppp')
                 let search = ciSearch(value, dataItem);
                 if (search === -1) {
 
@@ -134,6 +135,8 @@ export const Autocomplete = (selector, data) => {
         input.addEventListener('click', (e) => {
                 input.value = '';
                 // focusedItem = -1;
+
+
             })
             ////////////// 
         function searchNameRestaurant() {

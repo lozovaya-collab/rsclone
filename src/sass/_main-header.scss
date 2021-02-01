@@ -1,6 +1,10 @@
 $maincolor_first: #00a6a6;
 $maincolor_second: #efca08;
 $maincolor_third: #fff;
+.header {
+    z-index: 3;
+}
+
 .main_header {
     // background-image: url("./../assets/images/12.jpg");
     background-size: cover;

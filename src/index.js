@@ -1,12 +1,15 @@
+import './js/dbFirebase'
+import './js/checkUser'
 import './js/map'
 import './js/modal'
 import './js/signUp'
-import './js/dbFirebase'
 import './js/logIn'
+import './js/logOut'
 import { Autocomplete } from './js/Autocomplete'
 import './js/apiData'
 import './js/scrollUp'
 import './js/setBackground'
+import './js/profileSettings'
 import { getDataCard, renderPageRestaurant } from './js/getDataCard'
 import './js/getDataCard'
 import {
@@ -15,7 +18,8 @@ import {
     getBestRestaurants,
     showTypeRestaurants,
     sortRestaurantsByCities,
-    arrayNameRestaurants
+    arrayNameRestaurants,
+
 } from './js/addClickHandlers'
 import { CardsRestaurants } from './js/CardsRestaurants'
 import { restaurantsData } from './js/apiData'
@@ -24,15 +28,14 @@ import { getRating } from './js/starsRating'
 
 console.log(localStorage.getItem('Auth'));
 // export let arrayNameRestaurants = []
-
-
 window.onload = function() {
+
+
     // render Cards of Restaurants
     if (restaurantsData) {
         renderCardsRestaurants()
     }
-    //autocomplete
-    Autocomplete('#input-select', arrayNameRestaurants);
+
 
     //click sorting 
     addFilterPriceClickHandler();
@@ -41,6 +44,10 @@ window.onload = function() {
     showTypeRestaurants();
 
     getBestRestaurants()
+
+
+    //autocomplete
+    Autocomplete('#input-select', arrayNameRestaurants);
 
     getDataCard()
     if (document.querySelector('.main__restaurant_page')) {
