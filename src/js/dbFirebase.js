@@ -40,7 +40,7 @@ const createUser = () => {
         const lastName = document.getElementById('surname').value
         const birthday = document.getElementById('birthday').value
         const country = 'Canada'
-        const city = 'Otawa'
+        const city = document.querySelector('select')
         let rand = makeid()
         let color = 'blue'
         const url = `../../dist/src/assets/images/user${rand}.png`
@@ -58,11 +58,16 @@ const createUser = () => {
                 "E-mail": email,
                 Password: password,
                 Country: country,
-                City: city,
-                colorOfProfile: color
+                City: city.options[city.options.selectedIndex].value,
+                ColorOfProfile: color
             })
             .then(function(docRef) {
-                console.log("Document written with ID: ", docRef.id);
+                const newUser = {
+                    City: city.options[city.options.selectedIndex].value,
+                    ID: docRef.id,
+                    Username: username
+                }
+                localStorage.setItem('user', JSON.stringify(newUser));
                 window.location.href = '../../dist/index.html'
             })
             .catch(function(error) {
