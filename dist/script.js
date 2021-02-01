@@ -50835,6 +50835,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 console.log(localStorage.getItem('Auth')); // export let arrayNameRestaurants = []
 
 window.onload = function () {
@@ -50858,6 +50859,14 @@ window.onload = function () {
   }
 
   (0,_js_starsRating__WEBPACK_IMPORTED_MODULE_16__.getRating)();
+  const pageReview = document.querySelector('.button__review');
+
+  if (pageReview) {
+    pageReview.addEventListener('click', () => {
+      window.location.href = '../../dist/pages/review.html';
+      localStorage.setItem('fromPage', 'true');
+    });
+  }
 };
 
 const renderCardsRestaurants = () => {
@@ -51504,13 +51513,13 @@ const showTypeRestaurants = () => {
 }; // sort restaurants by cities
 
 let arrayData = [];
-let arrayNameRestaurants = []; // arrayNameRestaurantsCity.forEach(element => {
-//     arrayData.push(element)
-// })
-// arrayData.forEach(nameRestaurant => {
-//     arrayNameRestaurants.push(nameRestaurant.name)
-// })
-
+let arrayNameRestaurants = [];
+_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity.forEach(element => {
+  arrayData.push(element);
+});
+arrayData.forEach(nameRestaurant => {
+  arrayNameRestaurants.push(nameRestaurant.name);
+});
 const sortRestaurantsByCities = () => {
   let selectionCity = document.querySelector('.searching_city ');
   let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a');
@@ -52050,15 +52059,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 if (document.querySelector('#map')) {
-  let map = L.map('map', {}).setView([45.401795, -75.699583], 10);
+  let map = L.map('map', {}).setView([45.401795, -75.699583], 12);
   let osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="copyright">Openstreetmap</a>'
   }).addTo(map);
+  console.log(_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData);
 
-  for (let i = 0; i < _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurants.length; i += 1) {
-    let coordinates = [_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurants[i].coordinatesLatitude, _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurants[i].coordinatesLongitude];
-    let marker = L.marker(coordinates, {}).addTo(map).bindPopup(`${_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurants[i].name}, ${_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurants[i].locationAddress}`);
-    console.log('ZZZZZZZZZZZZZZZ', marker);
+  for (let i = 0; i < _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData.length; i += 1) {
+    console.log('dddd'); //let coordinates = [arrayNameRestaurants[i].coordinatesLatitude, arrayNameRestaurants[i].coordinatesLongitude]
+
+    let iconOptions = {
+      iconUrl: '../../dist/src/assets/icon/canada.png',
+      iconSize: [50, 50]
+    };
+    let customIcon = L.icon(iconOptions);
+    let markerOptions = {
+      icon: customIcon
+    };
+    let marker = L.marker([_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].coordinatesLatitude, _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].coordinatesLongitude], markerOptions); // Adding marker to the map
+
+    marker.bindPopup(`${_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].name}, ${_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].city}`);
+    marker.addTo(map);
+    /*let marker = L.marker(coordinates, {})
+        .addTo(map)
+        .bindPopup(`${arrayNameRestaurants[i].name}, ${arrayNameRestaurants[i].locationAddress}`)
+    console.log('ZZZZZZZZZZZZZZZ', marker)*/
   }
 }
 
@@ -52787,9 +52812,17 @@ const avatarReview = document.querySelector('.review__restaurant_main__user_avat
 const review = document.querySelector('.review__restaurant_main__text__area');
 const sumbitReview = document.querySelector('.review_submit');
 const headlineRestaurant = document.querySelector('.review__restaurant_main__text__headline a');
+const search = document.querySelector('.review__restaurant_search');
 let rating;
 
 if (localStorage.getItem('user') !== '' && usernameReview) {
+  if (localStorage.getItem('fromPage') !== null || localStorage.getItem('fromPage') !== '') {
+    let restPage = JSON.parse(localStorage.getItem('card'))[0];
+    headlineRestaurant.innerHTML = restPage.name;
+    headlineRestaurant.href = '';
+    search.style.visibility = 'hidden';
+  }
+
   const objUser = JSON.parse(localStorage.getItem('user'));
   console.log(objUser);
   usernameReview.innerHTML = objUser.Username;
@@ -52809,6 +52842,7 @@ if (localStorage.getItem('user') !== '' && usernameReview) {
 
 function createReview() {
   console.log('submit');
+  localStorage.setItem('fromPage', '');
   let currentDate = new Date().toISOString().slice(0, 10);
   _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").add({
     Avatar: avatarReview.src,
