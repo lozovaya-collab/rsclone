@@ -5,6 +5,7 @@ import './js/modal'
 import './js/signUp'
 import './js/logIn'
 import './js/writeReview'
+import { writeReviewToRestaurant } from './js/writeReview'
 import './js/logOut'
 import { Autocomplete } from './js/Autocomplete'
 import './js/apiData'
@@ -57,7 +58,17 @@ window.onload = function() {
 
     getRating();
 
+
+    const pageReview = document.querySelector('.button__review')
+    if (pageReview) {
+        pageReview.addEventListener('click', () => {
+            window.location.href = '../../dist/pages/review.html'
+            localStorage.setItem('fromPage', 'true')
+        })
+    }
+
     cancelEventReviewCard()
+
 
 };
 
