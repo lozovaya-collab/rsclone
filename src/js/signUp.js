@@ -1,3 +1,4 @@
+import { db } from './dbFirebase'
 const form = document.getElementById('form')
 export const username = document.getElementById('username')
 export const email = document.getElementById('email')
@@ -6,11 +7,9 @@ export const password2 = document.getElementById('password2')
 export const firstName = document.getElementById('name')
 export const lastName = document.getElementById('surname')
 export const birthday = document.getElementById('birthday')
-    //export const country = document.querySelector('.country')
-    //export const city = document.querySelector('.city')
+export const city = document.querySelector('select')
 
 
-const locationButton = document.querySelector('.locationButton')
 
 
 if (form !== null) {
@@ -30,8 +29,7 @@ export function checkInputs() {
         const firstNameValue = firstName.value.trim()
         const lastNameValue = lastName.value.trim()
         const birthdayValue = birthday.value
-            //const countryValue = country.innerHTML
-            //const cityValue = city.innerHTML
+        const cityValue = city.options[city.options.selectedIndex].value
         let isOk = true
         if (firstNameValue === '') {
             setErrorFor(firstName, 'First name cannot be blank')
@@ -61,25 +59,33 @@ export function checkInputs() {
             setErrorFor(username, 'Username cannot be blank')
             isOk = false
         } else {
-            setSuccessFor(username)
+            let check = false
+            db.collection("users").where("Username", "==", usernameValue)
+                .get()
+                .then(function(querySnapshot) {
+                    querySnapshot.forEach(function() {
+                        setErrorFor(username, 'Such a user already exists')
+                        check = true
+                    });
+                    if (!check) {
+                        setSuccessFor(username)
+                    }
+                })
+                .catch(function(error) {
+                    console.log("Error getting documents: ", error);
+                });
         }
 
-        /*if (countryValue === 'Country' && cityValue === 'City') {
+        if (cityValue === 'Cities of Canada') {
             const small = document.getElementById('location_error')
-            const inputLoc = document.querySelectorAll('.location')
-            inputLoc[0].style.border = '2px solid #ef7008'
-            inputLoc[1].style.border = '2px solid #ef7008'
+            small.style.color = 'red'
             small.style.visibility = 'visible'
-            small.style.color = '#ef7008'
             small.innerText = 'Please, share your location'
             isOk = false
         } else {
             const small = document.getElementById('location_error')
-            const inputLoc = document.querySelectorAll('.location')
-            inputLoc[0].style.border = '2px solid #00a6a6'
-            inputLoc[1].style.border = '2px solid #00a6a6'
             small.style.visibility = 'hidden'
-        }*/
+        }
 
         if (emailValue === '') {
             setErrorFor(email, 'Email cannot be blank')
@@ -88,7 +94,21 @@ export function checkInputs() {
             setErrorFor(email, 'Email is not valid')
             isOk = false
         } else {
-            setSuccessFor(email)
+            let check = false
+            db.collection("users").where("E-mail", "==", emailValue)
+                .get()
+                .then(function(querySnapshot) {
+                    querySnapshot.forEach(function() {
+                        setErrorFor(email, 'Such a user already exists')
+                        check = true
+                    });
+                    if (!check) {
+                        setSuccessFor(email)
+                    }
+                })
+                .catch(function(error) {
+                    console.log("Error getting documents: ", error);
+                });
         }
 
         if (passwordValue === '') {

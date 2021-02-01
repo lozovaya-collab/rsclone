@@ -1,0 +1,83 @@
+.review__restaurant {
+    width: 100%;
+    margin-top: 157px;
+    display: flex;
+    flex-direction: column;
+    &_main {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 521px;
+        &__user {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 10%;
+            margin-right: 5%;
+            &_avatar {
+                width: 100px;
+            }
+            & span {
+                font-size: 20px;
+            }
+        }
+        &__text {
+            width: 70%;
+            height: 70%;
+            &__headline {
+                font-size: 35px;
+                opacity: 0.7;
+                & a {
+                    text-decoration: none;
+                    &:hover {
+                        color: $maincolor_second;
+                        opacity: 0.7;
+                    }
+                }
+            }
+            &__area {
+                width: 100%;
+                height: 80%;
+            }
+        }
+    }
+    &__rating_submit {
+        display: flex;
+        flex-direction: row;
+        margin-top: 5%;
+        &_item {
+            cursor: pointer;
+        }
+    }
+    &_search {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.review_submit {
+    margin-top: 20px;
+    background-color: $maincolor_third;
+    border: 2px solid $maincolor_first;
+    color: $maincolor_first;
+    display: block;
+    font-family: Georgia, Times, Times New Roman, serif;
+    font-size: 20px;
+    width: 250px;
+    padding: 10px;
+    &:hover {
+        background-color: $maincolor_first;
+        color: $maincolor_third;
+        cursor: pointer;
+    }
+    &:focus {
+        outline: none;
+        background-color: $aqua_light;
+        border: 2px solid $aqua_light;
+        color: $maincolor_third;
+        cursor: pointer;
+    }
+    &:active {
+        outline: none;
+    }
+}
