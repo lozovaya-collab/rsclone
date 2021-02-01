@@ -65,7 +65,8 @@ const createUser = () => {
                 const newUser = {
                     City: city.options[city.options.selectedIndex].value,
                     ID: docRef.id,
-                    Username: username
+                    Username: username,
+                    Avatar: url
                 }
                 localStorage.setItem('user', JSON.stringify(newUser));
                 window.location.href = '../../dist/index.html'

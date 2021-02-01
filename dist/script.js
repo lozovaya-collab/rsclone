@@ -50804,18 +50804,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
 /* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
 /* harmony import */ var _js_logIn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/logIn */ "./src/js/logIn.js");
-/* harmony import */ var _js_logOut__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/logOut */ "./src/js/logOut.js");
-/* harmony import */ var _js_Autocomplete__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/Autocomplete */ "./src/js/Autocomplete.js");
-/* harmony import */ var _js_apiData__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/apiData */ "./src/js/apiData.js");
-/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/scrollUp */ "./src/js/scrollUp.js");
-/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_js_scrollUp__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./js/setBackground */ "./src/js/setBackground.js");
-/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_js_setBackground__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _js_profileSettings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./js/profileSettings */ "./src/js/profileSettings.js");
-/* harmony import */ var _js_getDataCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./js/getDataCard */ "./src/js/getDataCard.js");
-/* harmony import */ var _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./js/addClickHandlers */ "./src/js/addClickHandlers.js");
-/* harmony import */ var _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./js/CardsRestaurants */ "./src/js/CardsRestaurants.js");
-/* harmony import */ var _js_starsRating__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./js/starsRating */ "./src/js/starsRating.js");
+/* harmony import */ var _js_writeReview__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/writeReview */ "./src/js/writeReview.js");
+/* harmony import */ var _js_logOut__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/logOut */ "./src/js/logOut.js");
+/* harmony import */ var _js_Autocomplete__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/Autocomplete */ "./src/js/Autocomplete.js");
+/* harmony import */ var _js_apiData__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/apiData */ "./src/js/apiData.js");
+/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./js/scrollUp */ "./src/js/scrollUp.js");
+/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_js_scrollUp__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./js/setBackground */ "./src/js/setBackground.js");
+/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_js_setBackground__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _js_profileSettings__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./js/profileSettings */ "./src/js/profileSettings.js");
+/* harmony import */ var _js_getDataCard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./js/getDataCard */ "./src/js/getDataCard.js");
+/* harmony import */ var _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./js/addClickHandlers */ "./src/js/addClickHandlers.js");
+/* harmony import */ var _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./js/CardsRestaurants */ "./src/js/CardsRestaurants.js");
+/* harmony import */ var _js_starsRating__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./js/starsRating */ "./src/js/starsRating.js");
+
 
 
 
@@ -50838,32 +50840,32 @@ console.log(localStorage.getItem('Auth')); // export let arrayNameRestaurants = 
 
 window.onload = function () {
   // render Cards of Restaurants
-  if (_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData) {
+  if (_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData) {
     renderCardsRestaurants();
   } //autocomplete
 
 
-  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_7__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.arrayNameRestaurants); //click sorting 
+  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_8__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.arrayNameRestaurants); //click sorting 
 
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.addFilterPriceClickHandler)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.addFilterRestaurantsClickHandler)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.sortRestaurantsByCities)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.showTypeRestaurants)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_13__.getBestRestaurants)();
-  (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_12__.getDataCard)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.addFilterPriceClickHandler)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.addFilterRestaurantsClickHandler)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.sortRestaurantsByCities)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.showTypeRestaurants)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.getBestRestaurants)();
+  (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_13__.getDataCard)();
 
   if (document.querySelector('.main__restaurant_page')) {
-    (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_12__.renderPageRestaurant)();
+    (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_13__.renderPageRestaurant)();
   }
 
-  (0,_js_starsRating__WEBPACK_IMPORTED_MODULE_15__.getRating)();
+  (0,_js_starsRating__WEBPACK_IMPORTED_MODULE_16__.getRating)();
 };
 
 const renderCardsRestaurants = () => {
   let cardsWrapperRestaurants = getCardsWrapperRestaurant();
 
   if (cardsWrapperRestaurants) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData).forEach(card => {
       cardsWrapperRestaurants.append(card.generateCardsRestaurants());
     });
   }
@@ -50871,7 +50873,7 @@ const renderCardsRestaurants = () => {
   let cardsWrapperMainCity = getCardsWrapperMainCity();
 
   if (cardsWrapperMainCity) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData).forEach(card => {
       cardsWrapperMainCity.append(card.generateCardsRestaurants());
     });
   }
@@ -50879,7 +50881,7 @@ const renderCardsRestaurants = () => {
   let cardsWrapperMain = getCardsWrapperMain();
 
   if (cardsWrapperMain) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_8__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData).forEach(card => {
       cardsWrapperMain.append(card.generateCardsRestaurants());
     });
   }
@@ -50915,7 +50917,7 @@ const getCardsWrapperMain = () => {
 const generateCards = restaurantsData => {
   let cardsRestaurants = [];
   restaurantsData.forEach(card => {
-    cardsRestaurants.push(new _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_14__.CardsRestaurants(card));
+    cardsRestaurants.push(new _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_15__.CardsRestaurants(card));
   });
   return cardsRestaurants;
 };
@@ -51778,7 +51780,8 @@ const createUser = () => {
       const newUser = {
         City: city.options[city.options.selectedIndex].value,
         ID: docRef.id,
-        Username: username
+        Username: username,
+        Avatar: url
       };
       localStorage.setItem('user', JSON.stringify(newUser));
       window.location.href = '../../dist/index.html';
@@ -51913,10 +51916,11 @@ if (logInButton) {
       _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("E-mail", "==", emailLogIn).where("Password", "==", passwordLogIn).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
           console.log(doc.id, " => ", doc.data());
-          myUser = myUser = {
+          myUser = {
             ID: doc.id,
             Username: doc.data().Username,
-            City: doc.data().City
+            City: doc.data().City,
+            Avatar: doc.data().UrlOfImage
           };
           localStorage.setItem('user', JSON.stringify(myUser));
           isUser = true;
@@ -52740,6 +52744,63 @@ function getRating() {
   if (ratingAll.length > 0) {
     initRatings();
   }
+}
+
+/***/ }),
+
+/***/ "./src/js/writeReview.js":
+/*!*******************************!*\
+  !*** ./src/js/writeReview.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _starsRating__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./starsRating */ "./src/js/starsRating.js");
+/* harmony import */ var _dbFirebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
+
+
+const usernameReview = document.querySelector('.review__restaurant_main__user_username');
+const avatarReview = document.querySelector('.review__restaurant_main__user_avatar');
+const review = document.querySelector('.review__restaurant_main__text__area');
+const sumbitReview = document.querySelector('.review_submit');
+const headlineRestaurant = document.querySelector('.review__restaurant_main__text__headline a');
+let rating;
+
+if (localStorage.getItem('user') !== '' && usernameReview) {
+  const objUser = JSON.parse(localStorage.getItem('user'));
+  console.log(objUser);
+  usernameReview.innerHTML = objUser.Username;
+  avatarReview.src = objUser.Avatar;
+  const stars_rating = document.querySelectorAll('.review__restaurant__rating_submit_item');
+
+  for (let i = 0; i < stars_rating.length; i++) {
+    stars_rating[i].addEventListener('click', e => {
+      rating = e.target.value;
+      document.querySelector('.rating__value').innerHTML = rating;
+      (0,_starsRating__WEBPACK_IMPORTED_MODULE_0__.getRating)();
+    });
+  }
+
+  sumbitReview.addEventListener('click', createReview);
+}
+
+function createReview() {
+  console.log('submit');
+  let currentDate = new Date().toISOString().slice(0, 10);
+  _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").add({
+    Avatar: avatarReview.src,
+    Username: usernameReview.innerHTML,
+    Restaurant: headlineRestaurant.innerHTML,
+    Review: review.value,
+    Rating: rating,
+    Date: currentDate
+  }).then(function (doc) {
+    console.log(doc.id);
+    window.location.href = '../../dist/pages/restaurants.html';
+  }).catch(function (error) {
+    console.error("Error adding document: ", error);
+  });
 }
 
 /***/ }),

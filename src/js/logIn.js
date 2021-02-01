@@ -24,7 +24,8 @@ if (logInButton) {
                         myUser = {
                             ID: doc.id,
                             Username: doc.data().Username,
-                            City: doc.data().City
+                            City: doc.data().City,
+                            Avatar: doc.data().UrlOfImage
                         }
                         localStorage.setItem('user', JSON.stringify(myUser));
 
