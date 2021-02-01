@@ -1,4 +1,80 @@
 @import url(https://fonts.googleapis.com/css2?family=Poppins&display=swap);
+@media all and (max-width: 1230px) {
+  .card_restaurant {
+    max-width: 320px; } }
+
+@media all and (max-width: 1050px) {
+  #map {
+    max-width: 400px !important; } }
+
+@media all and (max-width: 1020px) {
+  .header {
+    height: 150px !important; }
+  .header-wrapper {
+    flex-direction: column;
+    justify-content: space-evenly; }
+  .searching {
+    margin: 15px 0 !important; }
+  .main_logoYelp {
+    font-size: 70px !important; }
+  .main_restaurants {
+    padding-top: 150px !important; } }
+
+@media all and (max-width: 891px) {
+  .main_logIn {
+    margin-top: 10px !important; }
+  .main_nav_link {
+    margin-left: 15px;
+    font-size: 20px; }
+  .main_nav {
+    margin-top: 80px !important; }
+  .main_logoYelp {
+    font-size: 50px !important; } }
+
+@media all and (max-width: 780px) {
+  #map {
+    max-width: 300px !important; } }
+
+@media all and (max-width: 760px) {
+  .header {
+    height: 200px !important; }
+  .main_restaurants {
+    padding-top: 200px !important; } }
+
+@media all and (max-width: 670px) {
+  .main_logoYelp {
+    font-size: 40px !important; } }
+
+@media all and (max-width: 630px) {
+  #map {
+    max-width: 250px !important; } }
+
+@media all and (max-width: 578px) {
+  .map-wrapper {
+    display: none !important; } }
+
+@media all and (max-width: 562px) {
+  .main_nav {
+    position: absolute;
+    bottom: 15px; }
+  .main_nav_link {
+    font-size: 16px !important;
+    margin-left: 5px !important; }
+  .main_logoYelp {
+    font-size: 30px !important; } }
+
+@media all and (max-width: 415px) {
+  .input_searching {
+    font-size: 16px; }
+  .main_logoYelp {
+    font-size: 20px !important; } }
+
+@media all and (max-width: 354px) {
+  .wrapper {
+    padding: 0 10px; }
+  .card {
+    margin: 4px !important; } }
+
 * {
   box-sizing: border-box; }
 
@@ -188,7 +264,8 @@ input {
   display: none;
   position: absolute;
   top: 45px;
-  transition: all 3s; }
+  transition: all 3s;
+  right: 3px; }
 
 .type_restaurant {
   border-top: 4px solid #efca08;
@@ -313,66 +390,6 @@ h2 {
   border-radius: 8px;
   border: 1px solid #7a7979; }
 
-@media all and (max-width: 1230px) {
-  .card_restaurant {
-    max-width: 320px; } }
-
-@media all and (max-width: 1020px) {
-  .header {
-    height: 150px; }
-  .header-wrapper {
-    flex-direction: column;
-    justify-content: space-evenly; }
-  .searching {
-    margin: 15px 0; }
-  .main_logoYelp {
-    font-size: 70px !important; }
-  .main_restaurants {
-    padding-top: 150px !important; } }
-
-@media all and (max-width: 891px) {
-  .main_logIn {
-    margin-top: 10px !important; }
-  .main_nav_link {
-    margin-left: 15px;
-    font-size: 20px; }
-  .main_nav {
-    margin-top: 80px !important; }
-  .main_logoYelp {
-    font-size: 50px !important; } }
-
-@media all and (max-width: 760px) {
-  .header {
-    height: 200px; }
-  .main_restaurants {
-    padding-top: 200px !important; } }
-
-@media all and (max-width: 670px) {
-  .main_logoYelp {
-    font-size: 40px !important; } }
-
-@media all and (max-width: 562px) {
-  .main_nav {
-    position: absolute;
-    bottom: 15px; }
-  .main_nav_link {
-    font-size: 16px !important;
-    margin-left: 5px !important; }
-  .main_logoYelp {
-    font-size: 30px !important; } }
-
-@media all and (max-width: 415px) {
-  .input_searching {
-    font-size: 16px; }
-  .main_logoYelp {
-    font-size: 20px !important; } }
-
-@media all and (max-width: 354px) {
-  .wrapper {
-    padding: 0 10px; }
-  .card {
-    margin: 4px !important; } }
-
 .main_restaurants {
   padding-top: 100px;
   height: 100vw;
@@ -389,10 +406,12 @@ h2 {
   padding: 50px 0;
   width: 100%;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  z-index: 2; }
 
 .title {
-  text-align: center; }
+  text-align: center;
+  color: #efca08; }
 
 .filter {
   display: flex;
@@ -407,7 +426,8 @@ h2 {
   border-radius: 15px;
   padding: 5px 10px;
   margin: 2px;
-  transition: .3s; }
+  transition: .3s;
+  background-color: #fff; }
   .filter_box.filter_active {
     background-color: #00a6a6;
     color: #fff; }
@@ -432,7 +452,8 @@ h2 {
   border: 1px solid #c9c9b5;
   min-width: 290px;
   overflow: hidden;
-  margin: 7px; }
+  margin: 7px;
+  background-color: #fff; }
   .card:hover {
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px; }
@@ -497,7 +518,6 @@ h2 {
   display: block; }
 
 .map-wrapper {
-  background-color: #00a6a6;
   margin: 2px;
   display: flex;
   max-width: 600px;
@@ -506,13 +526,16 @@ h2 {
   overflow: hidden;
   right: 0;
   top: 0;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 #map {
-  position: fixed;
   top: 0;
-  max-width: 400px;
-  width: 100%; }
+  right: 0;
+  max-width: 600px;
+  width: 100%;
+  height: 100%;
+  position: fixed; }
 
 .fa-angle-double-up {
   font-size: 30px; }
@@ -551,7 +574,11 @@ h2 {
   align-items: center;
   justify-content: center;
   height: 100px;
-  border-top: 1px solid beige; }
+  border-top: 1px solid beige;
+  background-color: #fff; }
+  .footer .wrapper {
+    padding: 0;
+    height: 100%; }
 
 .footer-wrapper {
   width: 100%;
@@ -559,7 +586,10 @@ h2 {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  z-index: 3;
+  height: 100%;
+  background-color: #fff; }
   .footer-wrapper .logo {
     margin-left: 5px; }
   .footer-wrapper span {
@@ -581,6 +611,9 @@ h2 {
 .rsLogo {
   width: 60px;
   margin-top: 10px; }
+
+.header {
+  z-index: 3; }
 
 .main_header {
   background-size: cover;
@@ -805,7 +838,7 @@ h2 {
     font-size: 45px; }
   .header_wrapper__restaurant .navigation_link {
     color: #444343;
-    font-size: 25px;
+    font-size: 25px !important;
     margin: 20px 0 10px 25px; }
 
 .main__restaurant .restaurant_page {

@@ -16,11 +16,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" /> https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css">
     <title>YelpClone</title>
-    <link rel="stylesheet" href="./../../dist/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 </head>
+<link rel="stylesheet" href="./../../dist/style.css">
 
 <body>
     <header class="header">
@@ -38,7 +40,7 @@
 
                     <select name="city" id="" class="input_searching searching_city">                            
                         <option value="Cities of Canada"  class="selection-allCities" >Cities of Canada</option>
-                        <option value="Ottawa">Ottawa</option>
+                        <option value="Ottawa" >Ottawa</option>
                         <option value="Montreal">Montreal</option>
                         <option value="Toronto">Toronto</option>
                         <option value="Calgary">Calgary</option>
@@ -112,7 +114,10 @@
                     </div>
                 </section>
                 <section class="map-wrapper">
+
                     <div id="map"></div>
+
+
                 </section>
             </div>
 
@@ -141,6 +146,7 @@
             </div>
         </div>
     </footer>
+
     <script src="../script.js">
     </script>
     <script src="./../../dist/script.js">

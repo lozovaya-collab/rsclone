@@ -1,13 +1,21 @@
-// let mapOptions = {
-//     center: [0, 0],
-//     zoom: 2
-// }
+import { arrayNameRestaurants } from './addClickHandlers'
 
-// // Creating a map object
-// let map1 = new L.map('map', mapOptions);
-// console.log(map1);
-// // Creating a Layer object
-// let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 
-// // Adding layer to the map
-// map1.addLayer(layer);
+if (document.querySelector('#map')) {
+    let map = L.map('map', {}).setView([45.401795, -75.699583], 10);
+
+    let osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="copyright">Openstreetmap</a>'
+    }).addTo(map)
+
+
+
+    for (let i = 0; i < arrayNameRestaurants.length; i += 1) {
+        let coordinates = [arrayNameRestaurants[i].coordinatesLatitude, arrayNameRestaurants[i].coordinatesLongitude]
+        let marker = L.marker(coordinates, {})
+            .addTo(map)
+            .bindPopup(`${arrayNameRestaurants[i].name}, ${arrayNameRestaurants[i].locationAddress}`)
+        console.log('ZZZZZZZZZZZZZZZ', marker)
+    }
+
+}

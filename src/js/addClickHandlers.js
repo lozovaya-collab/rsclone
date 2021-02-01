@@ -147,38 +147,60 @@ export const showTypeRestaurants = () => {
 
 export let arrayData = []
 export let arrayNameRestaurants = []
-localStorage.setItem("arrayNameRestaurants", JSON.stringify(arrayNameRestaurants));
+    // arrayNameRestaurantsCity.forEach(element => {
+    //     arrayData.push(element)
+    // })
+    // arrayData.forEach(nameRestaurant => {
+    //     arrayNameRestaurants.push(nameRestaurant.name)
+    // })
+
+
 export const sortRestaurantsByCities = () => {
+
     let selectionCity = document.querySelector('.searching_city ')
     let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a')
     let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a')
     let citiesCards = document.querySelectorAll('.address_restaurant')
 
+
+
+    if (selectionCity) {
+        selectionCity.addEventListener('change', changeValueSelect)
+    }
+
+    // if (selectionCity.clicked === true) {
+    Autocomplete('#input-select', arrayNameRestaurants);
+
+    // } else {
     arrayNameRestaurantsCity.forEach(element => {
         arrayData.push(element)
     })
     arrayData.forEach(nameRestaurant => {
-        arrayNameRestaurants.push(nameRestaurant.name)
-    })
-    localStorage.setItem("arrayNameRestaurants", JSON.stringify(arrayNameRestaurants));
-    if (selectionCity) {
-        selectionCity.addEventListener('change', changeValueSelect)
-        selectionCity.addEventListener('click', () => {
-            arrayData = []
-            arrayNameRestaurants = []
-
+            arrayNameRestaurants.push(nameRestaurant.name)
         })
+        // Autocomplete('#input-select', arrayNameRestaurants);
+        // arrayNameRestaurants = []
+        // arrayData = []
+        // }
+        // arrayNameRestaurants = []
+        // arrayData = []
 
-    }
 
     function changeValueSelect() {
         let selectionCity = this.options[this.selectedIndex].text
-            // console.log(selectionCity)
 
-        console.log(arrayNameRestaurants)
+        arrayData = []
+        arrayNameRestaurants = []
+            // console.log('wwwwwwwwwwwwwwwww', arrayNameRestaurants.length)
+            // if (arrayNameRestaurants.length === 0) {
+            // Autocomplete('#input-select', arrayNameRestaurants);
+            //     console.log('wwwwwwwwwwwwwwwww', arrayNameRestaurants.length)
+            // }
+
 
         let count = 1;
         for (let i = 0; i < cardsRestaurantsMain.length; i += 1) {
+
             if (selectionCity === 'Cities of Canada' && count !== 9) {
                 cardsRestaurantsMain[i].classList.remove('hidden');
 
@@ -210,7 +232,7 @@ export const sortRestaurantsByCities = () => {
                 removeSelectedFilter();
                 removeSelectedFilterRestaurant();
                 cardsRestaurantsPage[i].classList.remove('hidden');
-                count++
+
             } else {
                 removeSelectedFilter();
                 removeSelectedFilterRestaurant();
@@ -225,7 +247,8 @@ export const sortRestaurantsByCities = () => {
                 arrayData.push(arrayNameRestaurantsCity[j])
 
             } else if (selectionCity === arrayNameRestaurantsCity[j].city) {
-
+                console.log('OOOOOOOOOOOOOOO', arrayNameRestaurantsCity.length)
+                console.log('CCCCCCCCCCC', selectionCity)
                 arrayData.push(arrayNameRestaurantsCity[j])
             }
         }
@@ -236,7 +259,6 @@ export const sortRestaurantsByCities = () => {
 
         console.log('sssssssssssssss', arrayNameRestaurants)
         console.log('aaaaaaaaaaaaaaa', arrayData)
-
 
     }
 
