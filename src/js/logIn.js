@@ -21,7 +21,7 @@ if (logInButton) {
                     querySnapshot.forEach(function(doc) {
                         console.log(doc.id, " => ", doc.data());
 
-                        myUser = myUser = {
+                        myUser = {
                             ID: doc.id,
                             Username: doc.data().Username,
                             City: doc.data().City
