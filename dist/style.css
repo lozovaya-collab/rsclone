@@ -115,15 +115,16 @@ input {
 
 .location {
   font-family: 'Poppins', sans-serif;
-  opacity: 0.7;
   display: flex;
-  border: 2px solid #efc80875;
   align-items: center;
   justify-content: center;
   width: 110px;
   height: 35px;
   right: 10px;
-  margin: 2px; }
+  margin-top: -4px; }
+  .location.country {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold; }
 
 .container {
   background-color: #fff;
@@ -1260,6 +1261,73 @@ h2 {
       line-height: 34px;
       font-style: normal;
       font-weight: normal; }
+
+.review__restaurant {
+  width: 100%;
+  margin-top: 157px;
+  display: flex;
+  flex-direction: column; }
+  .review__restaurant_main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 521px; }
+    .review__restaurant_main__user {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 10%;
+      margin-right: 5%; }
+      .review__restaurant_main__user_avatar {
+        width: 100px; }
+      .review__restaurant_main__user span {
+        font-size: 20px; }
+    .review__restaurant_main__text {
+      width: 70%;
+      height: 70%; }
+      .review__restaurant_main__text__headline {
+        font-size: 35px;
+        opacity: 0.7; }
+        .review__restaurant_main__text__headline a {
+          text-decoration: none; }
+          .review__restaurant_main__text__headline a:hover {
+            color: #efca08;
+            opacity: 0.7; }
+      .review__restaurant_main__text__area {
+        width: 100%;
+        height: 80%; }
+  .review__restaurant__rating_submit {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%; }
+    .review__restaurant__rating_submit_item {
+      cursor: pointer; }
+  .review__restaurant_search {
+    display: flex;
+    justify-content: center; }
+
+.review_submit {
+  margin-top: 20px;
+  background-color: #fff;
+  border: 2px solid #00a6a6;
+  color: #00a6a6;
+  display: block;
+  font-family: Georgia, Times, Times New Roman, serif;
+  font-size: 20px;
+  width: 250px;
+  padding: 10px; }
+  .review_submit:hover {
+    background-color: #00a6a6;
+    color: #fff;
+    cursor: pointer; }
+  .review_submit:focus {
+    outline: none;
+    background-color: #07cccc;
+    border: 2px solid #07cccc;
+    color: #fff;
+    cursor: pointer; }
+  .review_submit:active {
+    outline: none; }
 
 
 /*# sourceMappingURL=style.css.map*/
