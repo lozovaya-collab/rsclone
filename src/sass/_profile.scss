@@ -87,6 +87,13 @@
                 margin-top: 20px;
                 margin-left: 50px;
                 height: 75%;
+                &_count {
+                    display: flex;
+                    justify-content: space-around;
+                    & span {
+                        font-size: 30px;
+                    }
+                }
                 & label {
                     font-size: 20px;
                 }

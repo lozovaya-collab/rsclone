@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="./../../dist/src/assets/icon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../../dist/src/assets/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../../dist/src/assets/icon/favicon-16x16.png">
+    <link rel="manifest" href="./../../dist/src/assets/icon/site.webmanifest">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" /> https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css">
+    <title>YelpClone</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+</head>
+<link rel="stylesheet" href="./../../dist/style.css">
+
+<body>
+    <header class="header">
+        <div class="wrapper">
+            <div class="button_wrapper">
+
+                <button class="button_header log-in btnRest" id="show-modal" class="btn">Log In</button>
+
+                <a href="./signUp.html"><button class="button_header sign-up">Sign Up</button></a>
+            </div>
+            <div class="header-wrapper">
+                <a class="logo" href="./../../index.html"> YelpClone <i class="fab fa-yelp"></i></a>
+                <div class="searching">
+                    <input type="text" id="input-select" class="input_searching searching_restaurant" placeholder="Restaurant" autocomplete="off">
+
+                    <select name="city" id="" class="input_searching searching_city">                            
+                        <option value="Cities of Canada"  class="selection-allCities" >Cities of Canada</option>
+                        <option value="Ottawa" >Ottawa</option>
+                        <option value="Montreal">Montreal</option>
+                        <option value="Toronto">Toronto</option>
+                        <option value="Calgary">Calgary</option>
+                        <option value="Edmonton">Edmonton</option>
+                        <option value="Mississauga">Mississauga</option>
+                        <option value="Winnipeg">Winnipeg</option>
+                        <option value="Vancouver">Vancouver</option>
+                        <option value="Quebec">Quebec City</option>
+                        <option value="Hamilton">Brampton</option>                            
+                    </select>
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="link_header">
+                    <a class="navigation_link review" href="/dist/pages/review.html">Wright a Review</a>
+                    <div class="navigation_link restaurant_view"><i class="fas fa-utensils"></i> Restaurants <i class="fas fa-chevron-down"></i>
+                        <div class="box_type_restaurant ">
+                            <div class="type_restaurant ">
+                                <div class="titleRestaurant"><i class="fas fa-fish"></i> Seafood</div>
+                                <div class="titleRestaurant"><i class="fas fa-cheese"></i> Gastropubs</div>
+                                <div class="titleRestaurant"><i class="fas fa-pizza-slice"></i> Italian</div>
+                                <div class="titleRestaurant"><i class="fas fa-hamburger"></i> Burgers</div>
+                                <div class="titleRestaurant"><i class="fas fa-pepper-hot"></i> Mexican</div>
+                                <div class="titleRestaurant"><i class="fas fa-coffee"></i> Japanese</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+    <main class="main_restaurants">
+        <div class="wrapper">
+            <div class="main_wrapper">
+
+                <section class="restaurants_wrapper">
+                    <h1 class="title">The Best <span class="restaurant_inCity"></span> Restaurants </h1>
+                    <div class="delivery_method">
+                        <div class="delivery"></div>
+                        <div class="takeout"></div>
+                    </div>
+                    <div class="filter">
+                        <div class="filter_box all_position filter_active">Reset all filters</div>
+                        <div class="filter_box delivery">$</div>
+                        <div class="filter_box takeout">$$</div>
+                        <div class="filter_box takeout">$$$</div>
+                        <div class="filter_box takeout">$$$$</div>
+                    </div>
+                    <div class="cards_wrapper cards_wrapper_restaurants ">
+                        <a href="#">
+                            <div class="card card_restaurant">
+                                <div class="food">
+                                    <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
+                                </div>
+                                <div class="about_restaurant">
+                                    <h2 class="title_card">Hotbird</h2>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$</span>
+
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </section>
+                <section class="map-wrapper">
+
+                    <div id="map"></div>
+
+
+                </section>
+            </div>
+
+        </div>
+
+        <div id="popup" class="popup">
+
+        </div>
+
+        <a href="#" id="toTop"><i class="fas fa-angle-double-up"></i></a>
+    </main>
+
+    <footer class="footer">
+        <div class="wrapper">
+            <div class="footer-wrapper">
+                <a class="logo" href="./../../index.html"> YelpClone <i class="fab fa-yelp"></i></a>
+                <span><i class="far fa-copyright"></i> 2021</span>
+                <div class="footer-link">
+                    <a href="https://github.com/olgamartinchik"><i class="fab fa-github-alt"></i> </a>
+
+                    <a href="https://github.com/lozovaya-collab"><i class="fab fa-github-alt"></i> </a>
+                </div>
+
+                <a href="https://rs.school/js/" target="_blank"><img class="rsLogo" src="https://rs.school/images/rs_school_js.svg" alt="icon"></a>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js">
+    </script>
+    <script src="./../../dist/script.js">
+    </script>
+
+</body>
+
+</html>

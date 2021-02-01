@@ -11,7 +11,7 @@ const search = document.querySelector('.review__restaurant_search')
 let rating
 
 if (localStorage.getItem('user') !== '' && usernameReview) {
-    if (localStorage.getItem('fromPage') !== null || localStorage.getItem('fromPage') !== '') {
+    if (localStorage.getItem('fromPage') !== null && localStorage.getItem('fromPage') !== '') {
         let restPage = JSON.parse(localStorage.getItem('card'))[0]
         headlineRestaurant.innerHTML = restPage.name
         headlineRestaurant.href = ''

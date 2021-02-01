@@ -52266,6 +52266,8 @@ if (localStorage.getItem('user') !== '') {
   const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
   const changePassword = document.querySelector('.profile__body_settings__body__change_password');
   const changeInformation = document.querySelector('.profile__body_settings__body__change_information');
+  const profile_change_data = document.querySelector('.profile__body_settings__options__change_data');
+  const profile_statistics = document.querySelector('.profile__body_settings__options__statistics');
   let colorOfProfile;
 
   const setColorMood = color => {
@@ -52324,6 +52326,32 @@ if (localStorage.getItem('user') !== '') {
     });
   };
 
+  const changeStatistics = color => {
+    if (color === 'yellow') {
+      profile_change_data.className = 'profile__body_settings__options__change_data yellow__mood_disabled';
+      profile_statistics.className = 'profile__body_settings__options__statistics yellow__mood';
+    } else if (color === 'blue') {
+      profile_change_data.className = 'profile__body_settings__options__change_data blue__mood_disabled';
+      profile_statistics.className = 'profile__body_settings__options__statistics blue__mood';
+    }
+
+    const arr = JSON.parse(localStorage.getItem('reviews'));
+    settings.innerHTML = `
+                    <div class="profile__body_settings__body_count">
+                        <span>My reviews</span><span>${arr.length}</span>
+                    </div>`;
+  };
+
+  const changeData = color => {
+    if (color === 'yellow') {
+      profile_change_data.className = 'profile__body_settings__options__change_data yellow__mood';
+      profile_statistics.className = 'profile__body_settings__options__statistics yellow__mood_disabled';
+    } else if (color === 'blue') {
+      profile_change_data.className = 'profile__body_settings__options__change_data blue__mood';
+      profile_statistics.className = 'profile__body_settings__options__statistics blue__mood_disabled';
+    }
+  };
+
   const changePasswordUser = () => {
     const oldPassword = document.getElementById('passwordOld');
     const newPassword = document.getElementById('passwordNew');
@@ -52367,29 +52395,42 @@ if (localStorage.getItem('user') !== '') {
   };
 
   const changePasswordLayouts = () => {
-    settings.innerHTML = `
-<div class="container__form_control">
-    <label class="password__change">Old password</label>
-    <input type="password" placeholder="old password" id="passwordOld" value=""></input>
-    <i class="fas fa-check-circle"></i>
-    <i class="fas fa-exclamation-circle"></i>
-    <small>Error message</small>
-</div>
-<div class="container__form_control">
-    <label class="password__change">New password</label>
-    <input type="password" placeholder="password" id="passwordNew" value=""></input>
-    <i class="fas fa-check-circle"></i>
-    <i class="fas fa-exclamation-circle"></i>
-    <small>Error message</small>
-</div>
-<div class="container__form_control">
-    <label class="password__change">New password check</label>
-    <input type="password" placeholder="password repeat" id="passwordNew2" value=""></input>
-    <i class="fas fa-check-circle"></i>
-    <i class="fas fa-exclamation-circle"></i>
-    <small>Error message</small>
-</div>
-<button type="submit" class="profile__body_settings__body__change_password_button">Submit</button>`;
+    settings.innerHTML = ` <
+            div class = "container__form_control" >
+            <
+            label class = "password__change" > Old password < /label> <
+            input type = "password"
+        placeholder = "old password"
+        id = "passwordOld"
+        value = "" > < /input> <
+            i class = "fas fa-check-circle" > < /i> <
+            i class = "fas fa-exclamation-circle" > < /i> <
+            small > Error message < /small> <
+            /div> <
+            div class = "container__form_control" >
+            <
+            label class = "password__change" > New password < /label> <
+            input type = "password"
+        placeholder = "password"
+        id = "passwordNew"
+        value = "" > < /input> <
+            i class = "fas fa-check-circle" > < /i> <
+            i class = "fas fa-exclamation-circle" > < /i> <
+            small > Error message < /small> <
+            /div> <
+            div class = "container__form_control" >
+            <
+            label class = "password__change" > New password check < /label> <
+            input type = "password"
+        placeholder = "password repeat"
+        id = "passwordNew2"
+        value = "" > < /input> <
+            i class = "fas fa-check-circle" > < /i> <
+            i class = "fas fa-exclamation-circle" > < /i> <
+            small > Error message < /small> <
+            /div> <
+            button type = "submit"
+        class = "profile__body_settings__body__change_password_button" > Submit < /button>`;
     settings.style.alignItems = 'center';
     settings.style.marginTop = '0px';
     document.querySelectorAll('.container__form_control')[0].style.marginBottom = '-15px';
@@ -52499,6 +52540,13 @@ if (localStorage.getItem('user') !== '') {
 
   _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
+      _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("reviews").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
+        const arrayReviews = [];
+        querySnapshot.forEach(function (doc) {
+          arrayReviews.push(doc.data());
+        });
+        localStorage.setItem('reviews', JSON.stringify(arrayReviews));
+      });
       userInfo = doc.data();
       nameUser.innerHTML = userInfo.Firstname;
       surnameUser.innerHTML = userInfo.LastName;
@@ -52506,11 +52554,29 @@ if (localStorage.getItem('user') !== '') {
       usernameUser.innerHTML = userInfo.Username;
       avatar.src = userInfo.UrlOfImage;
       locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`;
-      colorOfProfile = userInfo.ColorOfProfile;
-      changeColorOfProfile.addEventListener('click', changeColor);
-      changePassword.addEventListener('click', changePasswordLayouts);
-      changeInformation.addEventListener('click', changeInfoUser);
+      colorOfProfile = userInfo.ColorOfProfile; //changeColorOfProfile.addEventListener('click', changeColor)
+      //changePassword.addEventListener('click', changePasswordLayouts)
+      //changeInformation.addEventListener('click', changeInfoUser)
+
+      console.log(colorOfProfile);
       setColorMood(colorOfProfile);
+      profile_statistics.addEventListener('click', () => {
+        changeStatistics(colorOfProfile);
+      });
+      profile_change_data.addEventListener('click', () => {
+        changeData(colorOfProfile);
+        settings.innerHTML = `
+                    <div class="profile__body_settings__body__change_password">Cange password</div>
+                    <div class="profile__body_settings__body__change_information">Cange information about me</div>
+                    <div class="profile__body_settings__body__change_color">Cange color of my profile</div>
+                    `;
+        const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
+        const changePassword = document.querySelector('.profile__body_settings__body__change_password');
+        const changeInformation = document.querySelector('.profile__body_settings__body__change_information');
+        changeColorOfProfile.addEventListener('click', changeColor);
+        changePassword.addEventListener('click', changePasswordLayouts);
+        changeInformation.addEventListener('click', changeInfoUser);
+      });
     });
   }).catch(function (error) {
     console.log("Error getting documents: ", error);
@@ -52848,7 +52914,7 @@ const search = document.querySelector('.review__restaurant_search');
 let rating;
 
 if (localStorage.getItem('user') !== '' && usernameReview) {
-  if (localStorage.getItem('fromPage') !== null || localStorage.getItem('fromPage') !== '') {
+  if (localStorage.getItem('fromPage') !== null && localStorage.getItem('fromPage') !== '') {
     let restPage = JSON.parse(localStorage.getItem('card'))[0];
     headlineRestaurant.innerHTML = restPage.name;
     headlineRestaurant.href = '';
