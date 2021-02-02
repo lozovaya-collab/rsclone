@@ -2,6 +2,7 @@ import { arrayData } from './addClickHandlers'
 
 
 if (document.querySelector('#map')) {
+
     let map = L.map('map', {}).setView([45.401795, -75.699583], 12);
 
     let osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {

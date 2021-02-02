@@ -1,5 +1,5 @@
 import './js/dbFirebase'
-import './js/checkUser'
+import { checkUserIsAuth } from './js/checkUser'
 import './js/map'
 import './js/modal'
 import './js/signUp'
@@ -31,7 +31,7 @@ import { getRating } from './js/starsRating'
 console.log(localStorage.getItem('Auth'));
 // export let arrayNameRestaurants = []
 window.onload = function() {
-
+    checkUserIsAuth()
 
     // render Cards of Restaurants
     if (restaurantsData) {
@@ -68,7 +68,20 @@ window.onload = function() {
     }
 
     cancelEventReviewCard()
+    const restaurants = document.querySelector('.restaurants_wrapper_review')
 
+    if (restaurants) {
+        for (let i = 0; i < restaurants.children.length; i++) {
+            restaurants.children[i].addEventListener('click', () => {
+                const currentRestaurant = restaurants.children[i]
+                document.querySelector('.cards_wrapper').innerHTML = ''
+                document.querySelector('.cards_wrapper').appendChild(currentRestaurant)
+                const headlineRestaurant = document.querySelector('.review__restaurant_main__text__headline a')
+                const nameOfRestaurant = currentRestaurant.children[0].children[1].children[0].innerHTML
+                headlineRestaurant.innerHTML = nameOfRestaurant
+            })
+        }
+    }
 
 };
 
@@ -142,7 +155,7 @@ const cancelEventReviewCard = () => {
         for (let i = 0; i < cardsContainer.length; i += 1) {
             cardsContainer[i].addEventListener('click', (e) => {
                 e.preventDefault()
-                e.stopPropagation()
+                    //e.stopPropagation()
 
             });
         }

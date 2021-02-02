@@ -1375,5 +1375,9 @@ h2 {
   height: 290px;
   max-width: 456px; }
 
+.message {
+  color: #ef7008;
+  visibility: hidden; }
+
 
 /*# sourceMappingURL=style.css.map*/

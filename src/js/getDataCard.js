@@ -12,6 +12,7 @@ export const getDataCard = () => {
             let dataIdCard = cards[i].getAttribute('data-id')
 
             if (dataIdCard === restaurantsData[i].id) {
+
                 card.push({
                     id: restaurantsData[i].id,
                     name: restaurantsData[i].name,
@@ -28,7 +29,9 @@ export const getDataCard = () => {
                     categories: restaurantsData[i].categories,
                     coordinatesLatitude: restaurantsData[i].coordinatesLatitude,
                     coordinatesLongitude: restaurantsData[i].coordinatesLongitude
+
                 })
+
             } else {
                 card = []
             }

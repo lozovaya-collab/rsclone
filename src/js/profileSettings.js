@@ -18,6 +18,18 @@ if (localStorage.getItem('user') !== '') {
 
     let colorOfProfile
 
+    const uniqueArray = (array, prop1, prop2) => {
+        for (let i = 0; i < array.length; i++) {
+            for (let j = i + 1; j < array.length; j++) {
+                if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+                    array.splice(i, 1)
+                }
+            }
+        }
+
+        return array
+    }
+
     const setColorMood = (color) => {
         const profile_change_data = document.querySelector('.profile__body_settings__options__change_data')
         const profile_statistics = document.querySelector('.profile__body_settings__options__statistics')
@@ -80,7 +92,9 @@ if (localStorage.getItem('user') !== '') {
             profile_statistics.className = 'profile__body_settings__options__statistics blue__mood'
         }
 
-        const arr = JSON.parse(localStorage.getItem('reviews'))
+        let arr = JSON.parse(localStorage.getItem('reviews'))
+        arr = uniqueArray(arr, 'Restaurant', 'Review')
+        localStorage.setItem('reviews', JSON.stringify(arr))
         settings.innerHTML = `
                     <div class="profile__body_settings__body_count">
                         <span>My reviews</span><span>${arr.length}</span>
@@ -297,57 +311,58 @@ if (localStorage.getItem('user') !== '') {
 
     }
 
-
-    db.collection("users").where("Username", "==", objLocal.Username)
-        .get()
-        .then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                db.collection("reviews").where("Username", "==", objLocal.Username)
-                    .get()
-                    .then(function(querySnapshot) {
-                        const arrayReviews = []
-                        querySnapshot.forEach(function(doc) {
-                            arrayReviews.push(doc.data())
-                        });
-
-                        localStorage.setItem('reviews', JSON.stringify(arrayReviews))
+    if (nameUser) {
+        db.collection("users").where("Username", "==", objLocal.Username)
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    db.collection("reviews").where("Username", "==", objLocal.Username)
+                        .get()
+                        .then(function(querySnapshot) {
+                            let arrayReviews = []
+                            querySnapshot.forEach(function(doc) {
+                                arrayReviews.push(doc.data())
+                            });
+                            arrayReviews = uniqueArray(arrayReviews, 'Restaurant', 'Review')
+                            localStorage.setItem('reviews', JSON.stringify(arrayReviews))
+                        })
+                    userInfo = doc.data()
+                    nameUser.innerHTML = userInfo.Firstname
+                    surnameUser.innerHTML = userInfo.LastName
+                    dateUser.innerHTML = userInfo.Birthday
+                    usernameUser.innerHTML = userInfo.Username
+                    avatar.src = userInfo.UrlOfImage
+                    locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`
+                    colorOfProfile = userInfo.ColorOfProfile
+                    changeColorOfProfile.addEventListener('click', changeColor)
+                    changePassword.addEventListener('click', changePasswordLayouts)
+                    changeInformation.addEventListener('click', changeInfoUser)
+                    console.log(colorOfProfile);
+                    setColorMood(colorOfProfile)
+                    profile_statistics.addEventListener('click', () => {
+                        changeStatistics(colorOfProfile)
                     })
-                userInfo = doc.data()
-                nameUser.innerHTML = userInfo.Firstname
-                surnameUser.innerHTML = userInfo.LastName
-                dateUser.innerHTML = userInfo.Birthday
-                usernameUser.innerHTML = userInfo.Username
-                avatar.src = userInfo.UrlOfImage
-                locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`
-                colorOfProfile = userInfo.ColorOfProfile
-                    //changeColorOfProfile.addEventListener('click', changeColor)
-                    //changePassword.addEventListener('click', changePasswordLayouts)
-                    //changeInformation.addEventListener('click', changeInfoUser)
-                console.log(colorOfProfile);
-                setColorMood(colorOfProfile)
-                profile_statistics.addEventListener('click', () => {
-                    changeStatistics(colorOfProfile)
-                })
-                profile_change_data.addEventListener('click', () => {
-                    changeData(colorOfProfile)
-                    settings.innerHTML = `
+                    profile_change_data.addEventListener('click', () => {
+                        changeData(colorOfProfile)
+                        settings.innerHTML = `
                     <div class="profile__body_settings__body__change_password">Cange password</div>
                     <div class="profile__body_settings__body__change_information">Cange information about me</div>
                     <div class="profile__body_settings__body__change_color">Cange color of my profile</div>
                     `
-                    const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color')
-                    const changePassword = document.querySelector('.profile__body_settings__body__change_password')
-                    const changeInformation = document.querySelector('.profile__body_settings__body__change_information')
+                        const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color')
+                        const changePassword = document.querySelector('.profile__body_settings__body__change_password')
+                        const changeInformation = document.querySelector('.profile__body_settings__body__change_information')
 
-                    changeColorOfProfile.addEventListener('click', changeColor)
-                    changePassword.addEventListener('click', changePasswordLayouts)
-                    changeInformation.addEventListener('click', changeInfoUser)
-                })
+                        changeColorOfProfile.addEventListener('click', changeColor)
+                        changePassword.addEventListener('click', changePasswordLayouts)
+                        changeInformation.addEventListener('click', changeInfoUser)
+                    })
 
 
+                });
+            })
+            .catch(function(error) {
+                console.log("Error getting documents: ", error);
             });
-        })
-        .catch(function(error) {
-            console.log("Error getting documents: ", error);
-        });
+    }
 }

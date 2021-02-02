@@ -50839,7 +50839,8 @@ __webpack_require__.r(__webpack_exports__);
 console.log(localStorage.getItem('Auth')); // export let arrayNameRestaurants = []
 
 window.onload = function () {
-  // render Cards of Restaurants
+  (0,_js_checkUser__WEBPACK_IMPORTED_MODULE_1__.checkUserIsAuth)(); // render Cards of Restaurants
+
   if (_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData) {
     renderCardsRestaurants();
   } //click sorting 
@@ -50869,6 +50870,20 @@ window.onload = function () {
   }
 
   cancelEventReviewCard();
+  const restaurants = document.querySelector('.restaurants_wrapper_review');
+
+  if (restaurants) {
+    for (let i = 0; i < restaurants.children.length; i++) {
+      restaurants.children[i].addEventListener('click', () => {
+        const currentRestaurant = restaurants.children[i];
+        document.querySelector('.cards_wrapper').innerHTML = '';
+        document.querySelector('.cards_wrapper').appendChild(currentRestaurant);
+        const headlineRestaurant = document.querySelector('.review__restaurant_main__text__headline a');
+        const nameOfRestaurant = currentRestaurant.children[0].children[1].children[0].innerHTML;
+        headlineRestaurant.innerHTML = nameOfRestaurant;
+      });
+    }
+  }
 };
 
 const renderCardsRestaurants = () => {
@@ -50955,8 +50970,7 @@ const cancelEventReviewCard = () => {
   if (cardsContainer) {
     for (let i = 0; i < cardsContainer.length; i += 1) {
       cardsContainer[i].addEventListener('click', e => {
-        e.preventDefault();
-        e.stopPropagation();
+        e.preventDefault(); //e.stopPropagation()
       });
     }
   }
@@ -51725,10 +51739,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "checkUserIsAuth": () => /* binding */ checkUserIsAuth
 /* harmony export */ });
-const {
-  isAuth
-} = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
-
 let checkAuth = localStorage.getItem('Auth');
 const checkUserIsAuth = isAuth => {
   if (isAuth === 'true') {
@@ -51738,6 +51748,7 @@ const checkUserIsAuth = isAuth => {
     const hrefBtn = document.querySelector('.sign-up-href');
 
     if (hrefBtn !== null) {
+      console.log('sssssssssssssssssssssssssssssss');
       hrefBtn.href = "/dist/pages/profile.html";
     }
 
@@ -52270,6 +52281,18 @@ if (localStorage.getItem('user') !== '') {
   const profile_statistics = document.querySelector('.profile__body_settings__options__statistics');
   let colorOfProfile;
 
+  const uniqueArray = (array, prop1, prop2) => {
+    for (let i = 0; i < array.length; i++) {
+      for (let j = i + 1; j < array.length; j++) {
+        if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+          array.splice(i, 1);
+        }
+      }
+    }
+
+    return array;
+  };
+
   const setColorMood = color => {
     const profile_change_data = document.querySelector('.profile__body_settings__options__change_data');
     const profile_statistics = document.querySelector('.profile__body_settings__options__statistics');
@@ -52335,7 +52358,9 @@ if (localStorage.getItem('user') !== '') {
       profile_statistics.className = 'profile__body_settings__options__statistics blue__mood';
     }
 
-    const arr = JSON.parse(localStorage.getItem('reviews'));
+    let arr = JSON.parse(localStorage.getItem('reviews'));
+    arr = uniqueArray(arr, 'Restaurant', 'Review');
+    localStorage.setItem('reviews', JSON.stringify(arr));
     settings.innerHTML = `
                     <div class="profile__body_settings__body_count">
                         <span>My reviews</span><span>${arr.length}</span>
@@ -52538,49 +52563,52 @@ if (localStorage.getItem('user') !== '') {
     });
   };
 
-  _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-      _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("reviews").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
-        const arrayReviews = [];
-        querySnapshot.forEach(function (doc) {
-          arrayReviews.push(doc.data());
+  if (nameUser) {
+    _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("reviews").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
+          let arrayReviews = [];
+          querySnapshot.forEach(function (doc) {
+            arrayReviews.push(doc.data());
+          });
+          arrayReviews = uniqueArray(arrayReviews, 'Restaurant', 'Review');
+          localStorage.setItem('reviews', JSON.stringify(arrayReviews));
         });
-        localStorage.setItem('reviews', JSON.stringify(arrayReviews));
-      });
-      userInfo = doc.data();
-      nameUser.innerHTML = userInfo.Firstname;
-      surnameUser.innerHTML = userInfo.LastName;
-      dateUser.innerHTML = userInfo.Birthday;
-      usernameUser.innerHTML = userInfo.Username;
-      avatar.src = userInfo.UrlOfImage;
-      locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`;
-      colorOfProfile = userInfo.ColorOfProfile; //changeColorOfProfile.addEventListener('click', changeColor)
-      //changePassword.addEventListener('click', changePasswordLayouts)
-      //changeInformation.addEventListener('click', changeInfoUser)
-
-      console.log(colorOfProfile);
-      setColorMood(colorOfProfile);
-      profile_statistics.addEventListener('click', () => {
-        changeStatistics(colorOfProfile);
-      });
-      profile_change_data.addEventListener('click', () => {
-        changeData(colorOfProfile);
-        settings.innerHTML = `
+        userInfo = doc.data();
+        nameUser.innerHTML = userInfo.Firstname;
+        surnameUser.innerHTML = userInfo.LastName;
+        dateUser.innerHTML = userInfo.Birthday;
+        usernameUser.innerHTML = userInfo.Username;
+        avatar.src = userInfo.UrlOfImage;
+        locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`;
+        colorOfProfile = userInfo.ColorOfProfile;
+        changeColorOfProfile.addEventListener('click', changeColor);
+        changePassword.addEventListener('click', changePasswordLayouts);
+        changeInformation.addEventListener('click', changeInfoUser);
+        console.log(colorOfProfile);
+        setColorMood(colorOfProfile);
+        profile_statistics.addEventListener('click', () => {
+          changeStatistics(colorOfProfile);
+        });
+        profile_change_data.addEventListener('click', () => {
+          changeData(colorOfProfile);
+          settings.innerHTML = `
                     <div class="profile__body_settings__body__change_password">Cange password</div>
                     <div class="profile__body_settings__body__change_information">Cange information about me</div>
                     <div class="profile__body_settings__body__change_color">Cange color of my profile</div>
                     `;
-        const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
-        const changePassword = document.querySelector('.profile__body_settings__body__change_password');
-        const changeInformation = document.querySelector('.profile__body_settings__body__change_information');
-        changeColorOfProfile.addEventListener('click', changeColor);
-        changePassword.addEventListener('click', changePasswordLayouts);
-        changeInformation.addEventListener('click', changeInfoUser);
+          const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
+          const changePassword = document.querySelector('.profile__body_settings__body__change_password');
+          const changeInformation = document.querySelector('.profile__body_settings__body__change_information');
+          changeColorOfProfile.addEventListener('click', changeColor);
+          changePassword.addEventListener('click', changePasswordLayouts);
+          changeInformation.addEventListener('click', changeInfoUser);
+        });
       });
+    }).catch(function (error) {
+      console.log("Error getting documents: ", error);
     });
-  }).catch(function (error) {
-    console.log("Error getting documents: ", error);
-  });
+  }
 }
 
 /***/ }),
@@ -52903,6 +52931,8 @@ function getRating() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _starsRating__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./starsRating */ "./src/js/starsRating.js");
 /* harmony import */ var _dbFirebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
+/* harmony import */ var _getDataCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getDataCard */ "./src/js/getDataCard.js");
+
 
 
 const usernameReview = document.querySelector('.review__restaurant_main__user_username');
@@ -52910,7 +52940,8 @@ const avatarReview = document.querySelector('.review__restaurant_main__user_avat
 const review = document.querySelector('.review__restaurant_main__text__area');
 const sumbitReview = document.querySelector('.review_submit');
 const headlineRestaurant = document.querySelector('.review__restaurant_main__text__headline a');
-const search = document.querySelector('.review__restaurant_search');
+const search = document.querySelector('.cards_wrapper');
+const searching = document.querySelector('.review__restaurant_search');
 let rating;
 
 if (localStorage.getItem('user') !== '' && usernameReview) {
@@ -52918,11 +52949,14 @@ if (localStorage.getItem('user') !== '' && usernameReview) {
     let restPage = JSON.parse(localStorage.getItem('card'))[0];
     headlineRestaurant.innerHTML = restPage.name;
     headlineRestaurant.href = '';
-    search.style.visibility = 'hidden';
+    const wrapper = document.querySelector('.wrapper');
+    searching.style.visibility = 'hidden';
+    setTimeout(() => {
+      search.innerHTML = '';
+    }, 1000);
   }
 
   const objUser = JSON.parse(localStorage.getItem('user'));
-  console.log(objUser);
   usernameReview.innerHTML = objUser.Username;
   avatarReview.src = objUser.Avatar;
   const stars_rating = document.querySelectorAll('.review__restaurant__rating_submit_item');
@@ -52935,26 +52969,47 @@ if (localStorage.getItem('user') !== '' && usernameReview) {
     });
   }
 
-  sumbitReview.addEventListener('click', createReview);
+  if (sumbitReview) {
+    sumbitReview.addEventListener('click', () => {
+      console.log(sumbitReview);
+      createReview();
+    });
+  }
 }
 
 function createReview() {
-  console.log('submit');
   localStorage.setItem('fromPage', '');
   let currentDate = new Date().toISOString().slice(0, 10);
-  _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").add({
-    Avatar: avatarReview.src,
-    Username: usernameReview.innerHTML,
-    Restaurant: headlineRestaurant.innerHTML,
-    Review: review.value,
-    Rating: rating,
-    Date: currentDate
-  }).then(function (doc) {
-    console.log(doc.id);
-    window.location.href = '../../dist/pages/restaurants.html';
-  }).catch(function (error) {
-    console.error("Error adding document: ", error);
-  });
+
+  if (review.value !== '' && rating !== undefined && headlineRestaurant.innerHTML !== 'Please select a restaurant...') {
+    _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").add({
+      Avatar: avatarReview.src,
+      Username: usernameReview.innerHTML,
+      Restaurant: headlineRestaurant.innerHTML,
+      Review: review.value,
+      Rating: rating,
+      Date: currentDate
+    }).then(function (doc) {
+      console.log(doc.id);
+      (0,_getDataCard__WEBPACK_IMPORTED_MODULE_2__.getDataCard)();
+      window.location.href = './pageRestaurant.html';
+    }).catch(function (error) {
+      console.error("Error adding document: ", error);
+    });
+  } else {
+    if (review.value === '') {
+      review.placeholder = 'Please enter your review!';
+    }
+
+    if (rating === undefined) {
+      const mess = document.querySelector('.message');
+      mess.style.visibility = 'visible';
+    }
+
+    if (headlineRestaurant.innerHTML === 'Please select a restaurant...') {
+      headlineRestaurant.style.color = '#ef7008';
+    }
+  }
 }
 
 /***/ }),

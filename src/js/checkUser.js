@@ -1,5 +1,3 @@
-const { isAuth } = require("./dbFirebase");
-
 let checkAuth = localStorage.getItem('Auth')
 
 export const checkUserIsAuth = (isAuth) => {
@@ -10,6 +8,7 @@ export const checkUserIsAuth = (isAuth) => {
         butSignUp.innerHTML = 'Profile'
         const hrefBtn = document.querySelector('.sign-up-href')
         if (hrefBtn !== null) {
+            console.log('sssssssssssssssssssssssssssssss');
             hrefBtn.href = "/dist/pages/profile.html"
         }
 

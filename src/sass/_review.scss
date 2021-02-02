@@ -129,3 +129,8 @@
     height: 290px;
     max-width: 456px;
 }
+
+.message {
+    color: $color_error;
+    visibility: hidden;
+}
