@@ -30,7 +30,7 @@ import { getRating } from './js/starsRating'
 console.log(localStorage.getItem('Auth'));
 // export let arrayNameRestaurants = []
 window.onload = function() {
-
+    getUserData()
 
     // render Cards of Restaurants
     if (restaurantsData) {
@@ -46,11 +46,8 @@ window.onload = function() {
 
     getBestRestaurants()
 
-
-    //autocomplete
-    Autocomplete('#input-select', arrayNameRestaurants);
-
     getDataCard()
+
     if (document.querySelector('.main__restaurant_page')) {
         renderPageRestaurant()
     }
@@ -58,6 +55,9 @@ window.onload = function() {
     getRating();
 
     cancelEventReviewCard()
+
+    //autocomplete   
+    Autocomplete('#input-select', arrayNameRestaurants);
 
 };
 
@@ -134,6 +134,28 @@ const cancelEventReviewCard = () => {
                 e.stopPropagation()
 
             });
+        }
+    }
+
+}
+
+
+const getUserData = () => {
+    let userInfo = JSON.parse(localStorage.getItem("user"));
+    let selectionCity = document.querySelector('.searching_city')
+    console.log('GGGGGGGGGGGG', userInfo.City)
+    if (userInfo && selectionCity) {
+        // let selectionCity = document.querySelector('.searching_city')
+        for (let i = 0; i < selectionCity.length; i += 1) {
+            console.log('>>>>>>>>>>>>>>>', selectionCity[i].text)
+            if (selectionCity.options[i].text === userInfo.City) {
+                selectionCity.options[i].setAttribute(selected, 'selected');
+                // console.log('>>>>>>>>>>>>>>>', selectionCity.children[i])
+
+            } else {
+                // selectionCity.options[i].removeAttribute(selected);
+            }
+            // console.log('>>>>>>>>>>>>>>>', selectionCity.children[i].text)
         }
     }
 

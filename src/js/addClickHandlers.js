@@ -157,7 +157,7 @@ arrayData.forEach(nameRestaurant => {
 
 export const sortRestaurantsByCities = () => {
 
-    let selectionCity = document.querySelector('.searching_city ')
+    let selectionCity = document.querySelector('.searching_city')
     let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a')
     let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a')
     let citiesCards = document.querySelectorAll('.address_restaurant')
@@ -169,7 +169,7 @@ export const sortRestaurantsByCities = () => {
     }
 
     // if (selectionCity.clicked === true) {
-    Autocomplete('#input-select', arrayNameRestaurants);
+    // Autocomplete('#input-select', arrayNameRestaurants);
 
     // } else {
     arrayNameRestaurantsCity.forEach(element => {
