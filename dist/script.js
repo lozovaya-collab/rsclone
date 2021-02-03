@@ -50924,6 +50924,7 @@ window.onload = function () {
     for (let i = 0; i < restaurants.children.length; i++) {
       restaurants.children[i].addEventListener('click', () => {
         const currentRestaurant = restaurants.children[i];
+        const headlineRestaurant = document.querySelector('.review__restaurant_main__text__headline a');
         let nameOfRestaurant = currentRestaurant.children[0].children[1].children[0].innerHTML;
         document.querySelector('.cards_wrapper').innerHTML = '';
         document.querySelector('.cards_wrapper').appendChild(currentRestaurant);
