@@ -26,7 +26,6 @@ if (localStorage.getItem('user') !== '') {
                 }
             }
         }
-
         return array
     }
 
@@ -83,11 +82,17 @@ if (localStorage.getItem('user') !== '') {
     }
 
     const changeStatistics = (color) => {
+        let colorGraph
+        let backgroundGraph
         if (color === 'yellow') {
+            colorGraph = '#efca08'
+            backgroundGraph = '#efc80875'
             profile_change_data.className = 'profile__body_settings__options__change_data yellow__mood_disabled'
             profile_statistics.className = 'profile__body_settings__options__statistics yellow__mood'
 
         } else if (color === 'blue') {
+            colorGraph = '#00a6a6'
+            backgroundGraph = '#00a6a686'
             profile_change_data.className = 'profile__body_settings__options__change_data blue__mood_disabled'
             profile_statistics.className = 'profile__body_settings__options__statistics blue__mood'
         }
@@ -98,7 +103,96 @@ if (localStorage.getItem('user') !== '') {
         settings.innerHTML = `
                     <div class="profile__body_settings__body_count">
                         <span>My reviews</span><span>${arr.length}</span>
-                    </div>`
+                    </div>
+                    <canvas id="myChart"></canvas>`
+        let dataReviews = []
+
+        arr.map((date) => {
+            dataReviews.push(date.Date)
+        })
+        const uniqueDataReviews = new Set(dataReviews)
+        dataReviews = [...uniqueDataReviews]
+
+        let currentYear = new Date()
+        currentYear = currentYear.getFullYear()
+
+        const months = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ]
+
+        let monthsReviews = []
+        const countReviews = []
+
+        arr.map((item) => {
+            for (let i = 0; i < dataReviews.length; i++) {
+                let count = 0
+                for (let j = 0; j < arr.length; j++) {
+                    if (arr[j].Date === dataReviews[i]) {
+                        count++
+                    }
+                }
+                countReviews[i] = count
+            }
+        })
+        dataReviews.map((item) => {
+            let numberOfMonths = item.substr(6, 1)
+            let day = item.substr(8, 2)
+            if (day[0] === '0') {
+                day = day[1]
+            }
+
+            let month = months[Number(numberOfMonths) - 1]
+            monthsReviews.push(`${day} ${month}`)
+        })
+
+        const newDateofMonths = []
+        const newCountReviews = []
+        for (let i = 0; i < months.length; i++) {
+            let isMonth = false
+            for (let j = 0; j < monthsReviews.length; j++) {
+                if (monthsReviews[j].indexOf(months[i]) !== -1) {
+                    newDateofMonths.push(monthsReviews[j])
+                    newCountReviews.push(countReviews[j])
+                    isMonth = true
+                }
+            }
+            if (!isMonth) {
+                newDateofMonths.push(months[i])
+                newCountReviews.push(0)
+            }
+        }
+
+        let ctx = document.getElementById('myChart').getContext('2d');
+
+        let chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: newDateofMonths,
+                datasets: [{
+                    label: `My Reviews ${currentYear}`,
+                    backgroundColor: backgroundGraph,
+                    borderColor: colorGraph,
+                    data: newCountReviews
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
 
 
     }
