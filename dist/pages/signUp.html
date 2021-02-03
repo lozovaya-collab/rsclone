@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./../../dist/src/assets/icon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../../dist/src/assets/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../../dist/src/assets/icon/favicon-16x16.png">
+    <link rel="manifest" href="./../../dist/src/assets/icon/site.webmanifest">
+    <link rel="stylesheet" href="../sass/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <title>YelpClone</title>
+</head>
+
+<body>
+    <div class="body">
+        <div class="container">
+            <div class="container_header">
+                <h2 class="container_header_headline">Sign Up</h2>
+            </div>
+            <form id="form" class="container__form">
+                <div class="infoUser">
+                    <div>
+                        <div class="container__form_control">
+                            <label for="name">First Name</label>
+                            <input type="text" placeholder="First name" id="name" value=""></input>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
+                        <div class="container__form_control">
+                            <label for="surname">Last Name</label>
+                            <input type="text" placeholder="Last Name" id="surname" value=""></input>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
+                        <div class="container__form_control">
+                            <label for="birthday">Birthday</label>
+                            <input type="date" id="birthday"></input>
+                            <small>Error message</small>
+                        </div>
+                        <div class="container__form_control">
+                            <label>Your location</label>
+                            <br>
+                            <i class="fas fa-location-arrow locationButton" style="visibility: visible; left: 0px;"></i>
+                            <div class="adress">
+                                <div class="location country">Canada</div>
+                                <select name="city" id="" class="input_searching searching_city">                            
+                                    <option value="Cities of Canada"  class="selection-allCities" >Cities of Canada</option>
+                                    <option value="Ottawa">Ottawa</option>
+                                    <option value="Montreal">Montreal</option>
+                                    <option value="Toronto">Toronto</option>
+                                    <option value="Calgary">Calgary</option>
+                                    <option value="Edmonton">Edmonton</option>
+                                    <option value="Mississauga">Mississauga</option>
+                                    <option value="Winnipeg">Winnipeg</option>
+                                    <option value="Vancouver">Vancouver</option>
+                                    <option value="Quebec">Quebec</option>
+                                    <option value="Hamilton">Brampton</option>                            
+                                </select>
+                            </div>
+                            <small id='location_error'>Error message</small>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="container__form_control">
+                            <label for="username">Username</label>
+                            <input type="text" placeholder="florinpop17" id="username" value=""></input>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
+                        <div class="container__form_control">
+                            <label for="email">Email</label>
+                            <input type="email" placeholder="test@test.com" id="email" value=""></input>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
+                        <div class="container__form_control">
+                            <label for="password">Password</label>
+                            <input type="password" placeholder="password" id="password" value=""></input>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
+                        <div class="container__form_control">
+                            <label>Password check</label>
+                            <input type="password" placeholder="password two" id="password2" value=""></input>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="container__form_button">Submit</button>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="wrapper">
+            <div class="footer-wrapper">
+                <a class="logo" href="./../../index.html"> YelpClone <i class="fab fa-yelp"></i></a>
+                <span><i class="far fa-copyright"></i> 2021</span>
+                <div class="footer-link">
+                    <a href="https://github.com/olgamartinchik"><i class="fab fa-github-alt"></i> </a>
+                    <a href="https://github.com/lozovaya-collab"><i class="fab fa-github-alt"></i> </a>
+                </div>
+                <a href="https://rs.school/js/" target="_blank"><img class="rsLogo" src="https://rs.school/images/rs_school_js.svg" alt="icon"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
