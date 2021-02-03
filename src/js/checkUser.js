@@ -5,7 +5,7 @@ export const checkUserIsAuth = (isAuth) => {
         butSignUp.innerHTML = 'Profile'
         const hrefBtn = document.querySelector('.sign-up-href')
         if (hrefBtn !== null) {
-            hrefBtn.href = "/dist/pages/profile.html"
+            hrefBtn.href = "./dist/pages/profile.html"
         }
 
         const butLogIn = document.querySelector('.log-in')

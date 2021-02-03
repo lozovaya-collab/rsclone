@@ -51905,18 +51905,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "restaurantsData": () => /* binding */ restaurantsData,
 /* harmony export */   "arrayNameRestaurantsCity": () => /* binding */ arrayNameRestaurantsCity
 /* harmony export */ });
-/* harmony import */ var _data_response__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data/response */ "./src/js/data/response.json");
+/* harmony import */ var _src_js_data_response_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../src/js/data/response.json */ "./src/js/data/response.json");
+//  import restaurants from "./../../dist/data/response.json"
 
 const restaurantsData = [];
 const arrayNameRestaurantsCity = [];
 let arrayRestaurants = [];
 
 const getListRestaurants = () => {
-  for (let s = 0; s < _data_response__WEBPACK_IMPORTED_MODULE_0__.businesses.length; s += 1) {
-    arrayRestaurants.push(_data_response__WEBPACK_IMPORTED_MODULE_0__.businesses[s]);
+  for (let s = 0; s < _src_js_data_response_json__WEBPACK_IMPORTED_MODULE_0__.businesses.length; s += 1) {
+    arrayRestaurants.push(_src_js_data_response_json__WEBPACK_IMPORTED_MODULE_0__.businesses[s]);
   }
 
-  arrayRestaurants.push(_data_response__WEBPACK_IMPORTED_MODULE_0__.businesses);
+  arrayRestaurants.push(_src_js_data_response_json__WEBPACK_IMPORTED_MODULE_0__.businesses);
 
   for (let i = 0; i < arrayRestaurants.length - 1; i += 1) {
     restaurantsData.push({
@@ -51973,7 +51974,7 @@ const checkUserIsAuth = isAuth => {
     const hrefBtn = document.querySelector('.sign-up-href');
 
     if (hrefBtn !== null) {
-      hrefBtn.href = "/dist/pages/profile.html";
+      hrefBtn.href = "./dist/pages/profile.html";
     }
 
     const butLogIn = document.querySelector('.log-in');
