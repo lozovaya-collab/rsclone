@@ -134,17 +134,17 @@ if (localStorage.getItem('user') !== '') {
         let monthsReviews = []
         const countReviews = []
 
-        arr.map((item) => {
-            for (let i = 0; i < dataReviews.length; i++) {
-                let count = 0
-                for (let j = 0; j < arr.length; j++) {
-                    if (arr[j].Date === dataReviews[i]) {
-                        count++
-                    }
+
+        for (let i = 0; i < dataReviews.length; i++) {
+            let count = 0
+            for (let j = 0; j < arr.length; j++) {
+                if (arr[j].Date === dataReviews[i]) {
+                    count++
                 }
-                countReviews[i] = count
             }
-        })
+            countReviews[i] = count
+        }
+
         dataReviews.map((item) => {
             let numberOfMonths = item.substr(6, 1)
             let day = item.substr(8, 2)
@@ -207,6 +207,9 @@ if (localStorage.getItem('user') !== '') {
             profile_statistics.className = 'profile__body_settings__options__statistics blue__mood_disabled'
         }
 
+        settings.style.alignItems = 'normal'
+        settings.style.flexDirection = 'column'
+
 
     }
 
@@ -255,42 +258,29 @@ if (localStorage.getItem('user') !== '') {
     }
 
     const changePasswordLayouts = () => {
-        settings.innerHTML = ` <
-            div class = "container__form_control" >
-            <
-            label class = "password__change" > Old password < /label> <
-            input type = "password"
-        placeholder = "old password"
-        id = "passwordOld"
-        value = "" > < /input> <
-            i class = "fas fa-check-circle" > < /i> <
-            i class = "fas fa-exclamation-circle" > < /i> <
-            small > Error message < /small> <
-            /div> <
-            div class = "container__form_control" >
-            <
-            label class = "password__change" > New password < /label> <
-            input type = "password"
-        placeholder = "password"
-        id = "passwordNew"
-        value = "" > < /input> <
-            i class = "fas fa-check-circle" > < /i> <
-            i class = "fas fa-exclamation-circle" > < /i> <
-            small > Error message < /small> <
-            /div> <
-            div class = "container__form_control" >
-            <
-            label class = "password__change" > New password check < /label> <
-            input type = "password"
-        placeholder = "password repeat"
-        id = "passwordNew2"
-        value = "" > < /input> <
-            i class = "fas fa-check-circle" > < /i> <
-            i class = "fas fa-exclamation-circle" > < /i> <
-            small > Error message < /small> <
-            /div> <
-            button type = "submit"
-        class = "profile__body_settings__body__change_password_button" > Submit < /button>`
+        settings.innerHTML = ` 
+        <div class="container__form_control">
+            <label class="password__change"> Old password </label>
+            <input type="password" placeholder="old password" id="passwordOld" value=""> </input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label class="password__change"> New password</label>
+            <input type="password" placeholder="password" id="passwordNew" value=""></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small> Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label class="password__change">New password check</label>
+            <input type="password" placeholder="password repeat" id="passwordNew2" value=""></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small> Error message</small>
+        </div>
+        <button type="submit" class="profile__body_settings__body__change_password_button"> Submit</button>`
 
         settings.style.alignItems = 'center'
         settings.style.marginTop = '0px'
