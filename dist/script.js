@@ -51352,7 +51352,7 @@ class CardsRestaurants {
   generateCardsRestaurants() {
     let template = '';
     let card = document.createElement('a');
-    card.href =  true && '../../dist/pages/pageRestaurant.html';
+    card.href =  true && '../../../rsclone/dist/pages/pageRestaurant.html';
     card.setAttribute('data-id', this.id);
     template += `<div class="card card_restaurant">`;
     template += '<div class="food">';
