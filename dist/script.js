@@ -50843,7 +50843,7 @@ window.onload = function () {
   for (let i = 0; i < _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData.length; i += 1) {
     let card = [{}];
 
-    if (objLocal[0] !== undefined) {
+    if (objLocal[0] !== undefined && objLocal[0] !== null) {
       if (objLocal[0].name === _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name) {
         _js_dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").where("Restaurant", "==", _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name).get().then(function (querySnapshot) {
           let arrayReviews = [];
