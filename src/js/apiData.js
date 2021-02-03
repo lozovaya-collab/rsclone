@@ -1,4 +1,4 @@
- import restaurants from "./data/response"
+ import restaurants from "./../../dist/data/response.json"
  export const restaurantsData = [];
  export const arrayNameRestaurantsCity = [];
  let arrayRestaurants = [];
