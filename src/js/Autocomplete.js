@@ -1,9 +1,6 @@
-import { removeSelectedFilter, removeSelectedFilterRestaurant, arrayNameRestaurants, arrayData } from './addClickHandlers'
-
+import { removeSelectedFilter, removeSelectedFilterRestaurant } from './addClickHandlers'
 export const Autocomplete = (selector, data) => {
-
     let inputs = document.querySelectorAll(selector);
-
 
     function ciSearch(what = '', where = '') {
         return where.toUpperCase().search(what.toUpperCase());
@@ -53,10 +50,15 @@ export const Autocomplete = (selector, data) => {
             setActive(false);
         }
 
-        input.addEventListener('input', (e) => {
-
+        function handleInput() {
             removeSelectedFilter()
             removeSelectedFilterRestaurant()
+            document.querySelectorAll('.cards_wrapper_restaurants>a>div').forEach(item => {
+                item.classList.remove('hidden_card');
+            })
+            document.querySelectorAll('.cards_wrapper_restaurants>a').forEach(item => {
+                item.classList.remove('hidden');
+            })
             let value = input.value;
 
             if (!value) {
@@ -64,12 +66,9 @@ export const Autocomplete = (selector, data) => {
                 return setActive(false);
             }
 
-
             list.innerHTML = '';
             listItems = [];
-            console.log('SSSSSSSSSSSS', data)
             data.forEach((dataItem, index) => {
-                console.log('pppppppppppppppppppp')
                 let search = ciSearch(value, dataItem);
                 if (search === -1) {
 
@@ -82,18 +81,14 @@ export const Autocomplete = (selector, data) => {
                     dataItem.substr(search, value.length),
                     dataItem.substr(search + value.length, dataItem.length - search - value.length)
                 ];
-
                 let item = document.createElement('div');
                 item.className = 'autocomplete-item';
                 item.innerHTML = parts[0] + '<strong>' + parts[1] + '</strong>' + parts[2];
                 list.appendChild(item);
                 listItems.push(item);
-
                 item.addEventListener('click', function() {
                     selectItem(listItems.indexOf(item));
                     searchNameRestaurant();
-
-                    // listItems = [];
                 });
 
             });
@@ -102,11 +97,11 @@ export const Autocomplete = (selector, data) => {
                 focusItem(0);
                 setActive(true);
             } else setActive(false);
+        }
 
-        });
-
+        input.removeEventListener('input', handleInput, true);
+        input.addEventListener('input', handleInput, true);
         input.addEventListener('keydown', e => {
-
             removeSelectedFilter()
             removeSelectedFilterRestaurant()
 
@@ -128,23 +123,19 @@ export const Autocomplete = (selector, data) => {
                 if (input.value === '') {
                     listItems = [];
                     focusedItem = -1;
-                    // document.location.reload();
                 }
             }
         });
         input.addEventListener('click', (e) => {
-                input.value = '';
-                // focusedItem = -1;
+            input.value = '';
 
 
-            })
-            ////////////// 
+
+        })
+
         function searchNameRestaurant() {
-
-
             let nameRestaurant = document.querySelectorAll('.title_card')
             let card = document.querySelectorAll('.cards_wrapper_restaurants>a')
-
             card.forEach(nameRestaurant => {
                 nameRestaurant.classList.remove('hidden');
             })
@@ -157,7 +148,6 @@ export const Autocomplete = (selector, data) => {
                             nameRestaurant.classList.add('hidden');
                         } else {
                             nameRestaurant.classList.remove('hidden');
-                            // elem.scrollIntoView();
                         }
                     })
                 } else {
@@ -166,11 +156,7 @@ export const Autocomplete = (selector, data) => {
                     })
                 }
             }
-
         }
-
-        ///////////////
-
         document.body.addEventListener('click', function(e) {
             if (!wrap.contains(e.target)) setActive(false);
             listItems = [];

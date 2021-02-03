@@ -50797,22 +50797,22 @@ var esm = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_dbFirebase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/dbFirebase */ "./src/js/dbFirebase.js");
-/* harmony import */ var _js_checkUser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/checkUser */ "./src/js/checkUser.js");
-/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/map */ "./src/js/map.js");
-/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
-/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
-/* harmony import */ var _js_logIn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/logIn */ "./src/js/logIn.js");
-/* harmony import */ var _js_writeReview__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/writeReview */ "./src/js/writeReview.js");
-/* harmony import */ var _js_logOut__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/logOut */ "./src/js/logOut.js");
-/* harmony import */ var _js_Autocomplete__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/Autocomplete */ "./src/js/Autocomplete.js");
-/* harmony import */ var _js_apiData__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/apiData */ "./src/js/apiData.js");
-/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./js/scrollUp */ "./src/js/scrollUp.js");
-/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_js_scrollUp__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./js/setBackground */ "./src/js/setBackground.js");
-/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_js_setBackground__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _js_profileSettings__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./js/profileSettings */ "./src/js/profileSettings.js");
-/* harmony import */ var _js_getDataCard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./js/getDataCard */ "./src/js/getDataCard.js");
+/* harmony import */ var _js_getDataCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/getDataCard */ "./src/js/getDataCard.js");
+/* harmony import */ var _js_dbFirebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/dbFirebase */ "./src/js/dbFirebase.js");
+/* harmony import */ var _js_checkUser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/checkUser */ "./src/js/checkUser.js");
+/* harmony import */ var _js_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./js/map */ "./src/js/map.js");
+/* harmony import */ var _js_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./js/modal */ "./src/js/modal.js");
+/* harmony import */ var _js_signUp__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./js/signUp */ "./src/js/signUp.js");
+/* harmony import */ var _js_logIn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./js/logIn */ "./src/js/logIn.js");
+/* harmony import */ var _js_writeReview__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./js/writeReview */ "./src/js/writeReview.js");
+/* harmony import */ var _js_logOut__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./js/logOut */ "./src/js/logOut.js");
+/* harmony import */ var _js_Autocomplete__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./js/Autocomplete */ "./src/js/Autocomplete.js");
+/* harmony import */ var _js_apiData__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./js/apiData */ "./src/js/apiData.js");
+/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./js/scrollUp */ "./src/js/scrollUp.js");
+/* harmony import */ var _js_scrollUp__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_js_scrollUp__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./js/setBackground */ "./src/js/setBackground.js");
+/* harmony import */ var _js_setBackground__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_js_setBackground__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _js_profileSettings__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./js/profileSettings */ "./src/js/profileSettings.js");
 /* harmony import */ var _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./js/addClickHandlers */ "./src/js/addClickHandlers.js");
 /* harmony import */ var _js_CardsRestaurants__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./js/CardsRestaurants */ "./src/js/CardsRestaurants.js");
 /* harmony import */ var _js_starsRating__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./js/starsRating */ "./src/js/starsRating.js");
@@ -50840,22 +50840,21 @@ console.log(localStorage.getItem('Auth')); // export let arrayNameRestaurants = 
 
 window.onload = function () {
   // render Cards of Restaurants
-  if (_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData) {
+  if (_js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData) {
     renderCardsRestaurants();
-  } //click sorting 
+  }
 
+  (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_0__.getDataCard)();
+  getUserData(); // click sorting 
 
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.addFilterPriceClickHandler)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.addFilterRestaurantsClickHandler)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.sortRestaurantsByCities)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.showTypeRestaurants)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.getBestRestaurants)(); //autocomplete
-
-  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_8__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.arrayNameRestaurants);
-  (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_13__.getDataCard)();
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.getBestRestaurants)();
 
   if (document.querySelector('.main__restaurant_page')) {
-    (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_13__.renderPageRestaurant)();
+    (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_0__.renderPageRestaurant)();
   }
 
   (0,_js_starsRating__WEBPACK_IMPORTED_MODULE_16__.getRating)();
@@ -50869,13 +50868,14 @@ window.onload = function () {
   }
 
   cancelEventReviewCard();
+  (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_9__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.arrayNameRestaurants);
 };
 
 const renderCardsRestaurants = () => {
   let cardsWrapperRestaurants = getCardsWrapperRestaurant();
 
   if (cardsWrapperRestaurants) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData).forEach(card => {
       cardsWrapperRestaurants.append(card.generateCardsRestaurants());
     });
   }
@@ -50883,7 +50883,7 @@ const renderCardsRestaurants = () => {
   let cardsWrapperMainCity = getCardsWrapperMainCity();
 
   if (cardsWrapperMainCity) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData).forEach(card => {
       cardsWrapperMainCity.append(card.generateCardsRestaurants());
     });
   }
@@ -50891,7 +50891,7 @@ const renderCardsRestaurants = () => {
   let cardsWrapperMain = getCardsWrapperMain();
 
   if (cardsWrapperMain) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData).forEach(card => {
       cardsWrapperMain.append(card.generateCardsRestaurants());
     });
   }
@@ -50899,7 +50899,7 @@ const renderCardsRestaurants = () => {
   let cardsWrapperReview = getCardsWrapperReview();
 
   if (cardsWrapperReview) {
-    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData).forEach(card => {
+    generateCards(_js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData).forEach(card => {
       cardsWrapperReview.append(card.generateCardsRestaurants());
     });
   }
@@ -50955,9 +50955,84 @@ const cancelEventReviewCard = () => {
   if (cardsContainer) {
     for (let i = 0; i < cardsContainer.length; i += 1) {
       cardsContainer[i].addEventListener('click', e => {
+        console.log(e.target);
         e.preventDefault();
-        e.stopPropagation();
       });
+    }
+  }
+};
+
+const getUserData = () => {
+  let userInfo = JSON.parse(localStorage.getItem("user"));
+  let selectionCity = document.querySelector('select');
+  let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a');
+  let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a>div');
+  let citiesCards = document.querySelectorAll('.address_restaurant');
+  let arrayCoordinateCity = [{
+    'Ottawa': [45.401833, -75.699511]
+  }, {
+    'Montreal': [45.498301, -73.568500]
+  }, {
+    'Toronto': [43.684345, -79.431292]
+  }, {
+    'Calgary': [51.034091, -114.083912]
+  }, {
+    'Edmonton': [53.530798, -113.511802]
+  }, {
+    'Mississauga': [43.574599, -79.606185]
+  }, {
+    'Winnipeg': [49.887898, -97.134185]
+  }, {
+    'Vancouver': [49.284600, -123.116885]
+  }, {
+    'Quebec City': [46.807096, -71.211788]
+  }, {
+    'Brampton': [43.686796, -79.759582]
+  }, {
+    'Cities of Canada': [45.401833, -75.699511]
+  }];
+
+  if (selectionCity) {
+    if (userInfo) {
+      for (let i = 0; i < selectionCity.children.length; i += 1) {
+        if (selectionCity.options[i].value == userInfo.City) {
+          selectionCity.options[i].selected = true;
+        }
+      }
+
+      for (let j = 0; j < cardsRestaurantsMain.length; j += 1) {
+        if (citiesCards[j].innerText.includes(userInfo.City)) {
+          cardsRestaurantsMain[j].classList.remove('hidden');
+        } else {
+          cardsRestaurantsMain[j].classList.add('hidden');
+        }
+      }
+
+      for (let i = 0; i < cardsRestaurantsPage.length; i += 1) {
+        if (citiesCards[i].innerText.includes(userInfo.City)) {
+          cardsRestaurantsPage[i].classList.remove('hidden_card');
+        } else {
+          cardsRestaurantsPage[i].classList.add('hidden_card');
+        }
+      }
+
+      let city = document.querySelector('.restaurant_inCity');
+
+      if (city) {
+        if (userInfo.City) {
+          city.innerHTML = userInfo.City;
+        }
+      }
+
+      if (document.querySelector('#map')) {
+        for (let i = 0; i < arrayCoordinateCity.length; i += 1) {
+          if (userInfo.City) {
+            if (arrayCoordinateCity[i][userInfo.City]) {
+              _js_map__WEBPACK_IMPORTED_MODULE_3__.map.panTo(new L.LatLng(arrayCoordinateCity[i][userInfo.City][0], arrayCoordinateCity[i][userInfo.City][1]));
+            }
+          }
+        }
+      }
     }
   }
 };
@@ -51022,9 +51097,15 @@ const Autocomplete = (selector, data) => {
       setActive(false);
     }
 
-    input.addEventListener('input', e => {
+    function handleInput() {
       (0,_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.removeSelectedFilter)();
       (0,_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.removeSelectedFilterRestaurant)();
+      document.querySelectorAll('.cards_wrapper_restaurants>a>div').forEach(item => {
+        item.classList.remove('hidden_card');
+      });
+      document.querySelectorAll('.cards_wrapper_restaurants>a').forEach(item => {
+        item.classList.remove('hidden');
+      });
       let value = input.value;
 
       if (!value) {
@@ -51034,9 +51115,7 @@ const Autocomplete = (selector, data) => {
 
       list.innerHTML = '';
       listItems = [];
-      console.log('SSSSSSSSSSSS', data);
       data.forEach((dataItem, index) => {
-        console.log('pppppppppppppppppppp');
         let search = ciSearch(value, dataItem);
 
         if (search === -1) {
@@ -51052,7 +51131,7 @@ const Autocomplete = (selector, data) => {
         listItems.push(item);
         item.addEventListener('click', function () {
           selectItem(listItems.indexOf(item));
-          searchNameRestaurant(); // listItems = [];
+          searchNameRestaurant();
         });
       });
 
@@ -51060,7 +51139,10 @@ const Autocomplete = (selector, data) => {
         focusItem(0);
         setActive(true);
       } else setActive(false);
-    });
+    }
+
+    input.removeEventListener('input', handleInput, true);
+    input.addEventListener('input', handleInput, true);
     input.addEventListener('keydown', e => {
       (0,_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.removeSelectedFilter)();
       (0,_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.removeSelectedFilterRestaurant)();
@@ -51086,13 +51168,13 @@ const Autocomplete = (selector, data) => {
 
         if (input.value === '') {
           listItems = [];
-          focusedItem = -1; // document.location.reload();
+          focusedItem = -1;
         }
       }
     });
     input.addEventListener('click', e => {
-      input.value = ''; // focusedItem = -1;
-    }); ////////////// 
+      input.value = '';
+    });
 
     function searchNameRestaurant() {
       let nameRestaurant = document.querySelectorAll('.title_card');
@@ -51107,7 +51189,7 @@ const Autocomplete = (selector, data) => {
             if (nameRestaurant.innerText.search(input.value) === -1) {
               nameRestaurant.classList.add('hidden');
             } else {
-              nameRestaurant.classList.remove('hidden'); // elem.scrollIntoView();
+              nameRestaurant.classList.remove('hidden');
             }
           });
         } else {
@@ -51116,8 +51198,7 @@ const Autocomplete = (selector, data) => {
           });
         }
       }
-    } ///////////////
-
+    }
 
     document.body.addEventListener('click', function (e) {
       if (!wrap.contains(e.target)) setActive(false);
@@ -51218,7 +51299,7 @@ class CardsRestaurants {
     </div>
     <div class="rating__value">${this.rating}</div>
 </div>
-<span class="reviewsRestaurants">${this.review_count} Reviews</span>
+<span class="reviewsRestaurants">${this.review_count} Yelps Reviews</span>
 </div>`;
     }
 
@@ -51278,6 +51359,7 @@ class RestaurantPage {
     coordinatesLatitude,
     coordinatesLongitude,
     url,
+    reviews,
     ...rest
   }) {
     this.id = id;
@@ -51294,6 +51376,7 @@ class RestaurantPage {
     this.coordinatesLatitude = coordinatesLatitude;
     this.coordinatesLongitude = coordinatesLongitude;
     this.url = url;
+    this.reviews = reviews;
   }
 
   generateRestaurantsPage() {
@@ -51382,7 +51465,76 @@ class RestaurantPage {
     template += '</div>';
     template += '<button class="button__review"><i class="far fa-star"></i> Write a Review</button>';
     template += '</div>';
-    template += '</section>';
+    template += '</section>'; //title reviews
+
+    template += ' <section class="titleReviews">';
+    template += ' <div class="wrapper">';
+    template += '<div class="container__reviews">';
+    template += '<h3>Reviews</h3>';
+    template += ' </div>';
+    template += '</div>';
+    template += '</section>'; //content reviews
+
+    if (this.reviews) {
+      this.reviews.map(review => {
+        template += '<section class="section_reviews">';
+        template += ' <div class="wrapper">';
+        template += '<div class="container__reviews">';
+        template += '<div class="content_reviews">';
+
+        if (review.Avatar) {
+          template += `<img src="${review.Avatar}" alt="icon User">`;
+        }
+
+        template += ' <div class="about_reviews">';
+
+        if (review.Restaurant) {
+          template += `<h6>${review.Restaurant} Restaurant</h6>`;
+        }
+
+        template += '<div class="rating">';
+        template += '<div class="rating__body">';
+        template += '<div class="rating__active"></div>';
+        template += ' <div class="rating__items">';
+        template += '<input type="radio" class="rating__item" value="1" name="rating"><input type="radio" class="rating__item" value="2" name="rating"><input type="radio" class="rating__item" value="3" name="rating"><input type="radio" class="rating__item" value="4" name="rating"><input type="radio" class="rating__item" value="5" name="rating">';
+        template += '</div>';
+        template += '</div>';
+
+        if (review.Rating) {
+          template += `<div class="rating__value">${review.Rating}</div>`;
+        }
+
+        template += '</div>';
+
+        if (this.Date) {
+          template += `<p>${review.Date}</p>`;
+        }
+
+        if (review.Username) {
+          template += `<p class="name_visitor">${review.Username}</p>`;
+        }
+
+        if (review.Review) {
+          template += `<p class="review_visitor">${review.Review}</p>`;
+        }
+
+        template += '</div>';
+        template += '</div>';
+        template += '</div>';
+        template += '</div>';
+        template += '</section>';
+      });
+    } else {
+      template += '<section>';
+      template += ' <div class="wrapper">';
+      template += '<div class="container__reviews">';
+      template += '<h5 class="no_reviews>No Reviews</h5>';
+      template += '</div>';
+      template += '</div>';
+      template += '</div>';
+      template += '</section>';
+    }
+
     article.innerHTML = template;
     return article;
   }
@@ -51412,7 +51564,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _apiData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./apiData */ "./src/js/apiData.js");
 /* harmony import */ var _Autocomplete__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Autocomplete */ "./src/js/Autocomplete.js");
- // import { arrayNameRestaurants } from './../index'
+/* harmony import */ var _map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./map */ "./src/js/map.js");
+
 
  //filter price
 
@@ -51422,15 +51575,23 @@ const addFilterPriceClickHandler = () => {
 
   if (filter !== null) {
     filter.addEventListener('click', e => {
+      document.querySelectorAll('.cards_wrapper_restaurants > a').forEach(value => {
+        value.classList.remove('hidden');
+      });
+      document.querySelectorAll('.titleRestaurant').forEach(value => {
+        value.classList.remove('titleRestaurant_active');
+      });
+
       if (e.target.classList.contains('filter_box')) {
+        document.querySelectorAll('.cards_wrapper_restaurants > a').forEach(value => {
+          value.classList.remove('hidden');
+        });
         input.value = '';
         let clickedFilter = e.target;
         removeSelectedFilter();
         selectClickedFilter(clickedFilter);
 
         if (clickedFilter.innerText === 'Reset all filters') {
-          // let selectionCity = this.options[this.selectedIndex];
-          // selectionCity = 0
           location.reload();
           input.value = '';
           showAllFilters();
@@ -51453,7 +51614,7 @@ const selectClickedFilter = clickedFilter => {
 };
 
 const showAllFilters = () => {
-  let filterValues = document.querySelectorAll('.cards_wrapper > a');
+  let filterValues = document.querySelectorAll('.cards_wrapper_restaurants > a');
   filterValues.forEach(value => {
     value.classList.remove('hidden');
   });
@@ -51461,15 +51622,15 @@ const showAllFilters = () => {
 };
 
 const filterBySelectedValue = selectedValue => {
-  let filterValues = document.querySelectorAll('.cards_wrapper > a');
+  let filterValues = document.querySelectorAll('.cards_wrapper_restaurants > a');
   filterValues.forEach(value => {
-    value.classList.add('hidden'); //filter price
+    value.classList.add('hidden'); // filter price
 
     value.querySelectorAll('.priceRestaurant').forEach(item => {
       if (item.innerText === selectedValue) {
         value.classList.remove('hidden');
       }
-    }); //filter type restaurants
+    }); // filter type restaurants
 
     value.querySelectorAll('.service_restaurant > span').forEach(item => {
       if (item.innerText === selectedValue) {
@@ -51553,39 +51714,22 @@ arrayData.forEach(nameRestaurant => {
   arrayNameRestaurants.push(nameRestaurant.name);
 });
 const sortRestaurantsByCities = () => {
-  let selectionCity = document.querySelector('.searching_city ');
+  let selectionCity = document.querySelector('.searching_city');
   let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a');
-  let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a');
+  let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a>div');
+  let cardsRestaurantsReviews = document.querySelectorAll('.restaurants_wrapper_review>a');
   let citiesCards = document.querySelectorAll('.address_restaurant');
 
   if (selectionCity) {
     selectionCity.addEventListener('change', changeValueSelect);
-  } // if (selectionCity.clicked === true) {
-
-
-  (0,_Autocomplete__WEBPACK_IMPORTED_MODULE_1__.Autocomplete)('#input-select', arrayNameRestaurants); // } else {
-
-  _apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity.forEach(element => {
-    arrayData.push(element);
-  });
-  arrayData.forEach(nameRestaurant => {
-    arrayNameRestaurants.push(nameRestaurant.name);
-  }); // Autocomplete('#input-select', arrayNameRestaurants);
-  // arrayNameRestaurants = []
-  // arrayData = []
-  // }
-  // arrayNameRestaurants = []
-  // arrayData = []
+  }
 
   function changeValueSelect() {
+    removeSelectedFilterRestaurant();
+    showAllFilters();
     let selectionCity = this.options[this.selectedIndex].text;
     arrayData = [];
-    arrayNameRestaurants = []; // console.log('wwwwwwwwwwwwwwwww', arrayNameRestaurants.length)
-    // if (arrayNameRestaurants.length === 0) {
-    // Autocomplete('#input-select', arrayNameRestaurants);
-    //     console.log('wwwwwwwwwwwwwwwww', arrayNameRestaurants.length)
-    // }
-
+    arrayNameRestaurants = [];
     let count = 1;
 
     for (let i = 0; i < cardsRestaurantsMain.length; i += 1) {
@@ -51612,25 +51756,27 @@ const sortRestaurantsByCities = () => {
 
     for (let i = 0; i < cardsRestaurantsPage.length; i += 1) {
       if (selectionCity === 'Cities of Canada') {
-        document.querySelector('.all_position').classList.add('filter_active');
-        cardsRestaurantsPage[i].classList.remove('hidden');
+        cardsRestaurantsPage[i].classList.remove('hidden_card');
+
+        if (!cardsRestaurantsReviews) {
+          document.querySelector('.all_position').classList.add('filter_active');
+        }
       } else if (citiesCards[i].innerText.includes(selectionCity)) {
         removeSelectedFilter();
         removeSelectedFilterRestaurant();
-        cardsRestaurantsPage[i].classList.remove('hidden');
+        cardsRestaurantsPage[i].classList.remove('hidden_card');
       } else {
         removeSelectedFilter();
         removeSelectedFilterRestaurant();
-        cardsRestaurantsPage[i].classList.add('hidden');
+        cardsRestaurantsPage[i].classList.add('hidden_card');
       }
-    }
+    } //array of name restaurants
+
 
     for (let j = 0; j < _apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity.length; j += 1) {
       if (selectionCity === 'Cities of Canada') {
         arrayData.push(_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j]);
       } else if (selectionCity === _apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j].city) {
-        console.log('OOOOOOOOOOOOOOO', _apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity.length);
-        console.log('CCCCCCCCCCC', selectionCity);
         arrayData.push(_apiData__WEBPACK_IMPORTED_MODULE_0__.arrayNameRestaurantsCity[j]);
       }
     }
@@ -51638,8 +51784,40 @@ const sortRestaurantsByCities = () => {
     arrayData.forEach(nameRestaurant => {
       arrayNameRestaurants.push(nameRestaurant.name);
     });
-    console.log('sssssssssssssss', arrayNameRestaurants);
-    console.log('aaaaaaaaaaaaaaa', arrayData);
+    (0,_Autocomplete__WEBPACK_IMPORTED_MODULE_1__.Autocomplete)('#input-select', arrayNameRestaurants); // map
+
+    if (document.querySelector('#map')) {
+      let arrayCoordinateCity = [{
+        'Ottawa': [45.401795, -75.699583]
+      }, {
+        'Montreal': [45.498301, -73.568500]
+      }, {
+        'Toronto': [43.684345, -79.431292]
+      }, {
+        'Calgary': [51.034091, -114.083912]
+      }, {
+        'Edmonton': [53.530798, -113.511802]
+      }, {
+        'Mississauga': [43.574599, -79.606185]
+      }, {
+        'Winnipeg': [49.887898, -97.134185]
+      }, {
+        'Vancouver': [49.284600, -123.116885]
+      }, {
+        'Quebec City': [46.807096, -71.211788]
+      }, {
+        'Brampton': [43.686796, -79.759582]
+      }, {
+        'Cities of Canada': [45.401795, -75.699583]
+      }];
+      _map__WEBPACK_IMPORTED_MODULE_2__.options.center = [];
+
+      for (let i = 0; i < arrayCoordinateCity.length; i += 1) {
+        if (arrayCoordinateCity[i][selectionCity]) {
+          _map__WEBPACK_IMPORTED_MODULE_2__.map.panTo(new L.LatLng(arrayCoordinateCity[i][selectionCity][0], arrayCoordinateCity[i][selectionCity][1]));
+        }
+      }
+    }
   }
 };
 
@@ -51661,12 +51839,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const restaurantsData = [];
 const arrayNameRestaurantsCity = [];
-let arrayRestaurants = []; //  fetch('./../../dist/data/response.json').then(data => {
-//      data.json().then(json => {
-//          arrayRestaurants.push(json.businesses)
-//      })
-//  })
-//  console.log('data', arrayRestaurants)
+let arrayRestaurants = [];
 
 const getListRestaurants = () => {
   for (let s = 0; s < _data_response__WEBPACK_IMPORTED_MODULE_0__.businesses.length; s += 1) {
@@ -51698,15 +51871,12 @@ const getListRestaurants = () => {
   restaurantsData.sort(() => Math.random() - 0.5);
 
   for (let j = 0; j < restaurantsData.length; j += 1) {
-    //  arrayNameRestaurants.push(
-    //      restaurantsData[j].name,
-    //  )
     arrayNameRestaurantsCity.push({
       name: restaurantsData[j].name,
       city: restaurantsData[j].city,
       coordinatesLatitude: restaurantsData[j].coordinatesLatitude,
       coordinatesLongitude: restaurantsData[j].coordinatesLongitude
-    }); //  console.log(arrayNameRestaurants[j].name)
+    });
   }
 };
 
@@ -51870,6 +52040,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _apiData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./apiData */ "./src/js/apiData.js");
 /* harmony import */ var _RestaurantPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RestaurantPage */ "./src/js/RestaurantPage.js");
+/* harmony import */ var _dbFirebase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
+
 
 
 let card = [];
@@ -51877,42 +52049,66 @@ const getDataCard = () => {
   let cards = document.querySelectorAll('.cards_wrapper > [data-id]');
 
   for (let i = 0; i < cards.length; i += 1) {
-    cards[i].addEventListener('click', () => {
+    cards[i].addEventListener('click', e => {
       card = [];
       let dataIdCard = cards[i].getAttribute('data-id');
 
       if (dataIdCard === _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].id) {
-        card.push({
-          id: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].id,
-          name: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].name,
-          categories: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].categories,
-          image_url: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].image_url,
-          rating: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].rating,
-          review_count: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].review_count,
-          price: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].price,
-          display_phone: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].display_phone,
-          phone: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].phone,
-          locationAddress: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].locationAddress,
-          city: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].city,
-          url: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].url,
-          categories: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].categories,
-          coordinatesLatitude: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].coordinatesLatitude,
-          coordinatesLongitude: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].coordinatesLongitude
+        _dbFirebase__WEBPACK_IMPORTED_MODULE_2__.db.collection("reviews").where("Restaurant", "==", _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].name).get().then(function (querySnapshot) {
+          let arrayReviews = [];
+          querySnapshot.forEach(function (doc) {
+            arrayReviews.push(doc.data());
+          });
+
+          const uniqueArray = (array, prop1, prop2) => {
+            for (let i = 0; i < array.length; i++) {
+              for (let j = i + 1; j < array.length; j++) {
+                if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+                  array.splice(i, 1);
+                }
+              }
+            }
+
+            return array;
+          };
+
+          uniqueArray(arrayReviews, 'Username', 'Review');
+          console.log(e.target);
+          card.push({
+            id: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].id,
+            name: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].name,
+            categories: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].categories,
+            image_url: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].image_url,
+            rating: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].rating,
+            reviews: arrayReviews,
+            review_count: arrayReviews.length,
+            price: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].price,
+            display_phone: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].display_phone,
+            phone: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].phone,
+            locationAddress: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].locationAddress,
+            city: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].city,
+            url: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].url,
+            categories: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].categories,
+            coordinatesLatitude: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].coordinatesLatitude,
+            coordinatesLongitude: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].coordinatesLongitude
+          });
+          localStorage.setItem("card", JSON.stringify(card));
+          console.log('CCCCCCC', card);
         });
       } else {
         card = [];
+        localStorage.setItem("card", JSON.stringify(card));
       }
-
-      localStorage.setItem("card", JSON.stringify(card));
     });
   }
-};
-let data = JSON.parse(localStorage.getItem("card"));
+}; /// render restaurant page
+
+let dataRestaurant = JSON.parse(localStorage.getItem("card"));
 const renderPageRestaurant = () => {
   let pageRestaurant = getWrapperPageRestaurant();
 
   if (pageRestaurant) {
-    generatePage(data).forEach(el => {
+    generatePage(dataRestaurant).forEach(el => {
       pageRestaurant.append(el.generateRestaurantsPage());
     });
   }
@@ -51927,9 +52123,9 @@ const getWrapperPageRestaurant = () => {
   }
 };
 
-const generatePage = data => {
+const generatePage = dataRestaurant => {
   let array = [];
-  data.forEach(element => {
+  dataRestaurant.forEach(element => {
     array.push(new _RestaurantPage__WEBPACK_IMPORTED_MODULE_1__.RestaurantPage(element));
   });
   return array;
@@ -52069,8 +52265,7 @@ if (buttonLogOut !== null) {
                         <small>Error message</small>
                     </div>
                     <button class="container__form_button logIn">Log in</button>
-                </div>
-            
+                </div>            
             </div>
             </div>`;
     }
@@ -52087,19 +52282,49 @@ if (buttonLogOut !== null) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "options": () => /* binding */ options,
+/* harmony export */   "map": () => /* binding */ map
+/* harmony export */ });
 /* harmony import */ var _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addClickHandlers */ "./src/js/addClickHandlers.js");
 
+let options;
+let map;
 
 if (document.querySelector('#map')) {
-  let map = L.map('map', {}).setView([45.401795, -75.699583], 12);
+  let arrayCoordinateCity = [{
+    'Ottawa': [45.401833, -75.699511]
+  }, {
+    'Montreal': [45.498301, -73.568500]
+  }, {
+    'Toronto': [43.684345, -79.431292]
+  }, {
+    'Calgary': [51.034091, -114.083912]
+  }, {
+    'Edmonton': [53.530798, -113.511802]
+  }, {
+    'Mississauga': [43.574599, -79.606185]
+  }, {
+    'Winnipeg': [49.887898, -97.134185]
+  }, {
+    'Vancouver': [49.284600, -123.116885]
+  }, {
+    'Quebec City': [46.807096, -71.211788]
+  }, {
+    'Brampton': [43.686796, -79.759582]
+  }, {
+    'Cities of Canada': [45.401833, -75.699511]
+  }];
+  options = {
+    center: arrayCoordinateCity[10]['Cities of Canada'],
+    zoom: 13
+  };
+  map = L.map('map', options);
   let osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="copyright">Openstreetmap</a>'
   }).addTo(map);
-  console.log(_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData);
 
   for (let i = 0; i < _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData.length; i += 1) {
-    console.log('dddd'); //let coordinates = [arrayNameRestaurants[i].coordinatesLatitude, arrayNameRestaurants[i].coordinatesLongitude]
-
     let iconOptions = {
       iconUrl: '../../dist/src/assets/icon/canada.png',
       iconSize: [50, 50]
@@ -52112,10 +52337,6 @@ if (document.querySelector('#map')) {
 
     marker.bindPopup(`${_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].name}, ${_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].city}`);
     marker.addTo(map);
-    /*let marker = L.marker(coordinates, {})
-        .addTo(map)
-        .bindPopup(`${arrayNameRestaurants[i].name}, ${arrayNameRestaurants[i].locationAddress}`)
-    console.log('ZZZZZZZZZZZZZZZ', marker)*/
   }
 }
 
@@ -52530,11 +52751,7 @@ function scrollTo(to, duration = 700) {
         start = element.scrollTop,
         change = to - start,
         startDate = +new Date(),
-        // t = current time
-  // b = start value
-  // c = change in value
-  // d = duration
-  easeInOutQuad = function (t, b, c, d) {
+        easeInOutQuad = function (t, b, c, d) {
     t /= d / 2;
     if (t < 1) return c / 2 * t * t + b;
     t--;

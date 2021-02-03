@@ -228,12 +228,15 @@ $maincolor_third: #fff;
     padding: 60px 15px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    width: 100%;
     & h3 {
+        font-family: 'Poppins', sans-serif;
         font-weight: 600;
         font-size: 30px;
         text-align: center;
+        margin: 0 auto;
     }
     & .content_reviews {
         margin-top: 40px;

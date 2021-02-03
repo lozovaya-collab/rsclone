@@ -1,16 +1,7 @@
  import restaurants from "./data/response"
-
  export const restaurantsData = [];
  export const arrayNameRestaurantsCity = [];
  let arrayRestaurants = [];
-
- //  fetch('./../../dist/data/response.json').then(data => {
- //      data.json().then(json => {
- //          arrayRestaurants.push(json.businesses)
- //      })
- //  })
-
- //  console.log('data', arrayRestaurants)
 
  const getListRestaurants = () => {
 
@@ -40,21 +31,14 @@
      }
      restaurantsData.sort(() => Math.random() - 0.5);
 
-
      for (let j = 0; j < restaurantsData.length; j += 1) {
-         //  arrayNameRestaurants.push(
-         //      restaurantsData[j].name,
-         //  )
+
          arrayNameRestaurantsCity.push({
-                 name: restaurantsData[j].name,
-                 city: restaurantsData[j].city,
-                 coordinatesLatitude: restaurantsData[j].coordinatesLatitude,
-                 coordinatesLongitude: restaurantsData[j].coordinatesLongitude,
-             })
-             //  console.log(arrayNameRestaurants[j].name)
+             name: restaurantsData[j].name,
+             city: restaurantsData[j].city,
+             coordinatesLatitude: restaurantsData[j].coordinatesLatitude,
+             coordinatesLongitude: restaurantsData[j].coordinatesLongitude,
+         })
      }
-
-
-
  }
  getListRestaurants()

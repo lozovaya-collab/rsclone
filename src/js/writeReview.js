@@ -1,7 +1,6 @@
 import { getRating } from './starsRating'
 import { db } from './dbFirebase'
 
-
 const usernameReview = document.querySelector('.review__restaurant_main__user_username')
 const avatarReview = document.querySelector('.review__restaurant_main__user_avatar')
 const review = document.querySelector('.review__restaurant_main__text__area')
@@ -31,14 +30,8 @@ if (localStorage.getItem('user') !== '' && usernameReview) {
             getRating()
         })
     }
-
     sumbitReview.addEventListener('click', createReview)
-
-
 }
-
-
-
 
 function createReview() {
     console.log('submit');

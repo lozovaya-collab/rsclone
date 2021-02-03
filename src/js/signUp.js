@@ -9,17 +9,12 @@ export const lastName = document.getElementById('surname')
 export const birthday = document.getElementById('birthday')
 export const city = document.querySelector('select')
 
-
-
-
 if (form !== null) {
     form.addEventListener('submit', (e) => {
         e.preventDefault()
         checkInputs()
     })
 }
-
-
 export function checkInputs() {
     if (username !== null) {
         const usernameValue = username.value.trim()
@@ -146,9 +141,6 @@ export function setSuccessFor(input) {
     const formControl = input.parentElement
     formControl.className = 'container__form_control success'
 }
-
-
-
 export function isEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
 }

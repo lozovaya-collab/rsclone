@@ -2,9 +2,7 @@ import { db, isAuth } from './dbFirebase'
 import { setErrorFor } from "./signUp"
 import { checkData } from "./modal"
 import { checkUserIsAuth } from "./checkUser"
-
 let isUser = false
-
 export let myUser = {}
 export let myUserId = ''
 const logInButton = document.querySelector('.logIn')
@@ -20,7 +18,6 @@ if (logInButton) {
                 .then(function(querySnapshot) {
                     querySnapshot.forEach(function(doc) {
                         console.log(doc.id, " => ", doc.data());
-
                         myUser = {
                             ID: doc.id,
                             Username: doc.data().Username,

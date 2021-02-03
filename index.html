@@ -8,21 +8,25 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./dist/src/assets/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./dist/src/assets/icon/favicon-16x16.png">
     <link rel="manifest" href="./dist/src/assets/icon/site.webmanifest">
-
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
-
     <link rel="stylesheet" href="./dist/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="/__/firebase/8.2.4/firebase-app.js"></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="/__/firebase/8.2.4/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="/__/firebase/8.2.4/firebase-auth.js"></script>
+    <script src="/__/firebase/8.2.4/firebase-firestore.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init()
+    </script>
     <title>YelpClone</title>
-
-
-
 </head>
 
 <body>
@@ -32,19 +36,15 @@
             <div class="main_logIn button_wrapper wow animate__animated  animate__backInRight">
                 <button class="button_header log-in mainBtn">Log In</button>
                 <a class="sign-up-href" href="/dist/pages/signUp.html"><button class="button_header sign-up">Sign Up</button></a>
-
             </div>
             <nav class="main_nav">
                 <ul>
-
                     <li><a class="main_nav_link navigation_link restaurant_view" href="/dist/pages/restaurants.html"><i class="fas fa-utensils"></i> Restaurants </a></li>
 
                     <li><a class="main_nav_link navigation_link review" href="/dist/pages/review.html">Wright a Review</a></li>
                 </ul>
             </nav>
             <div class="main_logo">
-
-
                 <a class="logo main_logoYelp wow animate__animated animate__fadeInUp" href="index.html"> YelpClone <i class="fab fa-yelp"></i></a>
             </div>
 
@@ -55,7 +55,6 @@
         <section class="section_best_offers">
             <div class="wrapper">
                 <div class="main_section best_offers">
-
                     <h2 class="section_title wow animate__animated animate__fadeInLeft">Best Restaurants</h2>
                     <div class="cards_wrapper cards_wrapper_main wow animate__animated animate__fadeInUp">
                         <a href="./dist/pages/restaurants.html">
@@ -82,7 +81,6 @@
                                         <span class="reviewsRestaurants">337 Reviews</span>
                                     </div>
                                     <span class="priceRestaurant">$$$</span>
-
                                     <div class="service_restaurant">
                                         <span>Seafood</span><span>Vietnamese</span>
                                     </div>
@@ -91,20 +89,16 @@
                                 </div>
                             </div>
                         </a>
-
                     </div>
                 </div>
-
             </div>
         </section>
-
         <section>
             <div class="wrapper">
                 <div class="main_section city_restaurants">
                     <h2 class="section_title wow animate__animated animate__zoomIn">YelpClone in Your City</h2>
                     <div class="searching">
-                        <!-- <input class="input_searching searching_city" type="text" placeholder="City"> -->
-                        <select name="city" id="" class="input_searching searching_city">                            
+                        <select name="city" id="" class="input_searching searching_city ">                            
                             <option value="Cities of Canada"  class="selection-allCities" >Cities of Canada</option>
                         <option value="Ottawa">Ottawa</option>
                         <option value="Montreal">Montreal</option>
@@ -114,8 +108,8 @@
                         <option value="Mississauga">Mississauga</option>
                         <option value="Winnipeg">Winnipeg</option>
                         <option value="Vancouver">Vancouver</option>
-                        <option value="Quebec">Quebec City</option>
-                        <option value="Hamilton">Brampton</option>                               
+                        <option value="Quebec City">Quebec City</option>
+                        <option value="Brampton">Brampton</option>                               
                         </select>
                         <i class="fas fa-search"></i>
                     </div>
@@ -153,11 +147,9 @@
                         <div class="possibility"><i class="far fa-edit"></i> Write a review</div>
                         <div class="possibility"><i class="fas fa-check-circle"></i> Choose a restaurant to taste</div>
                         <div class="possibility"><i class="fas fa-hand-pointer"></i> Choose a restaurant in your city</div>
-
                     </div>
                 </div>
             </div>
-
         </section>
         <div id="popup" class="popup">
         </div>
@@ -170,31 +162,12 @@
                 <span><i class="far fa-copyright"></i> 2021</span>
                 <div class="footer-link">
                     <a href="https://github.com/olgamartinchik"><i class="fab fa-github-alt"></i> </a>
-
                     <a href="https://github.com/lozovaya-collab"><i class="fab fa-github-alt"></i> </a>
                 </div>
-
                 <a href="https://rs.school/js/" target="_blank"><img class="rsLogo" src="https://rs.school/images/rs_school_js.svg" alt="icon"></a>
-
             </div>
         </div>
-
     </footer>
-    <script src="/__/firebase/8.2.4/firebase-app.js"></script>
-
-    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-    <script src="/__/firebase/8.2.4/firebase-analytics.js"></script>
-
-    <!-- Add Firebase products that you want to use -->
-    <script src="/__/firebase/8.2.4/firebase-auth.js"></script>
-    <script src="/__/firebase/8.2.4/firebase-firestore.js"></script>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-
-    <script>
-        new WOW().init()
-    </script>
     <script src="./dist/script.js"></script>
 </body>
 
