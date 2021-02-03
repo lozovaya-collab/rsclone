@@ -32,7 +32,7 @@ window.onload = function() {
     let objLocal = JSON.parse(localStorage.getItem('card'))
     for (let i = 0; i < restaurantsData.length; i += 1) {
         let card = [{}]
-        if (objLocal !== undefined && objLocal !== null) {
+        if (objLocal[0] !== undefined && objLocal !== null) {
             if (objLocal[0].name === restaurantsData[i].name) {
                 db.collection("reviews").where("Restaurant", "==", restaurantsData[i].name)
                     .get()
