@@ -1,0 +1,59 @@
+$maincolor_first: #00a6a6;
+$maincolor_second: #efca08;
+$maincolor_third: #fff;
+.header {
+    z-index: 3;
+}
+
+.main_header {
+    // background-image: url("./../assets/images/12.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 40vw;
+    position: relative;
+    transition: 4s;
+}
+
+.main_logIn {
+    margin-top: 20px;
+    & .wrapper {
+        position: relative;
+    }
+    & a {
+        margin-left: 25px;
+    }
+}
+
+.main_nav {
+    margin-top: 70px;
+    & ul {
+        display: flex;
+        li {
+            list-style-type: none;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    }
+}
+
+.main_nav_link {
+    color: $maincolor_third;
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+.main_logo {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    & .main_logoYelp {
+        font-size: 80px;
+        font-weight: 600;
+        // text-shadow: none;
+        text-shadow: 2px 2px 4px #000000;
+        & .fa-yelp {
+            color: $maincolor_second;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    }
+}

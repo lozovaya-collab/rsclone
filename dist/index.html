@@ -4,15 +4,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="./dist/style.css"> -->
-    <title>Document</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./dist/src/assets/icon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./dist/src/assets/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./dist/src/assets/icon/favicon-16x16.png">
+    <link rel="manifest" href="./dist/src/assets/icon/site.webmanifest">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./dist/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>YelpClone</title>
+    <link rel="stylesheet" href="./../../dist/style.css">
 <link href="style.css" rel="stylesheet"></head>
 
 <body>
-
-
-
-    <!-- <script src="./dist/script.js"></script> -->
+    <header class="main_header">
+        <div class="wrapper ">
+            <div class="main_logIn button_wrapper wow animate__animated  animate__backInRight">
+                <button class="button_header log-in mainBtn">Log In</button>
+                <a class="sign-up-href" href="/dist/pages/signUp.html"><button class="button_header sign-up">Sign Up</button></a>
+            </div>
+            <nav class="main_nav">
+                <ul>
+                    <li><a class="main_nav_link navigation_link restaurant_view" href="/dist/pages/restaurants.html"><i class="fas fa-utensils"></i> Restaurants </a></li>
+                    <li><a class="main_nav_link navigation_link review" href="/dist/pages/review.html">Wright a Review</a></li>
+                </ul>
+            </nav>
+            <div class="main_logo">
+                <a class="logo main_logoYelp wow animate__animated animate__fadeInUp" href="index.html"> YelpClone <i class="fab fa-yelp"></i></a>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="section_best_offers">
+            <div class="wrapper">
+                <div class="main_section best_offers">
+                    <h2 class="section_title wow animate__animated animate__fadeInLeft">Best Restaurants</h2>
+                    <div class="cards_wrapper cards_wrapper_main wow animate__animated animate__fadeInUp">
+                        <a href="./dist/pages/restaurants.html">
+                            <div class="card card_restaurant">
+                                <div class="food">
+                                    <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
+                                </div>
+                                <div class="about_restaurant">
+                                    <h2 class="title_card">Hotbird</h2>
+                                    <div class="rating_restaurant">
+                                        <div class="rating">
+                                            <div class="rating__body">
+                                                <div class="rating__active"></div>
+                                                <div class="rating__items">
+                                                    <input type="radio" class="rating__item" value="1" name="rating">
+                                                    <input type="radio" class="rating__item" value="2" name="rating">
+                                                    <input type="radio" class="rating__item" value="3" name="rating">
+                                                    <input type="radio" class="rating__item" value="4" name="rating">
+                                                    <input type="radio" class="rating__item" value="5" name="rating">
+                                                </div>
+                                            </div>
+                                            <div class="rating__value">4</div>
+                                        </div>
+                                        <span class="reviewsRestaurants">337 Reviews</span>
+                                    </div>
+                                    <span class="priceRestaurant">$$$</span>
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901 </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="wrapper">
+                <div class="main_section city_restaurants">
+                    <h2 class="section_title wow animate__animated animate__zoomIn">YelpClone in Your City</h2>
+                    <div class="searching">
+                        <select name="city" id="" class="input_searching searching_city ">                            
+                            <option value="Cities of Canada"  class="selection-allCities" >Cities of Canada</option>
+                        <option value="Ottawa">Ottawa</option>
+                        <option value="Montreal">Montreal</option>
+                        <option value="Toronto">Toronto</option>
+                        <option value="Calgary">Calgary</option>
+                        <option value="Edmonton">Edmonton</option>
+                        <option value="Mississauga">Mississauga</option>
+                        <option value="Winnipeg">Winnipeg</option>
+                        <option value="Vancouver">Vancouver</option>
+                        <option value="Quebec City">Quebec City</option>
+                        <option value="Brampton">Brampton</option>                               
+                        </select>
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="cards_wrapper cards_wrapper_city wow  animate__animated animate__fadeInUp">
+                        <a href="./src/pages/restaurants.html">
+                            <div class="card card_restaurant">
+                                <div class="food">
+                                    <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
+                                </div>
+                                <div class="about_restaurant">
+                                    <h2 class="title_card">Hotbird</h2>
+                                    <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                    <span class="priceRestaurant">$$$</span>
+                                    <div class="service_restaurant">
+                                        <span>Seafood</span><span>Vietnamese</span>
+                                    </div>
+                                    <div class="phon_restaurant">+13615728538</div>
+                                    <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section_recent_activity ">
+            <div class="wrapper">
+                <div class="main_section recent_activity wow animate__animated animate__fadeInBottomRight">
+                    <h2 class="section_title">What can you do on our website</h2>
+                    <div class="box_possibility">
+                        <div class="possibility"><i class="fas fa-utensils"></i> Find the address of your favorite restaurant</div>
+                        <div class="possibility"><i class="far fa-edit"></i> Write a review</div>
+                        <div class="possibility"><i class="fas fa-check-circle"></i> Choose a restaurant to taste</div>
+                        <div class="possibility"><i class="fas fa-hand-pointer"></i> Choose a restaurant in your city</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="popup" class="popup">
+        </div>
+        <a href="#" id="toTop"><i class="fas fa-angle-double-up"></i></a>
+    </main>
+    <footer class="footer">
+        <div class="wrapper">
+            <div class="footer-wrapper">
+                <a class="logo" href="#"> YelpClone <i class="fab fa-yelp"></i></a>
+                <span><i class="far fa-copyright"></i> 2021</span>
+                <div class="footer-link">
+                    <a href="https://github.com/olgamartinchik"><i class="fab fa-github-alt"></i> </a>
+                    <a href="https://github.com/lozovaya-collab"><i class="fab fa-github-alt"></i> </a>
+                </div>
+                <a href="https://rs.school/js/" target="_blank"><img class="rsLogo" src="https://rs.school/images/rs_school_js.svg" alt="icon"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init()
+    </script>
+    <script src="./dist/script.js"></script>
 <script src="script.js"></script></body>
 
 </html>

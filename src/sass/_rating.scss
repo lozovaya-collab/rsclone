@@ -1,0 +1,64 @@
+$maincolor_first: #00a6a6;
+$maincolor_second: #efca08;
+$maincolor_third: #fff;
+.rating {
+    display: flex;
+    align-items: flex-end;
+    font-size: 30px;
+    line-height: 0.75;
+    margin-bottom: 5px;
+    color: $maincolor_first;
+}
+
+.rating__value {
+    color: $maincolor_second;
+}
+
+.rating__body {
+    position: relative;
+}
+
+.rating__body::before {
+    content: "\2605 \2605 \2605 \2605 \2605";
+    display: block;
+}
+
+.rating__active {
+    position: absolute;
+    width: 65%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.rating__active::before {
+    content: "\2605 \2605 \2605 \2605 \2605";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: $maincolor_second;
+}
+
+.rating__items {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.rating__item {
+    flex: 0 0 20%;
+    height: 100%;
+    opacity: 0;
+}
+
+.rating__value {
+    font-size: 50%;
+    line-height: 1;
+    padding: 0 0 0 10px;
+}
