@@ -50838,7 +50838,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.onload = function () {
+  console.log(window.location.href);
+
+  if (localStorage.getItem('card') === null) {
+    let obj = [{}];
+    localStorage.setItem('card', JSON.stringify(obj));
+  }
+
+  if (localStorage.getItem('user') === null) {
+    let str = '';
+    localStorage.setItem('user', str);
+  }
+
   let objLocal = JSON.parse(localStorage.getItem('card'));
+  console.log(objLocal);
 
   for (let i = 0; i < _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData.length; i += 1) {
     let card = [{}];
@@ -51339,7 +51352,7 @@ class CardsRestaurants {
   generateCardsRestaurants() {
     let template = '';
     let card = document.createElement('a');
-    card.href =  true && './../../dist/pages/pageRestaurant.html';
+    card.href =  true && '../../dist/pages/pageRestaurant.html';
     card.setAttribute('data-id', this.id);
     template += `<div class="card card_restaurant">`;
     template += '<div class="food">';
@@ -52279,7 +52292,7 @@ if (buttonLogOut !== null) {
   buttonLogOut.addEventListener('click', () => {
     if (buttonLogOut.innerHTML === 'Log Out') {
       logOutUser(checkAuth);
-      window.location.href = '../../dist/index.html';
+      window.location.href = './../../index.html';
     } else {
       popLogIn.innerHTML = `<div class="popup__body">
             <div class="popup__content">
@@ -52448,7 +52461,7 @@ if (document.querySelector('.mainBtn') !== null) {
       formLogIn.style.top = '0';
     } else {
       (0,_logOut__WEBPACK_IMPORTED_MODULE_1__.logOutUser)(localStorage.getItem('Auth'));
-      window.location.href = '../../dist/index.html';
+      window.location.href = './../../index.html';
     }
   });
 }
@@ -52459,7 +52472,7 @@ if (btn !== null) {
       formLogIn.style.display = 'flex';
     } else {
       (0,_logOut__WEBPACK_IMPORTED_MODULE_1__.logOutUser)(localStorage.getItem('Auth'));
-      window.location.href = '../../dist/index.html';
+      window.location.href = './../../index.html';
     }
   });
 }

@@ -29,7 +29,19 @@ import { getRating } from './js/starsRating'
 
 window.onload = function() {
 
+    console.log(window.location.href)
+
+    if (localStorage.getItem('card') === null) {
+        let obj = [{}]
+        localStorage.setItem('card', JSON.stringify(obj))
+    }
+    if (localStorage.getItem('user') === null) {
+        let str = ''
+        localStorage.setItem('user', str)
+    }
+
     let objLocal = JSON.parse(localStorage.getItem('card'))
+    console.log(objLocal)
     for (let i = 0; i < restaurantsData.length; i += 1) {
         let card = [{}]
         if (objLocal[0] !== undefined && objLocal !== null) {

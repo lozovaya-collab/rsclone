@@ -52,7 +52,7 @@ if (document.querySelector('.mainBtn') !== null) {
             formLogIn.style.top = '0'
         } else {
             logOutUser(localStorage.getItem(('Auth')))
-            window.location.href = '../../dist/index.html'
+            window.location.href = './../../index.html'
         }
     })
 }
@@ -63,7 +63,7 @@ if (btn !== null) {
             formLogIn.style.display = 'flex'
         } else {
             logOutUser(localStorage.getItem(('Auth')))
-            window.location.href = '../../dist/index.html'
+            window.location.href = './../../index.html'
         }
     })
 }

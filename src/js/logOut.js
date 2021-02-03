@@ -25,7 +25,7 @@ if (buttonLogOut !== null) {
     buttonLogOut.addEventListener('click', () => {
         if (buttonLogOut.innerHTML === 'Log Out') {
             logOutUser(checkAuth)
-            window.location.href = '../../dist/index.html'
+            window.location.href = './../../index.html'
         } else {
             popLogIn.innerHTML = `<div class="popup__body">
             <div class="popup__content">

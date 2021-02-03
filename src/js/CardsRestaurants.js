@@ -17,7 +17,7 @@ export class CardsRestaurants {
     generateCardsRestaurants() {
         let template = '';
         let card = document.createElement('a')
-        card.href = './pageRestaurant.html' && './../../dist/pages/pageRestaurant.html';
+        card.href = './pageRestaurant.html' && '../../dist/pages/pageRestaurant.html';
         card.setAttribute('data-id', this.id);
         template += `<div class="card card_restaurant">`
         template += '<div class="food">'
