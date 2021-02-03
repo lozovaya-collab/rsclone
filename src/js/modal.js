@@ -87,7 +87,6 @@ export function checkData() {
         isCorrect = false
     } else {
         setSuccessFor(emailLogIn)
-
     }
 
     if (passwordValue1 === '') {
@@ -99,7 +98,5 @@ export function checkData() {
     } else {
         setSuccessFor(passwordLogIn)
     }
-
-
     return isCorrect
 }

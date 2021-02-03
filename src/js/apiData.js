@@ -1,9 +1,7 @@
  import restaurants from "./data/response"
-
  export const restaurantsData = [];
  export const arrayNameRestaurantsCity = [];
  let arrayRestaurants = [];
-
 
  const getListRestaurants = () => {
 
@@ -33,7 +31,6 @@
      }
      restaurantsData.sort(() => Math.random() - 0.5);
 
-
      for (let j = 0; j < restaurantsData.length; j += 1) {
 
          arrayNameRestaurantsCity.push({
@@ -42,10 +39,6 @@
              coordinatesLatitude: restaurantsData[j].coordinatesLatitude,
              coordinatesLongitude: restaurantsData[j].coordinatesLongitude,
          })
-
      }
-
-
-
  }
  getListRestaurants()

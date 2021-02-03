@@ -13,10 +13,7 @@ if (localStorage.getItem('user') !== '') {
     const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color')
     const changePassword = document.querySelector('.profile__body_settings__body__change_password')
     const changeInformation = document.querySelector('.profile__body_settings__body__change_information')
-
-
     let colorOfProfile
-
     const setColorMood = (color) => {
         const profile_change_data = document.querySelector('.profile__body_settings__options__change_data')
         const profile_statistics = document.querySelector('.profile__body_settings__options__statistics')
@@ -72,8 +69,6 @@ if (localStorage.getItem('user') !== '') {
         const oldPassword = document.getElementById('passwordOld')
         const newPassword = document.getElementById('passwordNew')
         const newPasswordRepeat = document.getElementById('passwordNew2')
-
-
         if (userInfo.Password === oldPassword.value) {
             setSuccessFor(oldPassword)
         } else if (oldPassword.value !== '') {
@@ -81,7 +76,6 @@ if (localStorage.getItem('user') !== '') {
         } else if (userInfo.Password !== oldPassword.value && oldPassword.value !== '') {
             setErrorFor(oldPassword, 'Wrong password')
         }
-
         if (newPassword.value === '') {
             setErrorFor(newPassword, 'Password cannot be blank')
         } else if (newPassword.value.length < 6) {
@@ -89,7 +83,6 @@ if (localStorage.getItem('user') !== '') {
         } else {
             setSuccessFor(newPassword)
         }
-
         if (newPasswordRepeat.value === '') {
             setErrorFor(newPasswordRepeat, 'Password cannot be blank')
         } else if (newPassword.value !== newPasswordRepeat.value) {
@@ -111,7 +104,6 @@ if (localStorage.getItem('user') !== '') {
             }
         }
     }
-
     const changePasswordLayouts = () => {
         settings.innerHTML = `
 <div class="container__form_control">
@@ -163,12 +155,9 @@ if (localStorage.getItem('user') !== '') {
         document.querySelectorAll('.fa-check-circle')[0].style.fontSize = '23px'
         document.querySelectorAll('.fa-check-circle')[1].style.fontSize = '23px'
         document.querySelectorAll('.fa-check-circle')[2].style.fontSize = '23px'
-
-
         const changePasswordButton = document.querySelector('.profile__body_settings__body__change_password_button')
         changePasswordButton.addEventListener('click', changePasswordUser)
     }
-
     const changeInfoUser = () => {
         settings.innerHTML = `<div>
         <div class="container__form_control">
@@ -215,12 +204,10 @@ if (localStorage.getItem('user') !== '') {
         </div>
         <button type="submit" class="profile__body_settings__body__change_password_button">Submit</button> </div>`
         const selectCity = document.querySelector('select')
-
         settings.style.flexDirection = 'row'
         document.getElementById('name').value = userInfo.Firstname
         document.getElementById('surname').value = userInfo.LastName
         document.getElementById('birthday').value = userInfo.Birthday
-
         for (let i = 1; i < selectCity.children.length; i++) {
             if (selectCity.options[i].value == userInfo.City) {
                 selectCity.options[i].selected = i
@@ -246,11 +233,7 @@ if (localStorage.getItem('user') !== '') {
                     console.error("Error updating document: ", error);
                 });
         })
-
-
     }
-
-
     db.collection("users").where("Username", "==", objLocal.Username)
         .get()
         .then(function(querySnapshot) {
@@ -273,4 +256,5 @@ if (localStorage.getItem('user') !== '') {
         .catch(function(error) {
             console.log("Error getting documents: ", error);
         });
+
 }

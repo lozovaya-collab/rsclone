@@ -51,6 +51,8 @@
 
 @media all and (max-width: 578px) {
   .map-wrapper {
+    display: none !important; }
+  #map {
     display: none !important; } }
 
 @media all and (max-width: 562px) {
@@ -61,19 +63,27 @@
     font-size: 16px !important;
     margin-left: 5px !important; }
   .main_logoYelp {
-    font-size: 30px !important; } }
+    font-size: 30px !important; }
+  .map-wrapper {
+    display: none !important; } }
 
 @media all and (max-width: 415px) {
   .input_searching {
     font-size: 16px; }
   .main_logoYelp {
-    font-size: 20px !important; } }
+    font-size: 20px !important; }
+  .map-wrapper {
+    display: none !important; }
+  .review__restaurant_main__text {
+    width: 100% !important; } }
 
 @media all and (max-width: 354px) {
   .wrapper {
     padding: 0 10px; }
   .card {
-    margin: 4px !important; } }
+    margin: 4px !important; }
+  .map-wrapper {
+    display: none !important; } }
 
 * {
   box-sizing: border-box; }
@@ -279,7 +289,6 @@ input {
   width: 290px;
   height: 150px;
   padding: 5px;
-  z-index: 1;
   transition: 1s; }
   .type_restaurant .titleRestaurant {
     font-size: 20px;
@@ -407,7 +416,7 @@ h2 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  z-index: 2; }
+  min-height: 80vh; }
 
 .title {
   text-align: center;
@@ -466,6 +475,9 @@ h2 {
 
 .cards_wrapper_restaurants {
   overflow: hidden; }
+
+.hidden_card {
+  display: none; }
 
 .image_food {
   width: 100%;
@@ -1018,12 +1030,15 @@ h2 {
   padding: 60px 15px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center; }
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%; }
   .container__reviews h3 {
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 30px;
-    text-align: center; }
+    text-align: center;
+    margin: 0 auto; }
   .container__reviews .content_reviews {
     margin-top: 40px;
     display: flex;
@@ -1350,8 +1365,6 @@ h2 {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  max-height: 1624px;
-  overflow: hidden;
   cursor: default; }
   .restaurants_wrapper_review a:hover {
     cursor: default; }
@@ -1362,16 +1375,22 @@ h2 {
 
 .review__restaurant_main {
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
   padding-top: 10px;
   padding-bottom: 50px;
-  flex-direction: column; }
+  width: 100%; }
 
 .review__restaurant_main__text__area {
   height: 290px;
   max-width: 456px; }
+
+.review__restaurant_main__text {
+  width: 70%; }
+
+.review__restaurant_search {
+  visibility: visible !important; }
 
 
 /*# sourceMappingURL=style.css.map*/
