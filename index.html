@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="./dist/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <title>YelpClone</title>
+    <link rel="stylesheet" href="./../../dist/style.css">
 </head>
 
 <body>
@@ -33,7 +34,7 @@
             <nav class="main_nav">
                 <ul>
                     <li><a class="main_nav_link navigation_link restaurant_view" href="/dist/pages/restaurants.html"><i class="fas fa-utensils"></i> Restaurants </a></li>
-                    <li><a class="main_nav_link navigation_link review" href="/dist/pages/review.html">Wright a Review</a></li>
+                    <li><a class="main_nav_link navigation_link review" href="#">Wright a Review</a></li>
                 </ul>
             </nav>
             <div class="main_logo">
@@ -88,8 +89,7 @@
                 <div class="main_section city_restaurants">
                     <h2 class="section_title wow animate__animated animate__zoomIn">YelpClone in Your City</h2>
                     <div class="searching">
-                        <!-- <input class="input_searching searching_city" type="text" placeholder="City"> -->
-                        <select name="city" id="" class="input_searching searching_city">                            
+                        <select name="city" id="" class="input_searching searching_city ">                            
                             <option value="Cities of Canada"  class="selection-allCities" >Cities of Canada</option>
                         <option value="Ottawa">Ottawa</option>
                         <option value="Montreal">Montreal</option>
@@ -99,8 +99,8 @@
                         <option value="Mississauga">Mississauga</option>
                         <option value="Winnipeg">Winnipeg</option>
                         <option value="Vancouver">Vancouver</option>
-                        <option value="Quebec">Quebec City</option>
-                        <option value="Hamilton">Brampton</option>                               
+                        <option value="Quebec City">Quebec City</option>
+                        <option value="Brampton">Brampton</option>                               
                         </select>
                         <i class="fas fa-search"></i>
                     </div>
@@ -156,6 +156,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script>
         new WOW().init()
     </script>

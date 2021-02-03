@@ -1,6 +1,5 @@
 let checkAuth = localStorage.getItem('Auth')
 export const checkUserIsAuth = (isAuth) => {
-
     if (isAuth === 'true') {
         const butSignUp = document.querySelector('.sign-up')
         butSignUp.innerHTML = 'Profile'

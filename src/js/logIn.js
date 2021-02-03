@@ -2,7 +2,6 @@ import { db, isAuth } from './dbFirebase'
 import { setErrorFor } from "./signUp"
 import { checkData } from "./modal"
 import { checkUserIsAuth } from "./checkUser"
-
 let isUser = false
 export let myUser = {}
 export let myUserId = ''

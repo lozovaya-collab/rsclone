@@ -19,7 +19,6 @@ export class CardsRestaurants {
         let card = document.createElement('a')
         card.href = './pageRestaurant.html' && './../../dist/pages/pageRestaurant.html';
         card.setAttribute('data-id', this.id);
-
         template += `<div class="card card_restaurant">`
         template += '<div class="food">'
         if (this.image_url) {
@@ -32,7 +31,6 @@ export class CardsRestaurants {
         template += '<div class="about_restaurant">'
         if (this.name) {
             template += `<h2 class="title_card">${this.name}</h2>`
-
         }
         if (this.rating || this.review_count) {
             template += `<div class="rating_restaurant">
@@ -49,7 +47,7 @@ export class CardsRestaurants {
     </div>
     <div class="rating__value">${this.rating}</div>
 </div>
-<span class="reviewsRestaurants">${this.review_count} Reviews</span>
+<span class="reviewsRestaurants">${this.review_count} Yelps Reviews</span>
 </div>`
         }
         if (this.price) {
@@ -71,7 +69,6 @@ export class CardsRestaurants {
         }
         template += '</div>'
         template += `</div>`
-
         card.innerHTML = template
         return card
     }

@@ -20,11 +20,11 @@
             }
         }
         &__text {
-            width: 100%;
+            // width: 100%;
             height: 70%;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             &__headline {
                 font-size: 35px;
@@ -105,6 +105,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    cursor: default;
     & a:hover {
         cursor: default;
     }
@@ -118,11 +119,12 @@
 
 .review__restaurant_main {
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     height: 100%;
     padding-top: 10px;
     padding-bottom: 50px;
+    width: 100%;
 }
 
 .review__restaurant_main__text__area {
@@ -133,4 +135,12 @@
 .message {
     color: $color_error;
     visibility: hidden;
+}
+
+.review__restaurant_main__text {
+    width: 70%;
+}
+
+.review__restaurant_search {
+    visibility: visible !important;
 }

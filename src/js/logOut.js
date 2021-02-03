@@ -19,7 +19,6 @@ export const logOutUser = (value) => {
         butLogIn.innerHTML = 'Log In'
         butLogIn.classList.remove('log-out')
         butLogIn.className += ' mainBtn'
-
     }
 }
 if (buttonLogOut !== null) {
@@ -51,8 +50,7 @@ if (buttonLogOut !== null) {
                         <small>Error message</small>
                     </div>
                     <button class="container__form_button logIn">Log in</button>
-                </div>
-            
+                </div>            
             </div>
             </div>`
         }

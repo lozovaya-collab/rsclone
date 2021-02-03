@@ -4,6 +4,7 @@ export function getRating() {
     function initRatings() {
         let ratingActive;
         let ratingValue;
+
         for (let i = 0; i < ratingAll.length; i += 1) {
             const rating = ratingAll[i];
             initRatings(rating);

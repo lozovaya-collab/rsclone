@@ -1,6 +1,6 @@
 import { getRating } from './starsRating'
 import { db } from './dbFirebase'
-import { getDataCard } from './getDataCard'
+import { restaurantsData } from './apiData'
 
 const usernameReview = document.querySelector('.review__restaurant_main__user_username')
 const avatarReview = document.querySelector('.review__restaurant_main__user_avatar')
@@ -55,8 +55,55 @@ function createReview() {
                 Rating: rating,
                 Date: currentDate
             })
-            .then(function(doc) {
-                getDataCard()
+            .then(function() {
+                for (let i = 0; i < restaurantsData.length; i += 1) {
+                    if (headlineRestaurant.innerHTML === restaurantsData[i].id) {
+                        db.collection("reviews").where("Restaurant", "==", restaurantsData[i].name)
+                            .get()
+                            .then(function(querySnapshot) {
+                                let arrayReviews = []
+
+                                querySnapshot.forEach(function(doc) {
+                                    arrayReviews.push(doc.data())
+                                });
+
+
+                                const uniqueArray = (array, prop1, prop2) => {
+                                    for (let i = 0; i < array.length; i++) {
+                                        for (let j = i + 1; j < array.length; j++) {
+                                            if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+                                                array.splice(i, 1)
+                                            }
+                                        }
+                                    }
+                                    return array
+                                }
+                                uniqueArray(arrayReviews, 'Username', 'Review')
+                                console.log(e.target)
+                                if (card.length === 0) {
+                                    card.push({
+                                        id: restaurantsData[i].id,
+                                        name: restaurantsData[i].name,
+                                        categories: restaurantsData[i].categories,
+                                        image_url: restaurantsData[i].image_url,
+                                        rating: restaurantsData[i].rating,
+                                        reviews: arrayReviews,
+                                        review_count: arrayReviews.length,
+                                        price: restaurantsData[i].price,
+                                        display_phone: restaurantsData[i].display_phone,
+                                        phone: restaurantsData[i].phone,
+                                        locationAddress: restaurantsData[i].locationAddress,
+                                        city: restaurantsData[i].city,
+                                        url: restaurantsData[i].url,
+                                        categories: restaurantsData[i].categories,
+                                        coordinatesLatitude: restaurantsData[i].coordinatesLatitude,
+                                        coordinatesLongitude: restaurantsData[i].coordinatesLongitude
+                                    })
+                                    localStorage.setItem("card", JSON.stringify(card));
+                                }
+                            })
+                    }
+                }
                 window.location.href = './pageRestaurant.html'
             })
     } else {

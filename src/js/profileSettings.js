@@ -29,7 +29,6 @@ if (localStorage.getItem('user') !== '') {
         }
         return array
     }
-
     const setColorMood = (color) => {
         const profile_change_data = document.querySelector('.profile__body_settings__options__change_data')
         const profile_statistics = document.querySelector('.profile__body_settings__options__statistics')
@@ -211,7 +210,6 @@ if (localStorage.getItem('user') !== '') {
         } else if (userInfo.Password !== oldPassword.value && oldPassword.value !== '') {
             setErrorFor(oldPassword, 'Wrong password')
         }
-
         if (newPassword.value === '') {
             setErrorFor(newPassword, 'Password cannot be blank')
         } else if (newPassword.value.length < 6) {
@@ -219,7 +217,6 @@ if (localStorage.getItem('user') !== '') {
         } else {
             setSuccessFor(newPassword)
         }
-
         if (newPasswordRepeat.value === '') {
             setErrorFor(newPasswordRepeat, 'Password cannot be blank')
         } else if (newPassword.value !== newPasswordRepeat.value) {
@@ -238,7 +235,6 @@ if (localStorage.getItem('user') !== '') {
             }
         }
     }
-
     const changePasswordLayouts = () => {
         settings.innerHTML = ` 
         <div class="container__form_control">
@@ -294,7 +290,6 @@ if (localStorage.getItem('user') !== '') {
         const changePasswordButton = document.querySelector('.profile__body_settings__body__change_password_button')
         changePasswordButton.addEventListener('click', changePasswordUser)
     }
-
     const changeInfoUser = () => {
         settings.innerHTML = `<div>
         <div class="container__form_control">
@@ -341,12 +336,10 @@ if (localStorage.getItem('user') !== '') {
         </div>
         <button type="submit" class="profile__body_settings__body__change_password_button">Submit</button> </div>`
         const selectCity = document.querySelector('select')
-
         settings.style.flexDirection = 'row'
         document.getElementById('name').value = userInfo.Firstname
         document.getElementById('surname').value = userInfo.LastName
         document.getElementById('birthday').value = userInfo.Birthday
-
         for (let i = 1; i < selectCity.children.length; i++) {
             if (selectCity.options[i].value == userInfo.City) {
                 selectCity.options[i].selected = i
