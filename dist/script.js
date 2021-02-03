@@ -50841,51 +50841,54 @@ window.onload = function () {
   let objLocal = JSON.parse(localStorage.getItem('card'));
 
   for (let i = 0; i < _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData.length; i += 1) {
-    let card = [];
+    let card = [{}];
 
-    if (objLocal[0].name === _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name) {
-      _js_dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").where("Restaurant", "==", _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name).get().then(function (querySnapshot) {
-        let arrayReviews = [];
-        querySnapshot.forEach(function (doc) {
-          arrayReviews.push(doc.data());
-        });
+    if (objLocal[0] !== undefined) {
+      if (objLocal[0].name === _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name) {
+        _js_dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").where("Restaurant", "==", _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name).get().then(function (querySnapshot) {
+          let arrayReviews = [];
+          querySnapshot.forEach(function (doc) {
+            arrayReviews.push(doc.data());
+          });
 
-        const uniqueArray = (array, prop1, prop2) => {
-          for (let i = 0; i < array.length; i++) {
-            for (let j = i + 1; j < array.length; j++) {
-              if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
-                array.splice(i, 1);
+          const uniqueArray = (array, prop1, prop2) => {
+            for (let i = 0; i < array.length; i++) {
+              for (let j = i + 1; j < array.length; j++) {
+                if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+                  array.splice(i, 1);
+                }
               }
             }
+
+            return array;
+          };
+
+          card = [];
+          uniqueArray(arrayReviews, 'Username', 'Review');
+
+          if (card.length === 0) {
+            card.push({
+              id: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].id,
+              name: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name,
+              categories: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].categories,
+              image_url: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].image_url,
+              rating: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].rating,
+              reviews: arrayReviews,
+              review_count: arrayReviews.length,
+              price: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].price,
+              display_phone: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].display_phone,
+              phone: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].phone,
+              locationAddress: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].locationAddress,
+              city: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].city,
+              url: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].url,
+              categories: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].categories,
+              coordinatesLatitude: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].coordinatesLatitude,
+              coordinatesLongitude: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].coordinatesLongitude
+            });
+            localStorage.setItem("card", JSON.stringify(card));
           }
-
-          return array;
-        };
-
-        uniqueArray(arrayReviews, 'Username', 'Review');
-
-        if (card.length === 0) {
-          card.push({
-            id: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].id,
-            name: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name,
-            categories: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].categories,
-            image_url: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].image_url,
-            rating: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].rating,
-            reviews: arrayReviews,
-            review_count: arrayReviews.length,
-            price: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].price,
-            display_phone: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].display_phone,
-            phone: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].phone,
-            locationAddress: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].locationAddress,
-            city: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].city,
-            url: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].url,
-            categories: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].categories,
-            coordinatesLatitude: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].coordinatesLatitude,
-            coordinatesLongitude: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].coordinatesLongitude
-          });
-          localStorage.setItem("card", JSON.stringify(card));
-        }
-      });
+        });
+      }
     }
   }
 
@@ -51905,19 +51908,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "restaurantsData": () => /* binding */ restaurantsData,
 /* harmony export */   "arrayNameRestaurantsCity": () => /* binding */ arrayNameRestaurantsCity
 /* harmony export */ });
-/* harmony import */ var _src_js_data_response_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../src/js/data/response.json */ "./src/js/data/response.json");
-//  import restaurants from "./../../dist/data/response.json"
+/* harmony import */ var _data_response__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data/response */ "./src/js/data/response.json");
 
 const restaurantsData = [];
 const arrayNameRestaurantsCity = [];
 let arrayRestaurants = [];
 
 const getListRestaurants = () => {
-  for (let s = 0; s < _src_js_data_response_json__WEBPACK_IMPORTED_MODULE_0__.businesses.length; s += 1) {
-    arrayRestaurants.push(_src_js_data_response_json__WEBPACK_IMPORTED_MODULE_0__.businesses[s]);
+  for (let s = 0; s < _data_response__WEBPACK_IMPORTED_MODULE_0__.businesses.length; s += 1) {
+    arrayRestaurants.push(_data_response__WEBPACK_IMPORTED_MODULE_0__.businesses[s]);
   }
 
-  arrayRestaurants.push(_src_js_data_response_json__WEBPACK_IMPORTED_MODULE_0__.businesses);
+  arrayRestaurants.push(_data_response__WEBPACK_IMPORTED_MODULE_0__.businesses);
 
   for (let i = 0; i < arrayRestaurants.length - 1; i += 1) {
     restaurantsData.push({

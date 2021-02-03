@@ -31,52 +31,54 @@ window.onload = function() {
 
     let objLocal = JSON.parse(localStorage.getItem('card'))
     for (let i = 0; i < restaurantsData.length; i += 1) {
-        let card = []
+        let card = [{}]
+        if (objLocal[0] !== undefined) {
+            if (objLocal[0].name === restaurantsData[i].name) {
+                db.collection("reviews").where("Restaurant", "==", restaurantsData[i].name)
+                    .get()
+                    .then(function(querySnapshot) {
+                        let arrayReviews = []
 
-        if (objLocal[0].name === restaurantsData[i].name) {
-            db.collection("reviews").where("Restaurant", "==", restaurantsData[i].name)
-                .get()
-                .then(function(querySnapshot) {
-                    let arrayReviews = []
-
-                    querySnapshot.forEach(function(doc) {
-                        arrayReviews.push(doc.data())
-                    });
+                        querySnapshot.forEach(function(doc) {
+                            arrayReviews.push(doc.data())
+                        });
 
 
-                    const uniqueArray = (array, prop1, prop2) => {
-                        for (let i = 0; i < array.length; i++) {
-                            for (let j = i + 1; j < array.length; j++) {
-                                if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
-                                    array.splice(i, 1)
+                        const uniqueArray = (array, prop1, prop2) => {
+                            for (let i = 0; i < array.length; i++) {
+                                for (let j = i + 1; j < array.length; j++) {
+                                    if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+                                        array.splice(i, 1)
+                                    }
                                 }
                             }
+                            return array
                         }
-                        return array
-                    }
-                    uniqueArray(arrayReviews, 'Username', 'Review')
-                    if (card.length === 0) {
-                        card.push({
-                            id: restaurantsData[i].id,
-                            name: restaurantsData[i].name,
-                            categories: restaurantsData[i].categories,
-                            image_url: restaurantsData[i].image_url,
-                            rating: restaurantsData[i].rating,
-                            reviews: arrayReviews,
-                            review_count: arrayReviews.length,
-                            price: restaurantsData[i].price,
-                            display_phone: restaurantsData[i].display_phone,
-                            phone: restaurantsData[i].phone,
-                            locationAddress: restaurantsData[i].locationAddress,
-                            city: restaurantsData[i].city,
-                            url: restaurantsData[i].url,
-                            categories: restaurantsData[i].categories,
-                            coordinatesLatitude: restaurantsData[i].coordinatesLatitude,
-                            coordinatesLongitude: restaurantsData[i].coordinatesLongitude
-                        })
-                        localStorage.setItem("card", JSON.stringify(card));
-                    }
-                })
+                        card = []
+                        uniqueArray(arrayReviews, 'Username', 'Review')
+                        if (card.length === 0) {
+                            card.push({
+                                id: restaurantsData[i].id,
+                                name: restaurantsData[i].name,
+                                categories: restaurantsData[i].categories,
+                                image_url: restaurantsData[i].image_url,
+                                rating: restaurantsData[i].rating,
+                                reviews: arrayReviews,
+                                review_count: arrayReviews.length,
+                                price: restaurantsData[i].price,
+                                display_phone: restaurantsData[i].display_phone,
+                                phone: restaurantsData[i].phone,
+                                locationAddress: restaurantsData[i].locationAddress,
+                                city: restaurantsData[i].city,
+                                url: restaurantsData[i].url,
+                                categories: restaurantsData[i].categories,
+                                coordinatesLatitude: restaurantsData[i].coordinatesLatitude,
+                                coordinatesLongitude: restaurantsData[i].coordinatesLongitude
+                            })
+                            localStorage.setItem("card", JSON.stringify(card));
+                        }
+                    })
+            }
         }
     }
     checkUserIsAuth()
