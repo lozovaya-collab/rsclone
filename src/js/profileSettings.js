@@ -1,5 +1,6 @@
 import { db } from './dbFirebase'
 import { setErrorFor, setSuccessFor } from "./signUp"
+
 if (localStorage.getItem('user') !== '') {
     let objLocal = JSON.parse(localStorage.getItem('user'))
     let userInfo = {}
@@ -13,7 +14,21 @@ if (localStorage.getItem('user') !== '') {
     const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color')
     const changePassword = document.querySelector('.profile__body_settings__body__change_password')
     const changeInformation = document.querySelector('.profile__body_settings__body__change_information')
+    const profile_change_data = document.querySelector('.profile__body_settings__options__change_data')
+    const profile_statistics = document.querySelector('.profile__body_settings__options__statistics')
+
     let colorOfProfile
+
+    const uniqueArray = (array, prop1, prop2) => {
+        for (let i = 0; i < array.length; i++) {
+            for (let j = i + 1; j < array.length; j++) {
+                if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+                    array.splice(i, 1)
+                }
+            }
+        }
+        return array
+    }
     const setColorMood = (color) => {
         const profile_change_data = document.querySelector('.profile__body_settings__options__change_data')
         const profile_statistics = document.querySelector('.profile__body_settings__options__statistics')
@@ -60,15 +75,134 @@ if (localStorage.getItem('user') !== '') {
             .then(function() {
 
                 location.reload()
-            })
-            .catch(function(error) {
-                console.error("Error updating document: ", error);
             });
     }
+
+    const changeStatistics = (color) => {
+        let colorGraph
+        let backgroundGraph
+        if (color === 'yellow') {
+            colorGraph = '#efca08'
+            backgroundGraph = '#efc80875'
+            profile_change_data.className = 'profile__body_settings__options__change_data yellow__mood_disabled'
+            profile_statistics.className = 'profile__body_settings__options__statistics yellow__mood'
+
+        } else if (color === 'blue') {
+            colorGraph = '#00a6a6'
+            backgroundGraph = '#00a6a686'
+            profile_change_data.className = 'profile__body_settings__options__change_data blue__mood_disabled'
+            profile_statistics.className = 'profile__body_settings__options__statistics blue__mood'
+        }
+
+        let arr = JSON.parse(localStorage.getItem('reviews'))
+        arr = uniqueArray(arr, 'Restaurant', 'Review')
+        localStorage.setItem('reviews', JSON.stringify(arr))
+        settings.innerHTML = `
+                    <div class="profile__body_settings__body_count">
+                        <span>My reviews</span><span>${arr.length}</span>
+                    </div>
+                    <canvas id="myChart"></canvas>`
+        let dataReviews = []
+        arr.map((date) => {
+            dataReviews.push(date.Date)
+        })
+        const uniqueDataReviews = new Set(dataReviews)
+        dataReviews = [...uniqueDataReviews]
+
+        let currentYear = new Date()
+        currentYear = currentYear.getFullYear()
+
+        const months = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ]
+
+        let monthsReviews = []
+        const countReviews = []
+
+        for (let i = 0; i < dataReviews.length; i++) {
+            let count = 0
+            for (let j = 0; j < arr.length; j++) {
+                if (arr[j].Date === dataReviews[i]) {
+                    count++
+                }
+            }
+            countReviews[i] = count
+        }
+        dataReviews.map((item) => {
+            let numberOfMonths = item.substr(6, 1)
+            let day = item.substr(8, 2)
+            if (day[0] === '0') {
+                day = day[1]
+            }
+
+            let month = months[Number(numberOfMonths) - 1]
+            monthsReviews.push(`${day} ${month}`)
+        })
+
+        const newDateofMonths = []
+        const newCountReviews = []
+        for (let i = 0; i < months.length; i++) {
+            let isMonth = false
+            for (let j = 0; j < monthsReviews.length; j++) {
+                if (monthsReviews[j].indexOf(months[i]) !== -1) {
+                    newDateofMonths.push(monthsReviews[j])
+                    newCountReviews.push(countReviews[j])
+                    isMonth = true
+                }
+            }
+            if (!isMonth) {
+                newDateofMonths.push(months[i])
+                newCountReviews.push(0)
+            }
+        }
+
+        let ctx = document.getElementById('myChart').getContext('2d');
+
+        let chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: newDateofMonths,
+                datasets: [{
+                    label: `My Reviews ${currentYear}`,
+                    backgroundColor: backgroundGraph,
+                    borderColor: colorGraph,
+                    data: newCountReviews
+                }]
+            },
+            options: {}
+        });
+    }
+
+    const changeData = (color) => {
+        if (color === 'yellow') {
+            profile_change_data.className = 'profile__body_settings__options__change_data yellow__mood'
+            profile_statistics.className = 'profile__body_settings__options__statistics yellow__mood_disabled'
+
+        } else if (color === 'blue') {
+            profile_change_data.className = 'profile__body_settings__options__change_data blue__mood'
+            profile_statistics.className = 'profile__body_settings__options__statistics blue__mood_disabled'
+        }
+
+        settings.style.alignItems = 'normal'
+        settings.style.flexDirection = 'column'
+    }
+
     const changePasswordUser = () => {
         const oldPassword = document.getElementById('passwordOld')
         const newPassword = document.getElementById('passwordNew')
         const newPasswordRepeat = document.getElementById('passwordNew2')
+
         if (userInfo.Password === oldPassword.value) {
             setSuccessFor(oldPassword)
         } else if (oldPassword.value !== '') {
@@ -98,36 +232,33 @@ if (localStorage.getItem('user') !== '') {
                     .then(function() {
                         location.reload()
                     })
-                    .catch(function(error) {
-                        console.error("Error updating document: ", error);
-                    });
             }
         }
     }
     const changePasswordLayouts = () => {
-        settings.innerHTML = `
-<div class="container__form_control">
-    <label class="password__change">Old password</label>
-    <input type="password" placeholder="old password" id="passwordOld" value=""></input>
-    <i class="fas fa-check-circle"></i>
-    <i class="fas fa-exclamation-circle"></i>
-    <small>Error message</small>
-</div>
-<div class="container__form_control">
-    <label class="password__change">New password</label>
-    <input type="password" placeholder="password" id="passwordNew" value=""></input>
-    <i class="fas fa-check-circle"></i>
-    <i class="fas fa-exclamation-circle"></i>
-    <small>Error message</small>
-</div>
-<div class="container__form_control">
-    <label class="password__change">New password check</label>
-    <input type="password" placeholder="password repeat" id="passwordNew2" value=""></input>
-    <i class="fas fa-check-circle"></i>
-    <i class="fas fa-exclamation-circle"></i>
-    <small>Error message</small>
-</div>
-<button type="submit" class="profile__body_settings__body__change_password_button">Submit</button>`
+        settings.innerHTML = ` 
+        <div class="container__form_control">
+            <label class="password__change"> Old password </label>
+            <input type="password" placeholder="old password" id="passwordOld" value=""> </input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label class="password__change"> New password</label>
+            <input type="password" placeholder="password" id="passwordNew" value=""></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small> Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label class="password__change">New password check</label>
+            <input type="password" placeholder="password repeat" id="passwordNew2" value=""></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small> Error message</small>
+        </div>
+        <button type="submit" class="profile__body_settings__body__change_password_button"> Submit</button>`
 
         settings.style.alignItems = 'center'
         settings.style.marginTop = '0px'
@@ -155,6 +286,7 @@ if (localStorage.getItem('user') !== '') {
         document.querySelectorAll('.fa-check-circle')[0].style.fontSize = '23px'
         document.querySelectorAll('.fa-check-circle')[1].style.fontSize = '23px'
         document.querySelectorAll('.fa-check-circle')[2].style.fontSize = '23px'
+
         const changePasswordButton = document.querySelector('.profile__body_settings__body__change_password_button')
         changePasswordButton.addEventListener('click', changePasswordUser)
     }
@@ -229,32 +361,55 @@ if (localStorage.getItem('user') !== '') {
                 .then(function() {
                     location.reload()
                 })
-                .catch(function(error) {
-                    console.error("Error updating document: ", error);
-                });
         })
     }
-    db.collection("users").where("Username", "==", objLocal.Username)
-        .get()
-        .then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                userInfo = doc.data()
-                nameUser.innerHTML = userInfo.Firstname
-                surnameUser.innerHTML = userInfo.LastName
-                dateUser.innerHTML = userInfo.Birthday
-                usernameUser.innerHTML = userInfo.Username
-                avatar.src = userInfo.UrlOfImage
-                locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`
-                colorOfProfile = userInfo.ColorOfProfile
-                changeColorOfProfile.addEventListener('click', changeColor)
-                changePassword.addEventListener('click', changePasswordLayouts)
-                changeInformation.addEventListener('click', changeInfoUser)
 
-                setColorMood(colorOfProfile)
-            });
-        })
-        .catch(function(error) {
-            console.log("Error getting documents: ", error);
-        });
+    if (nameUser && objLocal.Username) {
+        db.collection("users").where("Username", "==", objLocal.Username)
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    db.collection("reviews").where("Username", "==", objLocal.Username)
+                        .get()
+                        .then(function(querySnapshot) {
+                            let arrayReviews = []
+                            querySnapshot.forEach(function(doc) {
+                                arrayReviews.push(doc.data())
+                            });
+                            arrayReviews = uniqueArray(arrayReviews, 'Restaurant', 'Review')
+                            localStorage.setItem('reviews', JSON.stringify(arrayReviews))
+                        })
+                    userInfo = doc.data()
+                    nameUser.innerHTML = userInfo.Firstname
+                    surnameUser.innerHTML = userInfo.LastName
+                    dateUser.innerHTML = userInfo.Birthday
+                    usernameUser.innerHTML = userInfo.Username
+                    avatar.src = userInfo.UrlOfImage
+                    locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`
+                    colorOfProfile = userInfo.ColorOfProfile
+                    changeColorOfProfile.addEventListener('click', changeColor)
+                    changePassword.addEventListener('click', changePasswordLayouts)
+                    changeInformation.addEventListener('click', changeInfoUser)
+                    setColorMood(colorOfProfile)
+                    profile_statistics.addEventListener('click', () => {
+                        changeStatistics(colorOfProfile)
+                    })
+                    profile_change_data.addEventListener('click', () => {
+                        changeData(colorOfProfile)
+                        settings.innerHTML = `
+                    <div class="profile__body_settings__body__change_password">Cange password</div>
+                    <div class="profile__body_settings__body__change_information">Cange information about me</div>
+                    <div class="profile__body_settings__body__change_color">Cange color of my profile</div>
+                    `
+                        const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color')
+                        const changePassword = document.querySelector('.profile__body_settings__body__change_password')
+                        const changeInformation = document.querySelector('.profile__body_settings__body__change_information')
 
+                        changeColorOfProfile.addEventListener('click', changeColor)
+                        changePassword.addEventListener('click', changePasswordLayouts)
+                        changeInformation.addEventListener('click', changeInfoUser)
+                    })
+                });
+            })
+    }
 }

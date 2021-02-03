@@ -1180,6 +1180,11 @@ h2 {
         margin-top: 20px;
         margin-left: 50px;
         height: 75%; }
+        .profile__body_settings__body_count {
+          display: flex;
+          justify-content: space-around; }
+          .profile__body_settings__body_count span {
+            font-size: 30px; }
         .profile__body_settings__body label {
           font-size: 20px; }
         .profile__body_settings__body div .location {
@@ -1279,6 +1284,22 @@ h2 {
       line-height: 34px;
       font-style: normal;
       font-weight: normal; }
+
+@media all and (max-width: 1112px) {
+  .profile {
+    max-width: 100%;
+    height: 1268px; }
+    .profile__body {
+      flex-direction: column; } }
+
+@media all and (max-width: 936px) {
+  .profile {
+    max-width: 100%;
+    height: 1400px; }
+    .profile__body {
+      flex-direction: column; }
+      .profile__body_card_of_user {
+        margin-top: 230px; } }
 
 .review__restaurant {
   width: 100%;
@@ -1385,6 +1406,10 @@ h2 {
 .review__restaurant_main__text__area {
   height: 290px;
   max-width: 456px; }
+
+.message {
+  color: #ef7008;
+  visibility: hidden; }
 
 .review__restaurant_main__text {
   width: 70%; }

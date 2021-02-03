@@ -132,14 +132,13 @@
     max-width: 456px;
 }
 
+.message {
+    color: $color_error;
+    visibility: hidden;
+}
+
 .review__restaurant_main__text {
     width: 70%;
-    // div {
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     flex-direction: column;
-    // }
 }
 
 .review__restaurant_search {

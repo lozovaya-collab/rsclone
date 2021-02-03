@@ -2,6 +2,7 @@ import { arrayData } from './addClickHandlers'
 export let options;
 export let map;
 if (document.querySelector('#map')) {
+
     let arrayCoordinateCity = [
         { 'Ottawa': [45.401833, -75.699511] },
         { 'Montreal': [45.498301, -73.568500] },
@@ -37,8 +38,6 @@ if (document.querySelector('#map')) {
             icon: customIcon
         }
         let marker = L.marker([arrayData[i].coordinatesLatitude, arrayData[i].coordinatesLongitude], markerOptions);
-
-        // Adding marker to the map
         marker.bindPopup(`${arrayData[i].name}, ${arrayData[i].city}`)
         marker.addTo(map);
     }

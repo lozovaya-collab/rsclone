@@ -69,9 +69,6 @@ const createUser = () => {
                 localStorage.setItem('user', JSON.stringify(newUser));
                 window.location.href = '../../dist/index.html'
             })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-            });
 
         isAuth = true
         localStorage.setItem('Auth', isAuth);

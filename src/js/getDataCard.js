@@ -6,54 +6,34 @@ let card = [];
 export const getDataCard = () => {
         let cards = document.querySelectorAll('.cards_wrapper > [data-id]')
         for (let i = 0; i < cards.length; i += 1) {
+
             cards[i].addEventListener('click', (e) => {
                 card = []
                 let dataIdCard = cards[i].getAttribute('data-id')
+                if (cards[i].children[0].children[1].children[0].innerHTML === restaurantsData[i].name) {
+                    console.log(restaurantsData[i].name);
 
-                if (dataIdCard === restaurantsData[i].id) {
-                    db.collection("reviews").where("Restaurant", "==", restaurantsData[i].name)
-                        .get()
-                        .then(function(querySnapshot) {
-                            let arrayReviews = []
-
-                            querySnapshot.forEach(function(doc) {
-                                arrayReviews.push(doc.data())
-                            });
-
-                            const uniqueArray = (array, prop1, prop2) => {
-                                for (let i = 0; i < array.length; i++) {
-                                    for (let j = i + 1; j < array.length; j++) {
-                                        if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
-                                            array.splice(i, 1)
-                                        }
-                                    }
-                                }
-                                return array
-                            }
-                            uniqueArray(arrayReviews, 'Username', 'Review')
-                            console.log(e.target)
-                            card.push({
-                                id: restaurantsData[i].id,
-                                name: restaurantsData[i].name,
-                                categories: restaurantsData[i].categories,
-                                image_url: restaurantsData[i].image_url,
-                                rating: restaurantsData[i].rating,
-                                reviews: arrayReviews,
-                                review_count: arrayReviews.length,
-                                price: restaurantsData[i].price,
-                                display_phone: restaurantsData[i].display_phone,
-                                phone: restaurantsData[i].phone,
-                                locationAddress: restaurantsData[i].locationAddress,
-                                city: restaurantsData[i].city,
-                                url: restaurantsData[i].url,
-                                categories: restaurantsData[i].categories,
-                                coordinatesLatitude: restaurantsData[i].coordinatesLatitude,
-                                coordinatesLongitude: restaurantsData[i].coordinatesLongitude
-                            })
-                            localStorage.setItem("card", JSON.stringify(card));
-                            console.log('CCCCCCC', card)
+                    if (card.length === 0) {
+                        card.push({
+                            id: restaurantsData[i].id,
+                            name: restaurantsData[i].name,
+                            categories: restaurantsData[i].categories,
+                            image_url: restaurantsData[i].image_url,
+                            rating: restaurantsData[i].rating,
+                            reviews: [],
+                            review_count: 0,
+                            price: restaurantsData[i].price,
+                            display_phone: restaurantsData[i].display_phone,
+                            phone: restaurantsData[i].phone,
+                            locationAddress: restaurantsData[i].locationAddress,
+                            city: restaurantsData[i].city,
+                            url: restaurantsData[i].url,
+                            categories: restaurantsData[i].categories,
+                            coordinatesLatitude: restaurantsData[i].coordinatesLatitude,
+                            coordinatesLongitude: restaurantsData[i].coordinatesLongitude
                         })
-
+                        localStorage.setItem("card", JSON.stringify(card));
+                    }
                 } else {
                     card = []
                     localStorage.setItem("card", JSON.stringify(card));

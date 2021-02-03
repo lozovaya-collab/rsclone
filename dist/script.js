@@ -50836,17 +50836,67 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-console.log(localStorage.getItem('Auth')); // export let arrayNameRestaurants = []
 
 window.onload = function () {
-  // render Cards of Restaurants
+  let objLocal = JSON.parse(localStorage.getItem('card'));
+
+  for (let i = 0; i < _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData.length; i += 1) {
+    let card = [];
+
+    if (objLocal[0].name === _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name) {
+      _js_dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").where("Restaurant", "==", _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name).get().then(function (querySnapshot) {
+        let arrayReviews = [];
+        querySnapshot.forEach(function (doc) {
+          arrayReviews.push(doc.data());
+        });
+
+        const uniqueArray = (array, prop1, prop2) => {
+          for (let i = 0; i < array.length; i++) {
+            for (let j = i + 1; j < array.length; j++) {
+              if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+                array.splice(i, 1);
+              }
+            }
+          }
+
+          return array;
+        };
+
+        uniqueArray(arrayReviews, 'Username', 'Review');
+
+        if (card.length === 0) {
+          card.push({
+            id: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].id,
+            name: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].name,
+            categories: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].categories,
+            image_url: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].image_url,
+            rating: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].rating,
+            reviews: arrayReviews,
+            review_count: arrayReviews.length,
+            price: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].price,
+            display_phone: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].display_phone,
+            phone: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].phone,
+            locationAddress: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].locationAddress,
+            city: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].city,
+            url: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].url,
+            categories: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].categories,
+            coordinatesLatitude: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].coordinatesLatitude,
+            coordinatesLongitude: _js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData[i].coordinatesLongitude
+          });
+          localStorage.setItem("card", JSON.stringify(card));
+        }
+      });
+    }
+  }
+
+  (0,_js_checkUser__WEBPACK_IMPORTED_MODULE_2__.checkUserIsAuth)();
+
   if (_js_apiData__WEBPACK_IMPORTED_MODULE_10__.restaurantsData) {
     renderCardsRestaurants();
   }
 
   (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_0__.getDataCard)();
-  getUserData(); // click sorting 
-
+  getUserData();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.addFilterPriceClickHandler)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.addFilterRestaurantsClickHandler)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.sortRestaurantsByCities)();
@@ -50868,6 +50918,20 @@ window.onload = function () {
   }
 
   cancelEventReviewCard();
+  const restaurants = document.querySelector('.restaurants_wrapper_review');
+
+  if (restaurants) {
+    for (let i = 0; i < restaurants.children.length; i++) {
+      restaurants.children[i].addEventListener('click', () => {
+        const currentRestaurant = restaurants.children[i];
+        let nameOfRestaurant = currentRestaurant.children[0].children[1].children[0].innerHTML;
+        document.querySelector('.cards_wrapper').innerHTML = '';
+        document.querySelector('.cards_wrapper').appendChild(currentRestaurant);
+        headlineRestaurant.innerHTML = nameOfRestaurant;
+      });
+    }
+  }
+
   (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_9__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.arrayNameRestaurants);
 };
 
@@ -50963,7 +51027,12 @@ const cancelEventReviewCard = () => {
 };
 
 const getUserData = () => {
-  let userInfo = JSON.parse(localStorage.getItem("user"));
+  let userInfo;
+
+  if (localStorage.getItem('user') !== '') {
+    userInfo = JSON.parse(localStorage.getItem("user"));
+  }
+
   let selectionCity = document.querySelector('select');
   let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a');
   let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a>div');
@@ -51895,14 +51964,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "checkUserIsAuth": () => /* binding */ checkUserIsAuth
 /* harmony export */ });
-const {
-  isAuth
-} = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
-
 let checkAuth = localStorage.getItem('Auth');
 const checkUserIsAuth = isAuth => {
   if (isAuth === 'true') {
-    console.log('what');
     const butSignUp = document.querySelector('.sign-up');
     butSignUp.innerHTML = 'Profile';
     const hrefBtn = document.querySelector('.sign-up-href');
@@ -51917,7 +51981,6 @@ const checkUserIsAuth = isAuth => {
     butLogIn.className += ' log-out';
   }
 };
-console.log(checkAuth);
 checkUserIsAuth(checkAuth);
 
 /***/ }),
@@ -52012,8 +52075,6 @@ const createUser = () => {
       };
       localStorage.setItem('user', JSON.stringify(newUser));
       window.location.href = '../../dist/index.html';
-    }).catch(function (error) {
-      console.error("Error adding document: ", error);
     });
     isAuth = true;
     localStorage.setItem('Auth', isAuth);
@@ -52053,35 +52114,18 @@ const getDataCard = () => {
       card = [];
       let dataIdCard = cards[i].getAttribute('data-id');
 
-      if (dataIdCard === _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].id) {
-        _dbFirebase__WEBPACK_IMPORTED_MODULE_2__.db.collection("reviews").where("Restaurant", "==", _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].name).get().then(function (querySnapshot) {
-          let arrayReviews = [];
-          querySnapshot.forEach(function (doc) {
-            arrayReviews.push(doc.data());
-          });
+      if (cards[i].children[0].children[1].children[0].innerHTML === _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].name) {
+        console.log(_apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].name);
 
-          const uniqueArray = (array, prop1, prop2) => {
-            for (let i = 0; i < array.length; i++) {
-              for (let j = i + 1; j < array.length; j++) {
-                if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
-                  array.splice(i, 1);
-                }
-              }
-            }
-
-            return array;
-          };
-
-          uniqueArray(arrayReviews, 'Username', 'Review');
-          console.log(e.target);
+        if (card.length === 0) {
           card.push({
             id: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].id,
             name: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].name,
             categories: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].categories,
             image_url: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].image_url,
             rating: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].rating,
-            reviews: arrayReviews,
-            review_count: arrayReviews.length,
+            reviews: [],
+            review_count: 0,
             price: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].price,
             display_phone: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].display_phone,
             phone: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].phone,
@@ -52093,8 +52137,7 @@ const getDataCard = () => {
             coordinatesLongitude: _apiData__WEBPACK_IMPORTED_MODULE_0__.restaurantsData[i].coordinatesLongitude
           });
           localStorage.setItem("card", JSON.stringify(card));
-          console.log('CCCCCCC', card);
-        });
+        }
       } else {
         card = [];
         localStorage.setItem("card", JSON.stringify(card));
@@ -52168,7 +52211,6 @@ if (logInButton) {
       const passwordLogIn = String(document.getElementById('passwordLogIn').value);
       _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("E-mail", "==", emailLogIn).where("Password", "==", passwordLogIn).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-          console.log(doc.id, " => ", doc.data());
           myUser = {
             ID: doc.id,
             Username: doc.data().Username,
@@ -52188,8 +52230,6 @@ if (logInButton) {
         }
 
         document.getElementById('popup').style.display = 'none';
-      }).catch(function (error) {
-        console.log("Error getting documents: ", error);
       });
     }
   });
@@ -52211,14 +52251,11 @@ __webpack_require__.r(__webpack_exports__);
 let checkAuth = localStorage.getItem('Auth');
 const buttonLogOut = document.querySelector('.log-out');
 const popLogIn = document.getElementById('popup');
-console.log(buttonLogOut);
 const logOutUser = value => {
   if (value === 'true') {
     value = false;
-    console.log(location.href);
     localStorage.setItem('Auth', value);
     localStorage.setItem('user', '');
-    console.log(localStorage.getItem('Auth'));
     const butSignUp = document.querySelector('.sign-up');
     butSignUp.innerHTML = 'Sign Up';
     const hrefBtn = document.querySelector('.sign-up-href');
@@ -52236,8 +52273,6 @@ const logOutUser = value => {
 
 if (buttonLogOut !== null) {
   buttonLogOut.addEventListener('click', () => {
-    console.log(buttonLogOut);
-
     if (buttonLogOut.innerHTML === 'Log Out') {
       logOutUser(checkAuth);
       window.location.href = '../../dist/index.html';
@@ -52333,8 +52368,7 @@ if (document.querySelector('#map')) {
     let markerOptions = {
       icon: customIcon
     };
-    let marker = L.marker([_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].coordinatesLatitude, _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].coordinatesLongitude], markerOptions); // Adding marker to the map
-
+    let marker = L.marker([_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].coordinatesLatitude, _addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].coordinatesLongitude], markerOptions);
     marker.bindPopup(`${_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].name}, ${_addClickHandlers__WEBPACK_IMPORTED_MODULE_0__.arrayData[i].city}`);
     marker.addTo(map);
   }
@@ -52393,15 +52427,12 @@ if (formLogIn !== null) {
 const emailLogIn = document.getElementById('emailLogIn');
 const passwordLogIn = document.getElementById('passwordLogIn');
 const btn = document.querySelector('.btnRest');
-const btnLogIn = document.querySelector('.logIn');
 const btnClose = document.querySelector('.btnClose');
 
 if (btnClose !== null) {
   btnClose.addEventListener('click', e => {
     formLogIn.style.display = 'none';
   });
-} else {
-  console.log(btnClose);
 }
 
 if (document.querySelector('.mainBtn') !== null) {
@@ -52416,12 +52447,10 @@ if (document.querySelector('.mainBtn') !== null) {
       window.location.href = '../../dist/index.html';
     }
   });
-} else {
-  console.log(document.querySelector('.mainBtn'));
 }
 
 if (btn !== null) {
-  btn.addEventListener('click', e => {
+  btn.addEventListener('click', () => {
     if (btn.innerHTML === 'Log In') {
       formLogIn.style.display = 'flex';
     } else {
@@ -52487,7 +52516,21 @@ if (localStorage.getItem('user') !== '') {
   const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
   const changePassword = document.querySelector('.profile__body_settings__body__change_password');
   const changeInformation = document.querySelector('.profile__body_settings__body__change_information');
+  const profile_change_data = document.querySelector('.profile__body_settings__options__change_data');
+  const profile_statistics = document.querySelector('.profile__body_settings__options__statistics');
   let colorOfProfile;
+
+  const uniqueArray = (array, prop1, prop2) => {
+    for (let i = 0; i < array.length; i++) {
+      for (let j = i + 1; j < array.length; j++) {
+        if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+          array.splice(i, 1);
+        }
+      }
+    }
+
+    return array;
+  };
 
   const setColorMood = color => {
     const profile_change_data = document.querySelector('.profile__body_settings__options__change_data');
@@ -52540,9 +52583,115 @@ if (localStorage.getItem('user') !== '') {
       UrlOfImage: avatar.src
     }).then(function () {
       location.reload();
-    }).catch(function (error) {
-      console.error("Error updating document: ", error);
     });
+  };
+
+  const changeStatistics = color => {
+    let colorGraph;
+    let backgroundGraph;
+
+    if (color === 'yellow') {
+      colorGraph = '#efca08';
+      backgroundGraph = '#efc80875';
+      profile_change_data.className = 'profile__body_settings__options__change_data yellow__mood_disabled';
+      profile_statistics.className = 'profile__body_settings__options__statistics yellow__mood';
+    } else if (color === 'blue') {
+      colorGraph = '#00a6a6';
+      backgroundGraph = '#00a6a686';
+      profile_change_data.className = 'profile__body_settings__options__change_data blue__mood_disabled';
+      profile_statistics.className = 'profile__body_settings__options__statistics blue__mood';
+    }
+
+    let arr = JSON.parse(localStorage.getItem('reviews'));
+    arr = uniqueArray(arr, 'Restaurant', 'Review');
+    localStorage.setItem('reviews', JSON.stringify(arr));
+    settings.innerHTML = `
+                    <div class="profile__body_settings__body_count">
+                        <span>My reviews</span><span>${arr.length}</span>
+                    </div>
+                    <canvas id="myChart"></canvas>`;
+    let dataReviews = [];
+    arr.map(date => {
+      dataReviews.push(date.Date);
+    });
+    const uniqueDataReviews = new Set(dataReviews);
+    dataReviews = [...uniqueDataReviews];
+    let currentYear = new Date();
+    currentYear = currentYear.getFullYear();
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let monthsReviews = [];
+    const countReviews = [];
+
+    for (let i = 0; i < dataReviews.length; i++) {
+      let count = 0;
+
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[j].Date === dataReviews[i]) {
+          count++;
+        }
+      }
+
+      countReviews[i] = count;
+    }
+
+    dataReviews.map(item => {
+      let numberOfMonths = item.substr(6, 1);
+      let day = item.substr(8, 2);
+
+      if (day[0] === '0') {
+        day = day[1];
+      }
+
+      let month = months[Number(numberOfMonths) - 1];
+      monthsReviews.push(`${day} ${month}`);
+    });
+    const newDateofMonths = [];
+    const newCountReviews = [];
+
+    for (let i = 0; i < months.length; i++) {
+      let isMonth = false;
+
+      for (let j = 0; j < monthsReviews.length; j++) {
+        if (monthsReviews[j].indexOf(months[i]) !== -1) {
+          newDateofMonths.push(monthsReviews[j]);
+          newCountReviews.push(countReviews[j]);
+          isMonth = true;
+        }
+      }
+
+      if (!isMonth) {
+        newDateofMonths.push(months[i]);
+        newCountReviews.push(0);
+      }
+    }
+
+    let ctx = document.getElementById('myChart').getContext('2d');
+    let chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: newDateofMonths,
+        datasets: [{
+          label: `My Reviews ${currentYear}`,
+          backgroundColor: backgroundGraph,
+          borderColor: colorGraph,
+          data: newCountReviews
+        }]
+      },
+      options: {}
+    });
+  };
+
+  const changeData = color => {
+    if (color === 'yellow') {
+      profile_change_data.className = 'profile__body_settings__options__change_data yellow__mood';
+      profile_statistics.className = 'profile__body_settings__options__statistics yellow__mood_disabled';
+    } else if (color === 'blue') {
+      profile_change_data.className = 'profile__body_settings__options__change_data blue__mood';
+      profile_statistics.className = 'profile__body_settings__options__statistics blue__mood_disabled';
+    }
+
+    settings.style.alignItems = 'normal';
+    settings.style.flexDirection = 'column';
   };
 
   const changePasswordUser = () => {
@@ -52580,37 +52729,35 @@ if (localStorage.getItem('user') !== '') {
           Password: newPasswordRepeat.value
         }).then(function () {
           location.reload();
-        }).catch(function (error) {
-          console.error("Error updating document: ", error);
         });
       }
     }
   };
 
   const changePasswordLayouts = () => {
-    settings.innerHTML = `
-<div class="container__form_control">
-    <label class="password__change">Old password</label>
-    <input type="password" placeholder="old password" id="passwordOld" value=""></input>
-    <i class="fas fa-check-circle"></i>
-    <i class="fas fa-exclamation-circle"></i>
-    <small>Error message</small>
-</div>
-<div class="container__form_control">
-    <label class="password__change">New password</label>
-    <input type="password" placeholder="password" id="passwordNew" value=""></input>
-    <i class="fas fa-check-circle"></i>
-    <i class="fas fa-exclamation-circle"></i>
-    <small>Error message</small>
-</div>
-<div class="container__form_control">
-    <label class="password__change">New password check</label>
-    <input type="password" placeholder="password repeat" id="passwordNew2" value=""></input>
-    <i class="fas fa-check-circle"></i>
-    <i class="fas fa-exclamation-circle"></i>
-    <small>Error message</small>
-</div>
-<button type="submit" class="profile__body_settings__body__change_password_button">Submit</button>`;
+    settings.innerHTML = ` 
+        <div class="container__form_control">
+            <label class="password__change"> Old password </label>
+            <input type="password" placeholder="old password" id="passwordOld" value=""> </input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label class="password__change"> New password</label>
+            <input type="password" placeholder="password" id="passwordNew" value=""></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small> Error message</small>
+        </div>
+        <div class="container__form_control">
+            <label class="password__change">New password check</label>
+            <input type="password" placeholder="password repeat" id="passwordNew2" value=""></input>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small> Error message</small>
+        </div>
+        <button type="submit" class="profile__body_settings__body__change_password_button"> Submit</button>`;
     settings.style.alignItems = 'center';
     settings.style.marginTop = '0px';
     document.querySelectorAll('.container__form_control')[0].style.marginBottom = '-15px';
@@ -52712,30 +52859,53 @@ if (localStorage.getItem('user') !== '') {
         City: selectCity.options[index].value
       }).then(function () {
         location.reload();
-      }).catch(function (error) {
-        console.error("Error updating document: ", error);
       });
     });
   };
 
-  _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
-    querySnapshot.forEach(function (doc) {
-      userInfo = doc.data();
-      nameUser.innerHTML = userInfo.Firstname;
-      surnameUser.innerHTML = userInfo.LastName;
-      dateUser.innerHTML = userInfo.Birthday;
-      usernameUser.innerHTML = userInfo.Username;
-      avatar.src = userInfo.UrlOfImage;
-      locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`;
-      colorOfProfile = userInfo.ColorOfProfile;
-      changeColorOfProfile.addEventListener('click', changeColor);
-      changePassword.addEventListener('click', changePasswordLayouts);
-      changeInformation.addEventListener('click', changeInfoUser);
-      setColorMood(colorOfProfile);
+  if (nameUser && objLocal.Username) {
+    _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("reviews").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
+          let arrayReviews = [];
+          querySnapshot.forEach(function (doc) {
+            arrayReviews.push(doc.data());
+          });
+          arrayReviews = uniqueArray(arrayReviews, 'Restaurant', 'Review');
+          localStorage.setItem('reviews', JSON.stringify(arrayReviews));
+        });
+        userInfo = doc.data();
+        nameUser.innerHTML = userInfo.Firstname;
+        surnameUser.innerHTML = userInfo.LastName;
+        dateUser.innerHTML = userInfo.Birthday;
+        usernameUser.innerHTML = userInfo.Username;
+        avatar.src = userInfo.UrlOfImage;
+        locationCanada.innerHTML = `${userInfo.Country}, ${userInfo.City}`;
+        colorOfProfile = userInfo.ColorOfProfile;
+        changeColorOfProfile.addEventListener('click', changeColor);
+        changePassword.addEventListener('click', changePasswordLayouts);
+        changeInformation.addEventListener('click', changeInfoUser);
+        setColorMood(colorOfProfile);
+        profile_statistics.addEventListener('click', () => {
+          changeStatistics(colorOfProfile);
+        });
+        profile_change_data.addEventListener('click', () => {
+          changeData(colorOfProfile);
+          settings.innerHTML = `
+                    <div class="profile__body_settings__body__change_password">Cange password</div>
+                    <div class="profile__body_settings__body__change_information">Cange information about me</div>
+                    <div class="profile__body_settings__body__change_color">Cange color of my profile</div>
+                    `;
+          const changeColorOfProfile = document.querySelector('.profile__body_settings__body__change_color');
+          const changePassword = document.querySelector('.profile__body_settings__body__change_password');
+          const changeInformation = document.querySelector('.profile__body_settings__body__change_information');
+          changeColorOfProfile.addEventListener('click', changeColor);
+          changePassword.addEventListener('click', changePasswordLayouts);
+          changeInformation.addEventListener('click', changeInfoUser);
+        });
+      });
     });
-  }).catch(function (error) {
-    console.log("Error getting documents: ", error);
-  });
+  }
 }
 
 /***/ }),
@@ -52921,8 +53091,6 @@ function checkInputs() {
         if (!check) {
           setSuccessFor(username);
         }
-      }).catch(function (error) {
-        console.log("Error getting documents: ", error);
       });
     }
 
@@ -52954,8 +53122,6 @@ function checkInputs() {
         if (!check) {
           setSuccessFor(email);
         }
-      }).catch(function (error) {
-        console.log("Error getting documents: ", error);
       });
     }
 
@@ -53054,6 +53220,8 @@ function getRating() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _starsRating__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./starsRating */ "./src/js/starsRating.js");
 /* harmony import */ var _dbFirebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dbFirebase */ "./src/js/dbFirebase.js");
+/* harmony import */ var _apiData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./apiData */ "./src/js/apiData.js");
+
 
 
 const usernameReview = document.querySelector('.review__restaurant_main__user_username');
@@ -53061,19 +53229,23 @@ const avatarReview = document.querySelector('.review__restaurant_main__user_avat
 const review = document.querySelector('.review__restaurant_main__text__area');
 const sumbitReview = document.querySelector('.review_submit');
 const headlineRestaurant = document.querySelector('.review__restaurant_main__text__headline a');
-const search = document.querySelector('.review__restaurant_search');
+const search = document.querySelector('.cards_wrapper');
+const searching = document.querySelector('.review__restaurant_search');
 let rating;
 
 if (localStorage.getItem('user') !== '' && usernameReview) {
-  if (localStorage.getItem('fromPage') !== null || localStorage.getItem('fromPage') !== '') {
+  if (localStorage.getItem('fromPage') !== null && localStorage.getItem('fromPage') !== '') {
     let restPage = JSON.parse(localStorage.getItem('card'))[0];
     headlineRestaurant.innerHTML = restPage.name;
     headlineRestaurant.href = '';
-    search.style.visibility = 'hidden';
+    const wrapper = document.querySelector('.wrapper');
+    searching.style.visibility = 'hidden';
+    setTimeout(() => {
+      search.innerHTML = '';
+    }, 1000);
   }
 
   const objUser = JSON.parse(localStorage.getItem('user'));
-  console.log(objUser);
   usernameReview.innerHTML = objUser.Username;
   avatarReview.src = objUser.Avatar;
   const stars_rating = document.querySelectorAll('.review__restaurant__rating_submit_item');
@@ -53086,26 +53258,90 @@ if (localStorage.getItem('user') !== '' && usernameReview) {
     });
   }
 
-  sumbitReview.addEventListener('click', createReview);
+  if (sumbitReview) {
+    sumbitReview.addEventListener('click', () => {
+      createReview();
+    });
+  }
 }
 
 function createReview() {
-  console.log('submit');
   localStorage.setItem('fromPage', '');
   let currentDate = new Date().toISOString().slice(0, 10);
-  _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").add({
-    Avatar: avatarReview.src,
-    Username: usernameReview.innerHTML,
-    Restaurant: headlineRestaurant.innerHTML,
-    Review: review.value,
-    Rating: rating,
-    Date: currentDate
-  }).then(function (doc) {
-    console.log(doc.id);
-    window.location.href = '../../dist/pages/restaurants.html';
-  }).catch(function (error) {
-    console.error("Error adding document: ", error);
-  });
+
+  if (review.value !== '' && rating !== undefined && headlineRestaurant.innerHTML !== 'Please select a restaurant...') {
+    _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").add({
+      Avatar: avatarReview.src,
+      Username: usernameReview.innerHTML,
+      Restaurant: headlineRestaurant.innerHTML,
+      Review: review.value,
+      Rating: rating,
+      Date: currentDate
+    }).then(function () {
+      for (let i = 0; i < _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData.length; i += 1) {
+        if (headlineRestaurant.innerHTML === _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].id) {
+          _dbFirebase__WEBPACK_IMPORTED_MODULE_1__.db.collection("reviews").where("Restaurant", "==", _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].name).get().then(function (querySnapshot) {
+            let arrayReviews = [];
+            querySnapshot.forEach(function (doc) {
+              arrayReviews.push(doc.data());
+            });
+
+            const uniqueArray = (array, prop1, prop2) => {
+              for (let i = 0; i < array.length; i++) {
+                for (let j = i + 1; j < array.length; j++) {
+                  if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+                    array.splice(i, 1);
+                  }
+                }
+              }
+
+              return array;
+            };
+
+            uniqueArray(arrayReviews, 'Username', 'Review');
+            console.log(e.target);
+
+            if (card.length === 0) {
+              card.push({
+                id: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].id,
+                name: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].name,
+                categories: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].categories,
+                image_url: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].image_url,
+                rating: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].rating,
+                reviews: arrayReviews,
+                review_count: arrayReviews.length,
+                price: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].price,
+                display_phone: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].display_phone,
+                phone: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].phone,
+                locationAddress: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].locationAddress,
+                city: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].city,
+                url: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].url,
+                categories: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].categories,
+                coordinatesLatitude: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].coordinatesLatitude,
+                coordinatesLongitude: _apiData__WEBPACK_IMPORTED_MODULE_2__.restaurantsData[i].coordinatesLongitude
+              });
+              localStorage.setItem("card", JSON.stringify(card));
+            }
+          });
+        }
+      }
+
+      window.location.href = './pageRestaurant.html';
+    });
+  } else {
+    if (review.value === '') {
+      review.placeholder = 'Please enter your review!';
+    }
+
+    if (rating === undefined) {
+      const mess = document.querySelector('.message');
+      mess.style.visibility = 'visible';
+    }
+
+    if (headlineRestaurant.innerHTML === 'Please select a restaurant...') {
+      headlineRestaurant.style.color = '#ef7008';
+    }
+  }
 }
 
 /***/ }),

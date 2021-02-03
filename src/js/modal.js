@@ -35,7 +35,6 @@ if (formLogIn !== null) {
 const emailLogIn = document.getElementById('emailLogIn')
 const passwordLogIn = document.getElementById('passwordLogIn')
 const btn = document.querySelector('.btnRest')
-const btnLogIn = document.querySelector('.logIn')
 const btnClose = document.querySelector('.btnClose')
 
 
@@ -43,8 +42,6 @@ if (btnClose !== null) {
     btnClose.addEventListener('click', (e) => {
         formLogIn.style.display = 'none'
     })
-} else {
-    console.log(btnClose);
 }
 
 if (document.querySelector('.mainBtn') !== null) {
@@ -58,19 +55,16 @@ if (document.querySelector('.mainBtn') !== null) {
             window.location.href = '../../dist/index.html'
         }
     })
-} else {
-    console.log(document.querySelector('.mainBtn'));
 }
 
 if (btn !== null) {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', () => {
         if (btn.innerHTML === 'Log In') {
             formLogIn.style.display = 'flex'
         } else {
             logOutUser(localStorage.getItem(('Auth')))
             window.location.href = '../../dist/index.html'
         }
-
     })
 }
 
@@ -98,5 +92,6 @@ export function checkData() {
     } else {
         setSuccessFor(passwordLogIn)
     }
+
     return isCorrect
 }

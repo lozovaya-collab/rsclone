@@ -1,12 +1,12 @@
 import './js/getDataCard'
-import './js/dbFirebase'
-import './js/checkUser'
+import { db } from './js/dbFirebase'
+import { checkUserIsAuth } from './js/checkUser'
+import './js/map'
 import { map } from './js/map'
 import './js/modal'
 import './js/signUp'
 import './js/logIn'
 import './js/writeReview'
-import { writeReviewToRestaurant } from './js/writeReview'
 import './js/logOut'
 import { Autocomplete } from './js/Autocomplete'
 import './js/apiData'
@@ -27,32 +27,76 @@ import { CardsRestaurants } from './js/CardsRestaurants'
 import { restaurantsData } from './js/apiData'
 import { getRating } from './js/starsRating'
 
-
-console.log(localStorage.getItem('Auth'));
-// export let arrayNameRestaurants = []
 window.onload = function() {
 
-    // render Cards of Restaurants
+    let objLocal = JSON.parse(localStorage.getItem('card'))
+    for (let i = 0; i < restaurantsData.length; i += 1) {
+        let card = []
+
+        if (objLocal[0].name === restaurantsData[i].name) {
+            db.collection("reviews").where("Restaurant", "==", restaurantsData[i].name)
+                .get()
+                .then(function(querySnapshot) {
+                    let arrayReviews = []
+
+                    querySnapshot.forEach(function(doc) {
+                        arrayReviews.push(doc.data())
+                    });
+
+
+                    const uniqueArray = (array, prop1, prop2) => {
+                        for (let i = 0; i < array.length; i++) {
+                            for (let j = i + 1; j < array.length; j++) {
+                                if (array[i][prop1] === array[j][prop1] && array[i][prop2] === array[j][prop2]) {
+                                    array.splice(i, 1)
+                                }
+                            }
+                        }
+                        return array
+                    }
+                    uniqueArray(arrayReviews, 'Username', 'Review')
+                    if (card.length === 0) {
+                        card.push({
+                            id: restaurantsData[i].id,
+                            name: restaurantsData[i].name,
+                            categories: restaurantsData[i].categories,
+                            image_url: restaurantsData[i].image_url,
+                            rating: restaurantsData[i].rating,
+                            reviews: arrayReviews,
+                            review_count: arrayReviews.length,
+                            price: restaurantsData[i].price,
+                            display_phone: restaurantsData[i].display_phone,
+                            phone: restaurantsData[i].phone,
+                            locationAddress: restaurantsData[i].locationAddress,
+                            city: restaurantsData[i].city,
+                            url: restaurantsData[i].url,
+                            categories: restaurantsData[i].categories,
+                            coordinatesLatitude: restaurantsData[i].coordinatesLatitude,
+                            coordinatesLongitude: restaurantsData[i].coordinatesLongitude
+                        })
+                        localStorage.setItem("card", JSON.stringify(card));
+                    }
+                })
+        }
+    }
+    checkUserIsAuth()
     if (restaurantsData) {
         renderCardsRestaurants()
     }
     getDataCard()
     getUserData()
-        // click sorting 
     addFilterPriceClickHandler();
     addFilterRestaurantsClickHandler();
+
     sortRestaurantsByCities()
-    showTypeRestaurants();
-
+    showTypeRestaurants()
     getBestRestaurants()
-
-
 
     if (document.querySelector('.main__restaurant_page')) {
         renderPageRestaurant()
     }
 
-    getRating();
+    getRating()
 
     const pageReview = document.querySelector('.button__review')
     if (pageReview) {
@@ -62,7 +106,22 @@ window.onload = function() {
         })
     }
     cancelEventReviewCard()
+
+    const restaurants = document.querySelector('.restaurants_wrapper_review')
+
+    if (restaurants) {
+        for (let i = 0; i < restaurants.children.length; i++) {
+            restaurants.children[i].addEventListener('click', () => {
+                const currentRestaurant = restaurants.children[i]
+                let nameOfRestaurant = currentRestaurant.children[0].children[1].children[0].innerHTML
+                document.querySelector('.cards_wrapper').innerHTML = ''
+                document.querySelector('.cards_wrapper').appendChild(currentRestaurant)
+                headlineRestaurant.innerHTML = nameOfRestaurant
+            })
+        }
+    }
     Autocomplete('#input-select', arrayNameRestaurants);
+
 };
 
 const renderCardsRestaurants = () => {
@@ -142,7 +201,10 @@ const cancelEventReviewCard = () => {
 }
 
 const getUserData = () => {
-    let userInfo = JSON.parse(localStorage.getItem("user"));
+    let userInfo
+    if (localStorage.getItem('user') !== '') {
+        userInfo = JSON.parse(localStorage.getItem("user"));
+    }
     let selectionCity = document.querySelector('select')
     let cardsRestaurantsMain = document.querySelectorAll('.cards_wrapper_city>a')
     let cardsRestaurantsPage = document.querySelectorAll('.cards_wrapper_restaurants>a>div')

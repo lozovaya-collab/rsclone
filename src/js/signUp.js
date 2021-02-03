@@ -66,9 +66,6 @@ export function checkInputs() {
                         setSuccessFor(username)
                     }
                 })
-                .catch(function(error) {
-                    console.log("Error getting documents: ", error);
-                });
         }
 
         if (cityValue === 'Cities of Canada') {
@@ -101,9 +98,6 @@ export function checkInputs() {
                         setSuccessFor(email)
                     }
                 })
-                .catch(function(error) {
-                    console.log("Error getting documents: ", error);
-                });
         }
 
         if (passwordValue === '') {

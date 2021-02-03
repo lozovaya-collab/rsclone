@@ -7,8 +7,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./../../dist/src/assets/icon/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./../../dist/src/assets/icon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./../../dist/src/assets/icon/favicon-16x16.png">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
     <link rel="manifest" href="./../../dist/src/assets/icon/site.webmanifest">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,7 +27,7 @@
         <div class="wrapper">
             <div class="button_wrapper">
                 <button class="button_header log-in btnRest" id="show-modal" class="btn">Log In</button>
-                <a href="./signUp.html"><button class="button_header sign-up">Sign Up</button></a>
+                <a href="./profile.html"><button class="button_header sign-up">Sign Up</button></a>
             </div>
             <div class="header-wrapper header_wrapper__restaurant">
                 <a class="logo" href="./../../index.html"> YelpClone <i class="fab fa-yelp"></i></a>
@@ -40,7 +45,7 @@
                 <div class="review__restaurant_main__text">
                     <h2 class="review__restaurant_main__text__headline"><a href="#search_restaurant">Please select a restaurant...</a></h2>
                     <br>
-                    <textarea name="comment" class="review__restaurant_main__text__area" placeholder="Your review..."></textarea>
+                    <textarea required name="comment" class="review__restaurant_main__text__area" placeholder="Your review..."></textarea>
                     <div class="review__restaurant__rating_submit">
                         <div>
                             <div class="rating">
@@ -54,18 +59,52 @@
                                         <input type="radio" class="rating__item review__restaurant__rating_submit_item" value="5" name="rating">
                                     </div>
                                 </div>
-                                <div id="search_restaurant" class="rating__value review__restaurant__rating_submit_value"></div>
+                                <div class="rating__value review__restaurant__rating_submit_value"></div>
                             </div>
+                            <small class='message'>Please rate</small>
                             <button class="review_submit">Submit</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="review__restaurant_search ">
-            <div class="searching ">
-                <input type="text " id="input-select" class="input_searching searching_restaurant " placeholder="Restaurant " autocomplete="off ">
-                <select name="city " id=" " class="input_searching searching_city ">                            
+            <div class="review__restaurant_search ">
+                <div class="searching ">
+                    <select name="city " id=" " class="input_searching searching_city ">                            
+                    <option value="Cities of Canada "  class="selection-allCities " >Cities of Canada</option>
+                    <option value="Ottawa ">Ottawa</option>
+                    <option value="Montreal ">Montreal</option>
+                    <option value="Toronto ">Toronto</option>
+                    <option value="Calgary ">Calgary</option>
+                    <option value="Edmonton ">Edmonton</option>
+                    <option value="Mississauga ">Mississauga</option>
+                    <option value="Winnipeg ">Winnipeg</option>
+                    <option value="Vancouver ">Vancouver</option>
+                    <option value="Quebec ">Quebec City</option>
+                    <option value="Hamilton ">Brampton</option>                            
+                </select>
+                    <i class="fas fa-search "></i>
+                </div>
+            </div>
+            <div class="cards_wrapper cards_wrapper_restaurants restaurants_wrapper_review">
+                <a href="#">
+                    <div class="card card_restaurant">
+                        <div class="food">
+                            <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
+                        </div>
+                        <div class="about_restaurant">
+                            <h2 class="title_card">Hotbird</h2>
+                            <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                            <span class="priceRestaurant">$</span>
+                            <div class="service_restaurant">
+                                <span>Seafood</span><span>Vietnamese</span>
+                            </div>
+                            <div class="phon_restaurant">+13615728538</div>
+                            <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
+                        </div>
+                        <div class="review__restaurant_search ">
+                            <div class="searching ">
+                                <input type="text " id="input-select" class="input_searching searching_restaurant " placeholder="Restaurant " autocomplete="off ">
+                                <select name="city " id=" " class="input_searching searching_city ">                            
                 <option value="Cities of Canada "  class="selection-allCities " >Cities of Canada</option>
                 <option value="Ottawa ">Ottawa</option>
                 <option value="Montreal ">Montreal</option>
@@ -78,31 +117,30 @@
                 <option value="Quebec ">Quebec City</option>
                 <option value="Hamilton ">Brampton</option>                            
             </select>
-                <i class="fas fa-search "></i>
-            </div>
-        </div>
-        <div class="cards_wrapper cards_wrapper_restaurants restaurants_wrapper_review">
-            <a href="#">
-                <div class="card card_restaurant">
-                    <div class="food">
-                        <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
-                    </div>
-                    <div class="about_restaurant">
-                        <h2 class="title_card">Hotbird</h2>
-                        <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
-                        <span class="priceRestaurant">$</span>
-
-                        <div class="service_restaurant">
-                            <span>Seafood</span><span>Vietnamese</span>
+                                <i class="fas fa-search "></i>
+                            </div>
                         </div>
-                        <div class="phon_restaurant">+13615728538</div>
-                        <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        </div>
-        <a href="#" id="toTop"><i class="fas fa-angle-double-up"></i></a>
+                        <div class="cards_wrapper cards_wrapper_restaurants restaurants_wrapper_review">
+                            <a href="#">
+                                <div class="card card_restaurant">
+                                    <div class="food">
+                                        <img class="image_food" src="https://s3-media0.fl.yelpcdn.com/bphoto/ea4wHrJ5VzFgefJnZmIx2w/ls.jpg" alt="">
+                                    </div>
+                                    <div class="about_restaurant">
+                                        <h2 class="title_card">Hotbird</h2>
+                                        <div class="rating_restaurant"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span class="reviewsRestaurants">337 Reviews</span></div>
+                                        <span class="priceRestaurant">$</span>
+
+                                        <div class="service_restaurant">
+                                            <span>Seafood</span><span>Vietnamese</span>
+                                        </div>
+                                        <div class="phon_restaurant">+13615728538</div>
+                                        <div class="address_restaurant">304 E Rio Grand, Victoria, TX 77901</div>
+                                    </div>
+                            </a>
+                            </div>
+                        </div>
+                        <a href="#" id="toTop"><i class="fas fa-angle-double-up"></i></a>
     </main>
     <footer class="footer ">
         <div class="wrapper ">
