@@ -1,15 +1,12 @@
 let checkAuth = localStorage.getItem(('Auth'))
 const buttonLogOut = document.querySelector('.log-out')
 const popLogIn = document.getElementById('popup')
-console.log(buttonLogOut);
 
 export const logOutUser = (value) => {
     if (value === 'true') {
         value = false
-        console.log(location.href);
         localStorage.setItem('Auth', value)
         localStorage.setItem('user', '')
-        console.log(localStorage.getItem(('Auth')));
 
         const butSignUp = document.querySelector('.sign-up')
         butSignUp.innerHTML = 'Sign Up'
@@ -27,9 +24,7 @@ export const logOutUser = (value) => {
 }
 if (buttonLogOut !== null) {
     buttonLogOut.addEventListener('click', () => {
-        console.log(buttonLogOut);
         if (buttonLogOut.innerHTML === 'Log Out') {
-
             logOutUser(checkAuth)
             window.location.href = '../../dist/index.html'
         } else {

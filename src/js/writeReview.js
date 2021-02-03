@@ -10,8 +10,6 @@ const headlineRestaurant = document.querySelector('.review__restaurant_main__tex
 const search = document.querySelector('.cards_wrapper')
 const searching = document.querySelector('.review__restaurant_search')
 
-
-
 let rating
 
 if (localStorage.getItem('user') !== '' && usernameReview) {
@@ -29,7 +27,6 @@ if (localStorage.getItem('user') !== '' && usernameReview) {
     usernameReview.innerHTML = objUser.Username
     avatarReview.src = objUser.Avatar
 
-
     const stars_rating = document.querySelectorAll('.review__restaurant__rating_submit_item')
     for (let i = 0; i < stars_rating.length; i++) {
         stars_rating[i].addEventListener('click', (e) => {
@@ -39,11 +36,8 @@ if (localStorage.getItem('user') !== '' && usernameReview) {
         })
     }
 
-
-
     if (sumbitReview) {
         sumbitReview.addEventListener('click', () => {
-            console.log(sumbitReview);
             createReview()
         })
     }
@@ -62,13 +56,9 @@ function createReview() {
                 Date: currentDate
             })
             .then(function(doc) {
-                console.log(doc.id);
                 getDataCard()
                 window.location.href = './pageRestaurant.html'
             })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-            });
     } else {
         if (review.value === '') {
             review.placeholder = 'Please enter your review!'
@@ -81,5 +71,4 @@ function createReview() {
             headlineRestaurant.style.color = '#ef7008'
         }
     }
-
 }

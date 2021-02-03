@@ -1,5 +1,6 @@
 import { db } from './dbFirebase'
 import { setErrorFor, setSuccessFor } from "./signUp"
+
 if (localStorage.getItem('user') !== '') {
     let objLocal = JSON.parse(localStorage.getItem('user'))
     let userInfo = {}
@@ -75,9 +76,6 @@ if (localStorage.getItem('user') !== '') {
             .then(function() {
 
                 location.reload()
-            })
-            .catch(function(error) {
-                console.error("Error updating document: ", error);
             });
     }
 
@@ -106,7 +104,6 @@ if (localStorage.getItem('user') !== '') {
                     </div>
                     <canvas id="myChart"></canvas>`
         let dataReviews = []
-
         arr.map((date) => {
             dataReviews.push(date.Date)
         })
@@ -134,7 +131,6 @@ if (localStorage.getItem('user') !== '') {
         let monthsReviews = []
         const countReviews = []
 
-
         for (let i = 0; i < dataReviews.length; i++) {
             let count = 0
             for (let j = 0; j < arr.length; j++) {
@@ -144,7 +140,6 @@ if (localStorage.getItem('user') !== '') {
             }
             countReviews[i] = count
         }
-
         dataReviews.map((item) => {
             let numberOfMonths = item.substr(6, 1)
             let day = item.substr(8, 2)
@@ -176,10 +171,7 @@ if (localStorage.getItem('user') !== '') {
         let ctx = document.getElementById('myChart').getContext('2d');
 
         let chart = new Chart(ctx, {
-            // The type of chart we want to create
             type: 'line',
-
-            // The data for our dataset
             data: {
                 labels: newDateofMonths,
                 datasets: [{
@@ -189,12 +181,8 @@ if (localStorage.getItem('user') !== '') {
                     data: newCountReviews
                 }]
             },
-
-            // Configuration options go here
             options: {}
         });
-
-
     }
 
     const changeData = (color) => {
@@ -209,15 +197,12 @@ if (localStorage.getItem('user') !== '') {
 
         settings.style.alignItems = 'normal'
         settings.style.flexDirection = 'column'
-
-
     }
 
     const changePasswordUser = () => {
         const oldPassword = document.getElementById('passwordOld')
         const newPassword = document.getElementById('passwordNew')
         const newPasswordRepeat = document.getElementById('passwordNew2')
-
 
         if (userInfo.Password === oldPassword.value) {
             setSuccessFor(oldPassword)
@@ -250,9 +235,6 @@ if (localStorage.getItem('user') !== '') {
                     .then(function() {
                         location.reload()
                     })
-                    .catch(function(error) {
-                        console.error("Error updating document: ", error);
-                    });
             }
         }
     }
@@ -308,7 +290,6 @@ if (localStorage.getItem('user') !== '') {
         document.querySelectorAll('.fa-check-circle')[0].style.fontSize = '23px'
         document.querySelectorAll('.fa-check-circle')[1].style.fontSize = '23px'
         document.querySelectorAll('.fa-check-circle')[2].style.fontSize = '23px'
-
 
         const changePasswordButton = document.querySelector('.profile__body_settings__body__change_password_button')
         changePasswordButton.addEventListener('click', changePasswordUser)
@@ -387,15 +368,10 @@ if (localStorage.getItem('user') !== '') {
                 .then(function() {
                     location.reload()
                 })
-                .catch(function(error) {
-                    console.error("Error updating document: ", error);
-                });
         })
-
-
     }
 
-    if (nameUser) {
+    if (nameUser && objLocal.Username) {
         db.collection("users").where("Username", "==", objLocal.Username)
             .get()
             .then(function(querySnapshot) {
@@ -421,7 +397,6 @@ if (localStorage.getItem('user') !== '') {
                     changeColorOfProfile.addEventListener('click', changeColor)
                     changePassword.addEventListener('click', changePasswordLayouts)
                     changeInformation.addEventListener('click', changeInfoUser)
-                    console.log(colorOfProfile);
                     setColorMood(colorOfProfile)
                     profile_statistics.addEventListener('click', () => {
                         changeStatistics(colorOfProfile)
@@ -441,12 +416,7 @@ if (localStorage.getItem('user') !== '') {
                         changePassword.addEventListener('click', changePasswordLayouts)
                         changeInformation.addEventListener('click', changeInfoUser)
                     })
-
-
                 });
             })
-            .catch(function(error) {
-                console.log("Error getting documents: ", error);
-            });
     }
 }

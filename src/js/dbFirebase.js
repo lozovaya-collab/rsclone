@@ -9,8 +9,6 @@ export var firebaseConfig = {
     appId: "1:59314028578:web:3d47d4a44d783727444a7b",
     measurementId: "G-YK6VGZSB8J"
 };
-
-
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
 export var db = firebaseApp.firestore();
 export let isAuth
@@ -71,16 +69,10 @@ const createUser = () => {
                 localStorage.setItem('user', JSON.stringify(newUser));
                 window.location.href = '../../dist/index.html'
             })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-            });
 
         isAuth = true
         localStorage.setItem('Auth', isAuth);
-
     }
-
-
 }
 
 if (submit) {

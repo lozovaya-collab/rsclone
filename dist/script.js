@@ -50836,22 +50836,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-console.log(localStorage.getItem('Auth')); // export let arrayNameRestaurants = []
 
 window.onload = function () {
-  (0,_js_checkUser__WEBPACK_IMPORTED_MODULE_1__.checkUserIsAuth)(); // render Cards of Restaurants
+  (0,_js_checkUser__WEBPACK_IMPORTED_MODULE_1__.checkUserIsAuth)();
 
   if (_js_apiData__WEBPACK_IMPORTED_MODULE_9__.restaurantsData) {
     renderCardsRestaurants();
-  } //click sorting 
-
+  }
 
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.addFilterPriceClickHandler)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.addFilterRestaurantsClickHandler)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.sortRestaurantsByCities)();
   (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.showTypeRestaurants)();
-  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.getBestRestaurants)(); //autocomplete
-
+  (0,_js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.getBestRestaurants)();
   (0,_js_Autocomplete__WEBPACK_IMPORTED_MODULE_8__.Autocomplete)('#input-select', _js_addClickHandlers__WEBPACK_IMPORTED_MODULE_14__.arrayNameRestaurants);
   (0,_js_getDataCard__WEBPACK_IMPORTED_MODULE_13__.getDataCard)();
 
@@ -50970,7 +50967,7 @@ const cancelEventReviewCard = () => {
   if (cardsContainer) {
     for (let i = 0; i < cardsContainer.length; i += 1) {
       cardsContainer[i].addEventListener('click', e => {
-        e.preventDefault(); //e.stopPropagation()
+        e.preventDefault();
       });
     }
   }
@@ -51742,13 +51739,11 @@ __webpack_require__.r(__webpack_exports__);
 let checkAuth = localStorage.getItem('Auth');
 const checkUserIsAuth = isAuth => {
   if (isAuth === 'true') {
-    console.log('what');
     const butSignUp = document.querySelector('.sign-up');
     butSignUp.innerHTML = 'Profile';
     const hrefBtn = document.querySelector('.sign-up-href');
 
     if (hrefBtn !== null) {
-      console.log('sssssssssssssssssssssssssssssss');
       hrefBtn.href = "/dist/pages/profile.html";
     }
 
@@ -51758,7 +51753,6 @@ const checkUserIsAuth = isAuth => {
     butLogIn.className += ' log-out';
   }
 };
-console.log(checkAuth);
 checkUserIsAuth(checkAuth);
 
 /***/ }),
@@ -51853,8 +51847,6 @@ const createUser = () => {
       };
       localStorage.setItem('user', JSON.stringify(newUser));
       window.location.href = '../../dist/index.html';
-    }).catch(function (error) {
-      console.error("Error adding document: ", error);
     });
     isAuth = true;
     localStorage.setItem('Auth', isAuth);
@@ -51983,7 +51975,6 @@ if (logInButton) {
       const passwordLogIn = String(document.getElementById('passwordLogIn').value);
       _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("E-mail", "==", emailLogIn).where("Password", "==", passwordLogIn).get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
-          console.log(doc.id, " => ", doc.data());
           myUser = {
             ID: doc.id,
             Username: doc.data().Username,
@@ -52003,8 +51994,6 @@ if (logInButton) {
         }
 
         document.getElementById('popup').style.display = 'none';
-      }).catch(function (error) {
-        console.log("Error getting documents: ", error);
       });
     }
   });
@@ -52026,14 +52015,11 @@ __webpack_require__.r(__webpack_exports__);
 let checkAuth = localStorage.getItem('Auth');
 const buttonLogOut = document.querySelector('.log-out');
 const popLogIn = document.getElementById('popup');
-console.log(buttonLogOut);
 const logOutUser = value => {
   if (value === 'true') {
     value = false;
-    console.log(location.href);
     localStorage.setItem('Auth', value);
     localStorage.setItem('user', '');
-    console.log(localStorage.getItem('Auth'));
     const butSignUp = document.querySelector('.sign-up');
     butSignUp.innerHTML = 'Sign Up';
     const hrefBtn = document.querySelector('.sign-up-href');
@@ -52051,8 +52037,6 @@ const logOutUser = value => {
 
 if (buttonLogOut !== null) {
   buttonLogOut.addEventListener('click', () => {
-    console.log(buttonLogOut);
-
     if (buttonLogOut.innerHTML === 'Log Out') {
       logOutUser(checkAuth);
       window.location.href = '../../dist/index.html';
@@ -52183,15 +52167,12 @@ if (formLogIn !== null) {
 const emailLogIn = document.getElementById('emailLogIn');
 const passwordLogIn = document.getElementById('passwordLogIn');
 const btn = document.querySelector('.btnRest');
-const btnLogIn = document.querySelector('.logIn');
 const btnClose = document.querySelector('.btnClose');
 
 if (btnClose !== null) {
   btnClose.addEventListener('click', e => {
     formLogIn.style.display = 'none';
   });
-} else {
-  console.log(btnClose);
 }
 
 if (document.querySelector('.mainBtn') !== null) {
@@ -52206,12 +52187,10 @@ if (document.querySelector('.mainBtn') !== null) {
       window.location.href = '../../dist/index.html';
     }
   });
-} else {
-  console.log(document.querySelector('.mainBtn'));
 }
 
 if (btn !== null) {
-  btn.addEventListener('click', e => {
+  btn.addEventListener('click', () => {
     if (btn.innerHTML === 'Log In') {
       formLogIn.style.display = 'flex';
     } else {
@@ -52344,8 +52323,6 @@ if (localStorage.getItem('user') !== '') {
       UrlOfImage: avatar.src
     }).then(function () {
       location.reload();
-    }).catch(function (error) {
-      console.error("Error updating document: ", error);
     });
   };
 
@@ -52430,9 +52407,7 @@ if (localStorage.getItem('user') !== '') {
 
     let ctx = document.getElementById('myChart').getContext('2d');
     let chart = new Chart(ctx, {
-      // The type of chart we want to create
       type: 'line',
-      // The data for our dataset
       data: {
         labels: newDateofMonths,
         datasets: [{
@@ -52442,7 +52417,6 @@ if (localStorage.getItem('user') !== '') {
           data: newCountReviews
         }]
       },
-      // Configuration options go here
       options: {}
     });
   };
@@ -52495,8 +52469,6 @@ if (localStorage.getItem('user') !== '') {
           Password: newPasswordRepeat.value
         }).then(function () {
           location.reload();
-        }).catch(function (error) {
-          console.error("Error updating document: ", error);
         });
       }
     }
@@ -52627,13 +52599,11 @@ if (localStorage.getItem('user') !== '') {
         City: selectCity.options[index].value
       }).then(function () {
         location.reload();
-      }).catch(function (error) {
-        console.error("Error updating document: ", error);
       });
     });
   };
 
-  if (nameUser) {
+  if (nameUser && objLocal.Username) {
     _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("users").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
         _dbFirebase__WEBPACK_IMPORTED_MODULE_0__.db.collection("reviews").where("Username", "==", objLocal.Username).get().then(function (querySnapshot) {
@@ -52655,7 +52625,6 @@ if (localStorage.getItem('user') !== '') {
         changeColorOfProfile.addEventListener('click', changeColor);
         changePassword.addEventListener('click', changePasswordLayouts);
         changeInformation.addEventListener('click', changeInfoUser);
-        console.log(colorOfProfile);
         setColorMood(colorOfProfile);
         profile_statistics.addEventListener('click', () => {
           changeStatistics(colorOfProfile);
@@ -52675,8 +52644,6 @@ if (localStorage.getItem('user') !== '') {
           changeInformation.addEventListener('click', changeInfoUser);
         });
       });
-    }).catch(function (error) {
-      console.log("Error getting documents: ", error);
     });
   }
 }
@@ -52868,8 +52835,6 @@ function checkInputs() {
         if (!check) {
           setSuccessFor(username);
         }
-      }).catch(function (error) {
-        console.log("Error getting documents: ", error);
       });
     }
 
@@ -52901,8 +52866,6 @@ function checkInputs() {
         if (!check) {
           setSuccessFor(email);
         }
-      }).catch(function (error) {
-        console.log("Error getting documents: ", error);
       });
     }
 
@@ -53041,7 +53004,6 @@ if (localStorage.getItem('user') !== '' && usernameReview) {
 
   if (sumbitReview) {
     sumbitReview.addEventListener('click', () => {
-      console.log(sumbitReview);
       createReview();
     });
   }
@@ -53060,11 +53022,8 @@ function createReview() {
       Rating: rating,
       Date: currentDate
     }).then(function (doc) {
-      console.log(doc.id);
       (0,_getDataCard__WEBPACK_IMPORTED_MODULE_2__.getDataCard)();
       window.location.href = './pageRestaurant.html';
-    }).catch(function (error) {
-      console.error("Error adding document: ", error);
     });
   } else {
     if (review.value === '') {

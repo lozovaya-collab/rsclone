@@ -27,28 +27,17 @@ import { CardsRestaurants } from './js/CardsRestaurants'
 import { restaurantsData } from './js/apiData'
 import { getRating } from './js/starsRating'
 
-
-console.log(localStorage.getItem('Auth'));
-// export let arrayNameRestaurants = []
 window.onload = function() {
     checkUserIsAuth()
 
-    // render Cards of Restaurants
     if (restaurantsData) {
         renderCardsRestaurants()
     }
-
-
-    //click sorting 
-    addFilterPriceClickHandler();
-    addFilterRestaurantsClickHandler();
+    addFilterPriceClickHandler()
+    addFilterRestaurantsClickHandler()
     sortRestaurantsByCities()
-    showTypeRestaurants();
-
+    showTypeRestaurants()
     getBestRestaurants()
-
-
-    //autocomplete
     Autocomplete('#input-select', arrayNameRestaurants);
 
     getDataCard()
@@ -56,8 +45,7 @@ window.onload = function() {
         renderPageRestaurant()
     }
 
-    getRating();
-
+    getRating()
 
     const pageReview = document.querySelector('.button__review')
     if (pageReview) {
@@ -82,7 +70,6 @@ window.onload = function() {
             })
         }
     }
-
 };
 
 const renderCardsRestaurants = () => {
@@ -155,8 +142,6 @@ const cancelEventReviewCard = () => {
         for (let i = 0; i < cardsContainer.length; i += 1) {
             cardsContainer[i].addEventListener('click', (e) => {
                 e.preventDefault()
-                    //e.stopPropagation()
-
             });
         }
     }

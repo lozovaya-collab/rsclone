@@ -1,5 +1,4 @@
 export function getRating() {
-
     const ratingAll = document.querySelectorAll('.rating')
 
     function initRatings() {
@@ -29,5 +28,4 @@ export function getRating() {
     if (ratingAll.length > 0) {
         initRatings()
     }
-
 }

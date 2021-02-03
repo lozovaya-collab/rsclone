@@ -1270,6 +1270,22 @@ h2 {
       font-style: normal;
       font-weight: normal; }
 
+@media all and (max-width: 1112px) {
+  .profile {
+    max-width: 100%;
+    height: 1268px; }
+    .profile__body {
+      flex-direction: column; } }
+
+@media all and (max-width: 936px) {
+  .profile {
+    max-width: 100%;
+    height: 1400px; }
+    .profile__body {
+      flex-direction: column; }
+      .profile__body_card_of_user {
+        margin-top: 230px; } }
+
 .review__restaurant {
   width: 100%;
   display: flex;
